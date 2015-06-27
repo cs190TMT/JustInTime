@@ -5,7 +5,7 @@
           <!--logo start-->
           <a href="index.html" class="logo" >JUST<span>in</span>TIME</a>
           <!--logo end-->
-          <div class="nav notify-row" id="top_menu">
+          <div class="nav notify-row" style="margin-left:10px;" id="top_menu">
             <!--  notification start -->
             <ul class="nav top-menu">
               <!-- settings start -->

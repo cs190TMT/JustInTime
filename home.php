@@ -79,7 +79,7 @@
                                   <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#4CC5CD" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
-                                  <h4 class="terques">Project2 CMS </h4>
+                                  <h4 class="terques">Project 1 </h4>
                                   <p>Started : 15 July</p>
                                   <p>Deadline : 15 August</p>
                               </div>
@@ -90,10 +90,10 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#4CC5CD" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#FF6C60" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
-                                  <h4 class="terques">ThemeForest CMS </h4>
+                                  <h4 class="terques">Project 2</h4>
                                   <p>Started : 15 July</p>
                                   <p>Deadline : 15 August</p>
                               </div>
@@ -106,10 +106,10 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#4CC5CD" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#A9D86E" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
-                                  <h4 class="terques">ThemeForest CMS </h4>
+                                  <h4 class="terques">Project 3 </h4>
                                   <p>Started : 15 July</p>
                                   <p>Deadline : 15 August</p>
                               </div>
@@ -120,10 +120,10 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#4CC5CD" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#FCB322" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
-                                  <h4 class="terques">ThemeForest CMS </h4>
+                                  <h4 class="terques">Project 4</h4>
                                   <p>Started : 15 July</p>
                                   <p>Deadline : 15 August</p>
                               </div>
@@ -213,48 +213,21 @@
                                   </div>
                                   <!-- /comment -->
                               </div>
-                              <div class="chat-form">
-                                  <div class="input-cont ">
-                                      <input type="text" class="form-control col-lg-12" placeholder="Type a message here...">
-                                  </div>
-                                  <div class="form-group">
-                                      <div class="pull-right chat-features">
-                                          <a href="javascript:;">
-                                              <i class="icon-camera"></i>
-                                          </a>
-                                          <a href="javascript:;">
-                                              <i class="icon-link"></i>
-                                          </a>
-                                          <a class="btn btn-danger" href="javascript:;">Send</a>
-                                      </div>
-                                  </div>
-
-                              </div>
+                             
                           </div>
                       </section>
-                  </div><div class="col-lg-6">
+                  </div>
+				  <div class="col-lg-6">
                       <section class="panel">
                           <header class="panel-heading">
-                              Your Tasks
+                              Your Tasks Due Today
                               <span class="tools pull-right">
                                 <a class="icon-chevron-down" href="javascript:;"></a>
                                 <a class="icon-remove" href="javascript:;"></a>
                             </span>
                           </header>
-                          <section class="panel">
-                          <div class="panel-body progress-panel">
-                              <div class="task-progress">
-                                  <h1>Today's Task</h1>
-                                  <p>Anjelina Joli</p>
-                              </div>
-                              <div class="task-option">
-                                  <select class="styled">
-                                      <option>Anjelina Joli</option>
-                                      <option>Tom Crouse</option>
-                                      <option>Jhon Due</option>
-                                  </select>
-                              </div>
-                          </div>
+                          
+                         <div class="panel-body">
                           <table class="table table-hover personal-task">
                               <tbody>
                               <tr>
@@ -309,7 +282,7 @@
                               </tr>
                               </tbody>
                           </table>
-                      </section>
+                    </div>
                       </section>
                   </div>
               </div>
