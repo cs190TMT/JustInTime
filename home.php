@@ -270,7 +270,7 @@
       <!--header end-->
       <!--sidebar start-->
       <?php
-      	include'/includes/sidebar.php';
+      	include'includes/sidebar.php';
       ?>
       <!--sidebar end-->
       <!--main content start-->
