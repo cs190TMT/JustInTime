@@ -5,7 +5,7 @@
                   <li>
                       <a href="home.php" class="active">
                           <i class="icon-dashboard"></i>
-                          <span>JITHub</span>
+                          <span>JIThub</span>
                       </a>
                   </li>
 
