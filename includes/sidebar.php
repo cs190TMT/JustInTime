@@ -11,7 +11,7 @@
 
                   <li class="sub-menu">
                       <a href="javascript:;">
-                          <i class="icon-laptop"></i>
+                          <i class="icon-folder-close"></i>
                           <span>Projects</span>
                       </a>
                       <ul class="sub">
@@ -22,15 +22,9 @@
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="icon-cogs"></i>
+                          <i class="icon-tasks"></i>
                           <span>Task Lists</span>
                       </a>
-                      <ul class="sub">
-                          <li><a  href="grids.html">Grids</a></li>
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
-                      </ul>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
