@@ -31,12 +31,12 @@
   <section id="container" class="">
       <!--header start-->
       <?php
-      	include'includes/header.php';
+      	include 'includes/header.php';
       ?>
       <!--header end-->
       <!--sidebar start-->
       <?php
-      	include'includes/sidebar.php';
+      	include 'includes/sidebar.php';
       ?>
       <!--sidebar end-->
       <!--main content start-->
@@ -297,14 +297,9 @@
       </section>
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2013 &copy; FlatLab by VectorLab.
-              <a href="#" class="go-top">
-                  <i class="icon-angle-up"></i>
-              </a>
-          </div>
-      </footer>
+      <?php
+      	include 'includes/footer.php';
+      ?>
       <!--footer end-->
   </section>
 
