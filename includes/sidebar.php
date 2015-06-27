@@ -5,7 +5,7 @@
                   <li>
                       <a href="home.html" class="active">
                           <i class="icon-dashboard"></i>
-                          <span>Dashboard</span>
+                          <span>JITHub</span>
                       </a>
                   </li>
 
@@ -20,22 +20,6 @@
                           <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
                       </ul>
                   </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;">
-                          <i class="icon-book"></i>
-                          <span>Projects</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          
-                          <li><a  href="slider.html">Slider</a></li>
-                          <li><a  href="nestable.html">Nestable</a></li>
-                          <li><a  href="font_awesome.html">Font Awesome</a></li>
-                      </ul>
-                  </li>
-
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="icon-cogs"></i>
