@@ -57,10 +57,10 @@
                               </div>
 
                               <ul class="nav nav-pills nav-stacked">
-                                  <li><a href="javascript:;"> <i class="icon-time"></i> Mail Inbox <span class="label label-primary pull-right r-activity">19</span></a></li>
-                                  <li><a href="javascript:;"> <i class="icon-calendar"></i> Recent Activity <span class="label label-info pull-right r-activity">11</span></a></li>
-                                  <li><a href="javascript:;"> <i class="icon-bell-alt"></i> Notification <span class="label label-warning pull-right r-activity">03</span></a></li>
-								  <li><a href="javascript:;"> <i class="icon-envelope-alt"></i> Message <span class="label label-success pull-right r-activity">10</span></a></li>
+                                  <li><a href="javascript:;"> <i class="icon-asterisk"></i> New tasks <span class="label label-primary pull-right r-activity">19</span></a></li>
+                                  <li><a href="javascript:;"> <i class="icon-sun"></i> Tasks Due Today <span class="label label-warning pull-right r-activity">11</span></a></li>
+                                  <li><a href="javascript:;"> <i class="icon-exclamation-sign"></i> Overdue Tasks <span class="label label-danger pull-right r-activity">03</span></a></li>
+								  <li><a href="javascript:;"> <i class="icon-thumbs-up"></i> Finished Tasks <span class="label label-success pull-right r-activity">10</span></a></li>
                               </ul>
 
                           </section>
@@ -76,7 +76,7 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#4CC5CD" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-readOnly=true data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#4CC5CD" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
                                   <h4 class="terques">Project 1 </h4>
@@ -90,7 +90,7 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#FF6C60" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-readOnly=true data-height="101" data-displayPrevious=true  data-thickness=".2" value="20" data-fgColor="#FF6C60" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
                                   <h4 class="terques">Project 2</h4>
@@ -106,7 +106,7 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#A9D86E" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-readOnly=true data-height="101" data-displayPrevious=true  data-thickness=".2" value="80" data-fgColor="#A9D86E" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
                                   <h4 class="terques">Project 3 </h4>
@@ -120,7 +120,7 @@
                       <div class="panel">
                           <div class="panel-body">
                               <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-height="101" data-displayPrevious=true  data-thickness=".2" value="63" data-fgColor="#FCB322" data-bgColor="#e8e8e8">
+                                  <input class="knob" data-width="101" data-readOnly=true data-height="101" data-displayPrevious=true  data-thickness=".2" value="95" data-fgColor="#FCB322" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
                                   <h4 class="terques">Project 4</h4>

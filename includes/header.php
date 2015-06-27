@@ -105,9 +105,9 @@
                           <span class="username">Jhon Doue</span>
                           <b class="caret"></b>
                       </a>
-                      <ul class="dropdown-menu extended logout">
+                      <ul class="dropdown-menu extended logout" style="max-width: 100px !important;    min-width: 100px !important;">
                           <div class="log-arrow-up"></div>                
-                          <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+                          <li><a href="#"style="padding: 15px 25px !important;"><i style="padding: 0px 25px !important; align:center;" class="icon-cog"></i> Settings</a></li>
                           <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
                       </ul>
                   </li>
