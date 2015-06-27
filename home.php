@@ -69,7 +69,7 @@
                       
                   </div>
                   <div class="col-lg-8">
-				  <span style="font-size:30pt; ">Your Projects</span> <a href="#">see all <li class="icon-double-angle-right"></i></a><br/>
+				  <span style="font-size:30pt; ">Your Projects</span> <a href="">see all<i class="icon-double-angle-right"></i><br/>
                       <div class="row">
                           <div class="col-lg-6">
                                <!--widget start-->
@@ -272,56 +272,6 @@
                               </tr>
                               <tr>
                                   <td>5</td>
-                                  <td>
-                                      Delivery Pending
-                                  </td>
-                                  <td>
-                                      <span class="badge bg-primary">15%</span>
-                                  </td>
-                                  
-                              </tr>
-							   <tr>
-                                  <td>6</td>
-                                  <td>
-                                      Target Sell
-                                  </td>
-                                  <td>
-                                      <span class="badge bg-important">75%</span>
-                                  </td>
-                                
-                              </tr>
-                              <tr>
-                                  <td>7</td>
-                                  <td>
-                                      Product Delivery
-                                  </td>
-                                  <td>
-                                      <span class="badge bg-success">43%</span>
-                                  </td>
-                                 
-                              </tr>
-                              <tr>
-                                  <td>8</td>
-                                  <td>
-                                      Payment Collection
-                                  </td>
-                                  <td>
-                                      <span class="badge bg-info">67%</span>
-                                  </td>
-                                
-                              </tr>
-                              <tr>
-                                  <td>9</td>
-                                  <td>
-                                      Work Progress
-                                  </td>
-                                  <td>
-                                      <span class="badge bg-warning">30%</span>
-                                  </td>
-                                  
-                              </tr>
-                              <tr>
-                                  <td>10</td>
                                   <td>
                                       Delivery Pending
                                   </td>
