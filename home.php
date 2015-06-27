@@ -269,9 +269,11 @@
       </header>
       <!--header end-->
       <!--sidebar start-->
+	    <aside>
       <?php
       	include'includes/sidebar.php';
       ?>
+	    </aside>
       <!--sidebar end-->
       <!--main content start-->
       <section id="main-content">
