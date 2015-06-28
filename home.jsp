@@ -30,14 +30,10 @@
 
   <section id="container" class="">
       <!--header start-->
-      <?php
-      	include 'includes/header.php';
-      ?>
+      <%@include file="includes/header.jsp" %>
       <!--header end-->
       <!--sidebar start-->
-      <?php
-      	include 'includes/sidebar.php';
-      ?>
+      <%@include file="includes/sidebar.jsp" %>
       <!--sidebar end-->
       <!--main content start-->
       <section id="main-content">
@@ -297,9 +293,7 @@
       </section>
       <!--main content end-->
       <!--footer start-->
-      <?php
-      	include 'includes/footer.php';
-      ?>
+      <%@include file="includes/footer.jsp" %>
       <!--footer end-->
   </section>
 

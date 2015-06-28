@@ -3,7 +3,7 @@
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="index.html" class="logo" >JUST<span>in</span>TIME</a>
+          <a href="home.jsp" class="logo" >JUST<span>in</span>TIME</a>
           <!--logo end-->
           <div class="nav notify-row" style="margin-left:10px;" id="top_menu">
             <!--  notification start -->
