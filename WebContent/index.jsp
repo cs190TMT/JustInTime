@@ -66,7 +66,7 @@
                   </div>
                   
                   <div class="col-lg-8">
-				  <span style="font-size:30pt; ">Your Projects</span> <a href="">see all<i class="icon-double-angle-right"></i><br/>
+				  <span style="font-size:30pt; ">Your Projects</span> <a href=" ">see all<i class="icon-double-angle-right"></i></a><br/>
                       <div class="row">
                           <div class="col-lg-6">
                                <!--widget start-->
@@ -139,8 +139,8 @@
                                       <div class="message-body msg-in">
                                           <span class="arrow"></span>
                                           <div class="text">
-                                              <p class="attribution"><a href="#">Jhon Doe</a> at 1:55pm, 13th April 2013</p>
-                                              <p>Hello, How are you brother?</p>
+                                              <p class="attribution"><a href="#">Jhon Doe</a> at 1:55pm, 10th July 2013</p>
+                                              <p>[ATTENTION] July 12 is the Philippine Independence Day. Nobody shall report tomorrow. Work shall resume on July 13. </p>
                                           </div>
                                       </div>
                                   </div>
@@ -153,7 +153,7 @@
                                           <span class="arrow"></span>
                                           <div class="text">
                                               <p class="attribution"> <a href="#">Jonathan Smith</a> at 2:01pm, 13th April 2013</p>
-                                              <p>I'm Fine, Thank you. What about you? How is going on?</p>
+                                              <p>[Daily Time Sheet] Tomorrow is the deadline for your Time Sheet for the month of May.</p>
                                           </div>
                                       </div>
                                   </div>
@@ -166,7 +166,7 @@
                                           <span class="arrow"></span>
                                           <div class="text">
                                               <p class="attribution"><a href="#">Jhon Doe</a> at 2:03pm, 13th April 2013</p>
-                                              <p>Yeah I'm fine too. Everything is going fine here.</p>
+                                              <p>[Company Shirt Day] Tomorrow is Company Shirt Day. Everyone is advised to wear their respective company shirts.</p>
                                           </div>
                                       </div>
                                   </div>
@@ -179,7 +179,7 @@
                                           <span class="arrow"></span>
                                           <div class="text">
                                               <p class="attribution"><a href="#">Jonathan Smith</a> at 2:05pm, 13th April 2013</p>
-                                              <p>well good to know that. anyway how much time you need to done your task?</p>
+                                              <p>[Acquaintance Party] Acquaintance Party on July 15. Everyone is advised to finish work by 3:30pm. Assembly time is at 4:30pm at the Cebu Trade Hall.</p>
                                           </div>
                                       </div>
                                   </div>
@@ -191,7 +191,7 @@
                                           <span class="arrow"></span>
                                           <div class="text">
                                               <p class="attribution"><a href="#">Jhon Doe</a> at 1:55pm, 13th April 2013</p>
-                                              <p>Hello, How are you brother?</p>
+                                              <p>[BURGER DAY] All employees shall receive a burger in commemoration of the National Burger Day. Burgers are in the pantry by 3pm.</p>
                                           </div>
                                       </div>
                                   </div>
@@ -210,7 +210,6 @@
                                 <a class="icon-remove" href="javascript:;"></a>
                             </span>
                           </header>
-                          
                          <div class="panel-body">
                           <table class="table table-hover personal-task">
                               <tbody>
@@ -280,6 +279,7 @@
           </section>
       </section>
       <!--main content end-->
+      <br/><br/><br/>
       <!--footer start-->
       <%@include file="includes/footer.jsp" %>
       <!--footer end-->
