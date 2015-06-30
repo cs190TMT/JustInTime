@@ -3,7 +3,7 @@
               <!-- sidebar menu start--> 
               <ul class="sidebar-menu" id="nav-accordion">
                   <li>
-                      <a href="home.jsp" class="active">
+                      <a href="index.jsp" class="active">
                           <i class="icon-dashboard"></i>
                           <span>JIThub</span>
                       </a>

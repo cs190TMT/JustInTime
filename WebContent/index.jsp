@@ -65,7 +65,7 @@
                       
                   </div>
                   <div class="col-lg-8">
-				  <span style="font-size:30pt; ">Your Projects</span> <a href="">see all<i class="icon-double-angle-right"></i><br/>
+				  <span style="font-size:30pt; ">Your Projects</span> <a href=" ">see all<i class="icon-double-angle-right"></i></a><br/>
                       <div class="row">
                           <div class="col-lg-6">
                                <!--widget start-->
@@ -222,7 +222,6 @@
                                 <a class="icon-remove" href="javascript:;"></a>
                             </span>
                           </header>
-                          
                          <div class="panel-body">
                           <table class="table table-hover personal-task">
                               <tbody>
@@ -292,6 +291,7 @@
           </section>
       </section>
       <!--main content end-->
+      <br/><br/><br/>
       <!--footer start-->
       <%@include file="includes/footer.jsp" %>
       <!--footer end-->
