@@ -64,6 +64,7 @@
                       <!--widget end-->
                       
                   </div>
+                  
                   <div class="col-lg-8">
 				  <span style="font-size:30pt; ">Your Projects</span> <a href="">see all<i class="icon-double-angle-right"></i><br/>
                       <div class="row">
@@ -95,6 +96,7 @@
                               </div>
                           </div>
                       </div>
+                      
                       <!--widget end-->
                           </div>
                           <div class="col-lg-6">
@@ -105,27 +107,13 @@
                                   <input class="knob" data-width="101" data-readOnly=true data-height="101" data-displayPrevious=true  data-thickness=".2" value="80" data-fgColor="#A9D86E" data-bgColor="#e8e8e8">
                               </div>
                               <div class="bio-desk">
-                                  <h4 class="terques">Project 3 </h4>
+                                  <h4 class="terques">Task Management App</h4>
                                   <p>Started : 15 July</p>
                                   <p>Deadline : 15 August</p>
                               </div>
                           </div>
                       </div>
-                      <!--widget end-->
-					  					   <!--widget start-->
-                      <div class="panel">
-                          <div class="panel-body">
-                              <div class="bio-chart">
-                                  <input class="knob" data-width="101" data-readOnly=true data-height="101" data-displayPrevious=true  data-thickness=".2" value="95" data-fgColor="#FCB322" data-bgColor="#e8e8e8">
-                              </div>
-                              <div class="bio-desk">
-                                  <h4 class="terques">Project 4</h4>
-                                  <p>Started : 15 July</p>
-                                  <p>Deadline : 15 August</p>
-                              </div>
-                          </div>
-                      </div>
-                      <!--widget end-->
+                   
 
                           </div>
                       </div>
@@ -137,7 +125,7 @@
                   <div class="col-lg-6">
                       <section class="panel">
                           <header class="panel-heading">
-                              Company Memos
+                              Messages
                               <span class="tools pull-right">
                                 <a class="icon-chevron-down" href="javascript:;"></a>
                                 <a class="icon-remove" href="javascript:;"></a>
