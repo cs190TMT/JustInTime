@@ -15,15 +15,24 @@
                           <span>Projects</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="boxed_page.html">Project 1</a></li>
-                          <li><a  href="horizontal_menu.html">Project 2</a></li>
-                          <li><a  href="language_switch_bar.html">Project 3</a></li>
+   
+                      	  <li><a  href="" style="color: #e58787">Add Project<span class="glyphicon glyphicon-plus" aria-hidden="true" style="padding-left:10px"></span></a>
+                      	  		
+                      	  		<div class="input-group input-group-sm input-group-inline">
+									<input type="text" class="form-control" placeholder="Project name" aria-describedby="basic-addon2">
+									<span class="input-group-addon" id="basic-addon2">add</span>
+								</div>
+                      	  
+                      	  </li>
+                          <li><a  href="projectPage.jsp">Project 1</a></li>
+                          <li><a  href="projectPage.jsp">Project 2</a></li>
+                          <li><a  href="projectPage.jsp">Project 3</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="mytask.jsp" >
                           <i class="icon-tasks"></i>
-                          <span>Task Lists</span>
+                          <span>My Tasks</span>
                       </a>
                   </li>
                   <li class="sub-menu">
@@ -38,3 +47,8 @@
           </div>
       </aside>
 
+
+<script>
+
+
+</script>
