@@ -36,7 +36,7 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="calendarViewTest.jsp" >
                           <i class="icon-calendar"></i>
                           <span>Calendar</span>
                       </a>

@@ -20,10 +20,8 @@
 	
 	<body>
 	<section id="container" class="">
-		<?php
-			include 'includes/header.php';
-			include 'includes/sidebar.php';
-		?>
+		<%@include file="includes/header.jsp" %>
+		<%@include file="includes/sidebar.jsp" %>
 		
 		<!--main content start-->
 		<section id="main-content">
@@ -50,7 +48,7 @@
 	
 	</section>
 	</body>
-	
+	<%@include file="includes/footer.jsp" %>
 	<script>
 	
 		$(document).ready(function() {
