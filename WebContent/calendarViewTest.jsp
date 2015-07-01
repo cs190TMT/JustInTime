@@ -83,44 +83,26 @@
 	</body>
 	<script>
 		$(document).ready(function() {
-		$('#calendarMonth').fullCalendar({
-			// put your options and callbacks here
-			contentHeight: 'auto',
-				eventSources: [
-					// your event source
-				]
-		})
+			$('#calendarMonth').fullCalendar({
+				// put your options and callbacks here
+				contentHeight: 'auto',
+					eventSources: [
+						// your event source
+					]
+			})
 		});
 	</script>
-
 	<script>
-
 		function allowDrop(ev) {
-
 		    ev.preventDefault();
-
 		}
-
-
-
 		function drag(ev) {
-
 		    ev.dataTransfer.setData("text", ev.target.id);
-
 		}
-
-
-
 		function drop(ev) {
-
 		    ev.preventDefault();
-
 		    var data = ev.dataTransfer.getData("text");
-
 		    ev.target.appendChild(document.getElementById(data));
-
 		}
-
 	</script>
-
 </html>
