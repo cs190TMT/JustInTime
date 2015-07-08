@@ -1,18 +1,18 @@
 <html>
 	<head>
 		<!-- Bootstrap core CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-reset.css" rel="stylesheet">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/bootstrap-reset.css" rel="stylesheet">
 		<!--external css-->
-		<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 		<!-- Custom styles for this template -->
-		<link href="css/style.css" rel="stylesheet">
-		<link href="css/style-responsive.css" rel="stylesheet" />
+		<link href="../css/style.css" rel="stylesheet">
+		<link href="../css/style-responsive.css" rel="stylesheet" />
 		<!-- fullcalendar embedding -->
-		<link rel='stylesheet' href='fullcalendar-2.3.2/fullcalendar.css' />
-		<script src='fullcalendar-2.3.2/lib/jquery.min.js'></script>		
-		<script src='fullcalendar-2.3.2/lib/moment.min.js'></script>
-		<script src='fullcalendar-2.3.2/fullcalendar.js'></script>
+		<link rel='stylesheet' href='../fullcalendar-2.3.2/fullcalendar.css' />
+		<script src='../fullcalendar-2.3.2/lib/jquery.min.js'></script>		
+		<script src='../fullcalendar-2.3.2/lib/moment.min.js'></script>
+		<script src='../fullcalendar-2.3.2/fullcalendar.js'></script>
 	</head>
 	<style>
 		h6{
@@ -33,8 +33,8 @@
 	</style>
 	<body>
 	<section id="container" class="">
-			<%@include file="includes/header.jsp"%>
-			<%@include file="includes/sidebar.jsp"%>
+			<%@include file="../includes/header.jsp"%>
+			<%@include file="../includes/sidebar.jsp"%>
 		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
@@ -79,7 +79,7 @@
 		</section>
 		<!--main content end-->
 	</section>
-		<%@include file="includes/footer.jsp"%>
+		<%@include file="../includes/footer.jsp"%>
 	</body>
 	<script>
 		$(document).ready(function() {

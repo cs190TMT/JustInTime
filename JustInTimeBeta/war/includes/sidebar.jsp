@@ -3,7 +3,7 @@
               <!-- sidebar menu start--> 
               <ul class="sidebar-menu" id="nav-accordion">
                   <li>
-                      <a href="index.jsp" class="active">
+                      <a href="../project/index.jsp" class="active">
                           <i class="icon-dashboard"></i>
                           <span>JIThub</span>
                       </a>
@@ -24,9 +24,9 @@
 								</div>
                       	  
                       	  </li>
-                          <li><a  href="projectPage.jsp">Project 1</a></li>
-                          <li><a  href="projectPage.jsp">Project 2</a></li>
-                          <li><a  href="projectPage.jsp">Project 3</a></li>
+                          <li><a  href="../project/projectPage.jsp">Project 1</a></li>
+                          <li><a  href="../project/projectPage.jsp">Project 2</a></li>
+                          <li><a  href="../project/projectPage.jsp">Project 3</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -36,7 +36,7 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="calendarViewTest.jsp" >
+                      <a href="../project/calendarViewTest.jsp" >
                           <i class="icon-calendar"></i>
                           <span>Calendar</span>
                       </a>
