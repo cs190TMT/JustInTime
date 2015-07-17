@@ -42,7 +42,7 @@
               <div class="row">
                   <div class="col-lg-4">
                       
-                      <h1>My Tasks</h1>
+                      <h1>Tasks</h1>
                    </div>
                </div>
                <div class="col-lg-8" style="padding-top: 20px">

@@ -30,11 +30,12 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                      <a href="/myTasks" >
+                      <a href="/tasks" >
                           <i class="icon-tasks"></i>
-                          <span>My Tasks</span>
+                          <span>Tasks</span>
                       </a>
                   </li>
+                  <!--
                   <li class="sub-menu">
                       <a href="/calendarView" >
                           <i class="icon-calendar"></i>
@@ -42,6 +43,7 @@
                       </a>
                       
                   </li>
+                  -->
               </ul>
               <!-- sidebar menu end-->
           </div>

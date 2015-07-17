@@ -3,11 +3,11 @@ package project.controller;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
-public class MyTasksController extends Controller {
+public class TasksController extends Controller {
 
     @Override
     protected Navigation run() throws Exception {
-        return forward("project/mytask.jsp");
+        return forward("project/tasks.jsp");
     }
 
 }
