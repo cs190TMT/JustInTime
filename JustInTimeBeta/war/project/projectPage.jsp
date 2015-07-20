@@ -11,14 +11,13 @@
     <title>JIThub</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/style-responsive.css" rel="stylesheet" />
-    <link href="../css/radical.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -40,24 +39,290 @@
       <section id="main-content">
           <section class="wrapper">
               <!-- page start-->
-              <div class="col-lg-9">
-						<div class="row">
-							<h3 style="float: left; padding: 0px; margin: 0px;">Project 1</h3>
-							<button type="button" class="radical-simple-button" style="float: right; margin-right: 5px;">
-							  <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-							</button>
-							<button type="button" class="radical-simple-button-active" style="float: right">
-							  <span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
-							</button>
-						</div>
-						<div class="row" style="margin-top: 10px;">
-							<%@include file="../includes/taskList.jsp" %>
-						</div>
-					</div>
-					<div class="col-lg-3">
-					
-					</div>
-              <!-- page end-->
+              <div class="row">
+                  <div class="col-lg-4">
+                      <!--widget start-->
+                      <aside class="profile-nav alt green-border" >
+                          	  
+                              <div class="user-heading alt green-bg">
+                                  <h1>Project 1</h1>
+                              </div>
+
+                    
+                      </aside>
+                      <!--widget end-->
+                      
+                   </div>
+               </div>
+               <div class="col-lg-8" style="padding-top: 20px">
+               		<button class="btn btn-success btn-lg" type="submit" data-toggle="modal" data-target="#myModal2">Add Task</button>
+               </div>
+               <div class="col-lg-8" style="padding-top: 20px">
+				  <span style="font-size:12pt; ">Today</span>
+				  	
+				  
+				  <br/>
+                      <div class="row">
+                          <div class="col-lg-6">
+                               <!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#ff0097 ">Design</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">UI Design for Homepage</h4>
+	                                  <p>Due : Today</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                    
+                      <!--widget end-->
+					   <!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#2d89ef ">Coding</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Some Coding</h4>
+	                                  <p>Due : Today</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                      </div>
+                      <!--widget end-->
+                     </div>
+                     </div>
+                     </div>
+                </div>
+                <div class="col-lg-8" style="padding-top: 20px">
+				  <span style="font-size:12pt; ">Tomorrow</span>
+				  	
+				  
+				  <br/>
+                      <div class="row">
+                          <div class="col-lg-6">
+                              <!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color: #2be39c">Testing</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Test something</h4>
+	                                  <p>Due : July 10, 2015</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                    
+                      <!--widget end-->
+					   <!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#2d89ef ">Coding</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Some Coding</h4>
+	                                  <p>Due : July 10, 2015</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                      </div>
+                      <!--widget end-->
+                     	  </div>
+                     
+                     </div>
+                </div>
+                <div class="col-lg-8" style="padding-top: 20px">
+				  <span style="font-size:12pt; ">Next Week</span>
+				  	
+				  
+				  <br/>
+                      <div class="row">
+                     	<!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#2be39c ">Testing</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Test something</h4>
+	                                  <p>Due : July 10, 2015</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                    
+                      <!--widget end-->
+					   <!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#2d89ef ">Coding</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Some Coding</h4>
+	                                  <p>Due : July 10, 2015</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                      </div>
+                      <!--widget end-->
+                     </div>
+                </div>
+                <div class="col-lg-8" style="padding-top: 20px">
+				  <span style="font-size:12pt; ">And Beyond</span>
+				  	
+				  
+				  <br/>
+                      <div class="row">
+                     	<!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#2be39c ">Testing</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Test something</h4>
+	                                  <p>Due : July 10, 2015</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                    
+                      <!--widget end-->
+					   <!--widget start-->
+                      <div class="panel">
+                          <div class="panel-body">
+                                <div class="bio-desk">
+                          			<span class="label" style="background-color:#2d89ef ">Coding</span>
+                          			<br/><br/>
+	                                  <h4 class="terques">Some Coding</h4>
+	                                  <p>Due : July 10, 2015</p>
+	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>
+	                                  		<div class="btn-group">
+												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
+												  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												    <span class="caret"></span>
+												    <span class="sr-only">Toggle Dropdown</span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Remove Task</a></li>
+												  </ul>
+												</div>
+	                                  
+	                                  </p>
+                          		</div>
+                          		</div>
+                             
+                          </div>
+                      </div>
+                      <!--widget end-->
+                     </div>
+                </div>
+                     
+                
+	
+             <!-- page end-->
           </section>
       </section>
       

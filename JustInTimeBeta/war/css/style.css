@@ -8,6 +8,7 @@ Website: http://thevectorlab.net/
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
+body {
     color: #797979;
     background: #f1f2f7;
     font-family: 'Open Sans', sans-serif;
@@ -164,10 +165,10 @@ a, a:hover, a:focus {
 /*sidebar navigation*/
 
 #sidebar {
-    width: 265px; /*original: 210px; */
+    width: 210px;
     height: 100%;
     position: fixed;
-    background: #575757;
+    background: #2a3542;
 }
 
 #sidebar ul li {
@@ -175,7 +176,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar .sub-menu > .sub li  {
-    padding-left: 32px; 
+    padding-left: 32px;
 }
 
 #sidebar .sub-menu > .sub li:last-child {
@@ -289,7 +290,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    
+    background: #35404d;
     color: #fff;
     display: block;
     border-radius: 4px;
@@ -325,7 +326,7 @@ ul.sidebar-menu li a.active i {
 /*main content*/
 
 #main-content {
-    margin-left: 265px;
+    margin-left: 210px;
 }
 
 .header, .footer {

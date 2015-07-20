@@ -1,18 +1,16 @@
-	<header class="header white-bg radical-header">
-		<!-- 
+	<header class="header white-bg">
           <div class="sidebar-toggle-box">
               <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
           </div>
-         -->
           <!--logo start-->
-          <a href="index.jsp" class="logo radical-logo" ><img src = "http://localhost:8888/img/Jit_logo3.png" /></a>
+          <a href="index.jsp" class="logo" >JUST<span>in</span>TIME</a>
          <!--logo end-->
           <div class="nav notify-row" style="margin-left:10px;" id="top_menu">
             <!--  notification start -->
-            <ul class="nav top-menu radical-top-menu">
+            <ul class="nav top-menu">
               <!-- settings start -->
-              <li class="dropdown ">
-                  <a data-toggle="dropdown" class="dropdown-toggle " href="#">
+              <li class="dropdown">
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                       <i class="icon-tasks"></i>
                       <span class="badge bg-success">6</span>
                   </a>
@@ -95,14 +93,14 @@
               <!-- settings end -->
           </ul>
           </div>
-          <div class="top-nav radical-top-nav">
-              <ul class="nav pull-right top-menu radical-top-menu">
+          <div class="top-nav ">
+              <ul class="nav pull-right top-menu">
                   <li>
-                      <input type="text" class="form-control search radical-search" placeholder="Search">
+                      <input type="text" class="form-control search" placeholder="Search">
                   </li>
                   <!-- user login dropdown start-->
-                  <li class="dropdown ">
-                      <a data-toggle="dropdown" class="dropdown-toggle radical-margin" href="#">
+                  <li class="dropdown">
+                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <img alt="" src="img/avatar1_small.jpg">
                           <span class="username">Jhon Doue</span>
                           <b class="caret"></b>
