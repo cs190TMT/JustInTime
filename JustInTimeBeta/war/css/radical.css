@@ -145,6 +145,11 @@ ul.radical-top-menu > li > a:hover, ul.radical-top-menu > li > a:focus {
 	padding: 0px;
 }
 
+.radical-no-round-corners{
+	border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
 .radical-margin{
 	margin-top: 8px;
 }
@@ -290,5 +295,158 @@ ul.radical-sidebar-menu li a.active i {
 
 .radical-submenu:hover{
 	background-color: #494949;
+}
+
+.radical-simple-button{
+	border: 0px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	background: transparent;
+	color: #494949;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radical-simple-button:hover{
+	background-color: #a2a2a2;
+	color: #fff;
+}
+
+.radical-simple-button-active{
+	border: 0px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	background-color: #494949;
+	color: #fff;
+}
+
+.radical-simple-button span{
+	font-size: 14px;
+}
+
+.radical-simple-button-task{
+	border: 0px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 15px; 
+	
+	color: #fff;
+	background-color: #00cd96;
+	
+	font-family: radicalHelvetica;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radical-simple-button-task:hover{
+	background-color: #008d67;
+	
+}
+
+.radical-task-header{
+	border-bottom-width: 1px;
+	border-bottom-color: #646464;
+}
+
+.radical-list-pin{
+	margin-bottom: 10px;
+	border: 1px solid;
+	border-color: #d9d9d9;
+	
+	padding: 0px;
+}
+
+.radical-list-pin .pin-phase{
+	color: #fff;
+
+	padding: 5px;
+	font-size: 11px;
+	
+	float: right;
+	margin-right: 5px;
+	
+	width: 60px;
+	text-align: center;
+}
+
+.radical-list-pin .pin-content{
+	padding-left: 10px;
+    margin-top: 0px;
+	
+}
+
+.radical-list-pin .pin-content .pin-info{
+	font-size: 12px;
+	margin-bottom: 5px;
+	
+	padding-left: 10px;
+}
+
+.radical-list-pin .pin-tools{
+	border: 0px;
+    background-color: transparent;
+	
+	padding: 5px;
+	
+	float: right;
+	margin-right: 5px;
+}
+
+.radical-color-planning{
+	background-color: #ffc40d;
+}
+
+.radical-color-design{
+	background-color: #ff0097;
+}
+
+.radical-color-coding{
+	background-color: #2d89ef ;
+}
+
+
+
+
+.radical-font-planning{
+	color: #ffc40d;
+}
+
+.radical-font-design{
+	color: #ff0097;
+}
+
+.radical-font-coding{
+	color: #2d89ef ;
+}
+
+
+
+
+.radical-border-planning{
+	border-left: 10px solid;
+	border-left-color: #ffc40d;
+}
+
+.radical-border-design{
+	border-left: 10px solid;
+	border-left-color: #ff0097;
+}
+
+.radical-border-coding{
+	border-left: 10px solid;
+	border-left-color: #2d89ef ;
 }
 
