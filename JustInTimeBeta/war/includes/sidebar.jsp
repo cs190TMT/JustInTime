@@ -1,49 +1,73 @@
-			<aside>
-          <div id="sidebar"  class="nav-collapse ">
+			<aside >
+          <div id="sidebar"  class="nav-collapse radical-sidebar">
               <!-- sidebar menu start--> 
-              <ul class="sidebar-menu" id="nav-accordion">
+              <ul class="sidebar-menu radical-sidebar-menu" id="nav-accordion">
+              	  
                   <li>
-                      <a href="/index" class="active">
-                          <i class="icon-dashboard"></i>
-                          <span>JIThub</span>
-                      </a>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;">
-                          <i class="icon-folder-close"></i>
-                          <span>Projects</span>
-                      </a>
-                      <ul class="sub">
-   
-                      	  <li><a  href="" style="color: #e58787">Add Project<span class="glyphicon glyphicon-plus" aria-hidden="true" style="padding-left:10px"></span></a>
-                      	  		
-                      	  		<div class="input-group input-group-sm input-group-inline">
-									<input type="text" class="form-control" placeholder="Project name" aria-describedby="basic-addon2">
-									<span class="input-group-addon" id="basic-addon2">add</span>
-								</div>
-                      	  
-                      	  </li>
-                          <li><a  href="/projectPage">Project 1</a></li>
-                          <li><a  href="/projectPage">Project 2</a></li>
-                          <li><a  href="/projectPage">Project 3</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="/tasks" >
+                      <a href="/index" class="radical-active">
                           <i class="icon-tasks"></i>
-                          <span>Tasks</span>
+                          <span class="radical-font-size">Tasks</span>
+                          <button type="button" class="radical-add-button">
+                          		<span class="glyphicon glyphicon glyphicon-plus-sign" aria-hidden="true"><text>add</text></span>
+                          </button>
                       </a>
                   </li>
-                  <!--
+                  
+                  <!-- [News Tasks, Due Tasks, Overdue Tasks] -->
+                  <li class="sub-menu radical-submenu">
+                      <a href="/tasks" style="padding-left: 35px;">
+                          <span class = "badge radical-badge radical-color-success" style="margin-right: 5px;">10</span>
+                          <span class = "submenu-text"> New Tasks</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu radical-submenu">
+                      <a href="/tasks" style="padding-left: 35px;">
+                          <span class = "badge radical-badge radical-color-warning" style="margin-right: 5px;">4</span>
+                          <span class = "submenu-text"> Due Today</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu radical-submenu">
+                      <a href="/tasks" style="padding-left: 35px;">
+                          <span class = "badge radical-badge radical-color-danger" style="margin-right: 5px;">4</span>
+                          <span class = "submenu-text"> Overdue</span>
+                      </a>
+                  </li>
+                  <!--  [END: News Tasks, Due Tasks, Overdue Tasks] -->
+
+                  <li></li>
+                  
                   <li class="sub-menu">
-                      <a href="/calendarView" >
-                          <i class="icon-calendar"></i>
-                          <span>Calendar</span>
+                      <a href="/tasks"  class="radical-active">
+                          <i class="icon-folder-close"></i>
+                          <span class="radical-font-size">Projects</span>
+                          <button type="button" class="radical-add-button">
+                          		<span class="glyphicon glyphicon glyphicon-plus-sign" aria-hidden="true"><text>add</text></span>
+                          </button>
                       </a>
-                      
                   </li>
-                  -->
+                  
+                  <!--  [Project List] -->
+                  <li class="sub-menu radical-submenu">
+                      <a href="/tasks" style="padding-left: 35px;">
+                          <span class = "badge radical-badge radical-badge-project glyphicon glyphicon-file" style="margin-right: 5px;"> </span>
+                          <span class = "submenu-text"> Project 1</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu radical-submenu">
+                      <a href="/tasks" style="padding-left: 35px;">
+                          <span class = "badge radical-badge radical-badge-project glyphicon glyphicon-file" style="margin-right: 5px;"> </span>
+                          <span class = "submenu-text"> Project 2</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu radical-submenu">
+                      <a href="/tasks" style="padding-left: 35px;">
+                          <span class = "badge radical-badge radical-badge-project glyphicon glyphicon-file" style="margin-right: 5px;"> </span>
+                          <span class = "submenu-text"> Project 3</span>
+                      </a>
+                  </li>
+                  
+                  <!--  [END: Project List] -->
+                 
               </ul>
               <!-- sidebar menu end-->
           </div>

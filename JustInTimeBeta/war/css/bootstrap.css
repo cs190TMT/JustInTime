@@ -3468,6 +3468,7 @@ input[type="button"].btn-block {
 
 .dropdown {
   position: relative;
+
 }
 
 .dropdown-toggle:focus {
@@ -3698,7 +3699,7 @@ input[type="button"].btn-block {
   margin-left: 0;
 }
 
-.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:first-child:not(:last-child):not(.) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
