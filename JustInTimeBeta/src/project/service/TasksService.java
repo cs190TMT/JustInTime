@@ -1,6 +1,7 @@
 package project.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import project.dao.TasksDao;
 import project.dto.TasksDto;
@@ -22,5 +23,9 @@ public class TasksService {
         }
         
         return input;
+    }
+    
+    public List<TasksModel> getTaskLists() {
+        return this.dao.getAllTasks();
     }
 }

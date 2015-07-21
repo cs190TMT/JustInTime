@@ -2,7 +2,7 @@ package project.dto;
 
 import java.util.List;
 
-public class TasksDto {
+public class ProjectsDto {
     /**
      * List of errors.
      */
@@ -10,11 +10,9 @@ public class TasksDto {
 
     private long id;
 
-    private String taskName;
+    private String projectName;
 
-    private String taskDetails;
-    
-    private String taskPhase;
+    private String projectDetails;
 
     /**
      * Retrieve errorList
@@ -48,27 +46,19 @@ public class TasksDto {
         this.id = id;
     }
 
-    public String getTaskName() {
-        return this.taskName;
+    public String getProjectName() {
+        return this.projectName;
     }
 
-    public void setTaskName(String name) {
-        this.taskName = name;
+    public void setProjectName(String name) {
+        this.projectName = name;
     }
     
-    public String getTaskDetails() {
-        return this.taskDetails;
+    public String getProjectDetails() {
+        return this.projectDetails;
     }
 
-    public void setTaskDetails(String details) {
-        this.taskDetails = details;
-    }
-    
-    public String getTaskPhase() {
-        return this.taskPhase;
-    }
-
-    public void setTaskPhase(String phase) {
-        this.taskPhase = phase;
+    public void setProjectDetails(String details) {
+        this.projectDetails = details;
     }
 }
