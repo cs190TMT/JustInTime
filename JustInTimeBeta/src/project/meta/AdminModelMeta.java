@@ -1,6 +1,10 @@
 package project.meta;
 
+<<<<<<< HEAD
 //@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-07-17 18:06:57")
+=======
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-07-21 11:43:47")
+>>>>>>> 2f1f60cc0cfc5491936eae4d8f5cf39aa7833641
 /** */
 public final class AdminModelMeta extends org.slim3.datastore.ModelMeta<project.model.AdminModel> {
 
