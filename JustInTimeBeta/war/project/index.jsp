@@ -59,7 +59,7 @@
 							  <span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 							</button>
 							
-							<button type="button" class="radical-simple-button-task" style="float: right">
+							<button type="button" class="radical-simple-button-task" style="float: right" aria-label="Left Align" data-toggle="modal" data-target="#myModal">
 							  <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> new task
 							</button>
 						</div>
@@ -72,6 +72,7 @@
 					</div>
 				
 					
+                <%@include file="../includes/addTaskModal.jsp" %>
 					
 					
 					<!-- page end-->

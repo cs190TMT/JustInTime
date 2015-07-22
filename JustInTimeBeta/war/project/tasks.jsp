@@ -41,7 +41,6 @@
               <!-- page start-->
               <div class="row">
                   <div class="col-lg-4">
-                      
                       <h1>Tasks</h1>
                    </div>
                </div>
@@ -307,8 +306,6 @@
                       <!--widget end-->
                      </div>
                 </div>
-                     
-                
 	
              <!-- page end-->
           </section>
