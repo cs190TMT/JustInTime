@@ -5,7 +5,7 @@
           </div>
          -->
           <!--logo start-->
-          <a href="index.jsp" class="logo radical-logo" ><img src = "http://localhost:8888/img/Jit_logo3.png" /></a>
+          <a href="index" class="logo radical-logo" ><img src = "http://localhost:8888/img/Jit_logo3.png" /></a>
          <!--logo end-->
           <div class="nav notify-row" style="margin-left:10px;" id="top_menu">
             <!--  notification start -->
