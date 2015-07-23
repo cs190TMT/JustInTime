@@ -7,7 +7,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title">Add Task</h4>
 				</div>
-				<form method="post" action="/addTask">
+				<form method="post" action="/addMasterTask">
 					<div class="modal-body">
 						<dl class="dl-horizontal">
 		          			<dt>Name:</dt><dd><input type="text" class="form-control" name="taskName"/></dd></br>

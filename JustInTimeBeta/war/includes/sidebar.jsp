@@ -26,16 +26,8 @@
                           <span class = "submenu-text"> Due Today</span>
                       </a>
                   </li>
-                  <li class="sub-menu radical-submenu">
-                      <a href="/index" style="padding-left: 35px;">
-                          <span class = "badge radical-badge radical-color-danger" style="margin-right: 5px;">4</span>
-                          <span class = "submenu-text"> Overdue</span>
-                      </a>
-                  </li>
-                  <!--  [END: News Tasks, Due Tasks, Overdue Tasks] -->
+                  <!--  [END: News Tasks, Due Tasks] -->
 
-                  <li></li>
-                  
                   <li class="sub-menu">
                       <a href="/projectPage"  class="radical-active">
                           <i class="icon-folder-close"></i>
@@ -72,9 +64,3 @@
               <!-- sidebar menu end-->
           </div>
       </aside>
-
-
-<script>
-
-
-</script>

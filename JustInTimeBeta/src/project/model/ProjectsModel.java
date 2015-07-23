@@ -24,6 +24,8 @@ public class ProjectsModel implements Serializable{
     
     private String projectDetails;
     
+    private float timeSpent;
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -114,5 +116,13 @@ public class ProjectsModel implements Serializable{
     
     public void setProjectDetails(String details) {
         this.projectDetails = details;
+    }
+    
+    public float getTimeSpent() {
+        return this.timeSpent;
+    }
+    
+    public void setTimeSpent(float timeSpent) {
+        this.timeSpent = timeSpent;
     }
 }

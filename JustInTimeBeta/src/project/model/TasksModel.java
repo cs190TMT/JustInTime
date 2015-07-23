@@ -24,6 +24,12 @@ public class TasksModel implements Serializable {
     
     private String taskDetails;
     
+    private String dateCreated;
+    
+    private float timeAlloted;
+    
+    private float timeSpent;
+    
     private String taskPhase;
 
     @Override
@@ -124,5 +130,29 @@ public class TasksModel implements Serializable {
     
     public void setTaskPhase(String phase) {
         this.taskPhase = phase;
+    }
+    
+    public String getDateCreated() {
+        return this.dateCreated;
+    }
+    
+    public void setDateCreated(String date) {
+        this.dateCreated = date;
+    }
+    
+    public float getTimeAlloted() {
+        return this.timeAlloted;
+    }
+    
+    public void setTimeAlloted(float time) {
+        this.timeAlloted = time;
+    }
+    
+    public float getTimeSpent() {
+        return this.timeSpent;
+    }
+    
+    public void setTimeSpent(float time) {
+        this.timeSpent = time;
     }
 }

@@ -13,6 +13,8 @@ public class ProjectsDto {
     private String projectName;
 
     private String projectDetails;
+    
+    private float timeSpent;
 
     /**
      * Retrieve errorList
@@ -60,5 +62,13 @@ public class ProjectsDto {
 
     public void setProjectDetails(String details) {
         this.projectDetails = details;
+    }
+
+    public float getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setTimeSpent(float timeSpent) {
+        this.timeSpent = timeSpent;
     }
 }

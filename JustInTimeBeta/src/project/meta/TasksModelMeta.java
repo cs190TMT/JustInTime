@@ -1,8 +1,11 @@
 package project.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-07-22 15:45:10")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-07-23 23:27:03")
 /** */
 public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.model.TasksModel> {
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<project.model.TasksModel> dateCreated = new org.slim3.datastore.StringAttributeMeta<project.model.TasksModel>(this, "dateCreated", "dateCreated");
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Long> id = new org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Long>(this, "id", "id", long.class);
@@ -18,6 +21,12 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<project.model.TasksModel> taskPhase = new org.slim3.datastore.StringAttributeMeta<project.model.TasksModel>(this, "taskPhase", "taskPhase");
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Float> timeAlloted = new org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Float>(this, "timeAlloted", "timeAlloted", float.class);
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Float> timeSpent = new org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Float>(this, "timeSpent", "timeSpent", float.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Long> version = new org.slim3.datastore.CoreAttributeMeta<project.model.TasksModel, java.lang.Long>(this, "version", "version", java.lang.Long.class);
@@ -39,11 +48,14 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
     @Override
     public project.model.TasksModel entityToModel(com.google.appengine.api.datastore.Entity entity) {
         project.model.TasksModel model = new project.model.TasksModel();
+        model.setDateCreated((java.lang.String) entity.getProperty("dateCreated"));
         model.setId(longToPrimitiveLong((java.lang.Long) entity.getProperty("id")));
         model.setKey(entity.getKey());
         model.setTaskDetails((java.lang.String) entity.getProperty("taskDetails"));
         model.setTaskName((java.lang.String) entity.getProperty("taskName"));
         model.setTaskPhase((java.lang.String) entity.getProperty("taskPhase"));
+        model.setTimeAlloted(doubleToPrimitiveFloat((java.lang.Double) entity.getProperty("timeAlloted")));
+        model.setTimeSpent(doubleToPrimitiveFloat((java.lang.Double) entity.getProperty("timeSpent")));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
     }
@@ -57,10 +69,13 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
         } else {
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
+        entity.setProperty("dateCreated", m.getDateCreated());
         entity.setProperty("id", m.getId());
         entity.setProperty("taskDetails", m.getTaskDetails());
         entity.setProperty("taskName", m.getTaskName());
         entity.setProperty("taskPhase", m.getTaskPhase());
+        entity.setProperty("timeAlloted", m.getTimeAlloted());
+        entity.setProperty("timeSpent", m.getTimeSpent());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
         return entity;
@@ -124,6 +139,10 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
         project.model.TasksModel m = (project.model.TasksModel) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
+        if(m.getDateCreated() != null){
+            writer.setNextPropertyName("dateCreated");
+            encoder0.encode(writer, m.getDateCreated());
+        }
         writer.setNextPropertyName("id");
         encoder0.encode(writer, m.getId());
         if(m.getKey() != null){
@@ -142,6 +161,10 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
             writer.setNextPropertyName("taskPhase");
             encoder0.encode(writer, m.getTaskPhase());
         }
+        writer.setNextPropertyName("timeAlloted");
+        encoder0.encode(writer, m.getTimeAlloted());
+        writer.setNextPropertyName("timeSpent");
+        encoder0.encode(writer, m.getTimeSpent());
         if(m.getVersion() != null){
             writer.setNextPropertyName("version");
             encoder0.encode(writer, m.getVersion());
@@ -154,6 +177,8 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
         project.model.TasksModel m = new project.model.TasksModel();
         org.slim3.datastore.json.JsonReader reader = null;
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
+        reader = rootReader.newObjectReader("dateCreated");
+        m.setDateCreated(decoder0.decode(reader, m.getDateCreated()));
         reader = rootReader.newObjectReader("id");
         m.setId(decoder0.decode(reader, m.getId()));
         reader = rootReader.newObjectReader("key");
@@ -164,6 +189,10 @@ public final class TasksModelMeta extends org.slim3.datastore.ModelMeta<project.
         m.setTaskName(decoder0.decode(reader, m.getTaskName()));
         reader = rootReader.newObjectReader("taskPhase");
         m.setTaskPhase(decoder0.decode(reader, m.getTaskPhase()));
+        reader = rootReader.newObjectReader("timeAlloted");
+        m.setTimeAlloted(decoder0.decode(reader, m.getTimeAlloted()));
+        reader = rootReader.newObjectReader("timeSpent");
+        m.setTimeSpent(decoder0.decode(reader, m.getTimeSpent()));
         reader = rootReader.newObjectReader("version");
         m.setVersion(decoder0.decode(reader, m.getVersion()));
         return m;
