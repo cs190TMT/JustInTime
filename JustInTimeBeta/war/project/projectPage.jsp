@@ -1,3 +1,13 @@
+<!-- 
+/* -------------------------------------------------------------------------
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Copyright (C) JustInTime
+ * -------------------------------------------------------------------------
+ -->
+
+<%@ page contentType="text/html;charset=UTF8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>

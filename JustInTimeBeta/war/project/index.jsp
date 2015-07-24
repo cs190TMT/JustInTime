@@ -7,6 +7,10 @@
  -->
 
 <%@ page contentType="text/html;charset=UTF8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">	
@@ -68,7 +72,11 @@
 						</div>
 					</div>
 					<div class="col-lg-3">
-					
+						<c:forEach var="e" items="${taskMasterList}">
+							<hr />
+							<input type="text"value="${f:h(e.id)}" />
+							<input type="text"value="${f:h(e.taskName)}" />
+						</c:forEach>
 					</div>
 				
 					

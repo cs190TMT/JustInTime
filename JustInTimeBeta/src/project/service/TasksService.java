@@ -19,7 +19,7 @@ public class TasksService {
         task.setDateCreated(new Date().toString());
         task.setTimeAlloted(0);
         task.setTimeSpent(0);
-        task.setTaskPhase(input.getTaskPhase());
+        task.setTaskPhase(null);
         
         if (!this.dao.saveMasterTask(task)) {
             input.setErrorList(new ArrayList<String>());
