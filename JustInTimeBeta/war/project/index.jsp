@@ -59,7 +59,7 @@
 							  <span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 							</button>
 							
-							<button type="button" class="radical-simple-button-task" style="float: right">
+							<button type="button" class="radical-simple-button-task" style="float: right" data-toggle="modal" data-target="#myModal2">
 							  <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> new task
 							</button>
 						</div>
