@@ -39,7 +39,7 @@
 	      <script src="../js/respond.min.js"></script>
 	    <![endif]-->
 	    
-	    <title>JITHub</title>
+	    <title>Just In Time</title>
 	</head>
 	<body>
 		<section id="container" class="">
@@ -63,7 +63,7 @@
 							  <span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 							</button>
 							
-							<button type="button" class="radical-simple-button-task" style="float: right" aria-label="Left Align" data-toggle="modal" data-target="#myModal">
+							<button type="button" class="radical-simple-button-task" style="float: right" aria-label="Left Align" data-toggle="modal" data-target="#addTaskModal">
 							  <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> new task
 							</button>
 						</div>

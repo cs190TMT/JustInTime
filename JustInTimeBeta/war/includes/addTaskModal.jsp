@@ -1,6 +1,6 @@
 		
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="addTaskModal" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
