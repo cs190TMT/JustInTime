@@ -20,144 +20,26 @@
 					Design for Homepage</h4>
 			</div>
 			<div class="modal-body">
-				<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); %>
-				<%= df.format(new java.util.Date()) %>
+				<b>
+					<%
+						java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					%>
+					Date: <%=df.format(new java.util.Date())%></b>
 				<form class="form-inline" action="">
 					<div class="form-group">
-						<label for="exampleInputName2"><b>Type</b></label> <select
+						<label for="exampleInputName2"><b>Task</b></label> <select
 							class="form-control">
-							<option>Design</option>
-							<option>Coding</option>
-							<option>Testing</option>
+							<option>Task 1: Design</option>
+							<option>Task 1: Coding</option>
+							<option>Task 2: Testing</option>
 						</select>
 					</div>
 				</form>
 				<br />
 				<form class="form-inline" action="">
 					<div class="form-group">
-						<label for="exampleInputName2"><b>Days Allocated</b></label>
-					</div>
-				</form>
-				<form class="form-inline" style="padding-left: 20px" action="">
-					<div class="form-group">
-						<label for="exampleInputName2">Date </label>
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<option>January</option>
-							<option>February</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<%
-							    		for(int i = 1; i <= 30; i++){
-							    	%>
-							<option><%=i %></option>
-
-							<%} %>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<%
-							    		for(int i = 2015; i <= 2020; i++){
-							    	%>
-							<option><%=i %></option>
-
-							<%} %>
-						</select>
-					</div>
-				</form>
-				<form class="form-inline"
-					style="padding-left: 20px; padding-top: 10px;" action="">
-					<div class="form-group">
-						<label for="exampleInputName2">Start Time </label>
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<%
-							    		for(int i = 1; i <= 12; i++){
-							    	%>
-							<option><%=i %></option>
-
-							<%} %>
-						</select>
-					</div>
-					:
-					<div class="form-group">
-						<select class="form-control">
-							<%
-							    		for(int i = 0; i <= 5; i++){
-							    	%>
-							<% for(int j = 0; j < 10; j++) {%>
-							<option><%=i%><%=j %>
-								<%} %>
-
-							</option>
-
-							<%} %>
-						</select>
-					</div>
-					<div class="form-group" style="padding-left: 5px">
-						<select class="form-control">
-							<option>AM</option>
-							<option>PM</option>
-						</select>
-					</div>
-				</form>
-
-				<form class="form-inline"
-					style="padding-left: 20px; padding-top: 10px;" action="">
-					<div class="form-group">
-						<label for="exampleInputName2">End Time &nbsp;</label>
-					</div>
-					<div class="form-group">
-						<select class="form-control">
-							<%
-							    		for(int i = 1; i <= 12; i++){
-							    	%>
-							<option><%=i %></option>
-
-							<%} %>
-						</select>
-					</div>
-					:
-					<div class="form-group">
-						<select class="form-control">
-							<%
-							    		for(int i = 0; i <= 5; i++){
-							    	%>
-							<% for(int j = 0; j < 10; j++) {%>
-							<option><%=i%><%=j %>
-								<%} %>
-
-							</option>
-
-							<%} %>
-						</select>
-					</div>
-					<div class="form-group" style="padding-left: 5px">
-						<select class="form-control">
-							<option>AM</option>
-							<option>PM</option>
-						</select>
-					</div>
-				</form>
-				<form class="form-inline"
-					style="padding-left: 20px; padding-top: 10px;" action="">
-					<div class="form-group">
-						<button class="btn btn-default btn-sm" type="submit">add
-							date</button>
+						<label for="exampleInputName2"><b>Time Spent: </b></label> <input
+							type="text" id="taskTimeSpent" />
 					</div>
 				</form>
 			</div>

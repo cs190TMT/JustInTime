@@ -41,7 +41,6 @@
 </head>
 
 <body>
-
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
