@@ -8,6 +8,10 @@
 
 <%@ page contentType="text/html;charset=UTF8" language="java"
 	import="java.util.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
@@ -48,39 +52,40 @@
 		<!--sidebar start-->
 		<%@include file="../includes/sidebar.jsp"%>
 		<!--sidebar end-->
-		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
-						<h3 style="float: left; padding: 0px; margin: 0px;">Project 1</h3>
-						<button type="button" class="radical-simple-button"
+						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
+						<button id="calendarButton" type="button"
+							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
 							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="radical-simple-button-active"
-							style="float: right">
+						<button id="listButton" type="button"
+							class="radical-simple-button-active" style="float: right">
 							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#addLogModal">
+							data-target="#addTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new log
+							new task
 						</button>
 					</div>
 					<div class="row" style="margin-top: 10px;">
-						<%@include file="../includes/taskList.jsp"%>
+						<%@ include file="../includes/taskList.jsp"%>
+						<%@ include file="../includes/calendar.jsp"%>
 					</div>
 				</div>
-				<div class="col-lg-3"></div>
 
-				<%@include file="../includes/addLogModal.jsp"%>
+				<div id="T1"></div>
 				<!-- page end-->
 			</section>
 		</section>
 		<!--main content end-->
+
 		<!--footer start-->
 		<%@include file="../includes/footer.jsp"%>
 		<!--footer end-->
@@ -95,16 +100,18 @@
 	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="../assets/jquery-knob/js/jquery.knob.js"></script>
 	<script src="../js/respond.min.js"></script>
+	
+	<script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
 
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js"></script>
+	
+	<script src="../js/external-dragging-calendar.js"></script>
 
 	<script>
-
-      //knob
-      $(".knob").knob();
-
-  </script>
+		//knob
+		$(".knob").knob();
+	</script>
 
 </body>
 </html>
