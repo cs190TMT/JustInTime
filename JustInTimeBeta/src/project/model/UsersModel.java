@@ -1,13 +1,13 @@
 package project.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
+@Model(schemaVersion = 1)
 public class UsersModel implements Serializable{
 
     /**
@@ -22,7 +22,7 @@ public class UsersModel implements Serializable{
     @Attribute(version = true)
     private Long version;
     
-    private Long id;
+    private long id;
     
     private String fullName;
     private String email;
@@ -130,6 +130,10 @@ public class UsersModel implements Serializable{
     public void setPassword(String password) {
         this.password = password;
 
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
 }
