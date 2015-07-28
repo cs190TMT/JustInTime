@@ -2,8 +2,6 @@ package project.controller;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
-import org.slim3.controller.Controller;
-import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 import org.slim3.util.BeanUtil;
 import org.slim3.util.RequestMap;
