@@ -18,7 +18,7 @@
 				</button>
 				<h4 class="modal-title">Add Log</h4>
 			</div>
-			<form method="post" action="/addMasterTask">
+			<form method="post" action="/addLog">
 				<div class="modal-body">
 					<dl class="dl-horizontal">
 						<dt>Date:</dt>
@@ -33,15 +33,24 @@
 							<select name="taskName" class="form-control"
 								id="taskName">
 						
-						<option value="Task 1: Design">Task 1: Design</option>
-						<option value="Task 1: Coding">Task 1: Coding</option>
-						<option value="Task 2: Testing">Task 2: Testing</option>
-						</select>
+								<option value="Task 1">Task 1</option>
+								<option value="Task 2">Task 2</option>
+							</select>
+						</dd>
+						<br/>
+						<dt>Phase:</dt>
+						<dd>
+							<select name="taskPhase" class="form-control"
+								id="taskPhase">
+						
+								<option value="Coding">Coding</option>
+								<option value="Testing">Testing</option>
+							</select>
 						</dd>
 						<br/>
 						<dt>Time Spent:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskTimeSpent" />
+							<input type="text" class="form-control" name="timeSpent" />
 						</dd>
 					</dl>
 				</div>

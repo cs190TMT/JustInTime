@@ -18,7 +18,7 @@
 				</button>
 				<h4 class="modal-title">Add Project</h4>
 			</div>
-			<form method="post" action="/addMasterTask">
+			<form method="post" action="/addProject">
 				<div class="modal-body">
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
