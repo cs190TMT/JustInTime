@@ -13,13 +13,14 @@
 
 			<li><a href="/index" class="radical-active"> <i
 					class="icon-tasks"></i> <span class="radical-font-size">Tasks</span>
-					<button type="button" class="radical-add-button">
+					<button type="button" class="radical-add-button"
+						data-toggle="modal" data-target="#addTaskModal">
 						<span class="glyphicon glyphicon glyphicon-plus-sign"
 							aria-hidden="true"><text>add</text></span>
 					</button>
 			</a></li>
 
-			<!-- [News Tasks, Due Tasks, Overdue Tasks] -->
+			<!-- [News Tasks, Due Tasks] -->
 			<li class="sub-menu radical-submenu"><a href="/index"
 				style="padding-left: 35px;"> <span
 					class="badge radical-badge radical-color-success"
@@ -37,7 +38,8 @@
 			<li class="sub-menu"><a href="/projectPage"
 				class="radical-active"> <i class="icon-folder-close"></i> <span
 					class="radical-font-size">Projects</span>
-					<button type="button" class="radical-add-button">
+					<button type="button" class="radical-add-button"
+						data-toggle="modal" data-target="#addProjectModal">
 						<span class="glyphicon glyphicon glyphicon-plus-sign"
 							aria-hidden="true"><text>add</text></span>
 					</button>
@@ -69,3 +71,5 @@
 		<!-- sidebar menu end-->
 	</div>
 </aside>
+<%@include file="../includes/addMasterTaskModal.jsp"%>
+<%@include file="../includes/addProjectModal.jsp"%>

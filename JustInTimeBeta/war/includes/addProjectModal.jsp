@@ -7,7 +7,7 @@
  -->
 
 <!-- Modal -->
-<div class="modal fade" id="addLogModal" role="dialog"
+<div class="modal fade" id="addProjectModal" role="dialog"
 	aria-labelledby="myModalLabel">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -16,32 +16,19 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Add Log</h4>
+				<h4 class="modal-title">Add Project</h4>
 			</div>
 			<form method="post" action="/addMasterTask">
 				<div class="modal-body">
 					<dl class="dl-horizontal">
-						<dt>Date:</dt>
+						<dt>Name:</dt>
 						<dd>
-							<b> <%
- 	java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
- %><%=df.format(new java.util.Date())%></b>
+							<input type="text" class="form-control" name="projectName" />
 						</dd>
-						<br/>
-						<dt>Task:</dt>
+						<br />
+						<dt>Details:</dt>
 						<dd>
-							<select name="taskName" class="form-control"
-								id="taskName">
-						
-						<option value="Task 1: Design">Task 1: Design</option>
-						<option value="Task 1: Coding">Task 1: Coding</option>
-						<option value="Task 2: Testing">Task 2: Testing</option>
-						</select>
-						</dd>
-						<br/>
-						<dt>Time Spent:</dt>
-						<dd>
-							<input type="text" class="form-control" name="taskTimeSpent" />
+							<input type="text" class="form-control" name="projectDetails" />
 						</dd>
 					</dl>
 				</div>

@@ -15,24 +15,24 @@ import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)
-public class ProjectsModel implements Serializable{
+public class ProjectsModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Attribute(primaryKey = true)
     private Key key;
-    
+
     @Attribute(version = true)
     private Long version;
-    
+
     private long id;
-    
+
     private String projectName;
-    
+
     private String projectDetails;
-    
+
     private float timeSpent;
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -62,7 +62,7 @@ public class ProjectsModel implements Serializable{
         }
         return true;
     }
-    
+
     /**
      * Returns the key.
      *
@@ -90,7 +90,7 @@ public class ProjectsModel implements Serializable{
     public Long getVersion() {
         return version;
     }
-    
+
     /**
      * Sets the version.
      *
@@ -100,35 +100,35 @@ public class ProjectsModel implements Serializable{
     public void setVersion(Long version) {
         this.version = version;
     }
-    
+
     public long getId() {
         return this.id;
     }
-    
+
     public void setId(long id) {
         this.id = id;
     }
-    
+
     public String getProjectName() {
         return this.projectName;
     }
-    
+
     public void setProjectName(String name) {
         this.projectName = name;
     }
-    
+
     public String getProjectDetails() {
         return this.projectDetails;
     }
-    
+
     public void setProjectDetails(String details) {
         this.projectDetails = details;
     }
-    
+
     public float getTimeSpent() {
         return this.timeSpent;
     }
-    
+
     public void setTimeSpent(float timeSpent) {
         this.timeSpent = timeSpent;
     }

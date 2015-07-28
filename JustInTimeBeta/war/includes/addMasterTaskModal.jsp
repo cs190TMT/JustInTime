@@ -25,21 +25,11 @@
 						<dd>
 							<input type="text" class="form-control" name="taskName" />
 						</dd>
-						</br>
+						<br />
 						<dt>Details:</dt>
 						<dd>
 							<input type="text" class="form-control" name="taskDetails" />
 						</dd>
-						</br>
-						<dt>Phase:</dt>
-						<dd>
-							<select name="taskPhase" list="phase" class="form-control"
-								id="taskPhase">
-						</dd>
-						<option value="Design">Design</option>
-						<option value="Coding">Coding</option>
-						<option value="Testing">Testing</option>
-						</select>
 					</dl>
 				</div>
 				<div class="modal-footer">

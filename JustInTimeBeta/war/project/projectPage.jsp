@@ -69,9 +69,9 @@
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#addTaskModal">
+							data-target="#addLogModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new task
+							new log
 						</button>
 					</div>
 					<div class="row" style="margin-top: 10px;">
@@ -80,6 +80,7 @@
 				</div>
 
 				<div id="T1"></div>
+				<%@ include file="../includes/addLogModal.jsp"%>
 				<!-- page end-->
 			</section>
 		</section>

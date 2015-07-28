@@ -57,12 +57,13 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
-						<button id="calendarButton" type="button" class="radical-simple-button"
+						<button id="calendarButton" type="button"
+							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
 							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
 						</button>
-						<button id="listButton" type="button" class="radical-simple-button-active"
-							style="float: right">
+						<button id="listButton" type="button"
+							class="radical-simple-button-active" style="float: right">
 							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 						</button>
 
@@ -84,21 +85,12 @@
 						<input type="text" value="${f:h(e.taskName)}" />
 					</c:forEach>
 				</div>
-
-				<div id="T1">
-				
-				
-				 <%@include file="../includes/addMasterTaskModal.jsp" %>
-				
-				</div>
-
+				<div id="T1"></div>
 				<!-- page end-->
 			</section>
 		</section>
 		<!--main content end-->
-		<br />
-		<br />
-		<br />
+		<br /> <br /> <br />
 		<!--footer start-->
 		<%@include file="../includes/footer.jsp"%>
 		<!--footer end-->
@@ -118,9 +110,9 @@
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js" type="text/javascript"></script>
 	<script type="text/javascript">
-			//knob
-			$(".knob").knob();
-		</script>
-	
+		//knob
+		$(".knob").knob();
+	</script>
+
 </body>
 </html>
