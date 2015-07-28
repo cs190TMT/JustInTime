@@ -9,28 +9,30 @@ package project.model;
 
 import java.io.Serializable;
 
-import com.google.appengine.api.datastore.Key;
-
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
+import com.google.appengine.api.datastore.Key;
+
 @Model(schemaVersion = 1)
-public class ProjectsModel implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class LogsModel implements Serializable{
+    
+    private static final long serialVersionUID = 1l;
+    
     @Attribute(primaryKey = true)
     private Key key;
-
+    
     @Attribute(version = true)
     private Long version;
-
+    
     private long id;
 
-    private String projectName;
-
-    private String projectDetails;
-
+    private String timeStamp;
+    
+    private String taskName;
+    
+    private String taskPhase;
+    
     private float timeSpent;
 
     @Override
@@ -52,7 +54,7 @@ public class ProjectsModel implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        ProjectsModel other = (ProjectsModel) obj;
+        LogsModel other = (LogsModel) obj;
         if (key == null) {
             if (other.key != null) {
                 return false;
@@ -62,71 +64,57 @@ public class ProjectsModel implements Serializable {
         }
         return true;
     }
-
-    /**
-     * Returns the key.
-     *
-     * @return the key
-     */
+    
     public Key getKey() {
         return key;
     }
 
-    /**
-     * Sets the key.
-     *
-     * @param key
-     *            the key
-     */
     public void setKey(Key key) {
         this.key = key;
     }
 
-    /**
-     * Returns the version.
-     *
-     * @return the version
-     */
     public Long getVersion() {
         return version;
     }
-
-    /**
-     * Sets the version.
-     *
-     * @param version
-     *            the version
-     */
+    
     public void setVersion(Long version) {
         this.version = version;
     }
-
+    
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public String getProjectName() {
-        return this.projectName;
+    public String getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setProjectName(String name) {
-        this.projectName = name;
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
-    public String getProjectDetails() {
-        return this.projectDetails;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setProjectDetails(String details) {
-        this.projectDetails = details;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public String getTaskPhase() {
+        return taskPhase;
+    }
+
+    public void setTaskPhase(String taskPhase) {
+        this.taskPhase = taskPhase;
     }
 
     public float getTimeSpent() {
-        return this.timeSpent;
+        return timeSpent;
     }
 
     public void setTimeSpent(float timeSpent) {

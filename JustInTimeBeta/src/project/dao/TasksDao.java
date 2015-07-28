@@ -29,6 +29,22 @@ public class TasksDao {
         return result;
     }
     
+    public boolean saveProjectTask(TasksModel tasksModel, String projectName) {
+        boolean result = true;
+        try {
+            Transaction tx = Datastore.beginTransaction();
+            //Manually allocate key
+            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", projectName), "Tasks");
+            tasksModel.setKey(key);
+            tasksModel.setId(key.getId());
+            Datastore.put(tasksModel);
+            tx.commit();
+        } catch (Exception e) {
+            result = false;
+        }
+        return result;
+    }
+    
     public List<TasksModel> getTasksMasterList() {
         TasksModelMeta t = new TasksModelMeta();
         Key parentKey = KeyFactory.createKey("Tasks", "Master");

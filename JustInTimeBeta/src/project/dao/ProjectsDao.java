@@ -16,8 +16,8 @@ public class ProjectsDao {
         boolean result = true;
         try {
             Transaction tx = Datastore.beginTransaction();
-            //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "Projects");
+            
+            Key key = Datastore.allocateId(KeyFactory.createKey("Projects", projectsModel.getProjectName()), "Projects");
             projectsModel.setKey(key);
             projectsModel.setId(key.getId());
             Datastore.put(projectsModel);
@@ -30,7 +30,6 @@ public class ProjectsDao {
     
     public List<ProjectsModel> getAllProjects() {
         ProjectsModelMeta p = new ProjectsModelMeta();
-        Key parentKey = KeyFactory.createKey("Account", "Default");
-        return Datastore.query(p, parentKey).asList();
+        return Datastore.query(p).asList();
     }
 }

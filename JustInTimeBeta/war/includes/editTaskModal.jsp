@@ -66,7 +66,7 @@
 									  	<td>Mark Anthony</td>
 									  	<td>Project 1</td>
 									  	<td>August 10, 2015</td>
-									  	<td> 1.4 hr</td>
+									  	<td> 1.4 hrs</td>
 									  </tr>
 									  <tr>
 									  	<td>Adolf Hitler</td>
@@ -102,7 +102,7 @@
 									  	<td>Mark Anthony</td>
 									  	<td>Project 1</td>
 									  	<td>August 10, 2015</td>
-									  	<td> 1.4 hr</td>
+									  	<td> 1.4 hrs</td>
 									  </tr>
 									  <tr>
 									  	<td>Adolf Hitler</td>

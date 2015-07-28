@@ -21,7 +21,6 @@
 <meta name="author" content="Mosaddek">
 <meta name="keyword" content="">
 
-
 <link rel="shortcut icon" href="img/favicon.png">
 
 <!-- Bootstrap core CSS -->
@@ -34,7 +33,7 @@
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
-<script src="../js/jquery.js" type="text/javascript"></script>
+
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
 	      <script src="../js/html5shiv.js"></script>
@@ -58,13 +57,12 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
-						<button id="calendarButton" type="button"
-							class="radical-simple-button"
+						<button id="calendarButton" type="button" class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
 							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
 						</button>
-						<button id="listButton" type="button"
-							class="radical-simple-button-active" style="float: right">
+						<button id="listButton" type="button" class="radical-simple-button-active"
+							style="float: right">
 							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 						</button>
 
@@ -74,12 +72,44 @@
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							new task
 						</button>
-
 					</div>
 					<div class="row" style="margin-top: 10px;">
-						<%@include file="../includes/taskList.jsp"%>
+						                 <!-- page start-->
+              <div class="row">
+                  <aside class="col-lg-3">
+                      <h4 class="drg-event-title"> Draggable Events</h4>
+                      <div id='external-events'>
+                          <div class='external-event label label-primary'>My Event 1</div>
+                          <div class='external-event label label-success'>My Event 2</div>
+                          <div class='external-event label label-info'>My Event 3</div>
+                          <div class='external-event label label-inverse'>My Event 4</div>
+                          <div class='external-event label label-warning'>My Event 5</div>
+                          <div class='external-event label label-danger'>My Event 6</div>
+                          <div class='external-event label label-default'>My Event 7</div>
+                          <div class='external-event label label-primary'>My Event 8</div>
+                          <div class='external-event label label-info'>My Event 9</div>
+                          <div class='external-event label label-success'>My Event 10</div>
+                          <p class="border-top drp-rmv">
+                              <input type='checkbox' id='drop-remove' />
+                              remove after drop
+                          </p>
+                      </div>
+                  </aside>
+                  <aside class="col-lg-9">
+                      <section class="panel">
+                          <div class="panel-body">
+                              <div id="calendar" class="has-toolbar"></div>
+                          </div>
+                      </section>
+                  </aside>
+              </div>
+              <!-- page end-->
+              
+               <script src="../js/external-dragging-calendar.js"></script>
+               <!-- js placed at the end of the document so the pages load faster -->
+   
+               
 					</div>
-					
 				</div>
 				<div class="col-lg-3">
 					<c:forEach var="e" items="${taskMasterList}">
@@ -88,19 +118,28 @@
 						<input type="text" value="${f:h(e.taskName)}" />
 					</c:forEach>
 				</div>
-				<div id="T1"></div>
+
+				<div id="T1">
+				
+				
+				 
+				
+				</div>
+
 				<!-- page end-->
 			</section>
 		</section>
 		<!--main content end-->
-		<br /> <br /> <br />
+		<br />
+		<br />
+		<br />
 		<!--footer start-->
-		<%@include file="../includes/footer.jsp"%>
+		<?php include'../includes/footer.jsp' ?>
 		<!--footer end-->
 	</section>
 
 	<!-- js placed at the end of the document so the pages load faster -->
-	
+	<script src="../js/jquery.js" type="text/javascript"></script>
 	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
 	<script class="include" type="text/javascript"
 		src="../js/jquery.dcjqaccordion.2.7.js"></script>
@@ -112,11 +151,16 @@
 
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js" type="text/javascript"></script>
+	    <!--script for this page only-->
+    <script src="js/external-dragging-calendar.js"></script>
+	
 	<script type="text/javascript">
-		//knob
-		$(".knob").knob();
-	</script>
+			//knob
+			$(".knob").knob();
+			
+			
 
+		</script>
+	
 </body>
-
 </html>
