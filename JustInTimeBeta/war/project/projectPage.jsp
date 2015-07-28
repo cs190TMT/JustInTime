@@ -57,7 +57,7 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
-						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
+						<h3 style="float: left; padding: 0px; margin: 0px;">Project Name</h3>
 						<button id="calendarButton" type="button"
 							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
