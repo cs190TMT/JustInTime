@@ -27,32 +27,33 @@
  	java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
  %><%=df.format(new java.util.Date())%></b>
 						</dd>
-						<br/>
+						<br />
 						<dt>Task:</dt>
 						<dd>
-							<select name="taskName" class="form-control"
-								id="taskName">
-						
+							<select name="taskName" class="form-control" id="taskName">
+
 								<option value="Task 1">Task 1</option>
 								<option value="Task 2">Task 2</option>
 							</select>
 						</dd>
-						<br/>
+						<br />
 						<dt>Phase:</dt>
 						<dd>
-							<select name="taskPhase" class="form-control"
-								id="taskPhase">
-						
+							<select name="taskPhase" class="form-control" id="taskPhase">
+
 								<option value="Coding">Coding</option>
 								<option value="Testing">Testing</option>
 							</select>
 						</dd>
-						<br/>
+						<br />
 						<dt>Time Spent:</dt>
 						<dd>
-							<input type="text" class="form-control" name="timeSpent" />
+							<input type="text" class="form-control" name="timeSpent"
+								id="timeSpent" />
 						</dd>
 					</dl>
+					<input type="hidden" name="projectName" id="projectName"
+						value="Default" />
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -10,14 +10,14 @@ public class LogsService {
 
     LogsDao dao = new LogsDao();
     
-    public LogsDto addLog(LogsDto input, String projName) {
+    public LogsDto addLog(LogsDto input) {
         LogsModel log = new LogsModel();
         log.setTimeStamp(input.getTimeStamp());
         log.setTaskName(input.getTaskName());
         log.setTaskPhase(input.getTaskPhase());
         log.setTimeSpent(input.getTimeSpent());
         
-        if (!this.dao.saveLog(log, projName)) {
+        if (!this.dao.saveLog(log, input.getProjectName())) {
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
         }
