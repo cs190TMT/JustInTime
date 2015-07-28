@@ -17,8 +17,6 @@ public class LogsDto {
     private String taskPhase;
     
     private float timeSpent;
-    
-    private String projectName;
 
     public List<String> getErrorList() {
         return errorList;
@@ -68,11 +66,4 @@ public class LogsDto {
         this.timeSpent = timeSpent;
     }
 
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
 }

@@ -10,12 +10,12 @@ import project.model.LogsModel;
 
 public class LogsDao {
 
-    public boolean saveLog(LogsModel logModel, String projName) {
+    public boolean saveLog(LogsModel logModel, String projectName) {
         boolean result = true;
         try{
             Transaction tx = Datastore.beginTransaction();
             
-            Key key = Datastore.allocateId(KeyFactory.createKey("Logs", projName), "Logs");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Logs", projectName), "Logs");
             logModel.setKey(key);
             logModel.setId(key.getId());
             Datastore.put(logModel);

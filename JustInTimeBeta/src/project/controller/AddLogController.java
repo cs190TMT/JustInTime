@@ -7,7 +7,6 @@
 
 package project.controller;
 
-//import java.util.Date;
 import java.util.Map;
 
 import org.slim3.controller.Controller;
@@ -27,11 +26,7 @@ public class AddLogController extends Controller {
         Map<String, Object> input = new RequestMap(this.request);
         LogsDto logDto = new LogsDto();
         BeanUtil.copy(input, logDto);
-        //logDto.setTaskName(this.request.getParameter("taskName"));
-        //logDto.setTaskPhase(this.request.getParameter("taskPhase"));
-        //logDto.setTimeStamp(new Date().toString());
-        //logDto.setTimeSpent(Float.valueOf(this.request.getParameter("timeSpent")));
-        service.addLog(logDto);
+        service.addLog(logDto, this.request.getParameter("projectName"));
         return redirect(this.basePath);
     }
 
