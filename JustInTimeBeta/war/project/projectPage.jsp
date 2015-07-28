@@ -76,7 +76,6 @@
 					</div>
 					<div class="row" style="margin-top: 10px;">
 						<%@ include file="../includes/taskList.jsp"%>
-						<%@ include file="../includes/calendar.jsp"%>
 					</div>
 				</div>
 

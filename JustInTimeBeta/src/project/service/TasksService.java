@@ -29,6 +29,23 @@ public class TasksService {
         return input;
     }
     
+    public TasksDto addProjectTask(TasksDto input, String projectName) {
+        TasksModel task = new TasksModel();
+        task.setTaskName(input.getTaskName());
+        task.setTaskDetails(input.getTaskDetails());
+        task.setDateCreated(new Date().toString());
+        task.setTimeAlloted(input.getTimeAlloted());
+        task.setTimeSpent(0);
+        task.setTaskPhase(input.getTaskPhase());
+        
+        if (!this.dao.saveProjectTask(task, projectName)) {
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+        
+        return input;
+    }
+    
     public List<TasksModel> getTaskMasterList() {
         return this.dao.getTasksMasterList();
     }

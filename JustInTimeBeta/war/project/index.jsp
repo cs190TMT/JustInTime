@@ -88,7 +88,7 @@
 				<div id="T1">
 				
 				
-				 <jsp:include page="../includes/addTaskModal.jsp" />
+				 <%@include file="../includes/addMasterTaskModal.jsp" %>
 				
 				</div>
 
@@ -120,9 +120,6 @@
 	<script type="text/javascript">
 			//knob
 			$(".knob").knob();
-			
-			
-
 		</script>
 	
 </body>
