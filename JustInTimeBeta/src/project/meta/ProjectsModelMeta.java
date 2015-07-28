@@ -1,6 +1,6 @@
 package project.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-07-21 16:21:44")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-07-23 23:04:40")
 /** */
 public final class ProjectsModelMeta extends org.slim3.datastore.ModelMeta<project.model.ProjectsModel> {
 
@@ -15,6 +15,9 @@ public final class ProjectsModelMeta extends org.slim3.datastore.ModelMeta<proje
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<project.model.ProjectsModel> projectName = new org.slim3.datastore.StringAttributeMeta<project.model.ProjectsModel>(this, "projectName", "projectName");
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<project.model.ProjectsModel, java.lang.Float> timeSpent = new org.slim3.datastore.CoreAttributeMeta<project.model.ProjectsModel, java.lang.Float>(this, "timeSpent", "timeSpent", float.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<project.model.ProjectsModel, java.lang.Long> version = new org.slim3.datastore.CoreAttributeMeta<project.model.ProjectsModel, java.lang.Long>(this, "version", "version", java.lang.Long.class);
@@ -40,6 +43,7 @@ public final class ProjectsModelMeta extends org.slim3.datastore.ModelMeta<proje
         model.setKey(entity.getKey());
         model.setProjectDetails((java.lang.String) entity.getProperty("projectDetails"));
         model.setProjectName((java.lang.String) entity.getProperty("projectName"));
+        model.setTimeSpent(doubleToPrimitiveFloat((java.lang.Double) entity.getProperty("timeSpent")));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
     }
@@ -56,6 +60,7 @@ public final class ProjectsModelMeta extends org.slim3.datastore.ModelMeta<proje
         entity.setProperty("id", m.getId());
         entity.setProperty("projectDetails", m.getProjectDetails());
         entity.setProperty("projectName", m.getProjectName());
+        entity.setProperty("timeSpent", m.getTimeSpent());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
         return entity;
@@ -133,6 +138,8 @@ public final class ProjectsModelMeta extends org.slim3.datastore.ModelMeta<proje
             writer.setNextPropertyName("projectName");
             encoder0.encode(writer, m.getProjectName());
         }
+        writer.setNextPropertyName("timeSpent");
+        encoder0.encode(writer, m.getTimeSpent());
         if(m.getVersion() != null){
             writer.setNextPropertyName("version");
             encoder0.encode(writer, m.getVersion());
@@ -153,6 +160,8 @@ public final class ProjectsModelMeta extends org.slim3.datastore.ModelMeta<proje
         m.setProjectDetails(decoder0.decode(reader, m.getProjectDetails()));
         reader = rootReader.newObjectReader("projectName");
         m.setProjectName(decoder0.decode(reader, m.getProjectName()));
+        reader = rootReader.newObjectReader("timeSpent");
+        m.setTimeSpent(decoder0.decode(reader, m.getTimeSpent()));
         reader = rootReader.newObjectReader("version");
         m.setVersion(decoder0.decode(reader, m.getVersion()));
         return m;

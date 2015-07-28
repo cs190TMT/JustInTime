@@ -13,12 +13,12 @@ import com.google.appengine.api.datastore.Transaction;
 
 public class TasksDao {
 
-    public boolean saveTask(TasksModel tasksModel) {
+    public boolean saveMasterTask(TasksModel tasksModel) {
         boolean result = true;
         try {
             Transaction tx = Datastore.beginTransaction();
             //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "Tasks");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", "Master"), "Tasks");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
@@ -29,9 +29,9 @@ public class TasksDao {
         return result;
     }
     
-    public List<TasksModel> getAllTasks() {
+    public List<TasksModel> getTasksMasterList() {
         TasksModelMeta t = new TasksModelMeta();
-        Key parentKey = KeyFactory.createKey("Account", "Default");
+        Key parentKey = KeyFactory.createKey("Tasks", "Master");
         return Datastore.query(t, parentKey).asList();
     }
 }

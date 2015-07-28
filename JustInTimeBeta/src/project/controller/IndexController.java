@@ -5,11 +5,16 @@
  * --------------------------------------------------------------------------- */
 package project.controller;
 
+import java.util.List;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.controller.validator.Validators;
 import org.slim3.util.BeanUtil;
 import org.slim3.util.RequestMap;
+
+import project.model.TasksModel;
+import project.service.TasksService;
 
 /**
  * Main Screen Home controller.
@@ -18,18 +23,19 @@ import org.slim3.util.RequestMap;
  */
 public class IndexController extends Controller {
 
+    TasksService service = new TasksService();
+    
     @Override
     protected Navigation run() throws Exception {
-        Validators v = new Validators(this.request);
-        v.add("user", v.required());
-        /*
-        if(v.validate()){
-            return forward("project/index.jsp");
+
+        List<TasksModel> taskMasterList = service.getTaskMasterList();
+        for (TasksModel tm : taskMasterList) {
+            System.out.print(tm.getTaskName());
         }
-        else{
-            return redirect("/login");
-        }*/
         
+        
+        requestScope("taskMasterList", taskMasterList);
+
         return forward("project/index.jsp");
     }
 }

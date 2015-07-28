@@ -450,3 +450,16 @@ ul.radical-sidebar-menu li a.active i {
 	border-left-color: #2d89ef ;
 }
 
+.radical-pull-task{
+	color: #fff;
+	background-color: #4d4d4d;
+}
+
+.radical-no-radius-right{
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+	
+}
+

@@ -7,6 +7,10 @@
  -->
 
 <%@ page contentType="text/html;charset=UTF8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">	
@@ -28,14 +32,14 @@
 	    <link href="../css/style.css" rel="stylesheet">
 	    <link href="../css/style-responsive.css" rel="stylesheet" />
 	    <link href="../css/radical.css" rel="stylesheet" />
-	
+		<script src="../js/jquery-1.8.3.min.js"></script>
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 	    <!--[if lt IE 9]>
 	      <script src="../js/html5shiv.js"></script>
 	      <script src="../js/respond.min.js"></script>
 	    <![endif]-->
 	    
-	    <title>JITHub</title>
+	    <title>Just In Time</title>
 	</head>
 	<body>
 		<section id="container" class="">
@@ -59,7 +63,9 @@
 							  <span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 							</button>
 							
-							<button type="button" class="radical-simple-button-task" style="float: right" data-toggle="modal" data-target="#myModal2">
+
+							<button type="button" class="radical-simple-button-task" style="float: right" aria-label="Left Align" data-toggle="modal" data-target="#addTaskModal">
+
 							  <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> new task
 							</button>
 						</div>
@@ -68,11 +74,17 @@
 						</div>
 					</div>
 					<div class="col-lg-3">
-					
+						<c:forEach var="e" items="${taskMasterList}">
+							<hr />
+							<input type="text"value="${f:h(e.id)}" />
+							<input type="text"value="${f:h(e.taskName)}" />
+						</c:forEach>
 					</div>
 				
 					
-					
+                <%@include file="../includes/addTaskModal.jsp" %>
+                
+				<%@include file="../includes/addProjectModal.jsp" %>	
 					
 					<!-- page end-->
 				</section>
@@ -85,19 +97,24 @@
 		</section>
 
 		<!-- js placed at the end of the document so the pages load faster -->
-		<script src="../js/jquery.js"></script>
+		
 		<script src="../js/bootstrap.min.js"></script>
 		<script class="include" type="text/javascript" src="../js/jquery.dcjqaccordion.2.7.js"></script>
 		<script src="../js/jquery.scrollTo.min.js"></script>
 		<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
 		<script src="../assets/jquery-knob/js/jquery.knob.js"></script>
 		<script src="../js/respond.min.js" ></script>
-
+		
 		<!--common script for all pages-->
 		<script src="../js/common-scripts.js"></script>
 		<script>
 			//knob
 			$(".knob").knob();
+			
+			
+			
+
+				
 		</script>
 	</body>
 </html>

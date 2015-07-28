@@ -41,7 +41,6 @@
               <!-- page start-->
               <div class="row">
                   <div class="col-lg-4">
-                      
                       <h1>Tasks</h1>
                    </div>
                </div>
@@ -59,8 +58,7 @@
                           			<span class="label" style="background-color:#ff0097 ">Design</span>
                           			<br/><br/>
 	                                  <h4 class="terques">UI Design for Homepage</h4>
-	                                  <p>Due : Today</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
+	                                  <p>Due : July 10, 2015</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -88,7 +86,6 @@
                           			<br/><br/>
 	                                  <h4 class="terques">Some Coding</h4>
 	                                  <p>Due : Today</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -127,7 +124,6 @@
                           			<br/><br/>
 	                                  <h4 class="terques">Test something</h4>
 	                                  <p>Due : July 10, 2015</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -155,7 +151,6 @@
                           			<br/><br/>
 	                                  <h4 class="terques">Some Coding</h4>
 	                                  <p>Due : July 10, 2015</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -193,7 +188,6 @@
                           			<br/><br/>
 	                                  <h4 class="terques">Test something</h4>
 	                                  <p>Due : July 10, 2015</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -257,7 +251,6 @@
                           			<br/><br/>
 	                                  <h4 class="terques">Test something</h4>
 	                                  <p>Due : July 10, 2015</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -285,7 +278,6 @@
                           			<br/><br/>
 	                                  <h4 class="terques">Some Coding</h4>
 	                                  <p>Due : July 10, 2015</p>
-	                                  <p>Time: 9:00 AM - 12:00 PM</p>
 	                                  <p>
 	                                  		<div class="btn-group">
 												  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">Details</button>
@@ -307,8 +299,6 @@
                       <!--widget end-->
                      </div>
                 </div>
-                     
-                
 	
              <!-- page end-->
           </section>

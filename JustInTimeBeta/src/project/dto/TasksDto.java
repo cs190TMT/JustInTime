@@ -15,6 +15,12 @@ public class TasksDto {
     private String taskDetails;
     
     private String taskPhase;
+    
+    private String dateCreated;
+    
+    private float timeAlloted;
+    
+    private float timeSpent;
 
     /**
      * Retrieve errorList
@@ -70,5 +76,29 @@ public class TasksDto {
 
     public void setTaskPhase(String phase) {
         this.taskPhase = phase;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public float getTimeAlloted() {
+        return timeAlloted;
+    }
+
+    public void setTimeAlloted(float timeAlloted) {
+        this.timeAlloted = timeAlloted;
+    }
+
+    public float getTimeSpent() {
+        return timeSpent;
+    }
+
+    public void setTimeSpent(float timeSpent) {
+        this.timeSpent = timeSpent;
     }
 }
