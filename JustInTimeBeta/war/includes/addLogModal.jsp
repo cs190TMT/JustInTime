@@ -52,7 +52,7 @@
 								id="timeSpent" />
 						</dd>
 					</dl>
-					<input type="text" name="projectName" id="projectName"
+					<input type="hidden" name="projectName" id="projectName"
 						value="Default" />
 				</div>
 				<div class="modal-footer">
