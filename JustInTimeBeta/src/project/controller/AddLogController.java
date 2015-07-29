@@ -19,7 +19,7 @@ import project.service.LogsService;
 
 public class AddLogController extends Controller {
 
-    private LogsService service;
+    private LogsService service = new LogsService();
     
     @Override
     protected Navigation run() throws Exception {
