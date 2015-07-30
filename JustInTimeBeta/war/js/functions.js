@@ -6,12 +6,12 @@
  */
 
 $(document).ready(function() {
-	alert("hello trish");
+	alert("hello");
 	retrieveTaskList("TaskMasterList");
 });
 
 function retrieveTaskList(successMessage) {
-	$("#taskMasterList").empty();
+	$("#taskMList").empty();
 	$.ajax({
 		url: 'retrieveTaskMasterList',
 		type: 'GET',
