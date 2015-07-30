@@ -1,3 +1,10 @@
+/* -------------------------------------------------------------------------
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Copyright (C) JustInTime
+ * -------------------------------------------------------------------------
+ */
+
 package project.service;
 
 import java.util.ArrayList;
@@ -5,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import project.dao.TasksDao;
+import project.dto.TasksClientDto;
 import project.dto.TasksDto;
 import project.model.TasksModel;
 
@@ -46,7 +54,23 @@ public class TasksService {
         return input;
     }
     
-    public List<TasksModel> getTaskMasterList() {
-        return this.dao.getTasksMasterList();
+    public TasksClientDto getTaskMasterList() {
+        List<TasksModel> tasksModel = this.dao.getTasksMasterList();
+        TasksClientDto taskList = new TasksClientDto();
+        TasksDto taskDto;
+        if(tasksModel.isEmpty()) {
+            System.out.println("No recs in dao");
+        }
+        for (TasksModel task : tasksModel) {
+            taskDto = new TasksDto();
+            taskDto.setId(task.getId());
+            taskDto.setTaskName(task.getTaskName());
+            taskDto.setTaskDetails(task.getTaskDetails());
+            taskList.getTaskList().add(taskDto);
+        }
+        if(taskList.getTaskList().isEmpty()) {
+            System.out.println("No recs in dto");
+        }
+        return taskList;
     }
 }
