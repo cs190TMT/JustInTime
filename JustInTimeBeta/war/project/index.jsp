@@ -76,10 +76,10 @@
 						</button>
 
 					</div>
-					<div id="taskMList">
-					</div>
 					<div class="row" style="margin-top: 10px;">
 						<%@include file="../includes/taskList.jsp"%>
+					</div>
+					<div id="taskMList">
 					</div>
 				</div>
 				<div id="T1"></div>
