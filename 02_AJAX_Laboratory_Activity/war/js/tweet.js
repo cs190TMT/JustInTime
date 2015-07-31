@@ -45,55 +45,55 @@ $(document).ready(function() {
 		$('.updateErrorDisplay').empty();
 
 		var errorDisplay = $(this).parent().find('.updateErrorDisplay');// TODO:
-																		// (optional)
-																		// use
-																		// jQuery
-																		// traversals
-																		// to
-																		// get
-																		// the
-																		// correct
-																		// updateErrorDisplay
-																		// div.
+		// (optional)
+		// use
+		// jQuery
+		// traversals
+		// to
+		// get
+		// the
+		// correct
+		// updateErrorDisplay
+		// div.
 
 		var idValue = $(this).parent().children('.id').val();// TODO: use
-																// jQuery
-																// traversals to
-																// get correct
-																// id value to
-																// be passed in
-																// json object.
+		// jQuery
+		// traversals to
+		// get correct
+		// id value to
+		// be passed in
+		// json object.
 
 		var contentValue = $(this).parent().children('.content').val();// TODO:
-																		// use
-																		// jQuery
-																		// traversals
-																		// to
-																		// get
-																		// correct
-																		// content
-																		// value
-																		// to be
-																		// passed
-																		// in
-																		// json
-																		// object.
+		// use
+		// jQuery
+		// traversals
+		// to
+		// get
+		// correct
+		// content
+		// value
+		// to be
+		// passed
+		// in
+		// json
+		// object.
 
 		var createdDateValue = $(this).parent().children('.createdDate').val();// TODO:
-																				// use
-																				// jQuery
-																				// traversals
-																				// to
-																				// get
-																				// correct
-																				// createdDate
-																				// value
-																				// to
-																				// be
-																				// passed
-																				// in
-																				// json
-																				// object.
+		// use
+		// jQuery
+		// traversals
+		// to
+		// get
+		// correct
+		// createdDate
+		// value
+		// to
+		// be
+		// passed
+		// in
+		// json
+		// object.
 
 		jsonData = {
 			data : JSON.stringify({
@@ -105,7 +105,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			url : 'delete',// TODO: Provide proper url to call for deleting a
-							// tweet
+			// tweet
 			type : 'POST',
 			data : jsonData,
 			dataType : 'json',
