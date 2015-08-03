@@ -18,7 +18,7 @@ public class TasksDao {
         try {
             Transaction tx = Datastore.beginTransaction();
             //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", "Master"), "Tasks");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", "Master"), "TasksModel");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
@@ -34,7 +34,7 @@ public class TasksDao {
         try {
             Transaction tx = Datastore.beginTransaction();
             //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", projectName), "Tasks");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", projectName), "TasksModel");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
