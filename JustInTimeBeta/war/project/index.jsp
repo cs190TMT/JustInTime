@@ -105,14 +105,13 @@
 	<script src="../js/respond.min.js" type="text/javascript"></script>
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(".knob").knob();
-		
-		
-	</script>
 	
 	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="../js/functions.js"></script>
+	
+	<script type="text/javascript">
+		$(".knob").knob();
+	</script>
 
 </body>
 
