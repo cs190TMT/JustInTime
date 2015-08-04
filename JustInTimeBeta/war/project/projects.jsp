@@ -19,9 +19,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
-<meta name="author" content="Mosaddek">
-<meta name="keyword"
-	content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<meta name="keyword" content="">
 <link rel="shortcut icon" href="img/favicon.png">
 
 <!-- Bootstrap core CSS -->
@@ -60,8 +58,8 @@
 					<div class="row">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Projects</h3>
 						<button type="button" class="radical-simple-button-task"
-							style="float: right; margin-right: 5px;" aria-label="Left Align" data-toggle="modal"
-							data-target="#addProjectModal">
+							style="float: right; margin-right: 5px;" aria-label="Left Align"
+							data-toggle="modal" data-target="#addProjectModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							new project
 						</button>
@@ -76,14 +74,14 @@
 								</button>
 							</span>
 						</div>
-					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="projectList">
-						
+						<div class="row"
+							style="padding-left: 15px; margin-top: 10px; padding-right: 15px;"
+							id="projectList"></div>
 					</div>
-				</div>
 
-				<div id="T1"></div>
-				<%@ include file="../includes/addLogModal.jsp"%>
-				<!-- page end-->
+					<div id="T1"></div>
+					<%@ include file="../includes/addLogModal.jsp"%>
+					<!-- page end-->
 			</section>
 		</section>
 		<!--main content end-->
@@ -96,7 +94,7 @@
 
 
 	<!-- js placed at the end of the document so the pages load faster -->
-	
+
 	<script src="../js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript"
 		src="../js/jquery.dcjqaccordion.2.7.js"></script>
@@ -104,14 +102,14 @@
 	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="../assets/jquery-knob/js/jquery.knob.js"></script>
 	<script src="../js/respond.min.js"></script>
-	
+
 	<script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
 
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js"></script>
-	
+
 	<script src="../js/external-dragging-calendar.js"></script>
-	
+
 	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="../js/functions.js"></script>
 
