@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import project.dao.ProjectsDao;
+import project.dto.ProjectsClientDto;
 import project.dto.ProjectsDto;
 import project.model.ProjectsModel;
 
@@ -24,7 +25,24 @@ public class ProjectsService {
         return input;
     }
     
-    public List<ProjectsModel> getProjectsList() {
-        return this.dao.getAllProjects();
+    public ProjectsClientDto getProjectsList() {
+        List<ProjectsModel> projectsModel = this.dao.getAllProjects();
+        ProjectsClientDto projectList = new ProjectsClientDto();
+        ProjectsDto projectDto;
+        if(projectsModel.isEmpty()) {
+           System.out.println("No recs in dao"); 
+        }
+        for (ProjectsModel project : projectsModel) {
+            projectDto = new ProjectsDto();
+            projectDto.setId(project.getId());
+            projectDto.setProjectName(project.getProjectName());
+            projectDto.setProjectDetails(project.getProjectDetails());
+            projectList.getProjectList().add(projectDto);
+        }
+        if(projectList.getProjectList().isEmpty()) {
+            System.out.println("No recs in dto");
+        }
+        
+        return projectList;
     }
 }

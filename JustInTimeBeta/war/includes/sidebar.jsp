@@ -46,6 +46,8 @@
 			</a></li>
 
 			<!--  [Project List] -->
+			<div id = "projList">
+			</div>
 			<li class="sub-menu radical-submenu"><a href="/projectPage"
 				style="padding-left: 35px;"> <span
 					class="badge radical-badge radical-badge-project glyphicon glyphicon-file"

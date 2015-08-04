@@ -74,12 +74,8 @@
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							new task
 						</button>
-
 					</div>
-					<div class="row" style="margin-top: 10px;">
-						<%@include file="../includes/taskList.jsp"%>
-					</div>
-					<div id="taskMList">
+					<div class="row" style="margin-top: 10px;" id="taskMList">
 					</div>
 				</div>
 				<div id="T1"></div>
