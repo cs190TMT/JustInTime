@@ -50,4 +50,23 @@ public class TasksDao {
         Key parentKey = KeyFactory.createKey("Tasks", "Master");
         return Datastore.query(t, parentKey).asList();
     }
+    
+    public List<TasksModel> searchTasksMasterList(String name, String date, String phase){
+        List<TasksModel> tasksModels = null;
+        
+        try{
+            
+            TasksModelMeta meta = new TasksModelMeta();
+            
+            
+            
+            tasksModels = Datastore.query(meta).asList();
+   
+        
+        }catch(Exception e){
+            tasksModels = null;
+        }
+        
+        return tasksModels;
+    }
 }

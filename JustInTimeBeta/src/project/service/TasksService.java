@@ -49,4 +49,8 @@ public class TasksService {
     public List<TasksModel> getTaskMasterList() {
         return this.dao.getTasksMasterList();
     }
+    
+    public List<TasksModel> searchTask(String name, String date, String phase){
+        return this.dao.searchTasksMasterList(name, date, phase);
+    }
 }
