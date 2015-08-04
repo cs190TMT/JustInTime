@@ -141,10 +141,11 @@
 					</div>
 				</div>
 				<div class="row"
-					style="padding-left: 15px; margin-top: 10px; padding-right: 15px;"
+					style="padding-left: 50px; margin-top: 110px; margin-right: 300px; padding-right: 30px;"
 					id="projectList"></div>
-				</div>
-
+					
+				<br/>
+				<div class="row" style="margin-top: 150px; margin-right: 300px;" id="calendar"><%@include file="projectCalendar.jsp"%></div>
 				<div id="T1"></div>
 				<%@ include file="../includes/addLogModal.jsp"%>
 				<!-- page end-->
@@ -168,17 +169,16 @@
 	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="../assets/jquery-knob/js/jquery.knob.js"></script>
 	<script src="../js/respond.min.js"></script>
-
-	<script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
+	<script type="text/javascript" src="../js/functions.js"></script>
 
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js"></script>
 
-	<script src="../js/external-dragging-calendar.js"></script>
 
 	<script>
 		//knob
 		$(".knob").knob();
+		
 	</script>
 
 </body>

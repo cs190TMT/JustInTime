@@ -32,6 +32,7 @@
 <link href="../css/style.css" rel="stylesheet">
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
 <script src="../js/jquery.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
@@ -135,6 +136,7 @@
 					</div>
 					
 					<div class="row" style="margin-top: 10px;" id="taskMList"></div>
+					<div class="row" style="margin-top: 10px;" id="calendar"><%@include file="projectCalendar.jsp"%></div>
 				</div>
 				<div id="T1"></div>
 				<!-- page end-->
@@ -160,11 +162,13 @@
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	
 	<script type="text/javascript" src="../js/functions.js"></script>
 
 	<script type="text/javascript">
 		$(".knob").knob();
+		
+		
 	</script>
 
 </body>

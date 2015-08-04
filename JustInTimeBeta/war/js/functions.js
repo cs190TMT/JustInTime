@@ -7,11 +7,34 @@
 
 $(document).ready(function() {
 	retrieveTaskList("TaskMasterList");
+	$("#calendar").hide();
+	
 });
 
 $(document).ready(function() {
 	//alert("rethere");
+	$("#calendar").hide();
+	
 	retrieveProjectList("ProjectList");
+	    
+});
+
+$("#listButton").click(function(){
+    $("#calendar").hide();
+    $("#taskMList").show();
+    $("#projectList").show();
+    $(this).addClass("radical-simple-button-active");
+    $("#calendarButton").addClass("radical-simple-button").removeClass("radical-simple-button-active");
+    
+});
+
+$("#calendarButton").click(function(){
+    $("#taskMList").hide();
+    $("#projectList").hide();
+    $("#calendar").show();
+    $(this).addClass("radical-simple-button-active");
+    $("#listButton").addClass("radical-simple-button").removeClass("radical-simple-button-active");
+    
 });
 
 function retrieveTaskList(successMessage) {
