@@ -58,93 +58,27 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
-						<h3 style="float: left; padding: 0px; margin: 0px;">Project
-							Name</h3>
-						<button id="calendarButton" type="button"
-							class="radical-simple-button"
-							style="float: right; margin-right: 5px;">
-							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-						</button>
-						<button id="listButton" type="button"
-							class="radical-simple-button-active" style="float: right">
-							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
-						</button>
+						<h3 style="float: left; padding: 0px; margin: 0px;">Projects</h3>
 						<button type="button" class="radical-simple-button-task"
-							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#pullTasksModal">
-							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-							pull tasks
-						</button>
-						<button type="button" class="radical-simple-button-task"
-							style="float: right; margin-right: 5px;" aria-label="Left Align"
-							data-toggle="modal" data-target="#addLogModal">
+							style="float: right; margin-right: 5px;" aria-label="Left Align" data-toggle="modal"
+							data-target="#addProjectModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new log
+							new project
 						</button>
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
 							<input type="text" class="form-control"
-								placeholder="Search for tasks in this project"> <span
+								placeholder="Search for projects"> <span
 								class="input-group-btn">
 								<button class="btn btn-default" type="button">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								</button>
 							</span>
 						</div>
+					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="projectList">
+						
 					</div>
-					<div class="btn-group btn-group-sm" role="group" aria-label="..."
-						style="margin-top: 10px;">
-						<div class="btn-group btn-group-sm" role="group">
-							<button type="button"
-								class="btn btn-default dropdown-toggle radical-no-round-corners"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								Date <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">All</a></li>
-								<li><a href="#">Today</a></li>
-								<li><a href="#">Tomorrow</a></li>
-								<li><a href="#">This week</a></li>
-								<li><a href="#">Next week</a></li>
-								<li><a href="#">This month</a></li>
-							</ul>
-						</div>
-						<div class="btn-group btn-group-sm" role="group">
-							<button type="button" class="btn btn-default dropdown-toggle"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								Status <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">All</a></li>
-								<li><a href="#">Not started</a></li>
-								<li><a href="#">In progress</a></li>
-								<li><a href="#">Overdue</a></li>
-								<li><a href="#">Finished</a></li>
-							</ul>
-						</div>
-						<div class="btn-group btn-group-sm" role="group">
-							<button type="button"
-								class="btn btn-default dropdown-toggle radical-no-round-corners"
-								data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">
-								Phase <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">All</a></li>
-								<li><a href="#">Planning</a></li>
-								<li><a href="#">Design</a></li>
-								<li><a href="#">Coding</a></li>
-								<li><a href="#">Testing</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="row"
-					style="padding-left: 15px; margin-top: 10px; padding-right: 15px;"
-					id="projectList"></div>
 				</div>
 
 				<div id="T1"></div>
@@ -162,7 +96,7 @@
 
 
 	<!-- js placed at the end of the document so the pages load faster -->
-
+	
 	<script src="../js/bootstrap.min.js"></script>
 	<script class="include" type="text/javascript"
 		src="../js/jquery.dcjqaccordion.2.7.js"></script>
@@ -170,13 +104,16 @@
 	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
 	<script src="../assets/jquery-knob/js/jquery.knob.js"></script>
 	<script src="../js/respond.min.js"></script>
-
+	
 	<script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
 
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js"></script>
-
+	
 	<script src="../js/external-dragging-calendar.js"></script>
+	
+	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="../js/functions.js"></script>
 
 	<script>
 		//knob

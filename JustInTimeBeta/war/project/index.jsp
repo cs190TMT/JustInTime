@@ -75,8 +75,68 @@
 							new task
 						</button>
 					</div>
-					<div class="row" style="margin-top: 10px;" id="taskMList">
+					<div class="radical-task-header">
+						<div class="input-group">
+							<input type="text" class="form-control"
+								placeholder="Search for tasks"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</span>
+						</div>
+
+						<div class="btn-group btn-group-sm" role="group" aria-label="..."
+							style="margin-top: 10px;">
+							<div class="btn-group btn-group-sm" role="group">
+								<button type="button"
+									class="btn btn-default dropdown-toggle radical-no-round-corners"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									Date <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">All</a></li>
+									<li><a href="#">Today</a></li>
+									<li><a href="#">Tomorrow</a></li>
+									<li><a href="#">This week</a></li>
+									<li><a href="#">Next week</a></li>
+									<li><a href="#">This month</a></li>
+								</ul>
+							</div>
+							<div class="btn-group btn-group-sm" role="group">
+								<button type="button" class="btn btn-default dropdown-toggle"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									Status <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">All</a></li>
+									<li><a href="#">Not started</a></li>
+									<li><a href="#">In progress</a></li>
+									<li><a href="#">Overdue</a></li>
+									<li><a href="#">Finished</a></li>
+								</ul>
+							</div>
+							<div class="btn-group btn-group-sm" role="group">
+								<button type="button"
+									class="btn btn-default dropdown-toggle radical-no-round-corners"
+									data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									Phase <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">All</a></li>
+									<li><a href="#">Planning</a></li>
+									<li><a href="#">Design</a></li>
+									<li><a href="#">Coding</a></li>
+									<li><a href="#">Testing</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
+					
+					<div class="row" style="margin-top: 10px;" id="taskMList"></div>
 				</div>
 				<div id="T1"></div>
 				<!-- page end-->
@@ -101,10 +161,10 @@
 	<script src="../js/respond.min.js" type="text/javascript"></script>
 	<!--common script for all pages-->
 	<script src="../js/common-scripts.js" type="text/javascript"></script>
-	
+
 	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="../js/functions.js"></script>
-	
+
 	<script type="text/javascript">
 		$(".knob").knob();
 	</script>

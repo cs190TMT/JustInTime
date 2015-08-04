@@ -61,7 +61,7 @@
 			</ul>
 		</div>
 	</div>
-</div>
+	</div>
 <hr style="margin-top: 10px;" />
 
 

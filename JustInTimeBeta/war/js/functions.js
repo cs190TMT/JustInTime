@@ -38,7 +38,7 @@ function retrieveTaskList(successMessage) {
 													+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
 													+ value.taskDetails
 													+ '<br /></span>'
-													+ '</div>' + '</div>'
+													+ '</div>' + '</div>';
 										});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
@@ -59,7 +59,7 @@ function retrieveTaskList(successMessage) {
 }
 
 function retrieveProjectList(successMessage) {
-	$("#projList").empty();
+	$("#projectList").empty();
 	$
 			.ajax({
 				url : 'retrieveProjectList',
@@ -73,13 +73,20 @@ function retrieveProjectList(successMessage) {
 										data.taskList,
 										function(index, value) {
 											formattedProjectList += '<hr />'
-													+ '<li class="sub-menu radical-submenu"><a href="/projectPage"'
-													+ '	style="padding-left: 35px;"> <span'
-													+ '		class="badge radical-badge radical-badge-project glyphicon glyphicon-file"'
-													+ '		style="margin-right: 5px;"> </span> <span class="submenu-text">'
-													+ value.projectName
-													+ '</span>'
-													+ '</a></li>'
+												+ '<div class="col-lg-12 radical-list-pin">'
+												+ '<span class="pin-phase radical-color-design">Master</span>'
+												+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
+												+ '					data-target="#editTaskModal">'
+												+ '	<span class=""></span> ...'
+												+ '</button>'
+												+ '<div class="pin-content radical-border-design">'
+												+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
+												+ value.projectName
+												+ '<br /></span>'
+												+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
+												+ value.projectDetails
+												+ '<br /></span>'
+												+ '</div>' + '</div>';
 										});
 						if (formattedProjectList == "") {
 							formattedProjectList = "<div>No Tasks in the Master List!</div>";
