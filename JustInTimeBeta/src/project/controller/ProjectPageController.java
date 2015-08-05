@@ -16,5 +16,4 @@ public class ProjectPageController extends Controller {
     protected Navigation run() throws Exception {
         return forward("project/projectPage.jsp");
     }
-
 }
