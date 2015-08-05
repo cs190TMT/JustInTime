@@ -1,17 +1,14 @@
 package project.dao;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 import org.slim3.datastore.Datastore;
-import org.slim3.datastore.FilterCriterion;
 
 import project.meta.TasksModelMeta;
 import project.model.TasksModel;
 
 import com.google.appengine.api.datastore.Query.*;
-import com.google.appengine.api.search.*;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Transaction;
@@ -104,10 +101,8 @@ public class TasksDao {
 
                 TasksModel model = itr.next();
 
-                if (model
-                    .getTaskName()
-                    .toLowerCase()
-                    .startsWith(name.toLowerCase()) == false) {
+                if (model.getTaskName().toLowerCase().startsWith(
+                    name.toLowerCase()) == false) {
                     itr.remove();
                 }
             }
