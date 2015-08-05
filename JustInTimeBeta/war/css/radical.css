@@ -115,6 +115,11 @@ ul.radical-top-menu > li > a:hover, ul.radical-top-menu > li > a:focus {
     color: #2E2E2E !important;
 }
 
+.radical-no-border-radius{
+	border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
 .radical-dropdown{
 	-webkit-border-radius: 0;
   	-moz-border-radius: 0;
