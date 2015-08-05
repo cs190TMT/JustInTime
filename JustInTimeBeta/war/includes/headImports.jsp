@@ -13,16 +13,16 @@
 <meta name="keyword" content="">
 
 <!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-reset.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet" />
+<link href="../css/bootstrap-reset.css" rel="stylesheet" />
+
 <!--external css-->
-<link href="../assets/font-awesome/css/font-awesome.css"
-	rel="stylesheet" />
-<!-- Custom styles for this template -->
-<link href="../css/style.css" rel="stylesheet">
+<link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/favicon.png">
+
+<!-- Custom styles -->
+<link href="../css/style.css" rel="stylesheet" />
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
-
-<script src="../js/jquery-1.11.2.js" type="text/javascript"></script>
-<script src="../js/jquery.js" type="text/javascript"></script>
-<script src="../js/angular.js" type="text/javascript"></script>

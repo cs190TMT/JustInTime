@@ -6,17 +6,15 @@
  */
 
 $(document).ready(function() {
+	//alert("rethere");
 	retrieveTaskList("TaskMasterList");
 	$("#calendar").hide();
-	
 });
 
 $(document).ready(function() {
 	//alert("rethere");
 	$("#calendar").hide();
-	
 	retrieveProjectList("ProjectList");
-	    
 });
 
 $("#listButton").click(function(){
@@ -24,8 +22,7 @@ $("#listButton").click(function(){
     $("#taskMList").show();
     $("#projectList").show();
     $(this).addClass("radical-simple-button-active");
-    $("#calendarButton").addClass("radical-simple-button").removeClass("radical-simple-button-active");
-    
+    $("#calendarButton").addClass("radical-simple-button").removeClass("radical-simple-button-active"); 
 });
 
 $("#calendarButton").click(function(){
@@ -34,11 +31,10 @@ $("#calendarButton").click(function(){
     $("#calendar").show();
     $(this).addClass("radical-simple-button-active");
     $("#listButton").addClass("radical-simple-button").removeClass("radical-simple-button-active");
-    
 });
 
 function retrieveTaskList(successMessage) {
-	//alert("inside meth");
+	alert("inside meth");
 	$("#TaskMList").empty();
 	$
 			.ajax({
