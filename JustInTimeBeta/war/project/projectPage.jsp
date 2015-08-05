@@ -149,7 +149,7 @@
 					id="projectList"></div>
 					
 				<br/>
-				<div class="row" style="margin-top: 150px; margin-right: 300px;" id="calendar"><%@include file="projectCalendar.jsp"%></div>
+				<div class="" style="margin-top: 150px; margin-right: 300px;" id="calendar"><%@include file="projectCalendar.jsp"%></div>
 				<div id="T1"></div>
 				<%@ include file="../includes/addLogModal.jsp"%>
 				<!-- page end-->

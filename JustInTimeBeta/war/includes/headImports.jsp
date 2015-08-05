@@ -26,3 +26,6 @@
 <link href="../css/style.css" rel="stylesheet" />
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
+
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
