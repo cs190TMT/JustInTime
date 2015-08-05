@@ -17,9 +17,6 @@
 <head>
 <%@ include file="../includes/headImports.jsp" %>
 
-<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-<script src="../js/jquery.js" type="text/javascript"></script>
-
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
 	      <script src="../js/html5shiv.js"></script>

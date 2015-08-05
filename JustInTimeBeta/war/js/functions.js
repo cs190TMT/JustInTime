@@ -107,7 +107,7 @@ function retrieveProjectList(successMessage) {
 													+ '<span class="pin-info"><b>Project Details: &nbsp;</b>'
 													+ value.projectDetails
 													+ '<br /></span>'
-													+ '<a href="/project/projectPage?projectName='// create
+													+ '<a href="/projectPage?projectName='// create
 																									// a
 																									// form?
 													+ value.projectName
