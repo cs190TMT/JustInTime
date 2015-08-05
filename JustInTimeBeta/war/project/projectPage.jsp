@@ -44,6 +44,10 @@
 
 
 <body>
+	<%
+		String projectName = request.getParameter("projectName");
+		pageContext.setAttribute("projectName", projectName);
+	%>
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
@@ -57,7 +61,7 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Project
-							Name</h3>
+							Name<%= projectName%></h3>
 						<button id="calendarButton" type="button"
 							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">

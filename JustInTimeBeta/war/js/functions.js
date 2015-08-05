@@ -111,7 +111,13 @@ function retrieveProjectList(successMessage) {
 												+ '<span class="pin-info"><b>Project Details: &nbsp;</b>'
 												+ value.projectDetails
 												+ '<br /></span>'
-												+ '</div>' + '</div>';
+												+ '<a href="/project/projectPage?projectName='//create a form?
+												+ value.projectName
+												+ '" class="button" style="font-weight: bold">'
+												+ 'Go to project'
+												+ '</a>'
+												+ '</div>' 
+												+ '</div>';
 										});
 						if (formattedProjectList == "") {
 							formattedProjectList = "<div>No Projects in the Master List!</div>";
