@@ -17,7 +17,7 @@ public class ProjectsDao {
         try {
             Transaction tx = Datastore.beginTransaction();
             
-            Key key = Datastore.allocateId(KeyFactory.createKey("Projects", projectsModel.getProjectName()), "Projects");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Projects", projectsModel.getProjectName()), "ProjectsModel");
             projectsModel.setKey(key);
             projectsModel.setId(key.getId());
             Datastore.put(projectsModel);

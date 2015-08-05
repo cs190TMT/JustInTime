@@ -1,4 +1,10 @@
-<!-- Indices written at Mon, 3 Aug 2015 15:58:36 CST -->
+<!-- Indices written at Tue, 4 Aug 2015 21:50:53 CST -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 14 times in query history -->
+    <datastore-index kind="TasksModel" ancestor="true" source="auto">
+        <property name="taskName" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

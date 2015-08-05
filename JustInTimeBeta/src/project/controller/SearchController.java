@@ -7,7 +7,11 @@ package project.controller;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
+import org.slim3.repackaged.org.json.JSONObject;
+
 import java.util.List;
+
+import project.dto.TasksClientDto;
 import project.dto.TasksDto;
 import project.service.TasksService;
 import project.model.TasksModel;
@@ -23,6 +27,35 @@ public class SearchController extends Controller {
     @Override
     protected Navigation run() throws Exception {
         
+        TasksClientDto taskList = new TasksClientDto();
+
+        JSONObject json = new JSONObject();
+        
+        
+        try{
+            
+            json = new JSONObject((String)this.requestScope("data"));
+            
+            String taskName = json.getString("taskName");
+            
+            
+            taskList = service.searchTask(taskName, null, null);
+            
+            
+            
+            json.put("taskList", taskList.getTaskList());
+            json.put("errorList", taskList.getErrorList());
+        }catch(Exception e){
+            e.printStackTrace();
+            taskList.getErrorList().add("Server controller error: " + e.getMessage());
+        }
+        
+        json.put("taskList", taskList.getTaskList());
+        json.put("errorList", taskList.getErrorList());
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
+        return null;
+        /*
         String ret = "";
         boolean bool = false;
         
@@ -30,10 +63,15 @@ public class SearchController extends Controller {
         String date = this.request.getParameter("date");
         String phase = this.request.getParameter("phase");
         
-        List<TasksModel> models = service.getTaskMasterList();
+        
+        if(taskName == null){
+            taskName = "";
+        }
+        
+        TasksClientDto models = service.searchTask(taskName, date, phase);
         
         
-        int num = models.size();
+        int num = models.getTaskList().size();
         
         ret = "{size: " + Integer.toString(num) + ",";
         
@@ -47,7 +85,7 @@ public class SearchController extends Controller {
         ret += "data: [";
         
         
-        for(TasksModel model : models){
+        for(TasksDto model : models.getTaskList()){
             ret += "[";
             ret += "id: " + Long.toString(model.getId()) + ",";
             ret += "name: " + model.getTaskName() ;
@@ -60,7 +98,7 @@ public class SearchController extends Controller {
         ret += "]}";
         requestScope("ret", ret);
         return forward("queries/search.jsp");
-      
+        */
     }
 
 }

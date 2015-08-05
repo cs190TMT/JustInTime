@@ -8,7 +8,7 @@
 
 <div class="radical-task-header">
 	<div class="input-group">
-		<input type="text" class="form-control" placeholder="Search for tasks">
+		<input type="text" class="form-control" placeholder="Search for tasks" oninput = "searchTask(this.value)">
 		<span class="input-group-btn">
 			<button class="btn btn-default" type="button">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -66,7 +66,7 @@
 
 
 <!--  [LIST OF TASKS] -->
-<div class="row" style="padding-left: 15px; padding-right: 15px;">
+<div class="row" style="padding-left: 15px; padding-right: 15px;" id = "TaskMList">
 	<div class="col-lg-12 radical-list-pin">
 		<span class="pin-phase radical-color-coding">Coding</span>
 		<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"
@@ -132,7 +132,7 @@
 		</button>
 		<div class="pin-content radical-border-coding">
 			<h4>Some coding</h4>
-			<span class="pin-info"><b>Started &nbsp;</b> July 20, 2015 <br /></span>
+			<span class="pin-info"><b>Started &nbsp;</b> July 201, 2015 <br /></span>
 			<span class="pin-info"><b>Due
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> July 21, 2015 <br /></span>
 			<span class="pin-info"><b>Time

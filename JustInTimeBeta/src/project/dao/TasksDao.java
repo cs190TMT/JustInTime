@@ -1,12 +1,17 @@
 package project.dao;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.slim3.datastore.Datastore;
+import org.slim3.datastore.FilterCriterion;
 
 import project.meta.TasksModelMeta;
 import project.model.TasksModel;
 
+import com.google.appengine.api.datastore.Query.*;
+import com.google.appengine.api.search.*;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Transaction;
@@ -18,7 +23,7 @@ public class TasksDao {
         try {
             Transaction tx = Datastore.beginTransaction();
             //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", "Master"), "Tasks");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", "Master"), "TasksModel");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
@@ -34,7 +39,7 @@ public class TasksDao {
         try {
             Transaction tx = Datastore.beginTransaction();
             //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", projectName), "Tasks");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", projectName), "TasksModel");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
@@ -57,13 +62,50 @@ public class TasksDao {
         try{
             
             TasksModelMeta meta = new TasksModelMeta();
+            Key parentKey = KeyFactory.createKey("Tasks", "Master");
+            
+            
+            Filter nameFilter = null;
+            Filter dateFilter = null;
+            Filter phaseFilter = null;
+            
+            if(name == null){
+                name = "";
+            }
+            nameFilter = new FilterPredicate("taskName", FilterOperator.GREATER_THAN_OR_EQUAL, name);
+          
+            if(date != null && date != ""){
+                
+            }
+            
+            if(phase != null){
+                phaseFilter = new FilterPredicate("taskPhase", FilterOperator.EQUAL, phase);
+            }
             
             
             
-            tasksModels = Datastore.query(meta).asList();
-   
+            tasksModels = Datastore.query(meta, parentKey).asList();
+            
+            ListIterator<TasksModel> itr = tasksModels.listIterator();
+
+            while(itr.hasNext()){
+                
+                TasksModel model = itr.next();
+              
+                if(model.getTaskName().toLowerCase().startsWith(name.toLowerCase()) == false){
+                    itr.remove();
+                } 
+            }
+            
+           
+            
+            
+         
+           
+            
         
         }catch(Exception e){
+            System.out.println(e.toString());
             tasksModels = null;
         }
         

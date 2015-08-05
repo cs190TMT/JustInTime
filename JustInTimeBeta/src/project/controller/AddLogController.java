@@ -29,5 +29,4 @@ public class AddLogController extends Controller {
         service.addLog(logDto, this.request.getParameter("projectName"));
         return redirect(this.basePath);
     }
-
 }

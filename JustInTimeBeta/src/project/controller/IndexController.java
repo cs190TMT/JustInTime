@@ -7,12 +7,9 @@
 
 package project.controller;
 
-import java.util.List;
-
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
-import project.model.TasksModel;
 import project.service.TasksService;
 
 /**
@@ -26,15 +23,7 @@ public class IndexController extends Controller {
     
     @Override
     protected Navigation run() throws Exception {
-
-        List<TasksModel> taskMasterList = service.getTaskMasterList();
-        for (TasksModel tm : taskMasterList) {
-            System.out.print(tm.getTaskName());
-        }
         
-        
-        requestScope("taskMasterList", taskMasterList);
-
         return forward("project/index.jsp");
     }
 }

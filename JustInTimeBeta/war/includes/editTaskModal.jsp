@@ -144,7 +144,7 @@
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
-<script>
+<script type="text/javascript">
 
 
 
