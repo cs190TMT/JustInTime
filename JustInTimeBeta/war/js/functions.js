@@ -39,7 +39,7 @@ $("#calendarButton").click(function(){
 
 function retrieveTaskList(successMessage) {
 	//alert("inside meth");
-	$("#taskMList").empty();
+	$("#TaskMList").empty();
 	$
 			.ajax({
 				url : 'retrieveTaskMasterList',
@@ -72,7 +72,7 @@ function retrieveTaskList(successMessage) {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
 						// alert(formattedTaskList);
-						$("#taskMList").html(formattedTaskList);
+						$("#TaskMList").html(formattedTaskList);
 						if (undefined != successMessage && "" != successMessage) {
 							// alert(successMessage);
 						}
@@ -127,6 +127,63 @@ function retrieveProjectList(successMessage) {
 						if (undefined != successMessage && "" != successMessage) {
 							 //alert(successMessage);
 						}
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("error");
+				}
+			});
+}
+
+function searchTask(taskName) {
+
+	jsonData = {
+			data:JSON.stringify({
+				taskName : taskName,
+			})
+	}; 
+	
+	$("#TaskMList").empty();
+	$
+			.ajax({
+				url : 'search',
+				type : 'GET',
+				data : jsonData,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedTaskList = "";
+						$
+								.each(
+										data.taskList,
+										function(index, value) {
+										
+											formattedTaskList += ''
+												+ '<div class="col-lg-12 radical-list-pin">'
+												+ '<span class="pin-phase radical-color-design">Master</span>'
+												+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
+												+ '					data-target="#editTaskModal">'
+												+ '	<span class=""></span> ...'
+												+ '</button>'
+												+ '<div class="pin-content radical-border-design">'
+												+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
+												+ value.taskName
+												+ '<br /></span>'
+												+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
+												+ value.taskDetails
+												+ '<br /></span>'
+												+ '</div>' + '</div>';
+												
+											
+											
+										});
+					
+						//alert(formattedTaskList);
+						$("#TaskMList").html(formattedTaskList);
+						//if (undefined != successMessage && "" != successMessage) {
+							//alert(successMessage);
+						//}
 					} else {
 						alert('Failed to retreive tasks masterlist!');
 					}
