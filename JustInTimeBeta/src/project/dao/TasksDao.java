@@ -22,8 +22,11 @@ public class TasksDao {
         boolean result = true;
         try {
             Transaction tx = Datastore.beginTransaction();
-            //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", "Master"), "TasksModel");
+            // Manually allocate key
+            Key key =
+                Datastore.allocateId(
+                    KeyFactory.createKey("Tasks", "Master"),
+                    "TasksModel");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
@@ -33,13 +36,16 @@ public class TasksDao {
         }
         return result;
     }
-    
+
     public boolean saveProjectTask(TasksModel tasksModel, String projectName) {
         boolean result = true;
         try {
             Transaction tx = Datastore.beginTransaction();
-            //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Tasks", projectName), "TasksModel");
+            // Manually allocate key
+            Key key =
+                Datastore.allocateId(
+                    KeyFactory.createKey("Tasks", projectName),
+                    "TasksModel");
             tasksModel.setKey(key);
             tasksModel.setId(key.getId());
             Datastore.put(tasksModel);
@@ -49,66 +55,68 @@ public class TasksDao {
         }
         return result;
     }
-    
+
     public List<TasksModel> getTasksMasterList() {
         TasksModelMeta t = new TasksModelMeta();
         Key parentKey = KeyFactory.createKey("Tasks", "Master");
         return Datastore.query(t, parentKey).asList();
     }
-    
-    public List<TasksModel> searchTasksMasterList(String name, String date, String phase){
+
+    public List<TasksModel> searchTasksMasterList(String name, String date,
+            String phase) {
         List<TasksModel> tasksModels = null;
-        
-        try{
-            
+
+        try {
+
             TasksModelMeta meta = new TasksModelMeta();
             Key parentKey = KeyFactory.createKey("Tasks", "Master");
-            
-            
+
             Filter nameFilter = null;
             Filter dateFilter = null;
             Filter phaseFilter = null;
-            
-            if(name == null){
+
+            if (name == null) {
                 name = "";
             }
-            nameFilter = new FilterPredicate("taskName", FilterOperator.GREATER_THAN_OR_EQUAL, name);
-          
-            if(date != null && date != ""){
-                
+            nameFilter =
+                new FilterPredicate(
+                    "taskName",
+                    FilterOperator.GREATER_THAN_OR_EQUAL,
+                    name);
+
+            if (date != null && date != "") {
+
             }
-            
-            if(phase != null){
-                phaseFilter = new FilterPredicate("taskPhase", FilterOperator.EQUAL, phase);
+
+            if (phase != null) {
+                phaseFilter =
+                    new FilterPredicate(
+                        "taskPhase",
+                        FilterOperator.EQUAL,
+                        phase);
             }
-            
-            
-            
+
             tasksModels = Datastore.query(meta, parentKey).asList();
-            
+
             ListIterator<TasksModel> itr = tasksModels.listIterator();
 
-            while(itr.hasNext()){
-                
+            while (itr.hasNext()) {
+
                 TasksModel model = itr.next();
-              
-                if(model.getTaskName().toLowerCase().startsWith(name.toLowerCase()) == false){
+
+                if (model
+                    .getTaskName()
+                    .toLowerCase()
+                    .startsWith(name.toLowerCase()) == false) {
                     itr.remove();
-                } 
+                }
             }
-            
-           
-            
-            
-         
-           
-            
-        
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e.toString());
             tasksModels = null;
         }
-        
+
         return tasksModels;
     }
 }

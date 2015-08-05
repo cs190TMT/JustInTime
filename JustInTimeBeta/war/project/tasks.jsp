@@ -77,7 +77,7 @@
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
 							<input type="text" class="form-control"
-								placeholder="Search for tasks"> <span
+								placeholder="Search for tasks" oninput = "searchTask(this.value)"> <span
 								class="input-group-btn">
 								<button class="btn btn-default" type="button">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -134,7 +134,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="taskMList">
+					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="TaskMList">
 						
 					</div>
 				</div>
