@@ -84,7 +84,6 @@
 								</button>
 							</span>
 						</div>
-
 						<div class="btn-group btn-group-sm" role="group" aria-label="..."
 							style="margin-top: 10px;">
 							<div class="btn-group btn-group-sm" role="group">
