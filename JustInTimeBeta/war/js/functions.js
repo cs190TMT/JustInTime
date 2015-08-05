@@ -7,10 +7,39 @@
 
 $(document).ready(function() {
 	retrieveTaskList("TaskMasterList");
+	$("#calendar").hide();
+	
+});
+
+$(document).ready(function() {
+	//alert("rethere");
+	$("#calendar").hide();
+	
+	retrieveProjectList("ProjectList");
+	    
+});
+
+$("#listButton").click(function(){
+    $("#calendar").hide();
+    $("#taskMList").show();
+    $("#projectList").show();
+    $(this).addClass("radical-simple-button-active");
+    $("#calendarButton").addClass("radical-simple-button").removeClass("radical-simple-button-active");
+    
+});
+
+$("#calendarButton").click(function(){
+    $("#taskMList").hide();
+    $("#projectList").hide();
+    $("#calendar").show();
+    $(this).addClass("radical-simple-button-active");
+    $("#listButton").addClass("radical-simple-button").removeClass("radical-simple-button-active");
+    
 });
 
 function retrieveTaskList(successMessage) {
-	$("#taskMList").empty();
+	//alert("inside meth");
+	$("#TaskMList").empty();
 	$
 			.ajax({
 				url : 'retrieveTaskMasterList',
@@ -24,28 +53,79 @@ function retrieveTaskList(successMessage) {
 										data.taskList,
 										function(index, value) {
 											formattedTaskList += '<hr />'
-													+ '<div class="masterTaskRow">'
+													+ '<div class="col-lg-12 radical-list-pin">'
+													+ '<span class="pin-phase radical-color-design">Master</span>'
+													+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
+													+ '					data-target="#editTaskModal">'
+													+ '	<span class=""></span> ...'
+													+ '</button>'
+													+ '<div class="pin-content radical-border-design">'
+													+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
 													+ value.taskName
+													+ '<br /></span>'
+													+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
 													+ value.taskDetails
-													+ '	<input type="hidden" class="id" name="id" value="'
-													+ value.id
-													+ '"/>'
-													+ '	<input type="hidden" class="taskName" name="taskName" value="'
-													+ value.taskName
-													+ '"/>'
-													+ '	<input type="hidden" class="taskDetails" name="taskDetails" value="'
-													+ value.taskDetails
-													+ '"/>'
-													+ '	<div class="updateErrorDisplay"></div>'
-													+ '</div>';
+													+ '<br /></span>'
+													+ '</div>' + '</div>';
 										});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
-						//alert(formattedTaskList);
-						$("#taskMList").html(formattedTaskList);
+						// alert(formattedTaskList);
+						$("#TaskMList").html(formattedTaskList);
 						if (undefined != successMessage && "" != successMessage) {
-							//alert(successMessage);
+							// alert(successMessage);
+						}
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("error");
+				}
+			});
+}
+
+function retrieveProjectList(successMessage) {
+	$("#projectList").empty();
+	$
+			.ajax({
+				url : 'retrieveProjectList',
+				type : 'GET',
+				data : null,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedProjectList = "";
+						$.each(data.projectList, function(index, value) {
+											formattedProjectList += '<hr />'
+												+ '<div class="col-lg-12 radical-list-pin">'
+												+ '<span class="pin-phase radical-color-design">Project</span>'
+												+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
+												+ '					data-target="#editTaskModal">'
+												+ '	<span class=""></span> ...'
+												+ '</button>'
+												+ '<div class="pin-content radical-border-design">'
+												+ '<span class="pin-info"><b>Project Name: &nbsp;</b>'
+												+ value.projectName
+												+ '<br /></span>'
+												+ '<span class="pin-info"><b>Project Details: &nbsp;</b>'
+												+ value.projectDetails
+												+ '<br /></span>'
+												+ '<a href="/project/projectPage?projectName='//create a form?
+												+ value.projectName
+												+ '" class="button" style="font-weight: bold">'
+												+ 'Go to project'
+												+ '</a>'
+												+ '</div>' 
+												+ '</div>';
+										});
+						if (formattedProjectList == "") {
+							formattedProjectList = "<div>No Projects in the Master List!</div>";
+						}
+							//alert(formattedProjectList);
+						$("#projectList").html(formattedProjectList);
+						if (undefined != successMessage && "" != successMessage) {
+							 //alert(successMessage);
 						}
 					} else {
 						alert('Failed to retreive tasks masterlist!');
@@ -79,23 +159,21 @@ function searchTask(taskName) {
 										data.taskList,
 										function(index, value) {
 										
-											formattedTaskList += '<div class="col-lg-12 radical-list-pin">'
-															    + '<span class="pin-phase radical-color-coding"></span>'
-															    + '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal" data-target="#editTaskModal">'
-															    + '<span class=""></span> ...'
-															    + '</button>'
-															    + '<div class="pin-content radical-border-coding">'
-															    + '<h4>'+ value.taskName  +'</h4>'
-															    + '<span class="pin-info"><b>Started &nbsp;</b> July 20, 2015 <br /></span> <span class="pin-info"><b>Due'
-															    + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> July 21, 2015 <br /></span>'
-															    + '<span class="pin-info"><b>Time'
-															    + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> 9:00 AM - 12:00 PM <br /></span><br />'
-															    + '<span class="pin-info"><b>Found in </b> <br /> <a href=""'
-															    + 'style="padding-left: 10px;"> Project 1</a>, <a href=""> Project'
-															    + '2</a> <br /></span> <br />'
-															    + '</div>'
-															    + '</div>';
-															    
+											formattedTaskList += ''
+												+ '<div class="col-lg-12 radical-list-pin">'
+												+ '<span class="pin-phase radical-color-design">Master</span>'
+												+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
+												+ '					data-target="#editTaskModal">'
+												+ '	<span class=""></span> ...'
+												+ '</button>'
+												+ '<div class="pin-content radical-border-design">'
+												+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
+												+ value.taskName
+												+ '<br /></span>'
+												+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
+												+ value.taskDetails
+												+ '<br /></span>'
+												+ '</div>' + '</div>';
 												
 											
 											
