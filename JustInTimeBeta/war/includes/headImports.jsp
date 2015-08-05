@@ -8,7 +8,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Just In Time">
+<meta name="author" content="CS190TMT">
 <meta name="description" content="Just In Time">
 <meta name="keyword" content="">
 
@@ -26,6 +26,3 @@
 <link href="../css/style.css" rel="stylesheet" />
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
-
-<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="../js/jquery.js"></script>

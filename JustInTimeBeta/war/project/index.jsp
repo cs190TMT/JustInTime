@@ -75,22 +75,7 @@
 	</section>
 
 	<!-- js placed at the end of the document so the pages load faster -->
-	
-	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-	<script class="include" type="text/javascript"
-		src="../js/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="../js/jquery.scrollTo.min.js" type="text/javascript"></script>
-	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-	<script src="../assets/jquery-knob/js/jquery.knob.js"
-		type="text/javascript"></script>
-	<script src="../js/respond.min.js" type="text/javascript"></script>
-	<!--common script for all pages-->
-	<script src="../js/common-scripts.js" type="text/javascript"></script>
-
-	
-
-
-	<script type="text/javascript" src="../js/functions.js"></script>
+	<%@ include file="../includes/footImports.jsp" %>
 
 	<script type="text/javascript">
 		$(".knob").knob();

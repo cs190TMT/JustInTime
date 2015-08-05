@@ -5,12 +5,6 @@
  * -------------------------------------------------------------------------
  */
 
-$(document).ready(function() {
-	//retrieveTaskMasterList("TaskMasterList");
-	$("#calendar").hide();
-	retrieveProjectList("ProjectList");
-});
-
 $("#listButton").click(
 		function() {
 			$("#calendar").hide();
@@ -32,7 +26,7 @@ $("#calendarButton").click(
 
 function retrieveTaskMasterList(successMessage) {
 	// alert("inside meth");
-	$("#TaskMList").empty();
+	$("#taskMList").empty();
 	$
 			.ajax({
 				url : 'retrieveTaskMasterList',
@@ -65,7 +59,7 @@ function retrieveTaskMasterList(successMessage) {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
 						//alert(formattedTaskList);
-						$("#TaskMList").html(formattedTaskList);
+						$("#taskMList").html(formattedTaskList);
 						if (undefined != successMessage && "" != successMessage) {
 							// alert(successMessage);
 						}

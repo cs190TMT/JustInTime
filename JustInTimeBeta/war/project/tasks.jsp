@@ -18,6 +18,11 @@
 
 <%@ include file="../includes/headImports.jsp" %>
 
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>
+
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
 	      <script src="../js/html5shiv.js"></script>
@@ -117,7 +122,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="TaskMList">
+					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="taskMList">
 						
 					</div>
 				</div>
@@ -134,18 +139,7 @@
 
 	<!-- js placed at the end of the document so the pages load faster -->
 
-	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-	<script class="include" type="text/javascript"
-		src="../js/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="../js/jquery.scrollTo.min.js" type="text/javascript"></script>
-	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-	<script src="../assets/jquery-knob/js/jquery.knob.js"
-		type="text/javascript"></script>
-	<script src="../js/respond.min.js" type="text/javascript"></script>
-	<!--common script for all pages-->
-	<script src="../js/common-scripts.js" type="text/javascript"></script>
-
-	<script type="text/javascript" src="../js/functions.js"></script>
+	<%@include file="../includes/footImports.jsp"%>
 
 	<script type="text/javascript">
 		$(".knob").knob();
