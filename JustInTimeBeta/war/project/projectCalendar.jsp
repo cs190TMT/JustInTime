@@ -8,7 +8,6 @@
 <script src='../lib/jquery.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
 
-
 <style>
 
 	body {
@@ -24,6 +23,7 @@
 	}
 
 </style>
+
 </head>
 <body>
 
