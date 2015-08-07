@@ -27,7 +27,7 @@
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
 
-<!-- Custom css for project list *Could be external stylesheet* -->
+<!-- Custom css for project list *Could be another external stylesheet* -->
 <style>
 	.containerList {
 		border-color: #dddddd;
@@ -53,5 +53,8 @@
 	#projectList .listRowProperty:hover {
 		background-color: #dddddd;
 		color: blue;
+	}
+	#taskMList .listRowProperty:hover {
+		background-color: #dddddd;
 	}
 </style>

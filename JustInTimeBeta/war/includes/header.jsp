@@ -13,7 +13,7 @@
           </div>
          -->
 	<!--logo start-->
-	<a href="index" class="logo radical-logo"><img
+	<a href="index" class="logo radical-logo" style="float:left; margin-left: -25px"><img
 		src="../img/Jit_logo3.png" /></a>
 	<!--logo end-->
 

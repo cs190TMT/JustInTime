@@ -45,7 +45,10 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
+						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
+						</div>
+						<div class="col-lg-6">
 						<button id="calendarButton" type="button"
 							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
@@ -60,8 +63,9 @@
 							style="float: right" aria-label="Left Align" data-toggle="modal"
 							data-target="#addTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new task
+							New Task
 						</button>
+						</div>
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
@@ -124,7 +128,6 @@
 					</div>
 					<!-- Task List start -->
 					<div class="containerList" id="taskMList">
-						
 					</div>
 					<!-- Task List end -->
 				</div>
