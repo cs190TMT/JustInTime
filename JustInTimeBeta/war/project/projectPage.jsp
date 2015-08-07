@@ -150,10 +150,9 @@ body {
 							</ul>
 						</div>
 					</div>
+					<div class="containerList" id="taskMList">
+					</div>
 				</div>
-				<div class="row"
-					style="padding-left: 50px; margin-top: 110px; margin-right: 300px; padding-right: 30px;"
-					id="taskMList"></div>
 
 				<br />
 				<div class="" style="margin-top: 150px; margin-right: 300px;"

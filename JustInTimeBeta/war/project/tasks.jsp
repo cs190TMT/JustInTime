@@ -122,9 +122,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="taskMList">
+					<!-- Task List start -->
+					<div class="containerList" id="taskMList">
 						
 					</div>
+					<!-- Task List end -->
 				</div>
 				<div id="T1"></div>
 				<!-- page end-->
