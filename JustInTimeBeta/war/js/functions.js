@@ -260,7 +260,8 @@ $('#btnAddMasterTask').click(function() {
 		dataType : 'json',
 		success : function(data, status, jqXHR) {
 			if (data.errorList.length == 0) {
-				//$('#txtContent').val('');
+				$('#taskName').val('');
+				$('#taskDeatils').val('');
 				retrieveTaskMasterList('Entry saved successfully!');
 			} else {
 				var msg = "";

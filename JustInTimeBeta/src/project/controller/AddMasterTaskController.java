@@ -33,7 +33,7 @@ public class AddMasterTaskController extends Controller {
                 dto = this.service.addMasterTask(dto);
             }
         } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
+            //dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
@@ -42,7 +42,7 @@ public class AddMasterTaskController extends Controller {
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return forward("/project/tasks.jsp");
+        return null;
     }
 
 }

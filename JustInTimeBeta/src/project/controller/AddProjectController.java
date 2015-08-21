@@ -25,15 +25,15 @@ public class AddProjectController extends Controller {
         try {
             json = new JSONObject((String)this.requestScope("data"));
 
-            dto.setProjectName(json.getString("ProjectName"));
-            dto.setProjectDetails(json.getString("ProjectDetails"));
+            dto.setProjectName(json.getString("projectName"));
+            dto.setProjectDetails(json.getString("projectDetails"));
             if ((dto.getProjectName() == null) || dto.getProjectName().isEmpty() || dto.getProjectDetails() == null || dto.getProjectDetails().isEmpty()) {
                 dto.getErrorList().add("One of the inputs is blank");
             } else {
                 dto = this.service.addProject(dto);
             }
         } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
+            //dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
