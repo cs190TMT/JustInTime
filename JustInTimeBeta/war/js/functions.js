@@ -24,7 +24,7 @@ $("#calendarButton").click(
 					"radical-simple-button-active");
 		});
 
-//Functions for Tasks start
+// Functions for Tasks start
 function retrieveTaskMasterList(successMessage) {
 	// alert("inside meth");
 	$("#taskMList").empty();
@@ -36,43 +36,42 @@ function retrieveTaskMasterList(successMessage) {
 				success : function(data, status, jqXHR) {
 					if (data.errorList.length == 0) {
 						var formattedTaskList = ''
-							+ '<div class="row listRow listRowHeader">'
-							+ '<div class="col-md-4 listProperty listHeader">Name</div>'
-							+ '<div class="col-md-4 listProperty listHeader">Details</div>'
-							+ '</div>';
+								+ '<div class="row listRow listRowHeader">'
+								+ '<div class="col-md-4 listProperty listHeader">Name</div>'
+								+ '<div class="col-md-4 listProperty listHeader">Details</div>'
+								+ '</div>';
 						$
 								.each(
 										data.taskList,
 										function(index, value) {
 											formattedTaskList += ''
 													+ '<div class="row listRow listRowProperty">'
-														+ '<div class="col-md-4 listProperty">'
-														+ value.taskName
-														+ '</div>'
-														+ '<div class="col-md-4 listProperty">'
-														+ value.taskDetails
-														+ '</div>'
+													+ '<div class="col-md-4 listProperty">'
+													+ value.taskName
+													+ '</div>'
+													+ '<div class="col-md-4 listProperty">'
+													+ value.taskDetails
+													+ '</div>'
 													+ '</div>'
 													+ '<div class="row listRow listRow	Edit listRowProperty">'
-														+ '<di class="col-md-6 listEdit">'
-															+ '<form>'
-																+ '<div class="row">'
-																+ '<div class="col-md-2">'
-																+ 'Name'
-																+ '</div>'
-																+ '<div class="col-md-10">'
-																+ '<input class="form-control" id="taskName" type="text" value="'
-																+ value.taskName
-																+ '"/>'
-																+ '</div>'
-																+ 'Detail'
-																+ '<input class="form-control" id="taskDetail" type="text" value="'
-																+ value.taskDetails
-																+ '"/>'
-																+ '</div>'
-															+ '</form>'
-															+ '</di>'
-													+ '</div>';
+													+ '<di class="col-md-6 listEdit">'
+													+ '<form>'
+													+ '<div class="row">'
+													+ '<div class="col-md-2">'
+													+ 'Name'
+													+ '</div>'
+													+ '<div class="col-md-10">'
+													+ '<input class="form-control" id="taskName" type="text" value="'
+													+ value.taskName
+													+ '"/>'
+													+ '</div>'
+													+ 'Detail'
+													+ '<input class="form-control" id="taskDetail" type="text" value="'
+													+ value.taskDetails
+													+ '"/>'
+													+ '</div>'
+													+ '</form>'
+													+ '</di>' + '</div>';
 										});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
@@ -101,49 +100,42 @@ function searchTask(taskName) {
 	};
 
 	$("#TaskMList").empty();
-	$
-			.ajax({
-				url : 'search',
-				type : 'GET',
-				data : jsonData,
-				success : function(data, status, jqXHR) {
-					if (data.errorList.length == 0) {
-						var formattedTaskList = "";
-						$
-								.each(
-										data.taskList,
-										function(index, value) {
+	$.ajax({
+		url : 'search',
+		type : 'GET',
+		data : jsonData,
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				var formattedTaskList = "";
+				$.each(data.taskList, function(index, value) {
 
-											formattedTaskList += ''
-													+ '<div class="row listRow listRowProperty">'
-													+ '<div class="col-md-4 listProperty">'
-													+ value.taskName
-													+ '</div>'
-													+ '<div class="col-md-4 listProperty">'
-													+ value.taskDetails
-													+ '</div>'
-													+ '</div>';
+					formattedTaskList += ''
+							+ '<div class="row listRow listRowProperty">'
+							+ '<div class="col-md-4 listProperty">'
+							+ value.taskName + '</div>'
+							+ '<div class="col-md-4 listProperty">'
+							+ value.taskDetails + '</div>' + '</div>';
 
-										});
+				});
 
-						// alert(formattedTaskList);
-						$("#TaskMList").html(formattedTaskList);
-						// if (undefined != successMessage && "" !=
-						// successMessage) {
-						// alert(successMessage);
-						// }
-					} else {
-						alert('Failed to retreive tasks masterlist!');
-					}
-				},
-				error : function(jqXHR, status, error) {
-					alert("error");
-				}
-			});
+				// alert(formattedTaskList);
+				$("#TaskMList").html(formattedTaskList);
+				// if (undefined != successMessage && "" !=
+				// successMessage) {
+				// alert(successMessage);
+				// }
+			} else {
+				alert('Failed to retreive tasks masterlist!');
+			}
+		},
+		error : function(jqXHR, status, error) {
+			alert("error");
+		}
+	});
 }
-//Functions for Tasks end
+// Functions for Tasks end
 
-//Functios for Projects start
+// Functios for Projects start
 function retrieveProjectList(successMessage) {
 	$("#projectList").empty();
 	$
@@ -154,10 +146,10 @@ function retrieveProjectList(successMessage) {
 				success : function(data, status, jqXHR) {
 					if (data.errorList.length == 0) {
 						var formattedProjectList = ''
-							+ '<div class="row listRow listRowHeader">'
-							+ '<div class="col-md-4 listProperty listHeader">Name</div>'
-							+ '<div class="col-md-4 listProperty listHeader">Details</div>'
-							+ '</div>';
+								+ '<div class="row listRow listRowHeader">'
+								+ '<div class="col-md-4 listProperty listHeader">Name</div>'
+								+ '<div class="col-md-4 listProperty listHeader">Details</div>'
+								+ '</div>';
 						$
 								.each(
 										data.projectList,
@@ -174,8 +166,7 @@ function retrieveProjectList(successMessage) {
 													+ '</div>'
 													+ '<div class="col-md-4 listProperty">'
 													+ value.projectDetails
-													+ '</div>'
-													+ '</div>'
+													+ '</div>' + '</div>'
 													+ '</a>';
 										});
 						if (formattedProjectList == "") {
@@ -195,7 +186,7 @@ function retrieveProjectList(successMessage) {
 				}
 			});
 }
-//Functios for Projects end
+// Functios for Projects end
 
 function setCalendar() {
 	$('#calendar').fullCalendar({
@@ -253,3 +244,64 @@ function setCalendar() {
 	});
 }
 
+// Add master task 
+$('#btnAddMasterTask').click(function() {
+	jsonData = {
+		data : JSON.stringify({
+			taskName : $('#taskName').val(),
+			taskDetails : $('#taskDetails').val(),
+		})
+	};
+
+	$.ajax({
+		url : 'addMasterTask',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				//$('#txtContent').val('');
+				retrieveTaskMasterList('Entry saved successfully!');
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				//$('#errorDisplay').html(msg);
+			}
+		},
+		error : function(jqXHR, status, error) {
+
+		}
+	});
+});
+
+// add project
+$('#btnAddProject').click(function() {
+	jsonData = {
+		data : JSON.stringify({
+			projectName : $('#projectName').val(),
+			projectDetails : $('#projectDetails').val(),
+		})
+	};
+
+	$.ajax({
+		url : 'addProject',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				//$('#txtContent').val('');
+				retrieveProjectList('Entry saved successfully!');
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				//$('#errorDisplay').html(msg);
+			}
+		},
+		error : function(jqXHR, status, error) {
+
+		}
+	});
+});
