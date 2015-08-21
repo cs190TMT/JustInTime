@@ -26,3 +26,35 @@
 <link href="../css/style.css" rel="stylesheet" />
 <link href="../css/style-responsive.css" rel="stylesheet" />
 <link href="../css/radical.css" rel="stylesheet" />
+
+<!-- Custom css for project list *Could be another external stylesheet* -->
+<style>
+	.containerList {
+		border-color: #dddddd;
+		border-radius: 4px;
+		border-style: solid;
+		border-width: 1px;
+		margin-top: 10px;
+		padding: 0 15px 0 15px;
+	}
+	.listRow {
+		padding: 10px;
+	}
+	.listRowHeader {
+		border-width: 0 0 0 0;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	.listRowProperty {
+		border-color: #dddddd;
+		border-style: solid;
+		border-width: 1px 0 0 0;
+	}
+	#projectList .listRowProperty:hover {
+		background-color: #dddddd;
+		color: blue;
+	}
+	#taskMList .listRowProperty:hover {
+		background-color: #dddddd;
+	}
+</style>

@@ -24,6 +24,7 @@ $("#calendarButton").click(
 					"radical-simple-button-active");
 		});
 
+//Functions for Tasks start
 function retrieveTaskMasterList(successMessage) {
 	// alert("inside meth");
 	$("#taskMList").empty();
@@ -34,86 +35,50 @@ function retrieveTaskMasterList(successMessage) {
 				data : null,
 				success : function(data, status, jqXHR) {
 					if (data.errorList.length == 0) {
-						var formattedTaskList = "";
+						var formattedTaskList = ''
+							+ '<div class="row listRow listRowHeader">'
+							+ '<div class="col-md-4 listProperty listHeader">Name</div>'
+							+ '<div class="col-md-4 listProperty listHeader">Details</div>'
+							+ '</div>';
 						$
 								.each(
 										data.taskList,
 										function(index, value) {
-											formattedTaskList += '<hr />'
-													+ '<div class="col-lg-12 radical-list-pin">'
-													+ '<span class="pin-phase radical-color-design">Master</span>'
-													+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
-													+ '					data-target="#editTaskModal">'
-													+ '	<span class=""></span> ...'
-													+ '</button>'
-													+ '<div class="pin-content radical-border-design">'
-													+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
-													+ value.taskName
-													+ '<br /></span>'
-													+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
-													+ value.taskDetails
-													+ '<br /></span>'
-													+ '</div>' + '</div>';
+											formattedTaskList += ''
+													+ '<div class="row listRow listRowProperty">'
+														+ '<div class="col-md-4 listProperty">'
+														+ value.taskName
+														+ '</div>'
+														+ '<div class="col-md-4 listProperty">'
+														+ value.taskDetails
+														+ '</div>'
+													+ '</div>'
+													+ '<div class="row listRow listRow	Edit listRowProperty">'
+														+ '<di class="col-md-6 listEdit">'
+															+ '<form>'
+																+ '<div class="row">'
+																+ '<div class="col-md-2">'
+																+ 'Name'
+																+ '</div>'
+																+ '<div class="col-md-10">'
+																+ '<input class="form-control" id="taskName" type="text" value="'
+																+ value.taskName
+																+ '"/>'
+																+ '</div>'
+																+ 'Detail'
+																+ '<input class="form-control" id="taskDetail" type="text" value="'
+																+ value.taskDetails
+																+ '"/>'
+																+ '</div>'
+															+ '</form>'
+															+ '</di>'
+													+ '</div>';
 										});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
 						// alert(formattedTaskList);
 						$("#taskMList").html(formattedTaskList);
-						if (undefined != successMessage && "" != successMessage) {
-							// alert(successMessage);
-						}
-					} else {
-						alert('Failed to retreive tasks masterlist!');
-					}
-				},
-				error : function(jqXHR, status, error) {
-					alert("error");
-				}
-			});
-}
-
-function retrieveProjectList(successMessage) {
-	$("#projectList").empty();
-	$
-			.ajax({
-				url : 'retrieveProjectList',
-				type : 'GET',
-				data : null,
-				success : function(data, status, jqXHR) {
-					if (data.errorList.length == 0) {
-						var formattedProjectList = "";
-						$
-								.each(
-										data.projectList,
-										function(index, value) {
-											formattedProjectList += '<hr />'
-													+ '<div class="col-lg-12 radical-list-pin">'
-													+ '<span class="pin-phase radical-color-design">Project</span>'
-													+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
-													+ '					data-target="#editTaskModal">'
-													+ '	<span class=""></span> ...'
-													+ '</button>'
-													+ '<div class="pin-content radical-border-design">'
-													+ '<span class="pin-info"><b>Project Name: &nbsp;</b>'
-													+ value.projectName
-													+ '<br /></span>'
-													+ '<span class="pin-info"><b>Project Details: &nbsp;</b>'
-													+ value.projectDetails
-													+ '<br /></span>'
-													+ '<a href="/projectPage?projectName='// create
-													// a
-													// form?
-													+ value.projectName
-													+ '" class="button" style="font-weight: bold">'
-													+ 'Go to project' + '</a>'
-													+ '</div>' + '</div>';
-										});
-						if (formattedProjectList == "") {
-							formattedProjectList = "<div>No Projects in the Master List!</div>";
-						}
-						// alert(formattedProjectList);
-						$("#projectList").html(formattedProjectList);
 						if (undefined != successMessage && "" != successMessage) {
 							// alert(successMessage);
 						}
@@ -150,20 +115,14 @@ function searchTask(taskName) {
 										function(index, value) {
 
 											formattedTaskList += ''
-													+ '<div class="col-lg-12 radical-list-pin">'
-													+ '<span class="pin-phase radical-color-design">Master</span>'
-													+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
-													+ '					data-target="#editTaskModal">'
-													+ '	<span class=""></span> ...'
-													+ '</button>'
-													+ '<div class="pin-content radical-border-design">'
-													+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
+													+ '<div class="row listRow listRowProperty">'
+													+ '<div class="col-md-4 listProperty">'
 													+ value.taskName
-													+ '<br /></span>'
-													+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
+													+ '</div>'
+													+ '<div class="col-md-4 listProperty">'
 													+ value.taskDetails
-													+ '<br /></span>'
-													+ '</div>' + '</div>';
+													+ '</div>'
+													+ '</div>';
 
 										});
 
@@ -182,6 +141,61 @@ function searchTask(taskName) {
 				}
 			});
 }
+//Functions for Tasks end
+
+//Functios for Projects start
+function retrieveProjectList(successMessage) {
+	$("#projectList").empty();
+	$
+			.ajax({
+				url : 'retrieveProjectList',
+				type : 'GET',
+				data : null,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedProjectList = ''
+							+ '<div class="row listRow listRowHeader">'
+							+ '<div class="col-md-4 listProperty listHeader">Name</div>'
+							+ '<div class="col-md-4 listProperty listHeader">Details</div>'
+							+ '</div>';
+						$
+								.each(
+										data.projectList,
+										function(index, value) {
+											formattedProjectList += ''
+													+ '<a href="/projectPage?projectName='// create
+													// a
+													// form?
+													+ value.projectName
+													+ '" style="color: black">'
+													+ '<div class="row listRow listRowProperty">'
+													+ '<div class="col-md-4 listProperty">'
+													+ value.projectName
+													+ '</div>'
+													+ '<div class="col-md-4 listProperty">'
+													+ value.projectDetails
+													+ '</div>'
+													+ '</div>'
+													+ '</a>';
+										});
+						if (formattedProjectList == "") {
+							formattedProjectList = "<div>No Projects in the Master List!</div>";
+						}
+						// alert(formattedProjectList);
+						$("#projectList").html(formattedProjectList);
+						if (undefined != successMessage && "" != successMessage) {
+							// alert(successMessage);
+						}
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("error");
+				}
+			});
+}
+//Functios for Projects end
 
 function setCalendar() {
 	$('#calendar').fullCalendar({
@@ -238,3 +252,4 @@ function setCalendar() {
 		} ]
 	});
 }
+

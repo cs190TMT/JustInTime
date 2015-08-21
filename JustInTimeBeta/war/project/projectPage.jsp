@@ -41,6 +41,7 @@ body {
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/angular.js"></script>
 <script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/setCalendar.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
@@ -68,7 +69,10 @@ body {
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
+						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;"><%=projectName%></h3>
+						</div>
+						<div class="col-lg-6">
 						<button id="calendarButton" type="button"
 							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
@@ -82,14 +86,15 @@ body {
 							style="float: right" aria-label="Left Align" data-toggle="modal"
 							data-target="#pullTasksModal">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-							pull tasks
+							Pull Tasks
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right; margin-right: 5px;" aria-label="Left Align"
 							data-toggle="modal" data-target="#addLogModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new log
+							New Log
 						</button>
+						</div>
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
@@ -150,10 +155,9 @@ body {
 							</ul>
 						</div>
 					</div>
+					<div class="containerList" id="taskMList">
+					</div>
 				</div>
-				<div class="row"
-					style="padding-left: 50px; margin-top: 110px; margin-right: 300px; padding-right: 30px;"
-					id="taskMList"></div>
 
 				<br />
 				<div class="" style="margin-top: 150px; margin-right: 300px;"
@@ -166,9 +170,11 @@ body {
 		<!--main content end-->
 
 		<!--footer start-->
+		<div style="postion: fixed; bottom: 0px">
 		<%@include file="../includes/footer.jsp"%>
+		</div>
+		<!-- footer end -->
 		<%@include file="../includes/pullTasksModal.jsp"%>
-		<!--footer end-->
 	</section>
 
 
@@ -191,6 +197,16 @@ body {
 			$("#calendar").hide();
 			retrieveTaskMasterList("TaskMasterList");
 		});
+		
+		 $("#calendarButton").click(function(){
+		        $("#calendar").show();
+		        $("#taskMList").hide();
+		    });
+		    $("#listButton").click(function(){
+		    	 $("#calendar").hide();
+			        $("#taskMList").show();
+		    });
+		    
 	</script>
 
 </body>

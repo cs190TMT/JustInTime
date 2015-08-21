@@ -27,6 +27,6 @@ public class AddProjectController extends Controller {
         ProjectsDto projectDto = new ProjectsDto();
         BeanUtil.copy(input, projectDto);
         service.addProject(projectDto);
-        return redirect(this.basePath);
+        return forward("/project/projects.jsp");
     }
 }
