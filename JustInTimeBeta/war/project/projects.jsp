@@ -47,32 +47,37 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
+						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Projects</h3>
+						</div>
+						<div class="col-lg-6">
 						<button type="button" class="radical-simple-button-task"
 							style="float: right; margin-right: 5px;" aria-label="Left Align"
 							data-toggle="modal" data-target="#addProjectModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new project
+							New Project
 						</button>
+						</div>
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for projects"> <span
-								class="input-group-btn">
+							<input type="text" class="form-control" placeholder="Search for projects">
+							<span class="input-group-btn">
 								<button class="btn btn-default" type="button">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								</button>
 							</span>
 						</div>
-						<div class="row"
-							style="padding-left: 15px; margin-top: 10px; padding-right: 15px;"
-							id="projectList"></div>
 					</div>
+					<!-- Project List start-->
+					<div class="containerList" id="projectList">
+					</div>
+					<!-- Project List end -->
 
 					<div id="T1"></div>
 					<%@ include file="../includes/addLogModal.jsp"%>
 					<!-- page end-->
+				</div>
 			</section>
 		</section>
 		<!--main content end-->

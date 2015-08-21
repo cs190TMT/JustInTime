@@ -13,8 +13,8 @@
           </div>
          -->
 	<!--logo start-->
-	<a href="index" class="logo radical-logo"><img
-		src="http://localhost:8888/img/Jit_logo3.png" /></a>
+	<a href="index" class="logo radical-logo" style="float:left; margin-left: -25px"><img
+		src="../img/Jit_logo3.png" /></a>
 	<!--logo end-->
 
 	<div class="top-nav radical-top-nav">
