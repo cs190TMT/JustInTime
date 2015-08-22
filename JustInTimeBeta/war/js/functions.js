@@ -46,12 +46,32 @@ function retrieveTaskMasterList(successMessage) {
 										function(index, value) {
 											formattedTaskList += ''
 													+ '<div class="row listRow listRowProperty">'
-													+ '<div class="col-md-4 listProperty">'
-													+ value.taskName
+														+ '<div class="col-md-4 listProperty">'
+														+ value.taskName
+														+ '</div>'
+														+ '<div class="col-md-4 listProperty">'
+														+ value.taskDetails
+														+ '</div>'
 													+ '</div>'
-													+ '<div class="col-md-4 listProperty">'
-													+ value.taskDetails
-													+ '</div>'
+													+ '<div class="row listRow listRow	Edit listRowProperty">'
+														+ '<di class="col-md-6 listEdit">'
+															+ '<form>'
+																+ '<div class="row">'
+																+ '<div class="col-md-2">'
+																+ 'Name'
+																+ '</div>'
+																+ '<div class="col-md-10">'
+																+ '<input class="form-control" id="taskName" type="text" value="'
+																+ value.taskName
+																+ '"/>'
+																+ '</div>'
+																+ 'Detail'
+																+ '<input class="form-control" id="taskDetail" type="text" value="'
+																+ value.taskDetails
+																+ '"/>'
+																+ '</div>'
+															+ '</form>'
+															+ '</di>'
 													+ '</div>';
 										});
 						if (formattedTaskList == "") {
@@ -95,20 +115,14 @@ function searchTask(taskName) {
 										function(index, value) {
 
 											formattedTaskList += ''
-													+ '<div class="col-lg-12 radical-list-pin">'
-													+ '<span class="pin-phase radical-color-design">Master</span>'
-													+ '<button type="button" class="pin-tools" style="font-weight: bold" data-toggle="modal"'
-													+ '					data-target="#editTaskModal">'
-													+ '	<span class=""></span> ...'
-													+ '</button>'
-													+ '<div class="pin-content radical-border-design">'
-													+ '<span class="pin-info"><b>Task Name: &nbsp;</b>'
+													+ '<div class="row listRow listRowProperty">'
+													+ '<div class="col-md-4 listProperty">'
 													+ value.taskName
-													+ '<br /></span>'
-													+ '<span class="pin-info"><b>Task Details: &nbsp;</b>'
+													+ '</div>'
+													+ '<div class="col-md-4 listProperty">'
 													+ value.taskDetails
-													+ '<br /></span>'
-													+ '</div>' + '</div>';
+													+ '</div>'
+													+ '</div>';
 
 										});
 

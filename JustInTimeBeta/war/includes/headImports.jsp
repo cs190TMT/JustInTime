@@ -31,7 +31,7 @@
 <style>
 	.containerList {
 		border-color: #dddddd;
-		border-radius: 1.5%;
+		border-radius: 4px;
 		border-style: solid;
 		border-width: 1px;
 		margin-top: 10px;

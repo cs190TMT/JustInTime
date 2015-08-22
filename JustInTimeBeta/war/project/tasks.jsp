@@ -49,18 +49,8 @@
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
 						</div>
 						<div class="col-lg-6">
-						<button id="calendarButton" type="button"
-							class="radical-simple-button"
-							style="float: right; margin-right: 5px;">
-							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-						</button>
-						<button id="listButton" type="button"
-							class="radical-simple-button-active" style="float: right">
-							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
-						</button>
-
 						<button type="button" class="radical-simple-button-task"
-							style="float: right" aria-label="Left Align" data-toggle="modal"
+							style="float: right; margin-right:0px" aria-label="Left Align" data-toggle="modal"
 							data-target="#addTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							New Task
