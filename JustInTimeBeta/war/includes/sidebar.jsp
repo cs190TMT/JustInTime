@@ -45,4 +45,3 @@
 </aside>
 <%@include file="../includes/addMasterTaskModal.jsp"%>
 <%@include file="../includes/addProjectModal.jsp"%>
-

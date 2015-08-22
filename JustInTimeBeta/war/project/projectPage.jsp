@@ -41,7 +41,6 @@ body {
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/angular.js"></script>
 <script type="text/javascript" src="../js/functions.js"></script>
-<script type="text/javascript" src="../js/setCalendar.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
@@ -197,16 +196,6 @@ body {
 			$("#calendar").hide();
 			retrieveTaskMasterList("TaskMasterList");
 		});
-		
-		 $("#calendarButton").click(function(){
-		        $("#calendar").show();
-		        $("#taskMList").hide();
-		    });
-		    $("#listButton").click(function(){
-		    	 $("#calendar").hide();
-			        $("#taskMList").show();
-		    });
-		    
 	</script>
 
 </body>
