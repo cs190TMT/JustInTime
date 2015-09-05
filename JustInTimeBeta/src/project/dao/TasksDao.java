@@ -18,9 +18,16 @@ import project.model.TasksModel;
 import com.google.appengine.api.datastore.Query.*;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 
 public class TasksDao {
+    
+    public List<TasksModel> getTasksMasterList() {
+        TasksModelMeta t = new TasksModelMeta();
+        Key parentKey = KeyFactory.createKey("Tasks", "Master");
+        return Datastore.query(t, parentKey).asList();
+    }
 
     public boolean saveMasterTask(TasksModel tasksModel) {
         boolean result = true;
@@ -58,12 +65,6 @@ public class TasksDao {
             result = false;
         }
         return result;
-    }
-
-    public List<TasksModel> getTasksMasterList() {
-        TasksModelMeta t = new TasksModelMeta();
-        Key parentKey = KeyFactory.createKey("Tasks", "Master");
-        return Datastore.query(t, parentKey).asList();
     }
 
     public List<TasksModel> searchTasksMasterList(String name, String date,
@@ -120,5 +121,28 @@ public class TasksDao {
         }
 
         return tasksModels;
+    }
+    
+    public boolean updateMasterTask(TasksModel taskModel) {
+        boolean result = true;
+        TasksModelMeta tm = new TasksModelMeta();
+        Query.Filter idFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, taskModel.getId());
+
+        try {
+            TasksModel originalTaskModel = Datastore.query(tm).filter(idFilter).asSingle();
+            if (originalTaskModel != null) {
+                originalTaskModel.setTaskName(taskModel.getTaskName());
+                originalTaskModel.setTaskDetails(taskModel.getTaskDetails());
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.put(originalTaskModel);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+
+        return result;
     }
 }

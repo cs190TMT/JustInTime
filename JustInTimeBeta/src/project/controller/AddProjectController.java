@@ -15,6 +15,7 @@ import org.slim3.util.BeanUtil;
 import org.slim3.util.RequestMap;
 
 import project.dto.ProjectsDto;
+import project.dto.TasksDto;
 import project.service.ProjectsService;
 
 public class AddProjectController extends Controller {
@@ -27,6 +28,6 @@ public class AddProjectController extends Controller {
         ProjectsDto projectDto = new ProjectsDto();
         BeanUtil.copy(input, projectDto);
         service.addProject(projectDto);
-        return forward("/project/projects.jsp");
+        return redirect("projects");
     }
 }

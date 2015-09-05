@@ -45,79 +45,80 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
-						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
-						</div>
-						<div class="col-lg-6">
+						<div id="updateDisplay"></div>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right; margin-right:0px" aria-label="Left Align" data-toggle="modal"
 							data-target="#addTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							New Task
 						</button>
-						</div>
 					</div>
-					<div class="radical-task-header" style="margin-top: 10px;">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for tasks" oninput = "searchTask(this.value)"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-								</button>
-							</span>
-						</div>
-						<div class="btn-group btn-group-sm" role="group" aria-label="..."
-							style="margin-top: 10px;">
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button"
-									class="btn btn-default dropdown-toggle radical-no-round-corners"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Date <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Today</a></li>
-									<li><a href="#">Tomorrow</a></li>
-									<li><a href="#">This week</a></li>
-									<li><a href="#">Next week</a></li>
-									<li><a href="#">This month</a></li>
-								</ul>
+					<div class="row">
+						<div class="radical-task-header" style="margin-top: 10px;">
+							<div class="input-group">
+								<input type="text" class="form-control"
+									placeholder="Search for tasks" oninput = "searchTask(this.value)"> <span
+									class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+									</button>
+								</span>
 							</div>
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Status <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Not started</a></li>
-									<li><a href="#">In progress</a></li>
-									<li><a href="#">Overdue</a></li>
-									<li><a href="#">Finished</a></li>
-								</ul>
-							</div>
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button"
-									class="btn btn-default dropdown-toggle radical-no-round-corners"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Phase <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Planning</a></li>
-									<li><a href="#">Design</a></li>
-									<li><a href="#">Coding</a></li>
-									<li><a href="#">Testing</a></li>
-								</ul>
+							<div class="btn-group btn-group-sm" role="group" aria-label="..."
+								style="margin-top: 10px;">
+								<div class="btn-group btn-group-sm" role="group">
+									<button type="button"
+										class="btn btn-default dropdown-toggle radical-no-round-corners"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										Date <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">All</a></li>
+										<li><a href="#">Today</a></li>
+										<li><a href="#">Tomorrow</a></li>
+										<li><a href="#">This week</a></li>
+										<li><a href="#">Next week</a></li>
+										<li><a href="#">This month</a></li>
+									</ul>
+								</div>
+								<div class="btn-group btn-group-sm" role="group">
+									<button type="button" class="btn btn-default dropdown-toggle"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										Status <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">All</a></li>
+										<li><a href="#">Not started</a></li>
+										<li><a href="#">In progress</a></li>
+										<li><a href="#">Overdue</a></li>
+										<li><a href="#">Finished</a></li>
+									</ul>
+								</div>
+								<div class="btn-group btn-group-sm" role="group">
+									<button type="button"
+										class="btn btn-default dropdown-toggle radical-no-round-corners"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">
+										Phase <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">All</a></li>
+										<li><a href="#">Planning</a></li>
+										<li><a href="#">Design</a></li>
+										<li><a href="#">Coding</a></li>
+										<li><a href="#">Testing</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 					<!-- Task List start -->
-					<div class="containerList" id="taskMList">
+					<div class="row">
+						<div class="containerList" id="taskMList">
+						</div>
 					</div>
 					<!-- Task List end -->
 				</div>

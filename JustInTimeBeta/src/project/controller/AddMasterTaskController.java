@@ -27,7 +27,7 @@ public class AddMasterTaskController extends Controller {
         TasksDto taskDto = new TasksDto();
         BeanUtil.copy(input, taskDto);
         service.addMasterTask(taskDto);
-        return forward("/project/tasks.jsp");
+        return redirect("tasks");
     }
 
 }

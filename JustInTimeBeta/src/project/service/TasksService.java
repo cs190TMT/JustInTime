@@ -8,6 +8,7 @@
 package project.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -99,5 +100,19 @@ public class TasksService {
             System.out.println("No recs in dto");
         }
         return taskList;
+    }
+    
+    public TasksDto updateMasterTask(TasksDto input) {
+        TasksModel task = new TasksModel();
+        task.setId(input.getId());
+        task.setTaskName(input.getTaskName());
+        task.setTaskDetails(input.getTaskDetails());
+
+        if(!this.dao.updateMasterTask(task)) {
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+
+        return input;
     }
 }

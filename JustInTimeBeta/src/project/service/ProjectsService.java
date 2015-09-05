@@ -1,18 +1,21 @@
 package project.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import project.dao.ProjectsDao;
 import project.dto.ProjectsClientDto;
 import project.dto.ProjectsDto;
 import project.model.ProjectsModel;
+import project.model.TasksModel;
 
 public class ProjectsService {
 
     ProjectsDao dao = new ProjectsDao();
     
     public ProjectsDto addProject(ProjectsDto input) {
+        
         ProjectsModel project = new ProjectsModel();
         project.setProjectName(input.getProjectName());
         project.setProjectDetails(input.getProjectDetails());
