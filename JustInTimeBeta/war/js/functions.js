@@ -353,4 +353,34 @@ function setCalendar() {
 		} ]
 	});
 }
-
+/*
+$("#btnAddMasterTask").on("click", function() {
+	jsonData = {
+			data : JSON.stringify({
+				taskName : $('#taskMasterName').val(),
+				taskDetails : $('#taskMasterDetails').val()
+			})
+		};
+	$.ajax({
+		url : 'addMasterTask',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json'
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$('#taskMasterName').val();
+				$('#taskMasterDetails').val();
+				retrieveTaskMasterList('Entry saved successfully!');
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		},
+		error : function(data, status, jqXHR) {
+			
+		}
+	});
+});
+*/

@@ -23,18 +23,18 @@
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskName" />
+							<input type="text" class="form-control" name="taskName" id="taskMasterName"/>
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskDetails" />
+							<input type="text" class="form-control" name="taskDetails" id="taskMasterDetails"/>
 						</dd>
 					</dl>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Add</button>
+					<button type="submit" class="btn btn-primary" id="btnAddMasterTask">Add</button>
 				</div>
 			</form>
 		</div>
