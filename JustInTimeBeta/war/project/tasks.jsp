@@ -124,6 +124,37 @@
 					</div>
 					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="taskMList">
 						
+						  
+						<div class = "row radical-pin-tasks">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								Name of Project
+							</div>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								Details
+							</div>
+							<div class = "radical-pin-tasks-name-edit col-lg-3">
+								<input type="text" class="form-control" placeholder="" value="Name of Project">
+							</div>
+							<div class = "radical-pin-tasks-details-edit col-lg-7">
+								<textarea class="form-control" rows="3">Details</textarea>
+							</div>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+								<button class="btn btn-sm text-right radical-task-btn-edit">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								</button>
+								<button class="btn btn-sm text-right radical-tasks-btn-remove">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
+								<button class="btn btn-sm text-right radical-task-btn-save">
+									save
+								</button>
+								<button class="btn btn-sm text-right radical-tasks-btn-cancel">
+									cancel
+								</button>
+							</div>
+						</div>
+						
+						
 					</div>
 				</div>
 				<div id="T1"></div>
@@ -137,6 +168,29 @@
 		<!--footer end-->
 	</section>
 
+
+   <!-- Confirm Remove Task Modal -->
+
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="confirmRemoveTask">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+			  	<div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Delete Task</h4>
+			      </div>
+			      <div class="modal-body">
+			         Are you sure you want to delete the task <b><span class="removeTaskLabel">Spartan</span></b> ?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-danger" data-dismiss="modal" id = "confirmDeleteTask"  onclick="deleteConfirmed()">Delete</button>
+			        <button type="button" class="btn btn-default">Cancel</button>
+			        
+			      </div>
+			</div>
+		</div>
+	</div>
+	
+
 	<!-- js placed at the end of the document so the pages load faster -->
 
 	<%@include file="../includes/footImports.jsp"%>
@@ -144,9 +198,21 @@
 	<script type="text/javascript">
 		$(".knob").knob();
 		
+		$(".radical-tasks-btn-remove").bind("click", 
+				function(){
+					alert("removing");
+				}		
+			
+			);
+		
 		$(document).ready(function() {
+			
+			
 			retrieveTaskMasterList("TaskMasterList");
+			
+			
 		});
+		
 		
 	</script>
 

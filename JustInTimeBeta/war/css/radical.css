@@ -468,3 +468,96 @@ ul.radical-sidebar-menu li a.active i {
 	
 }
 
+
+.radical-pin-tasks{
+	margin: 0px;
+	padding: 5px;
+	padding-right: 2px;
+	border-bottom: 1px solid;
+	border-bottom-color: #808080;
+}
+
+.radical-pin-tasks:hover{
+	background-color: #cffff3;
+}
+
+.radical-pin-tasks .radical-pin-tasks-controls .radical-task-btn-edit{
+	visibility: hidden;
+	
+
+}
+
+.radical-pin-tasks .radical-pin-tasks-controls .radical-tasks-btn-remove{
+	visibility: hidden;
+	
+}
+
+.radical-pin-tasks:hover .radical-pin-tasks-controls .radical-tasks-btn-remove{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radical-pin-tasks:hover .radical-pin-tasks-controls .radical-task-btn-edit{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+
+
+
+.radical-tasks-btn-remove{
+	background-color: #ff4848;
+	color: #fff;
+}
+
+.radical-tasks-btn-remove:hover{
+	background-color: #ff2929;
+	color: #fff;
+}
+
+.radical-task-btn-edit{
+	background-color: #777777;
+	color: #fff;
+	margin-right: 5px;
+}
+
+.radical-task-btn-edit:hover{
+	background-color: #4d4d4d;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel{
+	background-color: #ff4848;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel:hover{
+	background-color: #ff2929;
+	color: #fff;
+}
+
+.radical-task-btn-save{
+	background-color: #05d091;
+	margin-right: 5px;
+	color: #fff;
+}
+
+.radical-task-btn-save:hover{
+	background-color: #009d6c;
+	color: #fff;
+}
+
+.removeTaskLabel{
+	color: #05d091;
+}
+
