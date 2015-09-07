@@ -54,6 +54,7 @@ public class TasksService {
         return input;
     }
     
+
     public TasksDto removeMasterTask(TasksDto input){
         TasksModel task = new TasksModel();
         task.setId(input.getId());
@@ -66,6 +67,7 @@ public class TasksService {
         return input;
     }
     
+
     public TasksClientDto getTaskMasterList() {
         List<TasksModel> tasksModel = this.dao.getTasksMasterList();
         TasksClientDto taskList = new TasksClientDto();

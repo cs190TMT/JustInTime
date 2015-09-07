@@ -45,23 +45,17 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
+						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
-						<button id="calendarButton" type="button"
-							class="radical-simple-button"
-							style="float: right; margin-right: 5px;">
-							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-						</button>
-						<button id="listButton" type="button"
-							class="radical-simple-button-active" style="float: right">
-							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
-						</button>
-
+						</div>
+						<div class="col-lg-6">
 						<button type="button" class="radical-simple-button-task"
-							style="float: right" aria-label="Left Align" data-toggle="modal"
+							style="float: right; margin-right:0px" aria-label="Left Align" data-toggle="modal"
 							data-target="#addTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new task
+							New Task
 						</button>
+						</div>
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
@@ -122,6 +116,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="taskMList">
 						
 						  
@@ -155,7 +150,9 @@
 						</div>
 						
 						
+
 					</div>
+					<!-- Task List end -->
 				</div>
 				<div id="T1"></div>
 				<!-- page end-->
@@ -198,12 +195,6 @@
 	<script type="text/javascript">
 		$(".knob").knob();
 		
-		$(".radical-tasks-btn-remove").bind("click", 
-				function(){
-					alert("removing");
-				}		
-			
-			);
 		
 		$(document).ready(function() {
 			

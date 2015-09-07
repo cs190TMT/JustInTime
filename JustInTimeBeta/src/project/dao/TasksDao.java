@@ -16,6 +16,7 @@ import project.meta.TasksModelMeta;
 import project.model.TasksModel;
 
 
+
 import com.google.appengine.api.datastore.Query.*;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -61,6 +62,7 @@ public class TasksDao {
         }
         return result;
     }
+
     
     public boolean deleteMasterTask(TasksModel task){
         boolean result = true;
@@ -83,6 +85,7 @@ public class TasksDao {
         
         return result;
     }
+
 
     public List<TasksModel> getTasksMasterList() {
         TasksModelMeta t = new TasksModelMeta();

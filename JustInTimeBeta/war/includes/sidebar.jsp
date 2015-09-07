@@ -16,7 +16,7 @@
 					<button type="button" class="radical-add-button"
 						data-toggle="modal" data-target="#addTaskModal">
 						<span class="glyphicon glyphicon glyphicon-plus-sign"
-							aria-hidden="true"><text>add</text></span>
+							aria-hidden="true"><text>Add</text></span>
 					</button>
 			</a></li>
 
@@ -26,7 +26,7 @@
 					<button type="button" class="radical-add-button"
 						data-toggle="modal" data-target="#addProjectModal">
 						<span class="glyphicon glyphicon glyphicon-plus-sign"
-							aria-hidden="true"><text>add</text></span>
+							aria-hidden="true"><text>Add</text></span>
 					</button>
 			</a></li>
 
@@ -45,4 +45,3 @@
 </aside>
 <%@include file="../includes/addMasterTaskModal.jsp"%>
 <%@include file="../includes/addProjectModal.jsp"%>
-
