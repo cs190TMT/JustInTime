@@ -24,18 +24,18 @@
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-							<input type="text" class="form-control" name="projectName" />
+							<input type="text" class="form-control" name="projectName" id="projectName" />
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input type="text" class="form-control" name="projectDetails" />
+							<input type="text" class="form-control" name="projectDetails" id="projectDetails" />
 						</dd>
 					</dl>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Add</button>
+					<button type="submit" class="btn btn-primary" onclick="addProject()">Add</button>
 				</div>
 			</form>
 		</div>

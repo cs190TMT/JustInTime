@@ -26,7 +26,7 @@ public class AddMasterTaskController extends Controller {
         try {
             json = new JSONObject((String) this.requestScope("data"));
 
-            dto.setTaskName(json.getString("taskName"));
+            dto.setTaskName(json.getString("taskName")  );
             dto.setTaskDetails(json.getString("taskDetails"));
             if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || (dto.getTaskDetails() == null) || dto.getTaskDetails().isEmpty()) {
                 dto.getErrorList().add("Missing content");
@@ -44,7 +44,6 @@ public class AddMasterTaskController extends Controller {
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
         return null;
-
     }
 
 }
