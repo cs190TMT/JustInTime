@@ -80,7 +80,7 @@ public class TasksService {
         TasksDto taskDto;
         
         if(tasksModel == null){
-            System.out.println("model is null");
+            System.out.println("model null");
         }
         if(tasksModel.isEmpty()){
             System.out.println("No recs in dao");
