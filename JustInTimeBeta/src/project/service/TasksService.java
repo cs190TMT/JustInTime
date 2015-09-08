@@ -54,6 +54,18 @@ public class TasksService {
         return input;
     }
     
+    public TasksDto removeMasterTask(TasksDto input){
+        TasksModel task = new TasksModel();
+        task.setId(input.getId());
+        
+        
+        if(!this.dao.deleteMasterTask(task)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+        return input;
+    }
+    
     public TasksClientDto getTaskMasterList() {
         List<TasksModel> tasksModel = this.dao.getTasksMasterList();
         TasksClientDto taskList = new TasksClientDto();
