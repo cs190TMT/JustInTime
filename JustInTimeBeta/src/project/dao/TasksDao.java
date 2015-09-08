@@ -15,9 +15,12 @@ import org.slim3.datastore.Datastore;
 import project.meta.TasksModelMeta;
 import project.model.TasksModel;
 
+
+
 import com.google.appengine.api.datastore.Query.*;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 
 public class TasksDao {
@@ -57,6 +60,53 @@ public class TasksDao {
         } catch (Exception e) {
             result = false;
         }
+        return result;
+    }
+
+    
+    public boolean deleteMasterTask(TasksModel task){
+        boolean result = true;
+        
+        TasksModelMeta meta = new TasksModelMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, task.getId());
+        
+        try {
+            TasksModel originalTaskModel = Datastore.query(meta).filter(mainFilter).asSingle();
+            if (originalTaskModel != null) {
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.delete(originalTaskModel.getKey());
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        
+        return result;
+    }
+    
+    public boolean updateMasterTask(TasksModel task){
+        boolean result = true;
+        
+        TasksModelMeta meta = new TasksModelMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, task.getId());
+        
+        try {
+            TasksModel originalTaskModel = Datastore.query(meta).filter(mainFilter).asSingle();
+            if (originalTaskModel != null) {
+                originalTaskModel.setTaskName(task.getTaskName());
+                originalTaskModel.setTaskDetails(task.getTaskDetails());
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.put(originalTaskModel);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        
         return result;
     }
 
@@ -122,3 +172,4 @@ public class TasksDao {
         return tasksModels;
     }
 }
+

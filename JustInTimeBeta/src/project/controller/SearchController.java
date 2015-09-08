@@ -9,12 +9,8 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
 
-import java.util.List;
-
 import project.dto.TasksClientDto;
-import project.dto.TasksDto;
 import project.service.TasksService;
-import project.model.TasksModel;
 /**
  * Main Screen Search controller.
  * @author <name here>
