@@ -34,7 +34,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" id="btnAddMasterTask">Add</button>
+					<button type="submit" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()">Add</button>
 				</div>
 			</form>
 		</div>
