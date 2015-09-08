@@ -18,7 +18,7 @@
 				</button>
 				<h4 class="modal-title">Add Task</h4>
 			</div>
-			<form method="post" action="/addMasterTask">
+			<!-- <form method="post" action="/addMasterTask"> -->
 				<div class="modal-body">
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
@@ -34,9 +34,9 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" id="btnAddMasterTask">Add</button>
+					<button type="button" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()">Add</button>
 				</div>
-			</form>
+			<!-- </form> -->
 		</div>
 		<!-- /.modal-content -->
 	</div>
