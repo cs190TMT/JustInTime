@@ -5,8 +5,6 @@
  * -------------------------------------------------------------------------
  */
 
-
-
 $("#listButton").click(
 		function() {
 			$("#calendar").hide();
@@ -28,7 +26,8 @@ $("#calendarButton").click(
 
 //Functions for Tasks start
 function retrieveTaskMasterList(successMessage) {
-	// alert("inside meth");
+ 
+	
 	$("#taskMList").empty();
 	$
 			.ajax({
@@ -37,11 +36,7 @@ function retrieveTaskMasterList(successMessage) {
 				data : null,
 				success : function(data, status, jqXHR) {
 					if (data.errorList.length == 0) {
-						var formattedTaskList = ''
-							+ '<div class="row listRow listRowHeader">'
-							+ '<div class="col-md-4 listProperty listHeader">Name</div>'
-							+ '<div class="col-md-4 listProperty listHeader">Details</div>'
-							+ '</div>';
+						var formattedTaskList = '';
 						$
 								.each(
 										data.taskList,
@@ -55,24 +50,35 @@ function retrieveTaskMasterList(successMessage) {
 												+ value.taskDetails
 												+ '</div>'
 												+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
-												+ '<input type="text" class="form-control" placeholder="" value="' + value.taskName + '">'
+												+ '<input type="text" class="form-control" oninput = "taskEditChange(this)" placeholder="" value="'+ value.taskName +'">'
 												+ '</div>'
-												+ '<div class = "radical-pin-tasks-details-edit col-lg-7">'
-												+ '<textarea class="form-control" rows="3">'
-												+ value.taskDetails
-												+ '</textarea>'
+												+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
+												+ '<textarea class="form-control" oninput = "taskEditChange(this)" rows="3">'+ value.taskDetails +'</textarea>'
 												+ '</div>'
+												+ '<div class = "radical-pin-tasks-remove col-lg-10">'
+												+  'Are you sure you want to delete the task <b><span class="removeTaskLabel">'+ value.taskName +'</span></b>'
+												+ '</div>'
+												
 												+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
 												+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">'
 												+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
 												+ '</button>'
-												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this,'+ value.id +')">'
-												+ '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'
+									
+												
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
+												+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
 												+ '</button>'
-												+ '<button class="btn btn-sm text-right radical-task-btn-save">'
+												
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'+ value.id +')">'
+												+ 'delete'
+												+ '</button>'
+												+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '+ value.id +')">'
 												+ 'save'
 												+ '</button>'
 												+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
+												+ 'cancel'
+												+ '</button>'
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
 												+ 'cancel'
 												+ '</button>'
 												+ '</div>'
@@ -83,13 +89,14 @@ function retrieveTaskMasterList(successMessage) {
 						}
 						// alert(formattedTaskList);
 						$("#taskMList").html(formattedTaskList);
-						tasksReady();
 						if (undefined != successMessage && "" != successMessage) {
 							// alert(successMessage);
 						}
 					} else {
 						alert('Failed to retreive tasks masterlist!');
 					}
+					
+					tasksReady();
 				},
 				error : function(jqXHR, status, error) {
 					alert("error");
@@ -147,20 +154,46 @@ function searchTask(taskName) {
 			});
 }
 
-
+function taskEditChange(pin){
+	pin = $(pin).parent().parent();
+	
+	
+	if($(pin).find(".radical-pin-tasks-name-edit").find("input").val() != ""){
+		$(pin).find(".radical-task-btn-save").removeClass("radical-task-btn-save-disabled");
+		$(pin).find(".radical-task-btn-save").removeAttr("disabled");
+		$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
+	}
+	else{
+		$(pin).find(".radical-task-btn-save").addClass("radical-task-btn-save-disabled");
+		$(pin).find(".radical-task-btn-save").attr("disabled","disabled");
+		$(pin).find(".radical-pin-tasks-name-edit").addClass("has-error");
+	}
+	
+}
 
 function taskPinEditMode(pin){
 	
 	pin = $(pin).parent().parent();
 	
-	$(pin).find(".radical-task-btn-edit").hide();
-	$(pin).find(".radical-tasks-btn-remove").hide();
-	$(pin).find(".radical-pin-tasks-name").hide("200","linear", function(){$(pin).find(".radical-pin-tasks-name-edit").show("400","linear");});
-	$(pin).find(".radical-pin-tasks-details").hide("200","linear", 
+	
+	$(pin).find(".radical-pin-tasks-name-edit").find("input").val($(pin).find(".radical-pin-tasks-name").html());
+	$(pin).find(".radical-pin-tasks-details-edit").find("textarea").val($(pin).find(".radical-pin-tasks-details").html());
+	
+	$(pin).find(".radical-task-btn-save").addClass("radical-task-btn-save-disabled");
+	$(pin).find(".radical-task-btn-save").attr("disabled","disabled");
+	$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
+	
+	
+	$(pin).find(".radical-task-btn-edit").fadeOut();
+	$(pin).find(".radical-tasks-btn-remove").fadeOut();
+	$(pin).find(".radical-pin-tasks-name").fadeOut(function(){$(pin).find(".radical-pin-tasks-name-edit").fadeIn();});
+	$(pin).find(".radical-pin-tasks-details").fadeOut( 
 			function(){
-				$(pin).find(".radical-pin-tasks-details-edit").show("400","linear");
-				$(pin).find(".radical-task-btn-save").show("400", "linear");
-				$(pin).find(".radical-tasks-btn-cancel").show("400", "linear");
+				
+				$(pin).find(".radical-pin-tasks-details-edit").fadeIn();
+				$(pin).find(".radical-task-btn-save").fadeIn();
+				$(pin).find(".radical-tasks-btn-cancel").fadeIn();
+				
 	});
 	
 	
@@ -170,17 +203,34 @@ function taskPinNormalMode(pin){
 	
 	pin = $(pin).parent().parent();
 	
-	$(pin).find(".radical-task-btn-save").hide();
-	$(pin).find(".radical-tasks-btn-cancel").hide();
-	$(pin).find(".radical-pin-tasks-name-edit").hide("200","linear", function(){$(pin).find(".radical-pin-tasks-name").show("400","linear");});
-	$(pin).find(".radical-pin-tasks-details-edit").hide("200","linear", 
+	$(pin).find(".radical-task-btn-save").fadeOut();
+	$(pin).find(".radical-tasks-btn-cancel").fadeOut();
+	
+	$(pin).find(".radical-pin-tasks-name-edit").fadeOut(function(){$(pin).find(".radical-pin-tasks-name").fadeIn();});
+	$(pin).find(".radical-pin-tasks-details-edit").fadeOut(
 			function(){
-				$(pin).find(".radical-pin-tasks-details").show("400","linear");
-				$(pin).find(".radical-task-btn-edit").show("400", "linear");
-				$(pin).find(".radical-tasks-btn-remove").show("400", "linear");
+				$(pin).find(".radical-pin-tasks-details").fadeIn();
+				$(pin).find(".radical-task-btn-edit").fadeIn();
+				$(pin).find(".radical-tasks-btn-remove").fadeIn();
 	});
 	
 	
+}
+
+function taskPinNormalMode2(pin){
+	pin = $(pin).parent().parent()
+
+	$(pin).find(".radical-pin-tasks-remove").fadeOut();
+	$(pin).find(".radical-tasks-btn-remove-confirm").fadeOut();
+	$(pin).find(".radical-tasks-btn-cancel-2").fadeOut(
+			function(){
+				$(pin).find(".radical-pin-tasks-name").fadeIn();
+				$(pin).find(".radical-pin-tasks-details").fadeIn();
+				$(pin).find(".radical-task-btn-edit").fadeIn();
+				$(pin).find(".radical-tasks-btn-remove").fadeIn(function(){$(pin).removeClass("radical-pin-tasks-removed","200");});
+				
+			}
+	);
 }
 
 function tasksReady(){
@@ -188,18 +238,33 @@ function tasksReady(){
 	$(".radical-pin-tasks-name-edit").hide();
 	$(".radical-task-btn-save").hide();
 	$(".radical-tasks-btn-cancel").hide();
+	$(".radical-tasks-btn-remove-confirm").hide();
+	$(".radical-tasks-btn-cancel-2").hide();
+	$(".radical-pin-tasks-remove").hide();
 }
 
 
-function removeClicked(btn , id){
-	$("#confirmRemoveTask").modal("show");
-	var taskName = $(btn).parent().parent().find(".radical-pin-tasks-name").html();
-	$("#confirmRemoveTask").find(".removeTaskLabel").html(taskName);
-	$("#confirmDeleteTask").val(id);
+function removeClicked(pin){
+	pin = $(pin).parent().parent();
+	
+	$(pin).addClass("radical-pin-tasks-removed","200");
+	
+	$(pin).find(".radical-pin-tasks-name").fadeOut();
+	$(pin).find(".radical-pin-tasks-details").fadeOut();
+	$(pin).find(".radical-task-btn-edit").fadeOut();
+	$(pin).find(".radical-tasks-btn-remove").fadeOut(function(){
+		
+		
+		$(pin).find(".radical-pin-tasks-remove").fadeIn();
+		$(pin).find(".radical-tasks-btn-remove-confirm").fadeIn();
+		$(pin).find(".radical-tasks-btn-cancel-2").fadeIn();
+	});
+	
+
 }
 
-function deleteConfirmed(){
-	var idValue = $("#confirmDeleteTask").val();
+function deleteConfirmed(pin, idValue){
+	pin = $(pin).parent().parent();
 	
 	jsonData = {
 			data : JSON.stringify({
@@ -215,7 +280,8 @@ function deleteConfirmed(){
 		dataType : 'json',
 		success : function(data, status, jqXHR) {
 			if (data.errorList.length == 0) {
-				retrieveTaskMasterList("TaskMasterList");
+				$(pin).hide("200","linear")
+				//retrieveTaskMasterList("TaskMasterList");
 			} else {
 				alert('Failed to retreive tasks masterlist!');
 			}
@@ -225,7 +291,41 @@ function deleteConfirmed(){
 		}
 	});
 	
+}	
+
+function updateConfirmed(btn, idVal){
+	var name = $(btn).parent().parent().find(".radical-pin-tasks-name-edit").find("input").val();
+	var details = $(btn).parent().parent().find(".radical-pin-tasks-details-edit").find("textarea").val();
 	
+	jsonData = {
+			data : JSON.stringify({
+				id : idVal,
+				taskName: name,
+				taskDetails: details
+			})
+	};
+	
+	
+	$.ajax({
+		url : 'update',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$(btn).parent().parent().find(".radical-pin-tasks-name").html(name);
+				$(btn).parent().parent().find(".radical-pin-tasks-details").html(details);
+				taskPinNormalMode(btn);
+				//retrieveTaskMasterList("TaskMasterList");
+			} else {
+				alert('Failed to retreive tasks masterlist!');
+			}
+		},
+		error : function(jqXHR, status, error) {
+			alert("error");
+		}
+	});
+}
 
 //Functions for Tasks end
 
@@ -280,6 +380,11 @@ function retrieveProjectList(successMessage) {
 					alert("error");
 				}
 			});
+}
+
+
+function addMasterTask(){
+	alert("Hello");
 }
 //Functios for Projects end
 
@@ -337,5 +442,6 @@ function setCalendar() {
 			start : '2015-02-28'
 		} ]
 	});
+
 
 }

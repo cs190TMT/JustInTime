@@ -116,9 +116,22 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="taskMList">
+					
+					<div class="row radical-pin-tasks-header-header" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="header1">
+						<div class = "row radical-pin-tasks-header">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								<b>Name</b>
+							</div>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								<b>Details</b>
+							</div>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+							</div>
+						</div>
+					</div>
+					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList">
 						
+
 						  
 						<div class = "row radical-pin-tasks">
 							<div class = "radical-pin-tasks-name col-lg-3">
@@ -140,7 +153,7 @@
 								<button class="btn btn-sm text-right radical-tasks-btn-remove">
 									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 								</button>
-								<button class="btn btn-sm text-right radical-task-btn-save">
+								<button class="btn btn-sm text-right radical-task-btn-save radical-task-btn-save-disabled">
 									save
 								</button>
 								<button class="btn btn-sm text-right radical-tasks-btn-cancel">
@@ -151,6 +164,29 @@
 						
 						
 
+					</div>
+					<div class="row radical-pin-tasks-header-header radical-float-top col-lg-7" style="padding-left: 15px; margin-top: 10px; padding-right: 9px;" id="header2">
+						<div class = "row radical-pin-tasks-header" id="searchTaskFake" style="border:0px;">
+							<div class="input-group">
+							<input type="text" class="form-control"
+								placeholder="Search for tasks" oninput = "searchTask(this.value)"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</span>
+						</div>
+						</div>
+						<div class = "row radical-pin-tasks-header" id="headerThings2">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								<b>Name</b>
+							</div>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								<b>Details</b>
+							</div>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+							</div>
+						</div>
 					</div>
 					<!-- Task List end -->
 				</div>
@@ -165,8 +201,7 @@
 		<!--footer end-->
 	</section>
 
-
-   <!-- Confirm Remove Task Modal -->
+	<!-- Confirm Remove Task Modal -->
 
 	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="confirmRemoveTask">
 		<div class="modal-dialog modal-sm">
@@ -179,14 +214,15 @@
 			         Are you sure you want to delete the task <b><span class="removeTaskLabel">Spartan</span></b> ?
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-danger" data-dismiss="modal" id = "confirmDeleteTask"  onclick="deleteConfirmed()">Delete</button>
-			        <button type="button" class="btn btn-default">Cancel</button>
+			        <button type="button" class="btn btn-danger" id = "confirmDeleteTask" data-dismiss="modal"  onclick="deleteConfirmed()">Delete</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 			        
 			      </div>
 			</div>
 		</div>
 	</div>
-	
+
+
 
 	<!-- js placed at the end of the document so the pages load faster -->
 
@@ -194,16 +230,44 @@
 
 	<script type="text/javascript">
 		$(".knob").knob();
-		
-		
+	
+
 		$(document).ready(function() {
-			
 			
 			retrieveTaskMasterList("TaskMasterList");
 			
+			$("#header2").hide();
+			
+			$("#searchTaskFake").hide();
+			
+			$("#header2").hover(
+				function(){
+					$("#searchTaskFake").show("200", "linear");	
+				}
+			
+			);
+			
+			$("#header2").mouseleave(
+					function(){
+						$("#searchTaskFake").hide("200", "linear");	
+					}
+				
+				);
+			
+			$(window).scroll(
+				function(){
+					if ($(window).scrollTop() + 50 > $('.radical-pin-tasks-header-header').offset().top){
+							$("#header2").show();
+					}
+			        else{
+			        	$("#header2").hide();
+			        }
+				}
+			
+			);
+			
 			
 		});
-		
 		
 	</script>
 

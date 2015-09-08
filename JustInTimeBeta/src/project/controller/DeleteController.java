@@ -14,16 +14,13 @@ import org.slim3.repackaged.org.json.JSONObject;
 import project.dto.TasksClientDto;
 import project.dto.TasksDto;
 import project.service.TasksService;
-
 /**
  * Main Screen Delete controller.
  * @author <name here>
  *
  */
 public class DeleteController extends Controller {
-    
     TasksService service = new TasksService();
-    
     @Override
     protected Navigation run() throws Exception {
         TasksDto dto = new TasksDto(); 

@@ -67,6 +67,22 @@ public class TasksService {
         return input;
     }
     
+    public TasksDto updateMasterTask(TasksDto input){
+        TasksModel task = new TasksModel();
+        task.setId(input.getId());
+        task.setTaskName(input.getTaskName());
+        task.setTaskDetails(input.getTaskDetails());
+        
+        if(!this.dao.updateMasterTask(task)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+        
+        
+        return input;
+    }
+    
+
 
     public TasksClientDto getTaskMasterList() {
         List<TasksModel> tasksModel = this.dao.getTasksMasterList();
