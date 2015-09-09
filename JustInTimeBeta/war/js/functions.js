@@ -50,13 +50,14 @@ function retrieveTaskMasterList(successMessage) {
 												+ value.taskDetails
 												+ '</div>'
 												+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
-												+ '<input type="text" class="form-control" oninput = "taskEditChange(this)" placeholder="" value="'+ value.taskName +'">'
+												+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'+ value.id +')" onfocus = "taskEditChange(this,'+ value.id +')" placeholder="" value="'+ value.taskName +'">'
 												+ '</div>'
 												+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
-												+ '<textarea class="form-control" oninput = "taskEditChange(this)" rows="3">'+ value.taskDetails +'</textarea>'
+												+ '<textarea class="form-control" oninput = "taskEditChange(this,'+ value.id +')" rows="3">'+ value.taskDetails +'</textarea>'
 												+ '</div>'
 												+ '<div class = "radical-pin-tasks-remove col-lg-10">'
-												+  'Are you sure you want to delete the task <b><span class="removeTaskLabel">'+ value.taskName +'</span></b>'
+												+ 'Are you sure you want to delete the task <b><span class="removeTaskLabel">'+ value.taskName +'</span></b>?'
+												+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;"> This task will also be removed in projects</div>'
 												+ '</div>'
 												
 												+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
@@ -127,19 +128,53 @@ function searchTask(taskName) {
 										function(index, value) {
 
 											formattedTaskList += ''
-													+ '<div class="row listRow listRowProperty">'
-													+ '<div class="col-md-4 listProperty">'
-													+ value.taskName
-													+ '</div>'
-													+ '<div class="col-md-4 listProperty">'
-													+ value.taskDetails
-													+ '</div>'
-													+ '</div>';
+												+ '<div class = "row radical-pin-tasks">'
+												+ '<div class = "radical-pin-tasks-name col-lg-3">'
+												+ value.taskName
+												+ '</div>'
+												+ '<div class = "radical-pin-tasks-details col-lg-7">'
+												+ value.taskDetails
+												+ '</div>'
+												+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
+												+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'+ value.id +')" onfocus = "taskEditChange(this,'+ value.id +')" placeholder="" value="'+ value.taskName +'">'
+												+ '</div>'
+												+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
+												+ '<textarea class="form-control" oninput = "taskEditChange(this,'+ value.id +')" rows="3">'+ value.taskDetails +'</textarea>'
+												+ '</div>'
+												+ '<div class = "radical-pin-tasks-remove col-lg-10">'
+												+ 'Are you sure you want to delete the task <b><span class="removeTaskLabel">'+ value.taskName +'</span></b>?'
+												+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;"> This task will also be removed in projects</div>'
+												+ '</div>'
+												
+												+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
+												+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">'
+												+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
+												+ '</button>'
+									
+												
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
+												+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
+												+ '</button>'
+												
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'+ value.id +')">'
+												+ 'delete'
+												+ '</button>'
+												+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '+ value.id +')">'
+												+ 'save'
+												+ '</button>'
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
+												+ 'cancel'
+												+ '</button>'
+												+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
+												+ 'cancel'
+												+ '</button>'
+												+ '</div>'
+												+ '</div>';
 
 										});
 
 						// alert(formattedTaskList);
-						$("#TaskMList").html(formattedTaskList);
+						$("#taskMList").html(formattedTaskList);
 						// if (undefined != successMessage && "" !=
 						// successMessage) {
 						// alert(successMessage);
@@ -147,6 +182,8 @@ function searchTask(taskName) {
 					} else {
 						alert('Failed to retreive tasks masterlist!');
 					}
+					
+					tasksReady();
 				},
 				error : function(jqXHR, status, error) {
 					alert("error");
@@ -154,20 +191,68 @@ function searchTask(taskName) {
 			});
 }
 
-function taskEditChange(pin){
+function taskEditChange(pin, idVal){
 	pin = $(pin).parent().parent();
 	
 	
 	if($(pin).find(".radical-pin-tasks-name-edit").find("input").val() != ""){
-		$(pin).find(".radical-task-btn-save").removeClass("radical-task-btn-save-disabled");
-		$(pin).find(".radical-task-btn-save").removeAttr("disabled");
-		$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
+		var name = $(pin).find(".radical-pin-tasks-name-edit").find("input").val();
+
+		
+		jsonData = {
+				data : JSON.stringify({
+					id : idVal,
+					taskName: name
+				})
+		};
+		
+		
+		$.ajax({
+			url : 'ValidTaskName',
+			type : 'POST',
+			data : jsonData,
+			dataType : 'json',
+			success : function(data, status, jqXHR) {
+				if (data.errorList.length == 0) {
+					if(data.validate >= 1){
+						$(pin).find(".radical-task-btn-save").addClass("radical-task-btn-save-disabled");
+						$(pin).find(".radical-task-btn-save").attr("disabled","disabled");
+						$(pin).find(".radical-pin-tasks-name-edit").addClass("has-error");
+						
+						$(pin).find(".radical-pin-tasks-name-edit").attr("data-placement","left");
+						$(pin).find(".radical-pin-tasks-name-edit").attr("data-content","name already exists");
+						$(pin).find(".radical-pin-tasks-name-edit").popover("show");
+					}
+					else{
+						$(pin).find(".radical-task-btn-save").removeClass("radical-task-btn-save-disabled");
+						$(pin).find(".radical-task-btn-save").removeAttr("disabled");
+						$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
+						
+						$(pin).find(".radical-pin-tasks-name-edit").attr("data-placement","left");
+						$(pin).find(".radical-pin-tasks-name-edit").attr("data-content","");
+						$(pin).find(".radical-pin-tasks-name-edit").popover("hide");
+					}
+					
+				} else {
+					alert('Failed to retreive tasks masterlist!');
+				}
+			},
+			error : function(jqXHR, status, error) {
+				alert("error " + status + " " + error);
+			}
+		});
 	}
 	else{
 		$(pin).find(".radical-task-btn-save").addClass("radical-task-btn-save-disabled");
 		$(pin).find(".radical-task-btn-save").attr("disabled","disabled");
 		$(pin).find(".radical-pin-tasks-name-edit").addClass("has-error");
+		
+		$(pin).find(".radical-pin-tasks-name-edit").attr("data-placement","left");
+		$(pin).find(".radical-pin-tasks-name-edit").attr("data-content","name is required");
+		$(pin).find(".radical-pin-tasks-name-edit").popover("show");
 	}
+	
+	
 	
 }
 
@@ -203,6 +288,8 @@ function taskPinNormalMode(pin){
 	
 	pin = $(pin).parent().parent();
 	
+	$(pin).find(".radical-pin-tasks-name-edit").attr("data-content","");
+	$(pin).find(".radical-pin-tasks-name-edit").popover("hide");
 	$(pin).find(".radical-task-btn-save").fadeOut();
 	$(pin).find(".radical-tasks-btn-cancel").fadeOut();
 	
