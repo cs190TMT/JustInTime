@@ -59,62 +59,15 @@
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for tasks" oninput = "searchTask(this.value)"> <span
+							<input type="text" class="form-control radical-search-input"
+								placeholder="Search for tasks" id="searchInputMain"> <span
 								class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<button class="btn btn-default radical-search-input-btn" type="button">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								</button>
 							</span>
 						</div>
-						<div class="btn-group btn-group-sm" role="group" aria-label="..."
-							style="margin-top: 10px;">
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button"
-									class="btn btn-default dropdown-toggle radical-no-round-corners"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Date <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Today</a></li>
-									<li><a href="#">Tomorrow</a></li>
-									<li><a href="#">This week</a></li>
-									<li><a href="#">Next week</a></li>
-									<li><a href="#">This month</a></li>
-								</ul>
-							</div>
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Status <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Not started</a></li>
-									<li><a href="#">In progress</a></li>
-									<li><a href="#">Overdue</a></li>
-									<li><a href="#">Finished</a></li>
-								</ul>
-							</div>
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button"
-									class="btn btn-default dropdown-toggle radical-no-round-corners"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Phase <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Planning</a></li>
-									<li><a href="#">Design</a></li>
-									<li><a href="#">Coding</a></li>
-									<li><a href="#">Testing</a></li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 					
 					<div class="row radical-pin-tasks-header-header" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="header1">
@@ -129,6 +82,22 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
+					
+					<div class="row radical-pin-tasks-header-header" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="header1">
+						<div class = "row radical-pin-tasks-header">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								<b>Name</b>
+							</div>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								<b>Details</b>
+							</div>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+							</div>
+						</div>
+					</div>
+=======
+>>>>>>> master
 					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList">
 						
 
@@ -161,6 +130,7 @@
 								</button>
 							</div>
 						</div>
+<<<<<<< HEAD
 						
 						
 
@@ -188,6 +158,35 @@
 							</div>
 						</div>
 					</div>
+=======
+						
+						
+
+					</div>
+					<div class="row radical-pin-tasks-header-header radical-float-top col-lg-7" style="padding-left: 15px; margin-top: 10px; padding-right: 9px;" id="header2">
+						<div class = "row radical-pin-tasks-header" id="searchTaskFake" style="border:0px;">
+							<div class="input-group">
+							<input type="text" class="form-control radical-search-input"
+								placeholder="Search for tasks" > <span
+								class="input-group-btn">
+								<button class="btn btn-default radical-search-input-btn" type="button">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</span>
+						</div>
+						</div>
+						<div class = "row radical-pin-tasks-header" id="headerThings2">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								<b>Name</b>
+							</div>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								<b>Details</b>
+							</div>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+							</div>
+						</div>
+					</div>
+>>>>>>> master
 					<!-- Task List end -->
 				</div>
 				<div id="T1"></div>
@@ -266,6 +265,28 @@
 			
 			);
 			
+<<<<<<< HEAD
+=======
+			$(".radical-search-input").keydown(function(event) {
+		        if (event.keyCode == 13) {
+		        	var name = $(this).val();
+		        	searchTask(name);
+		        	$(".radical-search-input").val(name);
+		            return false;
+		         }
+		    });
+			
+			$(".radical-search-input-btn").click(
+				function(){
+					var name = $(this).parent().parent().find(".radical-search-input").val();
+					searchTask(name);
+					$(".radical-search-input").val(name);
+				}	
+			
+			);
+			
+		
+>>>>>>> master
 			
 		});
 		

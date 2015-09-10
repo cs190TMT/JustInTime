@@ -34,7 +34,11 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< HEAD
 					<button type="button" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()">Add</button>
+=======
+					<button type="submit" class="btn btn-primary" id="btnAddMasterTask">Add</button>
+>>>>>>> master
 				</div>
 			<!-- </form> -->
 		</div>

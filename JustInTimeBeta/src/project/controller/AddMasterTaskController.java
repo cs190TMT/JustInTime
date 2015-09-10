@@ -19,6 +19,7 @@ public class AddMasterTaskController extends Controller {
     private TasksService service = new TasksService();
 
     @Override
+<<<<<<< HEAD
     public Navigation run() throws Exception {
         TasksDto dto = new TasksDto();
         JSONObject json = null;
@@ -47,3 +48,14 @@ public class AddMasterTaskController extends Controller {
         return null;
     }
 }
+=======
+    protected Navigation run() throws Exception {
+        Map<String, Object> input = new RequestMap(this.request);
+        TasksDto taskDto = new TasksDto();
+        BeanUtil.copy(input, taskDto);
+        service.addMasterTask(taskDto);
+        return forward("/project/tasks.jsp");
+    }
+
+}
+>>>>>>> master
