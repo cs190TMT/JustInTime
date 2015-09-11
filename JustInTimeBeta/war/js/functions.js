@@ -470,9 +470,6 @@ function retrieveProjectList(successMessage) {
 }
 
 
-function addMasterTask(){
-	alert("Hello");
-}
 //Functios for Projects end
 
 function setCalendar() {
@@ -546,10 +543,11 @@ function addMasterTask() {
 		dataType : 'json',
 		success : function(data, status, jqXHR) {
 			if (data.errorList.length == 0) {
-				//$('#taskMasterName').val();
-				//$('#taskMasterDetails').val();
+				$('#taskMasterName').val();
+				$('#taskMasterDetails').val();
+				$('#addMasterTaskModal').hide();
 				alert("no error here");
-				//retrieveTaskMasterList('Entry saved successfully!');
+				retrieveTaskMasterList('Entry saved successfully!');
 				//alert("dk sandimas");
 			} else {
 				var msg = "";

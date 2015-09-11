@@ -191,7 +191,7 @@ body {
 		$(".knob").knob();
 
 		$(document).ready(function() {
-			alert("here");
+			//alert("here");
 			setCalendar();
 			$("#calendar").hide();
 			retrieveTaskMasterList("TaskMasterList");
