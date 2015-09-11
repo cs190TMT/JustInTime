@@ -529,6 +529,70 @@ function setCalendar() {
 			start : '2015-02-28'
 		} ]
 	});
+}
 
+function addMasterTask() {
+	jsonData = {
+		data : JSON.stringify({
+			taskName : $('#taskMasterName').val(),
+			taskDetails : $('#taskMasterDetails').val()
+		})
+	};
 
+	$.ajax({
+		url : 'addMasterTask',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				//$('#taskMasterName').val();
+				//$('#taskMasterDetails').val();
+				alert("no error here");
+				//retrieveTaskMasterList('Entry saved successfully!');
+				//alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		},
+		error : function(data, status, jqXHR) {
+
+		}
+	});
+}
+
+function addProject() {
+	jsonData = {
+		data : JSON.stringify({
+			projectName : $('#projectName').val(),
+			projectDetails : $('#projectDetails').val()
+		})
+	};
+
+	$.ajax({
+		url : 'addProject',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$('#projectName').val();
+				$('#projectDetails').val();
+				alert("no error here");
+				retrieveProjectList('Entry saved successfully!');
+				//alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		},
+		error : function(data, status, jqXHR) {
+
+		}
+	});
 }
