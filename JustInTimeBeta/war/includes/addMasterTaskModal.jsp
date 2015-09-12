@@ -23,12 +23,12 @@
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskName" id="taskName"/>
+							<input type="text" class="form-control" name="taskName" id="taskMasterName"/>
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskDetails" id="taskDetails"/>
+							<input type="text" class="form-control" name="taskDetails" id="taskMasterDetails"/>
 						</dd>
 					</dl>
 				</div>

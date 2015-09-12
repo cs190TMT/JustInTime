@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-/WEB-INF/
-/application_en.properties
-=======
->>>>>>> 17997cef120598bad336fc04bf8918362e7cd51f
-=======
 /WEB-INF/
 /application_en.properties
 /application_ja.properties
 /logging.properties
->>>>>>> parent of 920bed2... delete
 /sample/

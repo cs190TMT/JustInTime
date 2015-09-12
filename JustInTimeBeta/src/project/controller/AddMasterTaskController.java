@@ -39,7 +39,7 @@ public class AddMasterTaskController extends Controller {
                 json = new JSONObject();
             }
         }
-
+        
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
