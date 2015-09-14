@@ -51,7 +51,7 @@
 						<div class="col-lg-6">
 						<button type="button" class="radical-simple-button-task"
 							style="float: right; margin-right:0px" aria-label="Left Align" data-toggle="modal"
-							data-target="#addTaskModal">
+							data-target="#addMasterTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							New Task
 						</button>
@@ -82,6 +82,8 @@
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList">
 						
 

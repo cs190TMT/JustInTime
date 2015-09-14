@@ -1,17 +1,6 @@
 package sample.meta;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-07 20:03:39")
-=======
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-16 10:46:01")
->>>>>>> 17997cef120598bad336fc04bf8918362e7cd51f
-=======
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-04 16:51:12")
-=======
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-04 16:07:29")
->>>>>>> 4bb0238795319de450be513d5839a87528814166
->>>>>>> parent of 920bed2... delete
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-14 21:15:55")
 /** */
 public final class TweetMeta extends org.slim3.datastore.ModelMeta<sample.model.Tweet> {
 

@@ -4,10 +4,8 @@ import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
 import org.slim3.controller.Controller;
 
-import project.dto.ProjectsClientDto;
 import project.dto.TasksClientDto;
 import project.dto.TasksDto;
-import project.service.ProjectsService;
 import project.service.TasksService;
 
 public class ValidTaskNameController extends Controller{
