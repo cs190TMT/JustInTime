@@ -26,8 +26,8 @@ public class AddProjectController extends Controller {
         try {
             json = new JSONObject((String) this.requestScope("data"));
 
-            dto.setProjectName(json.getString("taskName")  );
-            dto.setProjectDetails(json.getString("taskDetails"));
+            dto.setProjectName(json.getString("projectName")  );
+            dto.setProjectDetails(json.getString("projectDetails"));
             if ((dto.getProjectName() == null) || dto.getProjectName().isEmpty() || (dto.getProjectDetails() == null) || dto.getProjectDetails().isEmpty()) {
                 dto.getErrorList().add("Missing content");
             } else {
