@@ -31,13 +31,15 @@ public class TasksModel implements Serializable {
     
     private String taskDetails;
     
+    private String taskPhase;
+    
     private String dateCreated;
+    
+    private int projID;
     
     private float timeAlloted;
     
     private float timeSpent;
-    
-    private String taskPhase;
 
     @Override
     public int hashCode() {
@@ -161,5 +163,13 @@ public class TasksModel implements Serializable {
     
     public void setTimeSpent(float time) {
         this.timeSpent = time;
+    }
+    
+    public int getProjId(){
+        return this.projID;
+    }
+    
+    public void setprojId(int ProjId){
+        this.projID = ProjId;
     }
 }

@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 <!-- Indices written at Tue, 15 Sep 2015 23:16:30 PHT -->
+=======
+<!-- Indices written at Tue, 15 Sep 2015 22:32:43 CST -->
+>>>>>>> master
 
-<datastore-indexes>
+<datastore-indexes/>
 
+<<<<<<< HEAD
     <!-- Used 14 times in query history -->
     <datastore-index kind="TasksModel" ancestor="false" source="auto">
         <property name="taskName" direction="asc"/>
@@ -9,3 +14,5 @@
     </datastore-index>
 
 </datastore-indexes>
+=======
+>>>>>>> master
