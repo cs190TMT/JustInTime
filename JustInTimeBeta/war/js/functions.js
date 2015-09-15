@@ -131,7 +131,7 @@ function retrievePullTaskMasterList(successMessage) {
 								  '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
 										+ '<div class="row pin-content radical-border-addTask">'
 											+ '<input type="hidden" class="id" id="taskId_'+ value.id +'" name="id" value="'+ value.id +'"/>'
-											+ '<input id="projectId" type="hidden" value="<%=id%>">'
+											+ ''
 											+ '<div class ="col-lg-9">'
 													+ '<input style="border:none; background-color:#ffffff" disabled name="taskName" id="taskName_'+ value.id +'" value="'+ value.taskName + '"/>'
 													+ '<input style="border:none; background-color:#ffffff" disabled name="taskDetails" id="taskDetailse_'+ value.id +'" value="'+ value.taskDetails + '"/>'
