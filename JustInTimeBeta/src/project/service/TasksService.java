@@ -123,7 +123,7 @@ public class TasksService {
         TasksClientDto taskList = new TasksClientDto();
         TasksDto taskDto;
         if(tasksModel.isEmpty()) {
-            System.out.println("No recs in dao");
+            //System.out.println("No recs in dao");
         }
         for (TasksModel task : tasksModel) {
             taskDto = new TasksDto();
@@ -133,7 +133,7 @@ public class TasksService {
             taskList.getTaskList().add(taskDto);
         }
         if(taskList.getTaskList().isEmpty()) {
-            System.out.println("No recs in dto");
+            //System.out.println("No recs in dto");
         }
         return taskList;
     }
