@@ -54,7 +54,9 @@ body {
 <body>
 	<%
 		String projectName = request.getParameter("projectName");
+		String id = request.getParameter("id");
 		pageContext.setAttribute("projectName", projectName);
+		pageContext.setAttribute("id", id);
 	%>
 	<section id="container" class="">
 		<!--header start-->
@@ -70,6 +72,7 @@ body {
 					<div class="row">
 						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;"><%=projectName%></h3>
+						<input id="projectId" type="hidden" value="<%=id%>">
 						</div>
 						<div class="col-lg-6">
 						<button id="calendarButton" type="button"

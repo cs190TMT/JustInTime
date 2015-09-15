@@ -13,7 +13,7 @@ $("#listButton").click(
 			$(this).addClass("radical-simple-button-active");
 			$("#calendarButton").addClass("radical-simple-button").removeClass(
 					"radical-simple-button-active");
-		});
+});
 
 $("#calendarButton").click(
 		function() {
@@ -22,7 +22,7 @@ $("#calendarButton").click(
 			$(this).addClass("radical-simple-button-active");
 			$("#listButton").addClass("radical-simple-button").removeClass(
 					"radical-simple-button-active");
-		});
+});
 
 // Functions for Tasks start
 function addMasterTask() {
@@ -32,7 +32,7 @@ function addMasterTask() {
 			taskDetails : $('#taskMasterDetails').val()
 		})
 	};
-	
+
 	$.ajax({
 		url : 'addMasterTask',
 		type : 'POST',
@@ -60,6 +60,60 @@ function addMasterTask() {
 	});
 }
 
+function addProjectTask(phase) {
+	jsonData = {
+		data : JSON.stringify({
+			taskName : $('#taskMasterName').val(),
+			taskDetails : $('#taskMasterDetails').val(),
+			timeAlloted : $('#taskAllotTime').val(),
+			taskPhase : phase,
+			taskProjId : $('#projectId').val()
+		})
+	};
+	
+	alert(phase + $("#projectId").val());
+	
+	$.ajax({
+		url : 'addProjectTask',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$('#taskMasterName').val("");
+				$('#taskMasterDetails').val("");
+				//alert("no error here");
+				retrieveTaskMasterList('Entry saved successfully!');
+				// alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		
+		},
+		error : function(data, status, jqXHR) {
+			
+		}
+	});
+}
+
+function planBtn(){
+	//alert("Planning");
+	addProjectTask("Planning");
+}
+
+function designBtn(){
+	//alert("Design");
+	addProjectTask("Design")
+}
+
+function codingBtn(){
+	//alert("Coding");
+	addProjectTask("Coding")
+}
+
 function retrievePullTaskMasterList(successMessage) {
 	var ID = 0;
 	var panel = 'panel';
@@ -76,24 +130,25 @@ function retrievePullTaskMasterList(successMessage) {
 								formattedTaskList +=
 								  '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
 										+ '<div class="row pin-content radical-border-addTask">'
-											+ '<input type="hidden" class="id" name="id" value="'+ value.id +'"/>'
+											+ '<input type="hidden" class="id" id="taskId_'+ value.id +'" name="id" value="'+ value.id +'"/>'
+											+ '<input id="projectId" type="hidden" value="<%=id%>">'
 											+ '<div class ="col-lg-9">'
-													+ '<input type="hidden" class="createdDate" name="taskName" value="'+value.taskName+'"/>'
-													+ value.taskDetails
+													+ '<input style="border:none; background-color:#ffffff" disabled name="taskName" id="taskName_'+ value.id +'" value="'+ value.taskName + '"/>'
+													+ '<input style="border:none; background-color:#ffffff" disabled name="taskDetails" id="taskDetailse_'+ value.id +'" value="'+ value.taskDetails + '"/>'
+													+ '<br>Alloted time <input type="number" step=".5" name="taskAllotTime" id="taskAllotTimee_'+ value.id +'">'
 											+ '</div>'
 											+ '<div class ="col-lg-3">'
 												+ '<input hidden name="projectName" value="Test"/>'
-												+ '<input hidden name="projectName" value="Test"/>'
 												+ '<div class="panel">'
-													+ '<button type="button" id="btnAddProjectTask" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
+													+ '<button type="button" id="btnAddProjectTask" onclick="planBtn()" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
 														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
 														+ '</span> Planning '
 													+ '</button>'
-													+ '<button type="button" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
+													+ '<button type="button" onclick="designBtn()" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
 														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-design" aria-hidden="true">'
 														+ '</span> Design '
 													+ '</button>'
-													+ '<button type="button" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
+													+ '<button type="button" onclick="codingBtn()" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
 														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-coding" aria-hidden="true">'
 														+ '</span> Coding '
 													+ '</button>'
