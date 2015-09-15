@@ -25,79 +25,172 @@ $("#calendarButton").click(
 		});
 
 // Functions for Tasks start
+function addMasterTask() {
+	jsonData = {
+		data : JSON.stringify({
+			taskName : $('#taskMasterName').val(),
+			taskDetails : $('#taskMasterDetails').val()
+		})
+	};
+	
+	$.ajax({
+		url : 'addMasterTask',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$('#taskMasterName').val("");
+				$('#taskMasterDetails').val("");
+				$('#addMasterTaskModal').modal("hide");
+				//alert("no error here");
+				retrieveTaskMasterList('Entry saved successfully!');
+				// alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		
+		},
+		error : function(data, status, jqXHR) {
+			
+		}
+	});
+}
+
+function retrievePullTaskMasterList(successMessage) {
+	var ID = 0;
+	var panel = 'panel';
+	$("#pullTaskMasterList").empty();
+	$.ajax({
+			url : 'retrieveTaskMasterList',
+			type : 'GET',
+			data : null,
+			success : function(data, status, jqXHR) {
+				if (data.errorList.length == 0) {
+					var formattedTaskList = "";
+					$.each(data.taskList,
+							function(index, value) {
+								formattedTaskList +=
+								  '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
+										+ '<div class="row pin-content radical-border-addTask">'
+											+ '<input type="hidden" class="id" name="id" value="'+ value.id +'"/>'
+											+ '<div class ="col-lg-9">'
+													+ '<input type="hidden" class="createdDate" name="taskName" value="'+value.taskName+'"/>'
+													+ value.taskDetails
+											+ '</div>'
+											+ '<div class ="col-lg-3">'
+												+ '<input hidden name="projectName" value="Test"/>'
+												+ '<input hidden name="projectName" value="Test"/>'
+												+ '<div class="panel">'
+													+ '<button type="button" id="btnAddProjectTask" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
+														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
+														+ '</span> Planning '
+													+ '</button>'
+													+ '<button type="button" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
+														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-design" aria-hidden="true">'
+														+ '</span> Design '
+													+ '</button>'
+													+ '<button type="button" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
+														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-coding" aria-hidden="true">'
+														+ '</span> Coding '
+													+ '</button>'
+												+ '</div>'
+											+ '</div>'
+											+ '<br>'
+											+ '<br>'
+										+ '</div>'
+									+ '</div>';	
+						});
+						if (formattedTaskList == "") {
+							formattedTaskList = "<div>No Tasks in the Master List!</div>";
+						}
+						//alert(formattedTaskList);
+						$("#pullTaskMasterList").html(formattedTaskList);
+						if (undefined != successMessage && "" != successMessage) {
+							// alert(successMessage);
+						}
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("error");
+				}
+			});
+}
+
 function retrieveTaskMasterList(successMessage) {
-
 	$("#taskMList").empty();
-	$
-			.ajax({
-				url : 'retrieveTaskMasterList',
-				type : 'GET',
-				data : null,
-				success : function(data, status, jqXHR) {
-					if (data.errorList.length == 0) {
-						var formattedTaskList = '';
-						$
-								.each(
-										data.taskList,
-										function(index, value) {
-											formattedTaskList += ''
-													+ '<div class = "row radical-pin-tasks">'
-													+ '<div class = "radical-pin-tasks-name col-lg-3">'
-													+ value.taskName
-													+ '</div>'
-													+ '<div class = "radical-pin-tasks-details col-lg-7">'
-													+ value.taskDetails
-													+ '</div>'
-													+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
-													+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'
-													+ value.id
-													+ ')" onfocus = "taskEditChange(this,'
-													+ value.id
-													+ ')" placeholder="" value="'
-													+ value.taskName
-													+ '">'
-													+ '</div>'
-													+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
-													+ '<textarea class="form-control" oninput = "taskEditChange(this,'
-													+ value.id
-													+ ')" rows="3">'
-													+ value.taskDetails
-													+ '</textarea>'
-													+ '</div>'
-													+ '<div class = "radical-pin-tasks-remove col-lg-10">'
-													+ 'Are you sure you want to delete the task <b><span class="removeTaskLabel">'
-													+ value.taskName
-													+ '</span></b>?'
-													+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;"> This task will also be removed in projects</div>'
-													+ '</div>'
-
-													+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
-													+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">'
-													+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
-													+ '</button>'
-
-													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
-													+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
-													+ '</button>'
-
-													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'
-													+ value.id
-													+ ')">'
-													+ 'delete'
-													+ '</button>'
-													+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '
-													+ value.id
-													+ ')">'
-													+ 'save'
-													+ '</button>'
-													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
-													+ 'cancel'
-													+ '</button>'
-													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
-													+ 'cancel'
-													+ '</button>'
-													+ '</div>' + '</div>';
-										});
+	$.ajax({
+		url : 'retrieveTaskMasterList',
+		type : 'GET',
+		data : null,
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				var formattedTaskList = '';
+				$.each(data.taskList,
+						function(index, value) {
+							formattedTaskList += ''
+								+ '<div class = "row radical-pin-tasks">'
+									+ '<div class = "radical-pin-tasks-name col-lg-3">'
+										+ value.taskName
+									+ '</div>'
+									+ '<div class = "radical-pin-tasks-details col-lg-7">'
+										+ value.taskDetails
+									+ '</div>'
+									+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
+										+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'
+											+ value.id + ')" onfocus = "taskEditChange(this,'
+											+ value.id
+											+ ')" placeholder="" value="'
+											+ value.taskName
+										+ '">'
+									+ '</div>'
+									+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
+										+ '<textarea class="form-control" oninput = "taskEditChange(this,'
+											+ value.id
+											+ ')" rows="3">'
+											+ value.taskDetails
+										+ '</textarea>'
+									+ '</div>'
+									+ '<div class = "radical-pin-tasks-remove col-lg-10">'
+										+ 'Are you sure you want to delete the task'
+										+'<b><span class="removeTaskLabel">'
+											+ value.taskName
+										+ '</span></b>?'
+										+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">'
+											+ 'This task will also be removed in projects'
+										+ '</div>'
+									+ '</div>'
+									+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
+										+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">'
+											+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
+										+ '</button>'
+										+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
+											+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
+										+ '</button>'
+										+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'
+											+ value.id
+										+ ')">'
+											+ 'delete'
+										+ '</button>'
+										+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '
+											+ value.id
+										+ ')">'
+											+ 'save'
+										+ '</button>'
+										+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
+											+ 'cancel'
+										+ '</button>'
+										+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
+											+ 'cancel'
+										+ '</button>'
+									+ '</div>'
+								+ '</div>';
+							});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
@@ -453,6 +546,41 @@ function updateConfirmed(btn, idVal) {
 // Functions for Tasks end
 
 // Functios for Projects start
+function addProject() {
+	jsonData = {
+		data : JSON.stringify({
+			projectName : $('#projectName').val(),
+			projectDetails : $('#projectDetails').val()
+		})
+	};
+	
+	$.ajax({
+		url : 'addProject',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$('#projectName').val("");
+				$('#projectDetails').val("");
+				$('#addProjectModal').modal("hide");
+				//alert("no error here");
+				retrieveProjectList('Entry saved successfully!');
+				// alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		
+		},
+		error : function(data, status, jqXHR) {
+			
+		}
+	});
+}
+
 function retrieveProjectList(successMessage) {
 	$("#projectList").empty();
 	$
@@ -559,75 +687,5 @@ function setCalendar() {
 			url : 'http://google.com/',
 			start : '2015-02-28'
 		} ]
-	});
-}
-
-function addMasterTask() {
-	jsonData = {
-		data : JSON.stringify({
-			taskName : $('#taskMasterName').val(),
-			taskDetails : $('#taskMasterDetails').val()
-		})
-	};
-	
-	$.ajax({
-		url : 'addMasterTask',
-		type : 'POST',
-		data : jsonData,
-		dataType : 'json',
-		success : function(data, status, jqXHR) {
-			if (data.errorList.length == 0) {
-				$('#taskMasterName').val("");
-				$('#taskMasterDetails').val("");
-				$('#addMasterTaskModal').modal("hide");
-				//alert("no error here");
-				retrieveTaskMasterList('Entry saved successfully!');
-				// alert("dk sandimas");
-			} else {
-				var msg = "";
-				for (var i = 0; i < data.errorList.length; i++)
-					msg += data.errorList[i] + "\n";
-				$('#errorDisplay').html(msg);
-			}
-		
-		},
-		error : function(data, status, jqXHR) {
-			
-		}
-	});
-}
-
-function addProject() {
-	jsonData = {
-		data : JSON.stringify({
-			projectName : $('#projectName').val(),
-			projectDetails : $('#projectDetails').val()
-		})
-	};
-	
-	$.ajax({
-		url : 'addProject',
-		type : 'POST',
-		data : jsonData,
-		dataType : 'json',
-		success : function(data, status, jqXHR) {
-			if (data.errorList.length == 0) {
-				$('#projectName').val("");
-				$('#projectDetails').val("");
-				$('#addProjectModal').modal("hide");
-				//alert("no error here");
-				retrieveProjectList('Entry saved successfully!');
-				// alert("dk sandimas");
-			} else {
-				var msg = "";
-				for (var i = 0; i < data.errorList.length; i++)
-					msg += data.errorList[i] + "\n";
-				$('#errorDisplay').html(msg);
-			}
-		
-		},
-		error : function(data, status, jqXHR) {
-			
-		}
 	});
 }

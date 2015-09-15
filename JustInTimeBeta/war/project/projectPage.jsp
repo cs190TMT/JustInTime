@@ -83,7 +83,7 @@ body {
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#pullTasksModal">
+							data-target="#pullTasksModal" onclick="retrievePullTaskMasterList()">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 							Pull Tasks
 						</button>
