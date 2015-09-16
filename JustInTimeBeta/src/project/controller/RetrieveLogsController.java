@@ -12,10 +12,7 @@ import org.slim3.util.RequestMap;
 import project.dto.LogsClientDto;
 import project.dto.LogsDto;
 import project.dto.TaskCalendarDto;
-import project.dto.TasksClientDto;
-import project.dto.TasksDto;
 import project.service.LogsService;
-import project.service.TasksService;
 
 public class RetrieveLogsController extends Controller {
     
@@ -32,7 +29,7 @@ public class RetrieveLogsController extends Controller {
         List<TaskCalendarDto> eventList = new ArrayList<TaskCalendarDto>();
         
         try {
-            logList = service.getLogsList(this.request.getParameter("projectName"));
+            //logList = service.getLogsList(this.request.getParameter("projectName"));
             list =  logList.getLogsList();
             if(logList.getLogsList().isEmpty()) {
                 System.out.println("No records in tasklist");

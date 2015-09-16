@@ -54,7 +54,9 @@ body {
 <body>
 	<%
 		String projectName = request.getParameter("projectName");
+		String id = request.getParameter("id");
 		pageContext.setAttribute("projectName", projectName);
+		pageContext.setAttribute("id", id);
 	%>
 	<section id="container" class="">
 		<!--header start-->
@@ -70,6 +72,7 @@ body {
 					<div class="row">
 						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;"><%=projectName%></h3>
+						<input id="projectId" type="hidden" value="<%=id%>">
 						</div>
 						<div class="col-lg-6">
 						<button id="calendarButton" type="button"
@@ -83,7 +86,7 @@ body {
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#pullTasksModal">
+							data-target="#pullTasksModal" onclick="retrievePullTaskMasterList()">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 							Pull Tasks
 						</button>
@@ -193,6 +196,7 @@ body {
 		$(document).ready(function() {
 			//alert("here");
 			setCalendar2();
+
 			$("#calendar").hide();
 			retrieveTaskMasterList("TaskMasterList");
 		});

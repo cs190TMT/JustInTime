@@ -18,6 +18,8 @@ public class TasksDto {
     
     private String dateCreated;
     
+    private int projID;
+    
     private float timeAlloted;
     
     private float timeSpent;
@@ -100,5 +102,13 @@ public class TasksDto {
 
     public void setTimeSpent(float timeSpent) {
         this.timeSpent = timeSpent;
+    }
+    
+    public int getProjId(){
+        return this.projID;
+    }
+    
+    public void setprojId(int ProjId){
+        this.projID = ProjId;
     }
 }
