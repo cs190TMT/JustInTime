@@ -177,6 +177,15 @@ function retrievePullTaskMasterList(successMessage) {
 			});
 }
 
+//Functions for Tasks start
+function editTaskMaster(id) {
+	document.getElementById("name_" + id).disabled = false;
+	document.getElementById("detail_" + id).disabled = false;
+	document.getElementById("name_" + id).classList.remove("listInput");
+	document.getElementById("detail_" + id).classList.remove("listInput");
+	document.getElementById("saveButton_" + id).classList.remove("listHiddenButtons");
+}
+
 function retrieveTaskMasterList(successMessage) {
 	$("#taskMList").empty();
 	$.ajax({
@@ -252,12 +261,11 @@ function retrieveTaskMasterList(successMessage) {
 						// alert(formattedTaskList);
 						$("#taskMList").html(formattedTaskList);
 						if (undefined != successMessage && "" != successMessage) {
-							// alert(successMessage);
+							//alert(successMessage);
 						}
 					} else {
 						alert('Failed to retreive tasks masterlist!');
 					}
-
 					tasksReady();
 				},
 				error : function(jqXHR, status, error) {
@@ -655,6 +663,7 @@ function retrieveProjectList(successMessage) {
 										data.projectList,
 										function(index, value) {
 											formattedProjectList += ''
+
 													+ '<a href="/projectPage?projectName='// create
 													// a
 													// form?
@@ -689,58 +698,79 @@ function retrieveProjectList(successMessage) {
 
 // Functios for Projects end
 
-function setCalendar() {
-	$('#calendar').fullCalendar({
-		header : {
-			left : 'prev,next today',
-			center : 'title',
-			right : 'month,basicWeek,basicDay'
+function updateProject(id) {
+	// Disabling text field start
+	document.getElementById("name_" + id).disabled = true;
+	document.getElementById("detail_" + id).disabled = true;
+	var nameField = document.getElementById("name_" + id);
+	nameField.className = nameField.className + " listInput";
+	var detailField = document.getElementById("detail_" + id);
+	detailField.className = detailField.className + " listInput";
+	var saveButton = document.getElementById("saveButton_" + id);
+	saveButton.className = saveButton.className + " listHiddenButtons";
+	alert(document.getElementById("name_" + id).value +" "+ document.getElementById("detail_" + id).value);
+	// Disabling text field end
+	
+	// Updating task list code start
+	$("#errorDisplay").empty();
+	$(".updateErrorDisplay").empty();
+	var updateDisplay =  document.getElementById("updateDisplay");
+	
+	jsonData = {
+			data: JSON.stringify({
+				id: id,
+				projectName: document.getElementById("name_" + id).value,
+				projectDetail: document.getElementById("detail_" + id).value,
+			})
+	};
+	
+	$.ajax({
+		url: 'update',
+		type: 'POST',
+		data: jsonData,
+		dataType: 'json',
+		success: function(data, status, jqXHR){
+			if(data.errorList.length == 0) {
+				retrieveTaskMasterList('Entry updated successfully!');
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++) {
+					msg += data.errorList[i] + "\n";
+				}
+				errorDisplay.html(msg);
+			}
 		},
-		defaultDate : '2015-02-12',
-		editable : false,
-		eventLimit : true, // allow "more" link when too many events
-		events : [ {
-			title : 'All Day Event',
-			start : '2015-02-01'
-		}, {
-			title : 'Long Event',
-			start : '2015-02-07',
-			end : '2015-02-10'
-		}, {
-			id : 999,
-			title : 'Repeating Event',
-			start : '2015-02-09T16:00:00'
-		}, {
-			id : 999,
-			title : 'Repeating Event',
-			start : '2015-02-16T16:00:00'
-		}, {
-			title : 'Conference',
-			start : '2015-02-11',
-			end : '2015-02-13'
-		}, {
-			title : 'Meeting',
-			start : '2015-02-12T10:30:00',
-			end : '2015-02-12T12:30:00'
-		}, {
-			title : 'Lunch',
-			start : '2015-02-12T12:00:00'
-		}, {
-			title : 'Meeting',
-			start : '2015-02-12T14:30:00'
-		}, {
-			title : 'Happy Hour',
-			start : '2015-02-12T17:30:00'
-		}, {
-			title : 'Dinner',
-			start : '2015-02-12T20:00:00'
-		}, {
-			title : 'Birthday Party',
-			start : '2015-02-13T07:00:00'
-		}, {
-			title : 'Click for Google',
-			url : 'http://google.com/',
-			start : '2015-02-28'
-		} ]
+		error: function(jqXHR, status, error) {
+			
+		}
 	});
+	// Updating task list code end
+	
 }
+
+function setCalendar2() {
+	$.ajax({
+		url: 'RetrieveTasksForCalendar',
+		type: 'GET',
+		data: null,
+		success: function(data, status, jqXHR){
+			console.log("data", data);
+			$('#calendar').fullCalendar({		
+				header : {
+					left : 'prev,next today',
+					center : 'title',
+					right : 'month,basicWeek,basicDay'
+				},
+				defaultDate : '2015-0-12',
+				editable : false,
+				displayEventTime: false,
+				eventLimit : true, // allow "more" link when too many events
+				events :  data.events
+		})
+			},
+		error: function(jqXHR, status, error) {
+			alert("Hello!");
+		}
+	});
+		
+	}

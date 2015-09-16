@@ -19,7 +19,7 @@ public class AddMasterTaskController extends Controller {
     private TasksService service = new TasksService();
 
     @Override
-    public Navigation run() throws Exception {
+    protected Navigation run() throws Exception {
         TasksDto dto = new TasksDto();
         JSONObject json = null;
         

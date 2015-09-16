@@ -45,18 +45,16 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
-						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
-						</div>
-						<div class="col-lg-6">
+						<div id="updateDisplay"></div>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right; margin-right:0px" aria-label="Left Align" data-toggle="modal"
 							data-target="#addMasterTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 							New Task
 						</button>
-						</div>
 					</div>
+
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
 							<input type="text" class="form-control radical-search-input"

@@ -195,10 +195,23 @@ body {
 
 		$(document).ready(function() {
 			//alert("here");
-			setCalendar();
+			setCalendar2();
+
 			$("#calendar").hide();
 			retrieveTaskMasterList("TaskMasterList");
 		});
+		
+		$("#calendarButton").click(function(){
+			 $("#calendar").show();
+			 $("#taskMList").hide();
+		});
+		
+		$("#listButton").click(function(){
+			 $("#calendar").hide();
+			 $("#taskMList").show();
+		});
+		
+		
 	</script>
 
 </body>

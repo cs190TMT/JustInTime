@@ -116,8 +116,6 @@ public class TasksService {
         
     }
     
-
-
     public TasksClientDto getTaskMasterList() {
         List<TasksModel> tasksModel = this.dao.getTasksMasterList();
         TasksClientDto taskList = new TasksClientDto();
