@@ -44,7 +44,7 @@ public class TasksDao {
         return result;
     }
 
-    public boolean saveProjectTask(TasksModel tasksModel, String projectName) {
+     public boolean saveProjectTask(TasksModel tasksModel, String projectName) {
         boolean result = true;
         try {
             Transaction tx = Datastore.beginTransaction();
@@ -134,6 +134,12 @@ public class TasksDao {
         Key parentKey = KeyFactory.createKey("Tasks", "Master");
         return Datastore.query(t, parentKey).asList();
     }
+    
+    public List<TasksModel> getTasksProjectList(String projectName) {
+        TasksModelMeta t = new TasksModelMeta();
+        Key parentKey = KeyFactory.createKey("Tasks", projectName);
+        return Datastore.query(t, parentKey).asList();
+    }
 
     public List<TasksModel> searchTasksMasterList(String name, String date,
             String phase) {
@@ -191,4 +197,3 @@ public class TasksDao {
         return tasksModels;
     }
 }
-

@@ -13,7 +13,7 @@ $("#listButton").click(
 			$(this).addClass("radical-simple-button-active");
 			$("#calendarButton").addClass("radical-simple-button").removeClass(
 					"radical-simple-button-active");
-});
+		});
 
 $("#calendarButton").click(
 		function() {
@@ -22,7 +22,7 @@ $("#calendarButton").click(
 			$(this).addClass("radical-simple-button-active");
 			$("#listButton").addClass("radical-simple-button").removeClass(
 					"radical-simple-button-active");
-});
+		});
 
 // Functions for Tasks start
 function addMasterTask() {
@@ -43,7 +43,7 @@ function addMasterTask() {
 				$('#taskMasterName').val("");
 				$('#taskMasterDetails').val("");
 				$('#addMasterTaskModal').modal("hide");
-				//alert("no error here");
+				// alert("no error here");
 				retrieveTaskMasterList('Entry saved successfully!');
 				// alert("dk sandimas");
 			} else {
@@ -52,38 +52,44 @@ function addMasterTask() {
 					msg += data.errorList[i] + "\n";
 				$('#errorDisplay').html(msg);
 			}
-		
+
 		},
 		error : function(data, status, jqXHR) {
-			
+
 		}
 	});
 }
 
-function addProjectTask(phase) {
+function addProjectTask(phase, taskId) {
 	jsonData = {
 		data : JSON.stringify({
-			taskName : $('#taskMasterName').val(),
-			taskDetails : $('#taskMasterDetails').val(),
-			timeAlloted : $('#taskAllotTime').val(),
+			taskName : $('#taskName_' + taskId).val(),
+			taskDetails : $('#taskDetails_' + taskId).val(),
+			timeAlloted : $('#taskAllotTime_' + taskId).val(),
 			taskPhase : phase,
-			taskProjId : $('#projectId').val()
+			taskProjId : getUrlParameter("id"),
+			taskProjName : getUrlParameter("projectName")
 		})
 	};
-	
-	alert(phase + $("#projectId").val());
-	
+
+	alert($('#taskName_' + taskId).val() + "\n"
+			+ $('#taskDetails_' + taskId).val() + "\n"
+			+ $('#taskAllotTime_' + taskId).val() + "\n" + phase + "\n"
+			+ getUrlParameter("id") + "\n" + getUrlParameter("projectName"));
+
 	$.ajax({
 		url : 'addProjectTask',
 		type : 'POST',
 		data : jsonData,
 		dataType : 'json',
 		success : function(data, status, jqXHR) {
+			alert("adf");
 			if (data.errorList.length == 0) {
 				$('#taskMasterName').val("");
 				$('#taskMasterDetails').val("");
-				//alert("no error here");
-				retrieveTaskMasterList('Entry saved successfully!');
+				$('#pullTasksModal').modal("hide");
+				alert("no error here");
+				retrieveTaskProjectList('Entry saved successfully!');
 				// alert("dk sandimas");
 			} else {
 				var msg = "";
@@ -91,78 +97,99 @@ function addProjectTask(phase) {
 					msg += data.errorList[i] + "\n";
 				$('#errorDisplay').html(msg);
 			}
-		
+
 		},
 		error : function(data, status, jqXHR) {
-			
+			alert("error");
 		}
 	});
 }
 
-function planBtn(){
-	//alert("Planning");
-	addProjectTask("Planning");
+function planBtn(taskId) {
+	// alert("Planning");
+	addProjectTask("Planning", taskId);
 }
 
-function designBtn(){
-	//alert("Design");
-	addProjectTask("Design")
+function designBtn(taskId) {
+	// alert("Design");
+	addProjectTask("Design", taskId)
 }
 
-function codingBtn(){
-	//alert("Coding");
-	addProjectTask("Coding")
+function codingBtn(taskId) {
+	// alert("Coding");
+	addProjectTask("Coding", taskId)
 }
 
 function retrievePullTaskMasterList(successMessage) {
 	var ID = 0;
 	var panel = 'panel';
 	$("#pullTaskMasterList").empty();
-	$.ajax({
-			url : 'retrieveTaskMasterList',
-			type : 'GET',
-			data : null,
-			success : function(data, status, jqXHR) {
-				if (data.errorList.length == 0) {
-					var formattedTaskList = "";
-					$.each(data.taskList,
-							function(index, value) {
-								formattedTaskList +=
-								  '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
-										+ '<div class="row pin-content radical-border-addTask">'
-											+ '<input type="hidden" class="id" id="taskId_'+ value.id +'" name="id" value="'+ value.id +'"/>'
-											+ '<input id="projectId" type="hidden" value="<%=id%>">'
-											+ '<div class ="col-lg-9">'
-													+ '<input style="border:none; background-color:#ffffff" disabled name="taskName" id="taskName_'+ value.id +'" value="'+ value.taskName + '"/>'
-													+ '<input style="border:none; background-color:#ffffff" disabled name="taskDetails" id="taskDetailse_'+ value.id +'" value="'+ value.taskDetails + '"/>'
-													+ '<br>Alloted time <input type="number" step=".5" name="taskAllotTime" id="taskAllotTimee_'+ value.id +'">'
-											+ '</div>'
-											+ '<div class ="col-lg-3">'
-												+ '<input hidden name="projectName" value="Test"/>'
-												+ '<div class="panel">'
-													+ '<button type="button" id="btnAddProjectTask" onclick="planBtn()" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
-														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
-														+ '</span> Planning '
+	$
+			.ajax({
+				url : 'retrieveTaskMasterList',
+				type : 'GET',
+				data : null,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedTaskList = "";
+						$
+								.each(
+										data.taskList,
+										function(index, value) {
+											formattedTaskList += '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
+													+ '<div class="row pin-content radical-border-addTask">'
+													+ '<input type="hidden" class="id" id="taskId_'
+													+ value.id
+													+ '" name="id" value="'
+													+ value.id
+													+ '"/>'
+													+ ''
+													+ '<div class ="col-lg-9">'
+													+ '<input style="border:none; background-color:#ffffff" disabled name="taskName" id="taskName_'
+													+ value.id
+													+ '" value="'
+													+ value.taskName
+													+ '"/>'
+													+ '<input style="border:none; background-color:#ffffff" disabled name="taskDetails" id="taskDetails_'
+													+ value.id
+													+ '" value="'
+													+ value.taskDetails
+													+ '"/>'
+													+ '<br>Alloted time <input required type="number" step=".5" name="taskAllotTime" id="taskAllotTime_'
+													+ value.id
+													+ '">'
+													+ '</div>'
+													+ '<div class ="col-lg-3">'
+													+ '<div class="panel">'
+													+ '<button type="button" onclick="planBtn('
+													+ value.id
+													+ ')" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
+													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
+													+ '</span> Planning '
 													+ '</button>'
-													+ '<button type="button" onclick="designBtn()" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
-														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-design" aria-hidden="true">'
-														+ '</span> Design '
+													+ '<button type="button" onclick="designBtn('
+													+ value.id
+													+ ')" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
+													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-design" aria-hidden="true">'
+													+ '</span> Design '
 													+ '</button>'
-													+ '<button type="button" onclick="codingBtn()" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
-														+ '<span class="glyph-icon glyphicon-plus-sign radical-font-coding" aria-hidden="true">'
-														+ '</span> Coding '
+													+ '<button type="button" onclick="codingBtn('
+													+ value.id
+													+ ')" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
+													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-coding" aria-hidden="true">'
+													+ '</span> Coding '
 													+ '</button>'
-												+ '</div>'
-											+ '</div>'
-											+ '<br>'
-											+ '<br>'
-										+ '</div>'
-									+ '</div>';	
-						});
+													+ '</div>'
+													+ '</div>'
+													+ '<br>'
+													+ '<br>'
+													+ '</div>'
+													+ '</div>';
+										});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
-						//alert(formattedTaskList);
+						// alert(formattedTaskList);
 						$("#pullTaskMasterList").html(formattedTaskList);
 						if (undefined != successMessage && "" != successMessage) {
 							// alert(successMessage);
@@ -179,73 +206,76 @@ function retrievePullTaskMasterList(successMessage) {
 
 function retrieveTaskMasterList(successMessage) {
 	$("#taskMList").empty();
-	$.ajax({
-		url : 'retrieveTaskMasterList',
-		type : 'GET',
-		data : null,
-		success : function(data, status, jqXHR) {
-			if (data.errorList.length == 0) {
-				var formattedTaskList = '';
-				$.each(data.taskList,
-						function(index, value) {
-							formattedTaskList += ''
-								+ '<div class = "row radical-pin-tasks">'
-									+ '<div class = "radical-pin-tasks-name col-lg-3">'
-										+ value.taskName
-									+ '</div>'
-									+ '<div class = "radical-pin-tasks-details col-lg-7">'
-										+ value.taskDetails
-									+ '</div>'
-									+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
-										+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'
-											+ value.id + ')" onfocus = "taskEditChange(this,'
-											+ value.id
-											+ ')" placeholder="" value="'
-											+ value.taskName
-										+ '">'
-									+ '</div>'
-									+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
-										+ '<textarea class="form-control" oninput = "taskEditChange(this,'
-											+ value.id
-											+ ')" rows="3">'
-											+ value.taskDetails
-										+ '</textarea>'
-									+ '</div>'
-									+ '<div class = "radical-pin-tasks-remove col-lg-10">'
-										+ 'Are you sure you want to delete the task'
-										+'<b><span class="removeTaskLabel">'
-											+ value.taskName
-										+ '</span></b>?'
-										+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">'
-											+ 'This task will also be removed in projects'
-										+ '</div>'
-									+ '</div>'
-									+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
-										+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">'
-											+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
-										+ '</button>'
-										+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
-											+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
-										+ '</button>'
-										+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'
-											+ value.id
-										+ ')">'
-											+ 'delete'
-										+ '</button>'
-										+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '
-											+ value.id
-										+ ')">'
-											+ 'save'
-										+ '</button>'
-										+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
-											+ 'cancel'
-										+ '</button>'
-										+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
-											+ 'cancel'
-										+ '</button>'
-									+ '</div>'
-								+ '</div>';
-							});
+	$
+			.ajax({
+				url : 'retrieveTaskMasterList',
+				type : 'GET',
+				data : null,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedTaskList = '';
+						$
+								.each(
+										data.taskList,
+										function(index, value) {
+											formattedTaskList += ''
+													+ '<div class = "row radical-pin-tasks">'
+													+ '<div class = "radical-pin-tasks-name col-lg-3">'
+													+ value.taskName
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-details col-lg-7">'
+													+ value.taskDetails
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
+													+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'
+													+ value.id
+													+ ')" onfocus = "taskEditChange(this,'
+													+ value.id
+													+ ')" placeholder="" value="'
+													+ value.taskName
+													+ '">'
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
+													+ '<textarea class="form-control" oninput = "taskEditChange(this,'
+													+ value.id
+													+ ')" rows="3">'
+													+ value.taskDetails
+													+ '</textarea>'
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-remove col-lg-10">'
+													+ 'Are you sure you want to delete the task'
+													+ '<b><span class="removeTaskLabel">'
+													+ value.taskName
+													+ '</span></b>?'
+													+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">'
+													+ 'This task will also be removed in projects'
+													+ '</div>'
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
+													+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">'
+													+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
+													+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'
+													+ value.id
+													+ ')">'
+													+ 'delete'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '
+													+ value.id
+													+ ')">'
+													+ 'save'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
+													+ 'cancel'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
+													+ 'cancel'
+													+ '</button>'
+													+ '</div>' + '</div>';
+										});
 						if (formattedTaskList == "") {
 							formattedTaskList = "<div>No Tasks in the Master List!</div>";
 						}
@@ -608,7 +638,7 @@ function addProject() {
 			projectDetails : $('#projectDetails').val()
 		})
 	};
-	
+
 	$.ajax({
 		url : 'addProject',
 		type : 'POST',
@@ -619,7 +649,7 @@ function addProject() {
 				$('#projectName').val("");
 				$('#projectDetails').val("");
 				$('#addProjectModal').modal("hide");
-				//alert("no error here");
+				// alert("no error here");
 				retrieveProjectList('Entry saved successfully!');
 				// alert("dk sandimas");
 			} else {
@@ -628,10 +658,10 @@ function addProject() {
 					msg += data.errorList[i] + "\n";
 				$('#errorDisplay').html(msg);
 			}
-		
+
 		},
 		error : function(data, status, jqXHR) {
-			
+
 		}
 	});
 }
@@ -659,6 +689,9 @@ function retrieveProjectList(successMessage) {
 													// a
 													// form?
 													+ value.projectName
+													+ '&'
+													+ 'id='
+													+ value.id
 													+ '" style="color: black">'
 													+ '<div class="row listRow listRowProperty">'
 													+ '<div class="col-md-4 listProperty">'
@@ -689,58 +722,187 @@ function retrieveProjectList(successMessage) {
 
 // Functios for Projects end
 
-function setCalendar() {
-	$('#calendar').fullCalendar({
-		header : {
-			left : 'prev,next today',
-			center : 'title',
-			right : 'month,basicWeek,basicDay'
+function setCalendar2() {
+	$.ajax({
+		url : 'RetrieveTasksForCalendar',
+		type : 'GET',
+		data : null,
+		success : function(data, status, jqXHR) {
+			console.log("data", data);
+			$('#calendar').fullCalendar({
+				header : {
+					left : 'prev,next today',
+					center : 'title',
+					right : 'month,basicWeek,basicDay'
+				},
+				defaultDate : '2015-0-12',
+				editable : false,
+				displayEventTime : false,
+				eventLimit : true, // allow "more" link when too many events
+				events : data.events
+			})
 		},
-		defaultDate : '2015-02-12',
-		editable : false,
-		eventLimit : true, // allow "more" link when too many events
-		events : [ {
-			title : 'All Day Event',
-			start : '2015-02-01'
-		}, {
-			title : 'Long Event',
-			start : '2015-02-07',
-			end : '2015-02-10'
-		}, {
-			id : 999,
-			title : 'Repeating Event',
-			start : '2015-02-09T16:00:00'
-		}, {
-			id : 999,
-			title : 'Repeating Event',
-			start : '2015-02-16T16:00:00'
-		}, {
-			title : 'Conference',
-			start : '2015-02-11',
-			end : '2015-02-13'
-		}, {
-			title : 'Meeting',
-			start : '2015-02-12T10:30:00',
-			end : '2015-02-12T12:30:00'
-		}, {
-			title : 'Lunch',
-			start : '2015-02-12T12:00:00'
-		}, {
-			title : 'Meeting',
-			start : '2015-02-12T14:30:00'
-		}, {
-			title : 'Happy Hour',
-			start : '2015-02-12T17:30:00'
-		}, {
-			title : 'Dinner',
-			start : '2015-02-12T20:00:00'
-		}, {
-			title : 'Birthday Party',
-			start : '2015-02-13T07:00:00'
-		}, {
-			title : 'Click for Google',
-			url : 'http://google.com/',
-			start : '2015-02-28'
-		} ]
+		error : function(jqXHR, status, error) {
+			alert("Hello!");
+		}
 	});
+
+}
+function getUrlParameter(sParam) {
+	var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL
+			.split('&'), sParameterName, i;
+
+	for (i = 0; i < sURLVariables.length; i++) {
+		sParameterName = sURLVariables[i].split('=');
+
+		if (sParameterName[0] === sParam) {
+			return sParameterName[1] === undefined ? true : sParameterName[1];
+		}
+	}
+}
+
+function retrieveTaskProjectList(successMessage) {
+	$("#taskMList").empty();
+	jsonData = {
+		data : JSON.stringify({
+			projectName : getUrlParameter("projectName")
+		})
+	};
+
+	$
+			.ajax({
+				url : 'retrieveTaskProjectList',
+				type : 'GET',
+				data : jsonData,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedTaskList = '';
+						$
+								.each(
+										data.taskList,
+										function(index, value) {
+											
+											formattedTaskList += ''
+													+ '<div class = "row radical-pin-tasks">'
+													+ '<div class = "radical-pin-tasks-name col-lg-3">'
+													+ value.taskName
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-details col-lg-7">'
+													+ value.taskDetails
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
+													+ '<input type="text" data-placement="left" class="form-control" oninput = "taskEditChange(this,'
+													+ value.id
+													+ ')" onfocus = "taskEditChange(this,'
+													+ value.id
+													+ ')" placeholder="" value="'
+													+ value.taskName
+													+ '">'
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
+													+ '<textarea class="form-control" oninput = "taskEditChange(this,'
+													+ value.id
+													+ ')" rows="3">'
+													+ value.taskDetails
+													+ '</textarea>'
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-remove col-lg-10">'
+													+ 'Are you sure you want to delete the task'
+													+ '<b><span class="removeTaskLabel">'
+													+ value.taskName
+													+ '</span></b>?'
+													+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">'
+													+ 'This task will also be removed in projects'
+													+ '</div>'
+													+ '</div>'
+													+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
+													+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "addLogModal('
+													+ value.taskName
+													+ ','
+													+ value.taskPhase
+													+ ')">'
+													+ 'Edit'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
+													+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'
+													+ value.id
+													+ ')">'
+													+ 'delete'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "updateConfirmed(this, '
+													+ value.id
+													+ ')">'
+													+ 'save'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
+													+ 'cancel'
+													+ '</button>'
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
+													+ 'cancel'
+													+ '</button>'
+													+ '</div>' + '</div>';
+										});
+						if (formattedTaskList == "") {
+							formattedTaskList = "<div>No Tasks in the Master List!</div>";
+						}
+						// alert(formattedTaskList);
+						$("#taskMList").html(formattedTaskList);
+						if (undefined != successMessage && "" != successMessage) {
+							// alert(successMessage);
+						}
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+					}
+
+					tasksReady();
+				},
+				error : function(jqXHR, status, error) {
+					alert("error");
+				}
+			});
+}
+
+function addLog() {
+
+	jsonData = {
+		data : JSON.stringify({
+			projectName : getUrlParameter("projectName"),
+			taskPhase : $('#xtaskPhase').val(),
+			timeSpent : $('#timeSpent').val(),
+			taskName : $('#xtaskName').val()
+		})
+	};
+
+	$.ajax({
+		url : 'addLog',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				
+				// alert("no error here");
+				retrieveProjectList('Entry saved successfully!');
+				// alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+
+		},
+		error : function(data, status, jqXHR) {
+
+		}
+	});
+}
+
+function addLogModal(taskName, taskPhase) {
+	
+	$("#logsModal").modal("show");
+	$("#xtaskName").val(taskName);
+	$("#xtaskPhase").val(taskPhase);
 }

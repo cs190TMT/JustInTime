@@ -1,6 +1,7 @@
 package sample.meta;
 
 //@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-14 21:15:55")
+
 /** */
 public final class TweetMeta extends org.slim3.datastore.ModelMeta<sample.model.Tweet> {
 

@@ -88,13 +88,7 @@ body {
 							style="float: right" aria-label="Left Align" data-toggle="modal"
 							data-target="#pullTasksModal" onclick="retrievePullTaskMasterList()">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-							Pull Tasks
-						</button>
-						<button type="button" class="radical-simple-button-task"
-							style="float: right; margin-right: 5px;" aria-label="Left Align"
-							data-toggle="modal" data-target="#addLogModal">
-							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							New Log
+							
 						</button>
 						</div>
 					</div>
@@ -188,6 +182,7 @@ body {
 	<script src="../js/fullcalendar.min.js" type="text/javascript"></script>
 	
 	<%@include file="../includes/footImports.jsp"%>
+	<%@include file="logsModal.jsp"%>
 
 	<script>
 		//knob
@@ -195,10 +190,24 @@ body {
 
 		$(document).ready(function() {
 			//alert("here");
-			setCalendar();
+			setCalendar2();
+			
 			$("#calendar").hide();
-			retrieveTaskMasterList("TaskMasterList");
+			retrieveTaskProjectList("TaskProjectList");
+			retrievePullTaskMasterList("TaskMasterList");
 		});
+		
+		$("#calendarButton").click(function(){
+			 $("#calendar").show();
+			 $("#taskMList").hide();
+		});
+		
+		$("#listButton").click(function(){
+			 $("#calendar").hide();
+			 $("#taskMList").show();
+		});
+		
+		
 	</script>
 
 </body>

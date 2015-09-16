@@ -11,6 +11,54 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+<<<<<<< HEAD
+    public TasksClientDto getTaskMasterList() {
+        List<TasksModel> tasksModel = this.dao.getTasksMasterList();
+        TasksClientDto taskList = new TasksClientDto();
+        TasksDto taskDto;
+        if(tasksModel.isEmpty()) {
+            //System.out.println("No recs in dao");
+        }
+        for (TasksModel task : tasksModel) {
+            taskDto = new TasksDto();
+            taskDto.setId(task.getId());
+            taskDto.setTaskName(task.getTaskName());
+            taskDto.setTaskDetails(task.getTaskDetails());
+            taskList.getTaskList().add(taskDto);
+        }
+        if(taskList.getTaskList().isEmpty()) {
+            //System.out.println("No recs in dto");
+        }
+        return taskList;
+    }
+    
+    public TasksClientDto searchTask(String name, String date, String phase){
+        List<TasksModel> tasksModel = this.dao.searchTasksMasterList(name, date, phase);
+        TasksClientDto taskList = new TasksClientDto();
+        TasksDto taskDto;
+        if(tasksModel == null){
+            System.out.println("model is null");
+        }
+        if(tasksModel.isEmpty()){
+            System.out.println("No recs in dao");
+        }
+        
+        for(TasksModel task: tasksModel){
+            taskDto = new TasksDto();
+            taskDto.setId(task.getId());
+            taskDto.setTaskName(task.getTaskName());
+            taskDto.setTaskDetails(task.getTaskDetails());
+            taskList.getTaskList().add(taskDto);
+            
+        }
+        
+        if(taskList.getTaskList().isEmpty()) {
+            System.out.println("No recs in dto");
+        }
+        return taskList;
+    }
+}
+=======
 import project.dao.TasksDao;
 import project.dto.TasksClientDto;
 import project.dto.TasksDto;
@@ -116,14 +164,12 @@ public class TasksService {
         
     }
     
-
-
     public TasksClientDto getTaskMasterList() {
         List<TasksModel> tasksModel = this.dao.getTasksMasterList();
         TasksClientDto taskList = new TasksClientDto();
         TasksDto taskDto;
         if(tasksModel.isEmpty()) {
-            //System.out.println("No recs in dao");
+            System.out.println("No recs in dao");
         }
         for (TasksModel task : tasksModel) {
             taskDto = new TasksDto();
@@ -133,7 +179,28 @@ public class TasksService {
             taskList.getTaskList().add(taskDto);
         }
         if(taskList.getTaskList().isEmpty()) {
-            //System.out.println("No recs in dto");
+            System.out.println("No recs in dto");
+        }
+        return taskList;
+    }
+    
+    public TasksClientDto getTaskProjectList(String projectName) {
+        List<TasksModel> tasksModel = this.dao.getTasksProjectList(projectName);
+        TasksClientDto taskList = new TasksClientDto();
+        TasksDto taskDto;
+        if(tasksModel.isEmpty()) {
+            System.out.println("No recs in dao");
+        }
+        for (TasksModel task : tasksModel) {
+            taskDto = new TasksDto();
+            taskDto.setId(task.getId());
+            taskDto.setTaskName(task.getTaskName());
+            taskDto.setTaskDetails(task.getTaskDetails());
+            taskDto.setTaskPhase(task.getTaskPhase());
+            taskList.getTaskList().add(taskDto);
+        }
+        if(taskList.getTaskList().isEmpty()) {
+            System.out.println("No recs in dto");
         }
         return taskList;
     }
@@ -164,3 +231,4 @@ public class TasksService {
         return taskList;
     }
 }
+>>>>>>> master

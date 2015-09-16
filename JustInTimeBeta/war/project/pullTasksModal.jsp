@@ -9,7 +9,7 @@
 				no confirm/add , reset/clear, remove buttons
 				
 		add task to project :
-				no codes yet 
+				no codes yet
 				not connected to DAO
 					
 	 -->

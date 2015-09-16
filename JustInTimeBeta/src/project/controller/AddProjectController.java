@@ -19,7 +19,7 @@ public class AddProjectController extends Controller {
     private ProjectsService service = new ProjectsService();
 
     @Override
-    public Navigation run() throws Exception {
+    protected Navigation run() throws Exception {
         ProjectsDto dto = new ProjectsDto();
         JSONObject json = null;
         
