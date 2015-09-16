@@ -11,10 +11,12 @@ import java.util.Map;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
+import org.slim3.repackaged.org.json.JSONObject;
 import org.slim3.util.BeanUtil;
 import org.slim3.util.RequestMap;
 
 import project.dto.LogsDto;
+import project.dto.TasksDto;
 import project.service.LogsService;
 
 public class AddLogController extends Controller {
@@ -23,10 +25,32 @@ public class AddLogController extends Controller {
     
     @Override
     protected Navigation run() throws Exception {
-        Map<String, Object> input = new RequestMap(this.request);
-        LogsDto logDto = new LogsDto();
-        BeanUtil.copy(input, logDto);
-        service.addLog(logDto, this.request.getParameter("projectName"));
-        return redirect(this.basePath);
+        LogsDto dto = new LogsDto();
+        JSONObject json = null;
+        
+        try {
+            json = new JSONObject((String) this.requestScope("data"));
+
+            dto.setTaskName(json.getString("taskName")  );
+            dto.setTimeSpent((float)json.getDouble("timeSpent"));
+            dto.setTaskPhase(json.getString("taskPhase"));
+            
+            
+            if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || dto.getTaskPhase().isEmpty()) {
+                dto.getErrorList().add("Missing content");
+            } else {
+                dto = this.service.addLog(dto, json.getString("projectName"));
+            }
+        } catch (Exception e) {
+            dto.getErrorList().add("Server controller error: " + e.getMessage());
+            if (json == null) {
+                json = new JSONObject();
+            }
+        }
+        
+        json.put("errorList", dto.getErrorList());
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
+        return null;
     }
 }
