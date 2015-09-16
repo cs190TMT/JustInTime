@@ -26,11 +26,11 @@ public class AddProjectTaskController extends Controller {
             dto.setDateCreated(new Date().toString());
             dto.setTimeAlloted(Float.valueOf(json.getString("timeAlloted")));
             dto.setTaskPhase(json.getString("taskPhase"));
-            dto.setprojId(1);
+            dto.setprojId(json.getInt("taskProjId"));
             if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || (dto.getTaskDetails() == null) || dto.getTaskDetails().isEmpty()) {
                 dto.getErrorList().add("Missing content");
             } else {
-                dto = this.service.addProjectTask(dto, json.getString("projId"));
+                dto = this.service.addProjectTask(dto, json.getString("taskProjName"));
             }
         } catch (Exception e) {
             dto.getErrorList().add("Server controller error: " + e.getMessage());

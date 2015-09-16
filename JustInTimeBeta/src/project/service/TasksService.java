@@ -136,6 +136,27 @@ public class TasksService {
         return taskList;
     }
     
+    public TasksClientDto getTaskProjectList(String projectName) {
+        List<TasksModel> tasksModel = this.dao.getTasksProjectList(projectName);
+        TasksClientDto taskList = new TasksClientDto();
+        TasksDto taskDto;
+        if(tasksModel.isEmpty()) {
+            System.out.println("No recs in dao");
+        }
+        for (TasksModel task : tasksModel) {
+            taskDto = new TasksDto();
+            taskDto.setId(task.getId());
+            taskDto.setTaskName(task.getTaskName());
+            taskDto.setTaskDetails(task.getTaskDetails());
+            taskDto.setTaskPhase(task.getTaskPhase());
+            taskList.getTaskList().add(taskDto);
+        }
+        if(taskList.getTaskList().isEmpty()) {
+            System.out.println("No recs in dto");
+        }
+        return taskList;
+    }
+    
     public TasksClientDto searchTask(String name, String date, String phase){
         List<TasksModel> tasksModel = this.dao.searchTasksMasterList(name, date, phase);
         TasksClientDto taskList = new TasksClientDto();

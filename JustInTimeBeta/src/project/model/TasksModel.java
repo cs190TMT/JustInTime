@@ -14,7 +14,7 @@ import com.google.appengine.api.datastore.Key;
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
-@Model(schemaVersion = 1)
+@Model(schemaVersion = 2)
 public class TasksModel implements Serializable {
     
     private static final long serialVersionUID = 1l;
