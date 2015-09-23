@@ -55,7 +55,7 @@
 							style="float: right; margin-right: 5px;" aria-label="Left Align"
 							data-toggle="modal" data-target="#addProjectModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							 
+							New Project
 						</button>
 						</div>
 					</div>

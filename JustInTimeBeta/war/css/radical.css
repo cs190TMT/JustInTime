@@ -1,4 +1,5 @@
 
+
 @font-face{
 	font-family: radicalHelvetica;
 	src: url(../fonts/HelveticaNeueLTCom-Th.ttf);
@@ -468,3 +469,196 @@ ul.radical-sidebar-menu li a.active i {
 	
 }
 
+
+
+.radical-pin-tasks{
+	margin: 0px;
+	padding: 5px;
+	padding-right: 2px;
+	border-bottom: 1px solid;
+	border-bottom-color: #c0c0c0;
+}
+
+.radical-pin-tasks:hover{
+	background-color: #cffff3;
+}
+
+.radical-pin-tasks .radical-pin-tasks-controls .radical-task-btn-edit{
+	visibility: hidden;
+	
+
+}
+
+.radical-pin-tasks .radical-pin-tasks-controls .radical-tasks-btn-remove{
+	visibility: hidden;
+	
+}
+
+.radical-pin-tasks .radical-pin-tasks-controls .radical-tasks-btn-addLog{
+	visibility: hidden;
+	
+}
+
+.radical-pin-tasks:hover .radical-pin-tasks-controls .radical-tasks-btn-remove{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radical-pin-tasks:hover .radical-pin-tasks-controls .radical-task-btn-edit{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radical-pin-tasks:hover .radical-pin-tasks-controls .radical-tasks-btn-addLog{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radical-tasks-btn-remove{
+	background-color: #ff4848;
+	color: #fff;
+}
+
+.radical-tasks-btn-remove:hover{
+	background-color: #ff2929;
+	color: #fff;
+}
+
+.radical-task-btn-edit{
+	background-color: #777777;
+	color: #fff;
+	margin-right: 5px;
+}
+
+.radical-task-btn-edit:hover{
+	background-color: #4d4d4d;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel{
+	background-color: #ff4848;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel:hover{
+	background-color: #ff2929;
+	color: #fff;
+}
+
+.radical-task-btn-save{
+	background-color: #05d091;
+	margin-right: 5px;
+	color: #fff;
+}
+
+.radical-task-btn-save:hover{
+	background-color: #009d6c;
+	color: #fff;
+}
+
+.removeTaskLabel{
+	color: #05d091;
+}
+
+.radical-task-btn-save-disabled{
+	background-color: #c0c0c0;
+}
+
+.radical-pin-tasks-header{
+	margin: 0px;
+	padding: 5px;
+	padding-right: 2px;
+	border-bottom: 1px solid;
+	border-bottom-color: #808080;
+	background-color: #fff;
+	opacity: 100%;
+}
+
+.radical-pin-tasks-header-header{
+	background-color: #fff;
+	opacity: 100%;
+}
+
+
+.radical-float-top{
+	position:fixed;
+	top: 50px;
+}
+
+.radical-tasks-btn-cancel-2{
+	background-color: #808080;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel-2:hover{
+	background-color: #5f5f5f;
+	color: #fff;
+}
+
+.radical-tasks-btn-remove-confirm{
+	background-color: #ff4848;
+	margin-right: 5px;
+	color: #fff;
+}
+
+.radical-tasks-btn-remove-confirm:hover{
+	background-color: #ff2929;
+	color: #fff;
+}
+
+.radical-pin-tasks-removed{
+	background-color: #363636;
+	color:#fff;
+}
+
+.radical-pin-tasks-removed:hover{
+	background-color: #3b3b3b;
+	color:#fff;
+}
+
+.radical-tasks-btn-addLog{
+	background-color: #4848ff;
+	margin-left: 5px;
+	color: #fff;
+}
+
+.radical-tasks-btn-addLog:hover{
+	background-color: #2929ff;
+	color: #fff;
+}
+
+.radical-task-btn-add{
+	background-color: #0591d0;
+	margin-right: 5px;
+	color: #fff;
+}
+
+.radical-task-btn-save:hover{
+	background-color: #009d6c;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel-3{
+	background-color: #808080;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel-3:hover{
+	background-color: #5f5f5f;
+	color: #fff;
+}

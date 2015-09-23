@@ -7,7 +7,7 @@
  -->
 
 <!-- Modal -->
-<div class="modal fade" id="addTaskModal" role="dialog"
+<div class="modal fade" id="addMasterTaskModal" role="dialog"
 	aria-labelledby="myModalLabel">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -23,20 +23,20 @@
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskName" id="taskName"/>
+							<input type="text" class="form-control" name="taskName" id="taskMasterName"/>
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskDetails" id="taskDetails"/>
+							<input type="text" class="form-control" name="taskDetails" id="taskMasterDetails"/>
 						</dd>
 					</dl>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="btnAddMasterTask">Add</button>
+					<button type="button" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()">Add</button>
 				</div>
-			<!-- </form>  -->
+			<!-- </form> -->
 		</div>
 		<!-- /.modal-content -->
 	</div>
