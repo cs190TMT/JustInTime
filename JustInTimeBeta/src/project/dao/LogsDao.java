@@ -7,12 +7,15 @@
 
 package project.dao;
 
+import java.util.List;
+
 import org.slim3.datastore.Datastore;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Transaction;
 
+import project.meta.LogsModelMeta;
 import project.model.LogsModel;
 
 public class LogsDao {
@@ -34,4 +37,12 @@ public class LogsDao {
         return result;
     }
     
+    public List<LogsModel> getLogsList(String projectName) {
+        LogsModelMeta t = new LogsModelMeta();
+        Key parentKey = KeyFactory.createKey("Logs", projectName);
+        return Datastore.query(t, parentKey).asList();
+    }
+    
 }
+
+
