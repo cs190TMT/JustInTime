@@ -84,7 +84,7 @@ body {
 							class="radical-simple-button-active" style="float: right">
 							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="radical-simple-button-task"
+						<button id="pullbtn" type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
 							data-target="#pullTasksModal" onclick="retrievePullTaskMasterList()">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
@@ -195,7 +195,6 @@ body {
 		$(document).ready(function() {
 			//alert("here");
 			setCalendar2();
-			
 			$("#calendar").hide();
 			retrieveTaskProjectList("TaskProjectList");
 			retrievePullTaskMasterList("TaskMasterList");
@@ -211,6 +210,8 @@ body {
 			 $("#calendar").hide();
 			 $("#taskMList").show();
 		});
+		
+		
 		
 		
 	</script>
