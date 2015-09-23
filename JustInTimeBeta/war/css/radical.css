@@ -677,3 +677,31 @@ ul.radical-sidebar-menu li a.active i {
 	background-color: #5f5f5f;
 	color: #fff;
 }
+
+
+.projList:hover .radical-task-btn-edit{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.projList:hover .radical-tasks-btn-remove{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+ .radical-task-btn-edit{
+ 	visibility: hidden;
+ }
+ 
+ .radical-tasks-btn-remove{
+ 	visibility: hidden;
+ }
