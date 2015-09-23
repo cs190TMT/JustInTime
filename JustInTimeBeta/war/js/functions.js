@@ -161,12 +161,7 @@ function retrievePullTaskMasterList(successMessage) {
 													+ '</div>'
 													+ '<div class ="col-lg-3">'
 													+ '<div class="panel">'
-													+ '<button type="button" onclick="planBtn('
-													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
-													+ '</span> Planning '
-													+ '</button>'
+													+ '<button type="button" class="radical-simple-button-task" onclick="planBtn('+value.id+')" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"> </span> Planning </button>'
 													+ '<button type="button" onclick="designBtn('
 													+ value.id
 													+ ')" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
