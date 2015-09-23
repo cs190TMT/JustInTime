@@ -678,7 +678,6 @@ ul.radical-sidebar-menu li a.active i {
 	color: #fff;
 }
 
-
 .projList:hover .radical-task-btn-edit{
 	visibility: visible;
 	
@@ -705,3 +704,4 @@ ul.radical-sidebar-menu li a.active i {
  .radical-tasks-btn-remove{
  	visibility: hidden;
  }
+
