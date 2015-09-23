@@ -83,20 +83,18 @@
 					
 					
 					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList" ng-repeat="item in taskList">
-							<div class = "row radical-pin-tasks" >
+							<div class = "row radical-pin-tasks"  id="taskPin{{item.id}}">
 													<div class = "radical-pin-tasks-name col-lg-3">
 													{{item.taskName}}
 													</div>
 													<div class = "radical-pin-tasks-details col-lg-7">
 													{{item.taskDetails}}
 													</div>
-													<div class = "radical-pin-tasks-name-edit col-lg-3" >
+													<div class = "radical-pin-tasks-name-edit col-lg-3">
 													
 													</div>
 													<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">
-													<textarea class="form-control" rows="3" ng-model = "item.taskDetailsx">
-												
-													</textarea>
+													<textarea class="form-control" rows="4" ng-model = "item.taskDetailsx"></textarea>
 													</div>
 													<div class = "radical-pin-tasks-remove col-lg-10">
 													Are you sure you want to delete the task 
@@ -114,10 +112,10 @@
 													<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">
 													<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
 													</button>
-													<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "deleteTask(this, item)">
+													<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "deleteTask(item)" id="tasksPin{{item.id}}deleteBtn">
 													delete
 													</button>
-													<button class="btn btn-sm text-right radical-task-btn-save" ng-click="updateTask(this, item)">
+													<button class="btn btn-sm text-right radical-task-btn-save" ng-click="updateTask(this, item)" id="tasksPin{{item.id}}updateBtn">
 													save
 													</button>
 													<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">
@@ -253,9 +251,11 @@
 			
 			);
 			
-			tasksReady();
 			
+	
 		});
+		
+		tasksReady();
 		
 	</script>
 

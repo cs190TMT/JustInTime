@@ -26,7 +26,7 @@ public class DeleteController extends Controller {
         JSONObject json = null;
         
         try {
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
             dto.setId(json.getLong("id"));
             dto = service.removeMasterTask(dto);
         } catch (Exception e) {

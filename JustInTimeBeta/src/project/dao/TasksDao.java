@@ -73,6 +73,9 @@ public class TasksDao {
         try {
             TasksModel originalTaskModel = Datastore.query(meta).filter(mainFilter).asSingle();
             if (originalTaskModel != null) {
+                
+                
+                
                 Transaction tx = Datastore.beginTransaction();
                 Datastore.delete(originalTaskModel.getKey());
                 tx.commit();

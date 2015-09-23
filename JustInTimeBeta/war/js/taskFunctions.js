@@ -14,7 +14,6 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 		}
 	});
 	
-	tasksReady();
 	
 	
 	
@@ -31,16 +30,19 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 			
 		};
 		
-		alert(idVal + " ")
 		
+
 		var addMasterTask = $http.post("update", jsonData);
 		
 		addMasterTask.success(function(data, status, headers, config){
 			if (data.errorList.length == 0) {
-				//$(btn).parent().parent().find(".radical-pin-tasks-name").html(name);
-				//$(btn).parent().parent().find(".radical-pin-tasks-details").html(details);
-				//taskPinNormalMode(btn);
-				// retrieveTaskMasterList("TaskMasterList");
+				
+				
+				item.taskDetails = item.taskDetailsx;
+				//$("#tasksPin"+idVal+"updateBtn").parent().parent().find(".radical-pin-tasks-name").html(name);
+				//$("#tasksPin"+idVal+"updateBtn").parent().parent().find(".radical-pin-tasks-details").html(details);
+				taskPinNormalMode($("#tasksPin"+idVal+"updateBtn"));
+				//retrieveTaskMasterList("TaskMasterList");
 			} else {
 				alert('Failed to retreive tasks masterlist!');
 			}
@@ -54,15 +56,18 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 	
 
 	
-	$scope.deleteTask = function(pib, idVal){
-		pin = $(pin).parent().parent();
+	$scope.deleteTask = function(item){
+		
+		var idValue = item.id;
+	
+		
+		var pin = $("#tasksPin"+idValue+"deleteBtn").parent().parent();
 
 		jsonData = {
-			data : JSON.stringify({
-				id : idValue
-			})
+			id : idValue
 		};
         
+		
 		
 		$http.post('delete', jsonData).success(
 				function(data, status, header, config){
