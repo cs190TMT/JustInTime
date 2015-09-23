@@ -37,22 +37,6 @@
 		margin-top: 10px;
 		padding: 0 15px 0 15px;
 	}
-	.listButtons {
-		margin-left: 15px;
-	}
-	.listButtons:hover {
-		color: #0080ff;
-	}
-	.listButtonsRow {
-		text-align: right;
-	}
-	.listHiddenButtons {
-		display: none;
-	}
-	.listInput {
-		border: 0;
-		background: transparent;
-	}
 	.listRow {
 		padding: 10px;
 	}

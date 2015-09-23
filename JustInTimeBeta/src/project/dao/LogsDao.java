@@ -1,10 +1,3 @@
-/* -------------------------------------------------------------------------
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Copyright (C) JustInTime
- * -------------------------------------------------------------------------
- */
-
 package project.dao;
 
 import org.slim3.datastore.Datastore;

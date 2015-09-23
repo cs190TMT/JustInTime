@@ -14,4 +14,3 @@ prohibited * Proprietary and confidential * Copyright (C) JustInTime *
 <script src="../js/respond.min.js" type="text/javascript"></script>
 <!--common script for all pages-->
 <script src="../js/common-scripts.js" type="text/javascript"></script>
-<script src="../js/functions.js" type="text/javascript"></script>

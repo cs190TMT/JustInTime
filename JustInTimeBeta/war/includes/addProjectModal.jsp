@@ -1,6 +1,3 @@
-
-
-
 <!-- 
 /* -------------------------------------------------------------------------
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -21,32 +18,25 @@
 				</button>
 				<h4 class="modal-title">Add Project</h4>
 			</div>
-
 			<!-- <form method="post" action="/addProject"> -->
-
 				<div class="modal-body">
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-
 							<input type="text" class="form-control" name="projectName" id="projectName"/>
-
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
 							<input type="text" class="form-control" name="projectDetails" id="projectDetails"/>
-
 						</dd>
 					</dl>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-					<button type="button" class="btn btn-primary" id="btnAddProject" onclick="addProject()">Add</button>
+					<button type="submit" class="btn btn-primary" id="btnAddProject" >Add</button>
 				</div>
 			<!-- </form> -->
-
 		</div>
 		<!-- /.modal-content -->
 	</div>

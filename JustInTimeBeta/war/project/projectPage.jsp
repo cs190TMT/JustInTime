@@ -54,9 +54,7 @@ body {
 <body>
 	<%
 		String projectName = request.getParameter("projectName");
-		String id = request.getParameter("id");
 		pageContext.setAttribute("projectName", projectName);
-		pageContext.setAttribute("id", id);
 	%>
 	<section id="container" class="">
 		<!--header start-->
@@ -72,7 +70,6 @@ body {
 					<div class="row">
 						<div class="col-lg-6">
 						<h3 style="float: left; padding: 0px; margin: 0px;"><%=projectName%></h3>
-						<input id="projectId" type="hidden" value="<%=id%>">
 						</div>
 						<div class="col-lg-6">
 						<button id="calendarButton" type="button"
@@ -86,9 +83,15 @@ body {
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#pullTasksModal" onclick="retrievePullTaskMasterList()">
+							data-target="#pullTasksModal">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-							
+							 
+						</button>
+						<button type="button" class="radical-simple-button-task"
+							style="float: right; margin-right: 5px;" aria-label="Left Align"
+							data-toggle="modal" data-target="#addLogModal">
+							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+							New Log//
 						</button>
 						</div>
 					</div>
@@ -182,7 +185,6 @@ body {
 	<script src="../js/fullcalendar.min.js" type="text/javascript"></script>
 	
 	<%@include file="../includes/footImports.jsp"%>
-	<%@include file="logsModal.jsp"%>
 
 	<script>
 		//knob
@@ -190,24 +192,10 @@ body {
 
 		$(document).ready(function() {
 			//alert("here");
-			setCalendar2();
-			
+			setCalendar();
 			$("#calendar").hide();
-			retrieveTaskProjectList("TaskProjectList");
-			retrievePullTaskMasterList("TaskMasterList");
+			retrieveTaskMasterList("TaskMasterList");
 		});
-		
-		$("#calendarButton").click(function(){
-			 $("#calendar").show();
-			 $("#taskMList").hide();
-		});
-		
-		$("#listButton").click(function(){
-			 $("#calendar").hide();
-			 $("#taskMList").show();
-		});
-		
-		
 	</script>
 
 </body>
