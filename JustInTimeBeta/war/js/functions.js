@@ -136,26 +136,26 @@ function retrievePullTaskMasterList(successMessage) {
 								.each(
 										data.taskList,
 										function(index, value) {
-											formattedTaskList += '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
-													+ '<div class="row pin-content radical-border-addTask">'
+											formattedTaskList += '<div id="modalPullMasterTask" class="col-lg-11 radical-list-pin">'
+													+ '<div class="row pin-content radical-border-addTask" style=" margin-top: 10px; margin-left: 5px; margin-bottom: 10px;">'
 													+ '<input type="hidden" class="id" id="taskId_'
 													+ value.id
 													+ '" name="id" value="'
 													+ value.id
 													+ '"/>'
 													+ ''
-													+ '<div class ="col-lg-9">'
-													+ '<input style="border:none; background-color:#ffffff" disabled name="taskName" id="taskName_'
+													+ '<div class ="col-lg-8">'
+													+ '<input style="border:none;  font-weight: bold; background-color:#ffffff" disabled name="taskName" id="taskName_'
 													+ value.id
 													+ '" value="'
 													+ value.taskName
-													+ '"/>'
-													+ '<input style="border:none; background-color:#ffffff" disabled name="taskDetails" id="taskDetails_'
+													+ '"/><br/>'
+													+ '<input style="border:none; font-style: italic; font-size: 80%; background-color:#ffffff" disabled name="taskDetails" id="taskDetails_'
 													+ value.id
 													+ '" value="'
 													+ value.taskDetails
 													+ '"/>'
-													+ '<br>Alloted time <input required type="number" step=".5" name="taskAllotTime" id="taskAllotTime_'
+													+ '<br>Time Allowance: <input required type="number" step=".5" name="taskAllotTime" id="taskAllotTime_'
 													+ value.id
 													+ '">'
 													+ '</div>'
@@ -163,20 +163,20 @@ function retrievePullTaskMasterList(successMessage) {
 													+ '<div class="panel">'
 													+ '<button type="button" onclick="planBtn('
 													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
+													+ ')" class="radical-simple-button-task btn-block" style="float: left" aria-label="Left Align">'
+													+ '<span class="icon-tasks"  aria-hidden="true">'
 													+ '</span> Planning '
 													+ '</button>'
 													+ '<button type="button" onclick="designBtn('
 													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-design" aria-hidden="true">'
+													+ ')" class="radical-simple-button-task btn-block" style="float: left; " aria-label="Left Align" >'
+													+ '<span class="icon-edit-sign" aria-hidden="true">'
 													+ '</span> Design '
 													+ '</button>'
 													+ '<button type="button" onclick="codingBtn('
 													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-coding" aria-hidden="true">'
+													+ ')" class="radical-simple-button-task btn-block" style="float: left; " aria-label="Left Align" >'
+													+ '<span class="icon-keyboard" aria-hidden="true">'
 													+ '</span> Coding '
 													+ '</button>'
 													+ '</div>'
