@@ -29,6 +29,9 @@ public class AddProjectTaskController extends Controller {
             dto.setprojId(json.getInt("taskProjId"));
             if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || (dto.getTaskDetails() == null) || dto.getTaskDetails().isEmpty()) {
                 dto.getErrorList().add("Missing content");
+            } 
+            else if(dto.getTimeAlloted() == 0 || dto.getTimeAlloted() < 0){
+                dto.getErrorList().add("Invalid number of hours.");
             } else {
                 dto = this.service.addProjectTask(dto, json.getString("taskProjName"));
             }

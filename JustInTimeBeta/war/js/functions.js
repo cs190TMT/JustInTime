@@ -145,7 +145,7 @@ function retrievePullTaskMasterList(successMessage) {
 													+ '"/>'
 													+ ''
 													+ '<div class ="col-lg-8">'
-													+ '<input style="border:none;  font-weight: bold; background-color:#ffffff" disabled name="taskName" id="taskName_'
+													+ '<input style="border:none; font-size: 110%; font-weight: bold; background-color:#ffffff" disabled name="taskName" id="taskName_'
 													+ value.id
 													+ '" value="'
 													+ value.taskName
@@ -155,9 +155,9 @@ function retrievePullTaskMasterList(successMessage) {
 													+ '" value="'
 													+ value.taskDetails
 													+ '"/>'
-													+ '<br>Time Allowance: <input required type="number" step=".5" name="taskAllotTime" id="taskAllotTime_'
+													+ '<br> <p style="font-size: 95%;">Time Allowance:  <input required style= " width: 30%;" type="number" step=".5" min="1" name="taskAllotTime" id="taskAllotTime_'
 													+ value.id
-													+ '">'
+													+ '"></p> '
 													+ '</div>'
 													+ '<div class ="col-lg-3">'
 													+ '<div class="panel">'
@@ -619,7 +619,7 @@ function deleteConfirmed(pin, idValue) {
 				$(pin).hide("200", "linear")
 				// retrieveTaskMasterList("TaskMasterList");
 			} else {
-				alert('Failed to retreive tasks masterlist!');
+				alert('Task already has a log. Cannot delete.');
 			}
 		},
 		error : function(jqXHR, status, error) {

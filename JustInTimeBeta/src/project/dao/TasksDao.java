@@ -69,9 +69,10 @@ public class TasksDao {
         
         TasksModelMeta meta = new TasksModelMeta();
         Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, task.getId());
+        Query.Filter secondFilter = new Query.FilterPredicate("timeSpent", FilterOperator.LESS_THAN, 0);
         
         try {
-            TasksModel originalTaskModel = Datastore.query(meta).filter(mainFilter).asSingle();
+            TasksModel originalTaskModel = Datastore.query(meta).filter(mainFilter).filter(secondFilter).asSingle();
             if (originalTaskModel != null) {
                 Transaction tx = Datastore.beginTransaction();
                 Datastore.delete(originalTaskModel.getKey());

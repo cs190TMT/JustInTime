@@ -33,7 +33,10 @@ public class AddLogController extends Controller {
             dto.setTaskPhase(json.getString("taskPhase"));
             
             
-            if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || dto.getTaskPhase().isEmpty()) {
+            if(dto.getTimeSpent() == 0 || dto.getTimeSpent() < 0){
+                dto.getErrorList().add("Invalid number of hours");
+            }
+            else if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || dto.getTaskPhase().isEmpty()) {
                 dto.getErrorList().add("Missing content");
             } else {
                 dto = this.service.addLog(dto, json.getString("projectName"));
