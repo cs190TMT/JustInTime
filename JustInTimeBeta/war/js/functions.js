@@ -721,8 +721,7 @@ function addProject() {
 
 function retrieveProjectList(successMessage) {
 	$("#projectList").empty();
-	$
-			.ajax({
+	$.ajax({
 				url : 'retrieveProjectList',
 				type : 'GET',
 				data : null,
