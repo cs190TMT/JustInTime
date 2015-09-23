@@ -138,26 +138,26 @@ function retrievePullTaskMasterList(successMessage) {
 								.each(
 										data.taskList,
 										function(index, value) {
-											formattedTaskList += '<div id="modalPullMasterTask" class="col-lg-12 radical-list-pin">'
-													+ '<div class="row pin-content radical-border-addTask">'
+											formattedTaskList += '<div id="modalPullMasterTask" class="col-lg-11 radical-list-pin">'
+													+ '<div class="row pin-content radical-border-addTask" style=" margin-top: 10px; margin-left: 5px; margin-bottom: 10px;">'
 													+ '<input type="hidden" class="id" id="taskId_'
 													+ value.id
 													+ '" name="id" value="'
 													+ value.id
 													+ '"/>'
 													+ ''
-													+ '<div class ="col-lg-9">'
-													+ '<input style="border:none; background-color:#ffffff" disabled name="taskName" id="taskName_'
+													+ '<div class ="col-lg-8">'
+													+ '<input style="border:none;  font-weight: bold; background-color:#ffffff" disabled name="taskName" id="taskName_'
 													+ value.id
 													+ '" value="'
 													+ value.taskName
-													+ '"/>'
-													+ '<input style="border:none; background-color:#ffffff" disabled name="taskDetails" id="taskDetails_'
+													+ '"/><br/>'
+													+ '<input style="border:none; font-style: italic; font-size: 80%; background-color:#ffffff" disabled name="taskDetails" id="taskDetails_'
 													+ value.id
 													+ '" value="'
 													+ value.taskDetails
 													+ '"/>'
-													+ '<br>Alloted time <input required type="number" step=".5" name="taskAllotTime" id="taskAllotTime_'
+													+ '<br>Time Allowance: <input required type="number" step=".5" name="taskAllotTime" id="taskAllotTime_'
 													+ value.id
 													+ '">'
 													+ '</div>'
@@ -165,20 +165,20 @@ function retrievePullTaskMasterList(successMessage) {
 													+ '<div class="panel">'
 													+ '<button type="button" onclick="planBtn('
 													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-planning" style="float: left" aria-label="Left Align">'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-planning" aria-hidden="true">'
+													+ ')" class="radical-simple-button-task btn-block" style="float: left" aria-label="Left Align">'
+													+ '<span class="icon-tasks"  aria-hidden="true">'
 													+ '</span> Planning '
 													+ '</button>'
 													+ '<button type="button" onclick="designBtn('
 													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-design" style="float: left; " aria-label="Left Align" >'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-design" aria-hidden="true">'
+													+ ')" class="radical-simple-button-task btn-block" style="float: left; " aria-label="Left Align" >'
+													+ '<span class="icon-edit-sign" aria-hidden="true">'
 													+ '</span> Design '
 													+ '</button>'
 													+ '<button type="button" onclick="codingBtn('
 													+ value.id
-													+ ')" class="radical-simple-button-addTask radical-font-coding" style="float: left; " aria-label="Left Align" >'
-													+ '<span class="glyph-icon glyphicon-plus-sign radical-font-coding" aria-hidden="true">'
+													+ ')" class="radical-simple-button-task btn-block" style="float: left; " aria-label="Left Align" >'
+													+ '<span class="icon-keyboard" aria-hidden="true">'
 													+ '</span> Coding '
 													+ '</button>'
 													+ '</div>'
@@ -535,16 +535,28 @@ function taskPinNormalMode(pin) {
 
 function taskPinNormalMode2(pin) {
 	pin = $(pin).parent().parent()
-
 	$(pin).find(".radical-pin-tasks-remove").fadeOut();
 	$(pin).find(".radical-tasks-btn-remove-confirm").fadeOut();
 	$(pin).find(".radical-tasks-btn-cancel-2").fadeOut(function() {
 		$(pin).find(".radical-pin-tasks-name").fadeIn();
 		$(pin).find(".radical-pin-tasks-details").fadeIn();
 		$(pin).find(".radical-task-btn-edit").fadeIn();
+		$(pin).find(".radical-tasks-btn-addLog").fadeIn();
 		$(pin).find(".radical-tasks-btn-remove").fadeIn(function() {
 			$(pin).removeClass("radical-pin-tasks-removed", "200");
 		});
+
+	});
+}
+
+function taskPinNormalMode3(pin) {
+	pin = $(pin).parent().parent()
+	$(pin).find("#timeSpent").fadeOut();
+	$(pin).find(".radical-task-btn-add").fadeOut();	
+	$(pin).find(".radical-tasks-btn-cancel-3").fadeOut(function() {
+		$(pin).find(".radical-task-btn-edit").fadeIn();
+		$(pin).find(".radical-tasks-btn-remove").fadeIn();
+		$(pin).find(".radical-tasks-btn-addLog").fadeIn();
 
 	});
 }
@@ -557,8 +569,12 @@ function tasksReady() {
 	$(".radical-tasks-btn-remove-confirm").hide();
 	$(".radical-tasks-btn-cancel-2").hide();
 	$(".radical-pin-tasks-remove").hide();
+	$(".radical-tasks-btn-cancel-3").hide();
+	$(".radical-task-btn-add").hide();
+	$(".radical-pin-tasks-addLog").hide();
 	
-	
+//---------
+
 }
 
 function removeClicked(pin) {
@@ -568,15 +584,36 @@ function removeClicked(pin) {
 
 	$(pin).find(".radical-pin-tasks-name").fadeOut();
 	$(pin).find(".radical-pin-tasks-details").fadeOut();
+//---------
+	$(pin).find(".radical-tasks-btn-addLog").fadeOut();
 	$(pin).find(".radical-task-btn-edit").fadeOut();
 	$(pin).find(".radical-tasks-btn-remove").fadeOut(function() {
 
 		$(pin).find(".radical-pin-tasks-remove").fadeIn();
 		$(pin).find(".radical-tasks-btn-remove-confirm").fadeIn();
 		$(pin).find(".radical-tasks-btn-cancel-2").fadeIn();
+		
 	});
 
 }
+
+function logClicked(pin) {
+	pin = $(pin).parent().parent();
+//---------
+	$(pin).find(".radical-tasks-btn-remove").fadeOut();
+	$(pin).find(".radical-task-btn-edit").fadeOut();
+	$(pin).find(".radical-tasks-btn-addLog").fadeOut(function() {
+
+		$(pin).find(".radical-task-btn-add").fadeIn();
+		$(pin).find(".radical-tasks-btn-cancel-3").fadeIn();
+		$(pin).find("#timeSpent").fadeIn();
+		
+	});
+
+}
+
+//--------------------------
+
 
 function deleteConfirmed(pin, idValue) {
 	pin = $(pin).parent().parent();
@@ -832,16 +869,20 @@ function retrieveTaskProjectList(successMessage) {
 													+ '</div>'
 													+ '</div>'
 													+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
-													+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "addLogModal('
-													+ value.taskName
-													+ ','
-													+ value.taskPhase
-													+ ')">'
+													+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "addLogModal()">'
 													+ 'Edit'
 													+ '</button>'
 													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">'
 													+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
 													+ '</button>'
+								//-------------------					
+													+ '<input hidden class="form-control" id="timeSpent" placeholder="Time Spent" style="margin-left:-200px;margin-right:5px"/>'
+													+ '<input hidden id="taskName" value="'+value.taskName+'"/>'
+													+ '<input hidden id="taskPhase" value="'+value.taskPhase+'"/>'
+													+ '<button	 class="btn btn-sm text-right radical-tasks-btn-addLog" onclick = "logClicked(this)">'
+													+ '<span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>'
+													+ '</button>'
+								//-------------------					
 													+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "deleteConfirmed(this,'
 													+ value.id
 													+ ')">'
@@ -852,16 +893,27 @@ function retrieveTaskProjectList(successMessage) {
 													+ ')">'
 													+ 'save'
 													+ '</button>'
+								//-------------------
+													+ '<button class="btn btn-sm text-right radical-task-btn-add" onclick = "addLog(this)">'
+													+ 'add'
+													+ '</button>'
+								//-------------------					
 													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">'
 													+ 'cancel'
 													+ '</button>'
 													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">'
 													+ 'cancel'
 													+ '</button>'
-													+ '</div>' + '</div>';
+								//-------------------				
+													+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-3" onclick = "taskPinNormalMode3(this)">'
+													+ 'cancel'
+													+ '</button>'
+													
+													+ '</div>' 
+													+ '</div>';
 										});
 						if (formattedTaskList == "") {
-							formattedTaskList = "<div>No Tasks in the Master List!</div>";
+							formattedTaskList = "<div>No Log</div>";
 						}
 						// alert(formattedTaskList);
 						$("#taskMList").html(formattedTaskList);
@@ -880,17 +932,17 @@ function retrieveTaskProjectList(successMessage) {
 			});
 }
 
-function addLog() {
-
+function addLog(yeah) {
 	jsonData = {
 		data : JSON.stringify({
 			projectName : getUrlParameter("projectName"),
-			taskPhase : $('#xtaskPhase').val(),
+			taskPhase : $('#taskPhase').val(),
 			timeSpent : $('#timeSpent').val(),
-			taskName : $('#xtaskName').val()
+			taskName  : $('#taskName').val()
 		})
 	};
-
+	
+	alert($('#timePhase').val());
 	$.ajax({
 		url : 'addLog',
 		type : 'POST',
@@ -899,25 +951,85 @@ function addLog() {
 		success : function(data, status, jqXHR) {
 			if (data.errorList.length == 0) {
 				
-				// alert("no error here");
+				$('#xtaskName').val("");
+				$('#xtaskphase').val("");
+				$('#taskSpent').val("");
+				alert("no error here......Added to database");
 				retrieveProjectList('Entry saved successfully!');
-				// alert("dk sandimas");
 			} else {
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
 				$('#errorDisplay').html(msg);
 			}
-
+			
 		},
 		error : function(data, status, jqXHR) {
-
 		}
 	});
+
 }
 
+
+function retrieveLogs(successMessage) {
+	$("#logList").empty();
+	jsonData = {
+		data : JSON.stringify({
+			projectName : getUrlParameter("projectName")
+		})
+	};
+
+	$
+			.ajax({
+				url : 'retrieveLogs',
+				type : 'GET',
+				data : jsonData,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0) {
+						var formattedTaskList = '';
+						$
+								.each(
+										data.taskList,
+										function(index, value) {
+											
+											formattedTaskList += ''
+													+ '<div class = "row radical-pin-tasks">'
+													+ '<h4>'
+													+ value.taskName
+													+ '</h4>'
+													+ '<h5>'
+													+ value.taskPhase
+													+ '<br>'
+													+ value.timeSpent
+													+ '</h5>'
+													+ '</div>';
+										});
+						if (formattedTaskList == "") {
+							formattedTaskList = "<div>No Tasks in the Master List!</div>";
+						}
+						// alert(formattedTaskList);
+						$("#logList").html(formattedTaskList);
+						if (undefined != successMessage && "" != successMessage) {
+							// alert(successMessage);
+						}
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+					}
+
+					tasksReady();
+				},
+				error : function(jqXHR, status, error) {
+					alert("error");
+				}
+			});
+}
+
+
+
+
+
 function addLogModal(taskName, taskPhase) {
-	
+	alert($("#xtaskName").val(taskName));
 	$("#logsModal").modal("show");
 	$("#xtaskName").val(taskName);
 	$("#xtaskPhase").val(taskPhase);

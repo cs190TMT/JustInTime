@@ -494,6 +494,11 @@ ul.radical-sidebar-menu li a.active i {
 	
 }
 
+.radical-pin-tasks .radical-pin-tasks-controls .radical-tasks-btn-addLog{
+	visibility: hidden;
+	
+}
+
 .radical-pin-tasks:hover .radical-pin-tasks-controls .radical-tasks-btn-remove{
 	visibility: visible;
 	
@@ -514,8 +519,15 @@ ul.radical-sidebar-menu li a.active i {
     transition: all 0.3s ease;
 }
 
-
-
+.radical-pin-tasks:hover .radical-pin-tasks-controls .radical-tasks-btn-addLog{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 
 .radical-tasks-btn-remove{
 	background-color: #ff4848;
@@ -634,3 +646,34 @@ ul.radical-sidebar-menu li a.active i {
 	cursor:not-allowed;
 }
 
+.radical-tasks-btn-addLog{
+	background-color: #4848ff;
+	margin-left: 5px;
+	color: #fff;
+}
+
+.radical-tasks-btn-addLog:hover{
+	background-color: #2929ff;
+	color: #fff;
+}
+
+.radical-task-btn-add{
+	background-color: #0591d0;
+	margin-right: 5px;
+	color: #fff;
+}
+
+.radical-task-btn-save:hover{
+	background-color: #009d6c;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel-3{
+	background-color: #808080;
+	color: #fff;
+}
+
+.radical-tasks-btn-cancel-3:hover{
+	background-color: #5f5f5f;
+	color: #fff;
+}
