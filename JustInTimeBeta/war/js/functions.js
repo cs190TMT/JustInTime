@@ -1100,8 +1100,7 @@ function retrieveTaskProjectList(successMessage) {
 		})
 	};
 
-	$
-			.ajax({
+	$.ajax({
 				url : 'retrieveTaskProjectList',
 				type : 'GET',
 				data : jsonData,
@@ -1248,6 +1247,7 @@ function addLog(yeah) {
 
 }
 
+
 function retrieveLogs(successMessage) {
 	$("#logList").empty();
 	jsonData = {
@@ -1300,6 +1300,10 @@ function retrieveLogs(successMessage) {
 				}
 			});
 }
+
+
+
+
 
 function addLogModal(taskName, taskPhase) {
 	alert($("#xtaskName").val(taskName));

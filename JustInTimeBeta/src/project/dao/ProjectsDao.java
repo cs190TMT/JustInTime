@@ -35,13 +35,13 @@ public class ProjectsDao {
         return Datastore.query(p).asList();
     }
     
-    public List<ProjectsModel> validateProjectName(ProjectsModel project){
+    public List<ProjectsModel> validateProjectName(ProjectsModel task){
         List<ProjectsModel> projectsModels = null;
         
         ProjectsModelMeta meta = new ProjectsModelMeta();
         
-        Query.Filter mainFilter = new Query.FilterPredicate("projectName", FilterOperator.EQUAL, project.getProjectName());
-        Query.Filter secondFilter = new Query.FilterPredicate("id", FilterOperator.NOT_EQUAL, project.getId());
+        Query.Filter mainFilter = new Query.FilterPredicate("projectName", FilterOperator.EQUAL, task.getProjectName());
+        Query.Filter secondFilter = new Query.FilterPredicate("id", FilterOperator.NOT_EQUAL, task.getId());
         
         try {
             projectsModels = Datastore.query(meta).filter(mainFilter).filter(secondFilter).asList();
