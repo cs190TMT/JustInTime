@@ -618,3 +618,19 @@ ul.radical-sidebar-menu li a.active i {
 	background-color: #3b3b3b;
 	color:#fff;
 }
+
+.radical-input-has-error{
+	border-color: #d70000;
+	background-color: #ffb9b9;
+}
+
+.radical-input-has-error:focus{
+	border-color: #ff0f0f;
+	background-color: #ffb9b9;
+}
+
+.radical-btn-disabled{
+	background-color: #c0c0c0;
+	cursor:not-allowed;
+}
+

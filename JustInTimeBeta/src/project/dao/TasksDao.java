@@ -86,16 +86,16 @@ public class TasksDao {
         return result;
     }
     
-    public List<TasksModel> validateTaskName(TasksModel task){
+    public List<TasksModel> validateTaskName(String taskName){
         List<TasksModel> tasksModels = null;
         
         TasksModelMeta meta = new TasksModelMeta();
         
-        Query.Filter mainFilter = new Query.FilterPredicate("taskName", FilterOperator.EQUAL, task.getTaskName());
-        Query.Filter secondFilter = new Query.FilterPredicate("id", FilterOperator.NOT_EQUAL, task.getId());
+        Query.Filter mainFilter = new Query.FilterPredicate("taskName", FilterOperator.EQUAL, taskName);
+        
         
         try {
-            tasksModels = Datastore.query(meta).filter(mainFilter).filter(secondFilter).asList();
+            tasksModels = Datastore.query(meta).filter(mainFilter).asList();
         } catch (Exception e) {
             
         }
