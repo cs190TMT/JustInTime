@@ -20,11 +20,7 @@ public class ValidTaskNameController extends Controller{
         
         try {
             json = new JSONObject((String)this.requestScope("data"));
-            dto.setId(json.getLong("id"));
-            dto.setTaskName(json.getString("taskName"));
-            
-            TasksClientDto t = service.validateTaskName(dto);
-            
+            TasksClientDto t = service.validateTaskName(json.getString("taskName"));
             validate = t.getTaskList().size();
         } catch (Exception e) {
             e.printStackTrace();

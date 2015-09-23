@@ -28,6 +28,7 @@ public class AddMasterTaskController extends Controller {
 
             dto.setTaskName(json.getString("taskName")  );
             dto.setTaskDetails(json.getString("taskDetails"));
+            dto.setTaskNameL(json.getString("taskName")  );
             if ((dto.getTaskName() == null) || dto.getTaskName().isEmpty() || (dto.getTaskDetails() == null) || dto.getTaskDetails().isEmpty()) {
                 dto.getErrorList().add("Missing content");
             } else {

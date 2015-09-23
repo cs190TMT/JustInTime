@@ -631,6 +631,21 @@ ul.radical-sidebar-menu li a.active i {
 	color:#fff;
 }
 
+.radical-input-has-error{
+	border-color: #d70000;
+	background-color: #ffb9b9;
+}
+
+.radical-input-has-error:focus{
+	border-color: #ff0f0f;
+	background-color: #ffb9b9;
+}
+
+.radical-btn-disabled{
+	background-color: #c0c0c0;
+	cursor:not-allowed;
+}
+
 .radical-tasks-btn-addLog{
 	background-color: #4848ff;
 	margin-left: 5px;

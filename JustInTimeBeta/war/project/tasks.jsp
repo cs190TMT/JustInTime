@@ -31,7 +31,7 @@
 
 <title>Just In Time</title>
 </head>
-<body>
+<body ng-app="jitTask" ng-controller="jitController">
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
@@ -82,41 +82,50 @@
 					</div>
 					
 					
-					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList">
-						
-
-						  
-						<div class = "row radical-pin-tasks">
-							<div class = "radical-pin-tasks-name col-lg-3">
-								Name of Project
-							</div>
-							<div class = "radical-pin-tasks-details col-lg-7">
-								Details
-							</div>
-							<div class = "radical-pin-tasks-name-edit col-lg-3">
-								<input type="text" class="form-control" placeholder="" value="Name of Project">
-							</div>
-							<div class = "radical-pin-tasks-details-edit col-lg-7">
-								<textarea class="form-control" rows="3">Details</textarea>
-							</div>
-							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
-								<button class="btn btn-sm text-right radical-task-btn-edit">
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-								</button>
-								<button class="btn btn-sm text-right radical-tasks-btn-remove">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-								</button>
-								<button class="btn btn-sm text-right radical-task-btn-save radical-task-btn-save-disabled">
-									save
-								</button>
-								<button class="btn btn-sm text-right radical-tasks-btn-cancel">
-									cancel
-								</button>
-							</div>
-						</div>
-						
-						
-
+					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList" ng-repeat="item in taskList">
+							<div class = "row radical-pin-tasks"  id="taskPin{{item.id}}">
+													<div class = "radical-pin-tasks-name col-lg-3">
+													{{item.taskName}}
+													</div>
+													<div class = "radical-pin-tasks-details col-lg-7">
+													{{item.taskDetails}}
+													</div>
+													<div class = "radical-pin-tasks-name-edit col-lg-3">
+													
+													</div>
+													<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">
+													<textarea class="form-control" rows="4" ng-model = "item.taskDetailsx"></textarea>
+													</div>
+													<div class = "radical-pin-tasks-remove col-lg-10">
+													Are you sure you want to delete the task 
+													<b><span class="removeTaskLabel">
+													{{item.taskName}}
+													</span></b>?
+													<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">
+													This task will also be removed in projects
+													</div>
+													</div>
+													<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+													<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">
+													<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "deleteTask(item)" id="tasksPin{{item.id}}deleteBtn">
+													delete
+													</button>
+													<button class="btn btn-sm text-right radical-task-btn-save" ng-click="updateTask(this, item)" id="tasksPin{{item.id}}updateBtn">
+													save
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">
+													cancel
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">
+													cancel
+													</button>
+													</div></div>
+				
 					</div>
 					<div class="row radical-pin-tasks-header-header radical-float-top col-lg-7" style="padding-left: 15px; margin-top: 10px; padding-right: 9px;" id="header2">
 						<div class = "row radical-pin-tasks-header" id="searchTaskFake" style="border:0px;">
@@ -151,6 +160,9 @@
 		<br /> <br /> <br />
 		<!--footer start-->
 		<%@include file="../includes/footer.jsp"%>
+		
+		
+		
 		<!--footer end-->
 	</section>
 
@@ -180,6 +192,8 @@
 	<!-- js placed at the end of the document so the pages load faster -->
 
 	<%@include file="../includes/footImports.jsp"%>
+	<script type="text/javascript" src="../js/taskFunctions.js"></script>
+
 
 	<script type="text/javascript">
 		$(".knob").knob();
@@ -187,7 +201,7 @@
 
 		$(document).ready(function() {
 			
-			retrieveTaskMasterList("TaskMasterList");
+			//retrieveTaskMasterList("TaskMasterList");
 			
 			$("#header2").hide();
 			
@@ -237,9 +251,11 @@
 			
 			);
 			
-		
 			
+	
 		});
+		
+		tasksReady();
 		
 	</script>
 
