@@ -9,8 +9,10 @@ package project.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import project.dao.LogsDao;
+import project.dto.LogsClientDto;
 import project.dto.LogsDto;
 import project.model.LogsModel;
 
@@ -33,5 +35,25 @@ public class LogsService {
         
         return input;
     }
+    
+    public LogsClientDto getLogsList(String projectName) {
+        List<LogsModel> logsModel = this.dao.getLogsList(projectName);
+        LogsClientDto logList = new LogsClientDto();
+        LogsDto logDto;
+        if(logsModel.isEmpty()) {
+            System.out.println("No recs in dao");
+        }
+        for (LogsModel log : logsModel) {
+            logDto = new LogsDto();
+            logDto.setTaskName(log.getTaskName());
+            logDto.setTaskPhase(log.getTaskPhase());
+            logList.getLogsList().add(logDto);
+        }
+        if(logList.getLogsList().isEmpty()) {
+            System.out.println("No recs in dto");
+        }
+        return logList;
+    }
+    
     
 }

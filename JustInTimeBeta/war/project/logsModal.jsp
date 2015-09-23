@@ -7,16 +7,21 @@
 				</div>
 				<div class="modal-body">
 				    <div style="margin-top: 10px; max-height: 500px; overflow-y: scroll;">
-				    		<div class = "row">
+				    		
+				    			<h4></h4>
 				    			Time spent
 				    			<input type="number" id="timeSpent" step="0.5">
-				    			<input type="hidden" id ="xtaskPhase" >
+				    			<input type="hidden" id ="xtaskPhase"  >
 				    			<input type="hidden" id ="xtaskName" >
-				    			<button onclick="addLog()">add</button>
-				    		</div>
+				    			
+				    			<div class="containerList" id="toBeLog">
+								</div>
+				    	
 					</div>
 				</div>
-				<div class="modal-footer"></div>
+				<div class="modal-footer">
+					<button onclick="addLog()">add</button>
+				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
