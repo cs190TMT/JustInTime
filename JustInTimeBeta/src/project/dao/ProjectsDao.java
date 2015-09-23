@@ -9,8 +9,6 @@ import project.model.ProjectsModel;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Transaction;
 
 public class ProjectsDao {
@@ -33,22 +31,5 @@ public class ProjectsDao {
     public List<ProjectsModel> getAllProjects() {
         ProjectsModelMeta p = new ProjectsModelMeta();
         return Datastore.query(p).asList();
-    }
-    
-    public List<ProjectsModel> validateProjectName(ProjectsModel project){
-        List<ProjectsModel> projectsModels = null;
-        
-        ProjectsModelMeta meta = new ProjectsModelMeta();
-        
-        Query.Filter mainFilter = new Query.FilterPredicate("projectName", FilterOperator.EQUAL, project.getProjectName());
-        Query.Filter secondFilter = new Query.FilterPredicate("id", FilterOperator.NOT_EQUAL, project.getId());
-        
-        try {
-            projectsModels = Datastore.query(meta).filter(mainFilter).filter(secondFilter).asList();
-        } catch (Exception e) {
-            
-        }
-        
-        return projectsModels;
     }
 }
