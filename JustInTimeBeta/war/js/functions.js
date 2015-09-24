@@ -684,7 +684,7 @@ function updateConfirmed(btn, idVal) {
 // Functions for Tasks end
 
 // Functios for Projects start
-function addProject() {
+/*function addProject() {
 	jsonData = {
 		data : JSON.stringify({
 			projectName : $('#projectName').val(),
@@ -893,71 +893,6 @@ function projectEditChange(pin, idVal) {
 
 }
 
-function projectPinEditMode(pin) {
-
-	pin = $(pin).parent().parent();
-
-	$(pin).find(".radical-pin-tasks-name-edit").find("input").val(
-			$(pin).find(".radical-pin-tasks-name").html());
-	$(pin).find(".radical-pin-tasks-details-edit").find("textarea").val(
-			$(pin).find(".radical-pin-tasks-details").html());
-
-	$(pin).find(".radical-task-btn-save").addClass(
-			"radical-task-btn-save-disabled");
-	$(pin).find(".radical-task-btn-save").attr("disabled", "disabled");
-	$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
-
-	$(pin).find(".radical-task-btn-edit").fadeOut();
-	$(pin).find(".radical-tasks-btn-remove").fadeOut();
-	$(pin).find(".radical-pin-tasks-name").fadeOut(function() {
-		$(pin).find(".radical-pin-tasks-name-edit").fadeIn();
-	});
-	$(pin).find(".radical-pin-tasks-details").fadeOut(function() {
-
-		$(pin).find(".radical-pin-tasks-details-edit").fadeIn();
-		$(pin).find(".radical-task-btn-save").fadeIn();
-		$(pin).find(".radical-tasks-btn-cancel").fadeIn();
-
-	});
-
-}
-
-function projectPinNormalMode(pin) {
-
-	pin = $(pin).parent().parent();
-
-	$(pin).find(".radical-pin-tasks-name-edit").attr("data-content", "");
-	$(pin).find(".radical-pin-tasks-name-edit").popover("hide");
-	$(pin).find(".radical-task-btn-save").fadeOut();
-	$(pin).find(".radical-tasks-btn-cancel").fadeOut();
-
-	$(pin).find(".radical-pin-tasks-name-edit").fadeOut(function() {
-		$(pin).find(".radical-pin-tasks-name").fadeIn();
-	});
-	$(pin).find(".radical-pin-tasks-details-edit").fadeOut(function() {
-		$(pin).find(".radical-pin-tasks-details").fadeIn();
-		$(pin).find(".radical-task-btn-edit").fadeIn();
-		$(pin).find(".radical-tasks-btn-remove").fadeIn();
-	});
-
-}
-
-function projectPinNormalMode2(pin) {
-	pin = $(pin).parent().parent()
-
-	$(pin).find(".radical-pin-tasks-remove").fadeOut();
-	$(pin).find(".radical-tasks-btn-remove-confirm").fadeOut();
-	$(pin).find(".radical-tasks-btn-cancel-2").fadeOut(function() {
-		$(pin).find(".radical-pin-tasks-name").fadeIn();
-		$(pin).find(".radical-pin-tasks-details").fadeIn();
-		$(pin).find(".radical-task-btn-edit").fadeIn();
-		$(pin).find(".radical-tasks-btn-remove").fadeIn(function() {
-			$(pin).removeClass("radical-pin-tasks-removed", "200");
-		});
-
-	});
-}
-
 function projectReady() {
 	$(".radical-pin-tasks-details-edit").hide();
 	$(".radical-pin-tasks-name-edit").hide();
@@ -966,23 +901,6 @@ function projectReady() {
 	$(".radical-tasks-btn-remove-confirm").hide();
 	$(".radical-tasks-btn-cancel-2").hide();
 	$(".radical-pin-tasks-remove").hide();
-}
-
-function projectRemoveClicked(pin) {
-	pin = $(pin).parent().parent();
-
-	$(pin).addClass("radical-pin-tasks-removed", "200");
-
-	$(pin).find(".radical-pin-tasks-name").fadeOut();
-	$(pin).find(".radical-pin-tasks-details").fadeOut();
-	$(pin).find(".radical-task-btn-edit").fadeOut();
-	$(pin).find(".radical-tasks-btn-remove").fadeOut(function() {
-
-		$(pin).find(".radical-pin-tasks-remove").fadeIn();
-		$(pin).find(".radical-tasks-btn-remove-confirm").fadeIn();
-		$(pin).find(".radical-tasks-btn-cancel-2").fadeIn();
-	});
-
 }
 
 function projectDeleteConfirmed(pin, idValue) {
@@ -1048,6 +966,87 @@ function projectUpdateConfirmed(btn, idVal) {
 		error : function(jqXHR, status, error) {
 			alert("error");
 		}
+	});
+}*/
+function projectRemoveClicked(pin) {
+	pin = $(pin).parent().parent();
+
+	$(pin).addClass("radical-pin-tasks-removed", "200");
+
+	$(pin).find(".radical-pin-tasks-name").fadeOut();
+	$(pin).find(".radical-pin-tasks-details").fadeOut();
+	$(pin).find(".radical-task-btn-edit").fadeOut();
+	$(pin).find(".radical-tasks-btn-remove").fadeOut(function() {
+
+		$(pin).find(".radical-pin-tasks-remove").fadeIn();
+		$(pin).find(".radical-tasks-btn-remove-confirm").fadeIn();
+		$(pin).find(".radical-tasks-btn-cancel-2").fadeIn();
+	});
+
+}
+
+function projectPinEditMode(pin) {
+
+	pin = $(pin).parent().parent();
+
+	$(pin).find(".radical-pin-tasks-name-edit").find("input").val(
+			$(pin).find(".radical-pin-tasks-name").html());
+	$(pin).find(".radical-pin-tasks-details-edit").find("textarea").val(
+			$(pin).find(".radical-pin-tasks-details").html());
+
+	$(pin).find(".radical-task-btn-save").addClass(
+			"radical-task-btn-save-disabled");
+	$(pin).find(".radical-task-btn-save").attr("disabled", "disabled");
+	$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
+
+	$(pin).find(".radical-task-btn-edit").fadeOut();
+	$(pin).find(".radical-tasks-btn-remove").fadeOut();
+	$(pin).find(".radical-pin-tasks-name").fadeOut(function() {
+		$(pin).find(".radical-pin-tasks-name-edit").fadeIn();
+	});
+	$(pin).find(".radical-pin-tasks-details").fadeOut(function() {
+
+		$(pin).find(".radical-pin-tasks-details-edit").fadeIn();
+		$(pin).find(".radical-task-btn-save").fadeIn();
+		$(pin).find(".radical-tasks-btn-cancel").fadeIn();
+
+	});
+
+}
+
+function projectPinNormalMode(pin) {
+
+	pin = $(pin).parent().parent();
+
+	$(pin).find(".radical-pin-tasks-name-edit").attr("data-content", "");
+	$(pin).find(".radical-pin-tasks-name-edit").popover("hide");
+	$(pin).find(".radical-task-btn-save").fadeOut();
+	$(pin).find(".radical-tasks-btn-cancel").fadeOut();
+
+	$(pin).find(".radical-pin-tasks-name-edit").fadeOut(function() {
+		$(pin).find(".radical-pin-tasks-name").fadeIn();
+	});
+	$(pin).find(".radical-pin-tasks-details-edit").fadeOut(function() {
+		$(pin).find(".radical-pin-tasks-details").fadeIn();
+		$(pin).find(".radical-task-btn-edit").fadeIn();
+		$(pin).find(".radical-tasks-btn-remove").fadeIn();
+	});
+
+}
+
+function projectPinNormalMode2(pin) {
+	pin = $(pin).parent().parent()
+
+	$(pin).find(".radical-pin-tasks-remove").fadeOut();
+	$(pin).find(".radical-tasks-btn-remove-confirm").fadeOut();
+	$(pin).find(".radical-tasks-btn-cancel-2").fadeOut(function() {
+		$(pin).find(".radical-pin-tasks-name").fadeIn();
+		$(pin).find(".radical-pin-tasks-details").fadeIn();
+		$(pin).find(".radical-task-btn-edit").fadeIn();
+		$(pin).find(".radical-tasks-btn-remove").fadeIn(function() {
+			$(pin).removeClass("radical-pin-tasks-removed", "200");
+		});
+
 	});
 }
 

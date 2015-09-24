@@ -23,6 +23,7 @@
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/angular.js"></script>
 <script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/projectFunction.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
@@ -34,7 +35,7 @@
 </head>
 
 
-<body>
+<body ng-app="project">
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
@@ -70,7 +71,68 @@
 						</div>
 					</div>
 					<!-- Project List start-->
-					<div class="containerList" id="projectList">
+					<div class="containerList" id="projectList" ng-controller="retrieve">
+						<div class="row listRow listRowProperty projList radical-pin-tasks">
+							<div class="row listRow listRowHeader">
+								<div class="col-md-4 listProperty listHeader">Name</div>
+								<div class="col-md-4 listProperty listHeader">Details</div>
+							</div>
+							<div ng-repeat="value in projectList">
+								<div class="row listRow listRowProperty projList radical-pin-tasks" id="projectPin{{value.id}}">
+									<a ng-href="/projectPage?projectName={{value.projectName}}&id={{value.id}}" style="color: black">
+										<div class="col-md-4 listProperty radical-pin-tasks-name">
+											{{value.projectName}}
+										</div>
+										<div class="col-md-4 listProperty radical-pin-tasks-details">
+											{{value.projectDetails}}
+										</div>
+									</a>
+										<div class="radical-pin-tasks-name-edit col-md-3">
+											<input type="text" data-placement="left" class="form-control" ng-controller="validate"
+												onfocus="taskEditChange(this,value.id)" placeholder="" value="{{value.projectName}}">
+										</div>
+										<div class="radical-pin-tasks-details-edit col-lg-7 input-group">
+											<textarea class="form-control" rows="3">
+												{{value.projectDetails}}
+											</textarea>
+										</div>
+												
+										<div class="radical-pin-tasks-remove col-lg-10">
+											Are you sure you want to delete the project
+											<b><span class="removeTaskLabel">
+												{{value.projectName}}
+											</span></b>?
+											<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">
+												This task will also be removed in projects
+											</div>
+										</div>
+												
+										<div class="radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+											<!-----------First to appear Buttons------------>
+											<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "projectPinEditMode(this)">
+												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+											</button>
+											<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "projectRemoveClicked(this)">
+												<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+											</button>
+											<!-----------Deleting Buttons-------------------------->
+											<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "projectDeleteConfirmed(this,value.id)">
+												delete
+											</button>
+											<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "projectPinNormalMode2(this)">
+												cancel
+											</button>
+											<!-----------Editing Buttons------------------------>
+											<button class="btn btn-sm text-right radical-task-btn-save" onclick = "projectUpdateConfirmed(this,value.id)">
+												save
+											</button>
+											<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "projectPinNormalMode(this)">
+												cancel
+											</button>
+										</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<!-- Project List end -->
 
@@ -98,7 +160,7 @@
 		$(".knob").knob();
 		$(document).ready(function() {
 			$("#calendar").hide();
-			retrieveProjectList("ProjectList");
+			//retrieveProjectList("ProjectList");
 		});
 	</script>
 
