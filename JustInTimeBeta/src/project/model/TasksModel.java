@@ -29,6 +29,8 @@ public class TasksModel implements Serializable {
     
     private String taskName;
     
+    private String taskNameL;
+    
     private String taskDetails;
     
     private String taskPhase;
@@ -121,8 +123,16 @@ public class TasksModel implements Serializable {
         return this.taskName;
     }
     
+    public String getTaskNameL(){
+        return this.taskNameL;
+    }
+    
     public void setTaskName(String name) {
         this.taskName = name;
+    }
+    
+    public void setTaskNameL(String name){
+        this.taskNameL = name.toLowerCase();
     }
     
     public String getTaskDetails() {
