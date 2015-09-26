@@ -1,17 +1,10 @@
 package project.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
-import org.slim3.util.RequestMap;
 
 import project.dto.LogsClientDto;
-import project.dto.LogsDto;
-import project.dto.TaskCalendarDto;
 import project.service.LogsService;
 
 public class RetrieveLogsController extends Controller {
@@ -19,6 +12,7 @@ public class RetrieveLogsController extends Controller {
     LogsService service = new LogsService();
 
     @Override
+/*
     protected Navigation run() throws Exception {
         // TODO Auto-generated method stub
         Map<String, Object> input = new RequestMap(this.request);
@@ -57,11 +51,33 @@ public class RetrieveLogsController extends Controller {
         }
         
            json.put("events", eventList);
-            
+        json.put("logList", logList.getLogsList());    
         json.put("errorList", logList.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
         return null;
     }
-
+*/
+    
+    protected Navigation run() throws Exception {
+        LogsClientDto logList = new LogsClientDto(); 
+        JSONObject json = new JSONObject((String) this.requestScope("data"));
+        
+        try {
+            logList = service.getLogsList(json.getString("projectName"));
+            if(logList.getLogsList().isEmpty()) {
+                System.out.println("No records in tasklist");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logList.getErrorList().add("Server controller error: " +e.getMessage());
+        }
+        
+        json.put("taskList", logList.getLogsList());
+        json.put("errorList", logList.getErrorList());
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
+        return null;
+    }
+    
 }

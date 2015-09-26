@@ -7,16 +7,13 @@
 
 package project.controller;
 
-import java.util.Map;
+
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
-import org.slim3.util.BeanUtil;
-import org.slim3.util.RequestMap;
 
 import project.dto.LogsDto;
-import project.dto.TasksDto;
 import project.service.LogsService;
 
 public class AddLogController extends Controller {

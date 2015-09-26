@@ -154,7 +154,11 @@ body {
 					<div class="containerList" id="taskMList">
 					</div>
 				</div>
-
+				<div class="col-lg-3">
+					<h4>LOGS</h4>
+					<div id="logList">
+					</div>
+				</div>
 				<br />
 				<div class="" style="margin-top: 150px; margin-right: 300px;"
 					id="calendar"></div>
@@ -195,6 +199,7 @@ body {
 			$("#calendar").hide();
 			retrieveTaskProjectList("TaskProjectList");
 			retrievePullTaskMasterList("TaskMasterList");
+			retrieveLogs("ProjectLogList");
 		});
 		
 		$("#calendarButton").click(function(){

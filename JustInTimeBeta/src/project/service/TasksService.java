@@ -23,6 +23,7 @@ public class TasksService {
     public TasksDto addMasterTask(TasksDto input) {
         TasksModel task = new TasksModel();
         task.setTaskName(input.getTaskName());
+        task.setTaskNameL(input.getTaskNameL());
         task.setTaskDetails(input.getTaskDetails());
         task.setDateCreated(new Date().toString());
         task.setTimeAlloted(0);
@@ -82,14 +83,12 @@ public class TasksService {
         return input;
     }
     
-    public TasksClientDto validateTaskName(TasksDto input){
-        
-        TasksModel t = new TasksModel();
-        t.setId(input.getId());
-        t.setTaskName(input.getTaskName());
+    public TasksClientDto validateTaskName(String taskName){
         
         
-        List<TasksModel> tasksModel = this.dao.validateTaskName(t);
+        
+        
+        List<TasksModel> tasksModel = this.dao.validateTaskName(taskName);
         TasksClientDto taskList = new TasksClientDto();
         TasksDto taskDto;
         
