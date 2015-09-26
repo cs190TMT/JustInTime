@@ -26,10 +26,15 @@ public class UpdateController extends Controller {
         TasksService service = new TasksService();
         
         try {
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
             dto.setId(json.getLong("id"));
             dto.setTaskName(json.getString("taskName"));
+            
+           
+            
             dto.setTaskDetails(json.getString("taskDetails"));
+            
+            //System.out.println(json.getString("taskName") + " " + json.getString("taskName"));
             dto = service.updateMasterTask(dto);
         } catch (Exception e) {
             e.printStackTrace();

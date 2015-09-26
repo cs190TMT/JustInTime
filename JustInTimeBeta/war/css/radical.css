@@ -631,6 +631,21 @@ ul.radical-sidebar-menu li a.active i {
 	color:#fff;
 }
 
+.radical-input-has-error{
+	border-color: #d70000;
+	background-color: #ffb9b9;
+}
+
+.radical-input-has-error:focus{
+	border-color: #ff0f0f;
+	background-color: #ffb9b9;
+}
+
+.radical-btn-disabled{
+	background-color: #c0c0c0;
+	cursor:not-allowed;
+}
+
 .radical-tasks-btn-addLog{
 	background-color: #4848ff;
 	margin-left: 5px;
@@ -662,3 +677,31 @@ ul.radical-sidebar-menu li a.active i {
 	background-color: #5f5f5f;
 	color: #fff;
 }
+
+.projList:hover .radical-task-btn-edit{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.projList:hover .radical-tasks-btn-remove{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+ .radical-task-btn-edit{
+ 	visibility: hidden;
+ }
+ 
+ .radical-tasks-btn-remove{
+ 	visibility: hidden;
+ }
+

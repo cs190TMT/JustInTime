@@ -23,7 +23,7 @@
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskName" id="taskMasterName"/>
+							<input type="text" class="form-control" name="taskName" id="taskMasterName" oninput="validateMasterTask()" onblur="validateMasterTask()"/>
 						</dd>
 						<br />
 						<dt>Details:</dt>
@@ -34,7 +34,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()">Add</button>
+					<button type="button" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()" >Add</button>
 				</div>
 			<!-- </form> -->
 		</div>
