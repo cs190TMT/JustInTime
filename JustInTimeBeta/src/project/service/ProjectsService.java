@@ -100,4 +100,15 @@ public ProjectsClientDto validateProjectName(ProjectsDto input){
         
         return input;
     }
+    
+    public ProjectsDto removeProject(ProjectsDto input){
+        ProjectsModel project = new ProjectsModel();
+        project.setId(input.getId());
+        
+        if(!this.dao.deleteProject(project)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+        return input;
+    }
 }

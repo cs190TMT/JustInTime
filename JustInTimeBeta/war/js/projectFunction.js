@@ -11,6 +11,7 @@ var editNameProject = true;
 var editDetailsProject = true;
 var InputVal;
 var DeleteVal;
+var canDelete = true;
 var projectName;
 var projectDetails;
 
@@ -21,9 +22,6 @@ var retrieve = project.controller('retrieve', function($scope, $http){
 			if(data.errorList.length == 0){
 				$scope.projectList = data.projectList;
 				
-				//for(item in $scope.projectList){
-				//	item.projectDetailsx = item.projectDetails;
-				//}
 				$scope.deleteProject = deleteProject;
 				$scope.deleteCancelProject = deleteCancelProject;
 				$scope.editSaveProject = editSaveProject;
@@ -63,12 +61,33 @@ var retrieve = project.controller('retrieve', function($scope, $http){
 	$scope.projectDeleteMode  = function(pin,id){
 		$scope.id = id;
 		DeleteVal = $scope.id;
+		
+		$http.get('retrieveTaskProjectList')
+			.success(function(data, status, header, config){
+				if(data.length > 0){
+					canDelete = false;
+					alert("success");
+				}
+				else{
+					
+				}
+				
+			});
+				
 		alert(id + " " + DeleteVal);
 	};
 	
 	$scope.checkIfInput = function(rowId){
 		var flag = false;
 		if (rowId == InputVal){
+			flag = true;
+		}
+		return flag;
+	};
+	
+	$scope.checkIfDeleteOk = function(rowId){
+		var flag = false;
+		if (rowId == DeleteVal && canDelete){
 			flag = true;
 		}
 		return flag;
@@ -165,71 +184,30 @@ var addProject = project.controller('addProject', function($scope, $http){
 	};
 });
 
-	/*
-	$scope.updateProject = function(btn, item){
-		var idVal = item.id;
-		var name = item.projectName;
-		var details = item.projectDetailsx;
+var deleteProject = project.controller('deleteProject', function($scope, $http){
+	
+	$scope.projectDeleteConfirmed = function(pin,idVal){
+		
+		alert("Deleting "+  idVal);
 		
 		jsonData = {
-			id : idVal,
-			projectName : name,
-			projectDetails : details
-			
-	};
-		
-		
-
-		var addProject = $http.post("updateProject", jsonData);
-		
-		addProject.success(function(data, status, headers, config){
-			if (data.errorList.length == 0) {
-				
-				item.projectDetails = item.projectDetailsx;
-				//$("#tasksPin"+idVal+"updateBtn").parent().parent().find(".radical-pin-tasks-name").html(name);
-				//$("#tasksPin"+idVal+"updateBtn").parent().parent().find(".radical-pin-tasks-details").html(details);
-				taskPinNormalMode($("#projectsPin"+idVal+"updateBtn"));
-				//retrieveTaskMasterList("TaskMasterList");
-				
-			} else {
-				alert('Failed to retreive projects list!');
-			}
-		});
-		
-		addProject.error(function(data, status, headers, config){
-				alert(data.errorList + " \nstatus: " + status);
-		});
-	
-	}
-	
-
-	
-	$scope.deleteProject = function(item){
-		
-		var idValue = item.id;
-	
-		
-		var pin = $("#projectsPin"+idValue+"deleteBtn").parent().parent();
-
-		jsonData = {
-			id : idValue
+			id: idVal
 		};
-        
 		
-		
-		$http.post('deleteProject', jsonData).success(
-				function(data, status, header, config){
-				
-					if (data.errorList.length == 0) {
-						$(pin).hide("200", "linear")
-						// retrieveTaskMasterList("TaskMasterList");
-					} else {
-						alert('Failed to retreive tasks masterlist!');
-					}
+		$http.post("deleteProject",jsonData)
+			.success(function(data, status, header, config){
+				if(data.errorList.length == 0){
+					alert("Delete successfull.");
+					location.reload(true);
+				}
+				else{
 					
 				}
-		);
+			})
+			.error(function(data, status, header, config){
+				alert("error " + status);
+			});
 		
-	}
+	};
+
 });
-*/

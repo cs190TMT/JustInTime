@@ -76,4 +76,28 @@ public class ProjectsDao {
         return result;
     }
     
+    public boolean deleteProject(ProjectsModel project){
+        boolean result = true;
+        
+        ProjectsModelMeta meta = new ProjectsModelMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, project.getId());
+        
+        try {
+            ProjectsModel originalProjectModel = Datastore.query(meta).filter(mainFilter).asSingle();
+            if (originalProjectModel != null) {
+                
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.delete(originalProjectModel.getKey());
+                tx.commit();
+                
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        
+        return result;
+    }
+    
 }

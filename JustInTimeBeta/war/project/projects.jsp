@@ -120,7 +120,7 @@
 											<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
 										</button>
 										<!-----------Deleting Buttons-------------------------->
-										<button ng-if="checkIfDelete(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "projectDeleteConfirmed(this,value.id)">
+										<button ng-controller="deleteProject" ng-if="checkIfDeleteOk(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "projectDeleteConfirmed(this,value.id)">
 											Delete
 										</button>
 										<button ng-if="checkIfDelete(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel-2" ng-click="resetDeleteFlag()">
