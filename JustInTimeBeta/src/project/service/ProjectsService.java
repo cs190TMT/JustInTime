@@ -89,10 +89,11 @@ public ProjectsClientDto validateProjectName(ProjectsDto input){
     
     public ProjectsDto updateProject(ProjectsDto input) {
         ProjectsModel project = new ProjectsModel();
+        project.setId(input.getId());
         project.setProjectName(input.getProjectName());
         project.setProjectDetails(input.getProjectDetails());
         
-        if (!this.dao.saveProject(project)) {
+        if (!this.dao.updateProject(project)) {
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
         }
