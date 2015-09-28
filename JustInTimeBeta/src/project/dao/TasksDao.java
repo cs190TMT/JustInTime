@@ -135,7 +135,7 @@ public class TasksDao {
     public List<TasksModel> getTasksMasterList() {
         TasksModelMeta t = new TasksModelMeta();
         Key parentKey = KeyFactory.createKey("Tasks", "Master");
-        return Datastore.query(t, parentKey).asList();
+        return Datastore.query(t, parentKey).sort("id", SortDirection.DESCENDING).asList();
     }
     
     public List<TasksModel> getTasksProjectList(String projectName) {
@@ -178,7 +178,7 @@ public class TasksDao {
                         phase);
             }
 
-            tasksModels = Datastore.query(meta, parentKey).asList();
+            tasksModels = Datastore.query(meta, parentKey).sort("id", SortDirection.DESCENDING).asList();
 
             ListIterator<TasksModel> itr = tasksModels.listIterator();
 
@@ -196,7 +196,9 @@ public class TasksDao {
             System.out.println(e.toString());
             tasksModels = null;
         }
-
+        
+        
+        
         return tasksModels;
     }
 }

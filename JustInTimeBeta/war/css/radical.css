@@ -542,7 +542,7 @@ ul.radical-sidebar-menu li a.active i {
 .radical-task-btn-edit{
 	background-color: #777777;
 	color: #fff;
-	margin-right: 5px;
+	margin-right: 2px;
 }
 
 .radical-task-btn-edit:hover{
@@ -562,7 +562,7 @@ ul.radical-sidebar-menu li a.active i {
 
 .radical-task-btn-save{
 	background-color: #05d091;
-	margin-right: 5px;
+	margin-right: 2px;
 	color: #fff;
 }
 
@@ -676,4 +676,36 @@ ul.radical-sidebar-menu li a.active i {
 .radical-tasks-btn-cancel-3:hover{
 	background-color: #5f5f5f;
 	color: #fff;
+}
+
+
+.wave-enter-setup, .wave-leave-setup {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    line-height:100%;
+}
+
+.wave-enter-setup {
+  position:relative;
+  left:100%;
+ line-height:100%;
+}
+
+
+.wave-enter-start {
+  left:0;
+line-height:100%;
+}
+
+.wave-leave-setup {
+  position:absolute;
+  left:0;
+line-height: 100%;
+}
+
+.wave-leave-start {
+  left:-100%;
+  line-height: 10%;
 }

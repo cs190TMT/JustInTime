@@ -30,7 +30,7 @@ public class SearchController extends Controller {
         
         try{
             
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
             
             String taskName = json.getString("taskName");
             
