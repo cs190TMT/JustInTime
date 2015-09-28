@@ -679,33 +679,31 @@ ul.radical-sidebar-menu li a.active i {
 }
 
 
-.wave-enter-setup, .wave-leave-setup {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
-  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
-    line-height:100%;
+.projList:hover .radical-task-btn-edit{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.projList:hover .radical-tasks-btn-remove{
+	visibility: visible;
+	
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.wave-enter-setup {
-  position:relative;
-  left:100%;
- line-height:100%;
-}
+ .radical-task-btn-edit{
+ 	visibility: hidden;
+ }
+ 
+ .radical-tasks-btn-remove{
+ 	visibility: hidden;
+ }
 
 
-.wave-enter-start {
-  left:0;
-line-height:100%;
-}
-
-.wave-leave-setup {
-  position:absolute;
-  left:0;
-line-height: 100%;
-}
-
-.wave-leave-start {
-  left:-100%;
-  line-height: 10%;
-}
