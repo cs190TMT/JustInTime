@@ -90,10 +90,10 @@
 										
 									<div class="radical-pin-tasks-name-edit col-md-3">
 										<input ng-model="projName" type="text" data-placement="left" class="form-control"
-											onfocus="taskEditChange(this,value.id)" placeholder="" >
+											onfocus="validateProjectName(this,value.id)" id="projectName_{{value.id}}" placeholder="" >
 									</div>
 									<div class="radical-pin-tasks-details-edit col-lg-7">
-										<textarea ng-model="projDetails" type="text" data-placement="left" class="form-control" placeholder="">
+										<textarea ng-model="projDetails" type="text" data-placement="left" class="form-control" placeholder="" id="projectDetails_{{value.id}}">
 										</textarea>
 									</div>
 									
@@ -125,7 +125,7 @@
 											Cancel
 										</button>
 										<!-----------Editing Buttons------------------------>
-										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed(value)">
+										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed(value.id)">
 											Save
 										</button>
 										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel" ng-click = "resetInputFlag()">
