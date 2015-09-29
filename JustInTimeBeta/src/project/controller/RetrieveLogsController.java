@@ -15,7 +15,7 @@ public class RetrieveLogsController extends Controller {
     
     protected Navigation run() throws Exception {
         LogsClientDto logList = new LogsClientDto(); 
-        JSONObject json = new JSONObject((String) this.request.getReader().readLine());
+        JSONObject json = new JSONObject((String) this.requestScope("data"));
         
         try {
             logList = service.getLogsList(json.getString("projectName"));
