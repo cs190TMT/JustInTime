@@ -47,6 +47,7 @@ public class LogsService {
             logDto = new LogsDto();
             logDto.setTaskName(log.getTaskName());
             logDto.setTaskPhase(log.getTaskPhase());
+            logDto.setTimeSpent(log.getTimeSpent());
             logList.getLogsList().add(logDto);
         }
         if(logList.getLogsList().isEmpty()) {
