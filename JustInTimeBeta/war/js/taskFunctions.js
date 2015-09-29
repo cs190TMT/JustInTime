@@ -1,4 +1,8 @@
 angular.module('jitTask',[]).controller('jitController', function($scope, $http){
+	
+	$scope.addTaskName = ""; 
+	$scope.addTaskDetails = "";
+	
 	$http.get("retrieveTaskMasterList").success(function(data, status, header, config){
 		if(data.errorList.length == 0){
 			$scope.taskList = data.taskList;
@@ -8,6 +12,7 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 			}
 			
 			
+			
 		}
 		else{
 			
@@ -15,8 +20,91 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 	});
 	
 	
+	$scope.addTask = function(){
 	
+		if($scope.addTaskName != ""){
+			var tempTaskName = $scope.addTaskName;
+			
+			tempTaskName = tempTaskName.trim();
+		  
+			if(tempTaskName != ""){
+			
+			
+				jsonData = {
+					taskName : tempTaskName,
+					taskDetails : $scope.addTaskDetails
+				};
+				
+				
+				
+				var addMasterTask = $http.post('addMasterTask', jsonData);
+				
+				addMasterTask.success(function(data, status, headers, config){
+					$http.get("retrieveTaskMasterList").success(function(data, status, header, config){
+						if(data.errorList.length == 0){
+							
+							$scope.addTaskName = "";
+							$scope.addTaskDetails = "";
+							
+							$scope.taskList = data.taskList;
+							
+							var item = data.taskList[0];
+							
+							
+							
+							for(item in $scope.taskList){
+								item.taskDetailsx = item.taskDetails;
+							}
+							
+							$('#addMasterTaskModal').modal("hide");
+							
+							
+							
+							
+						}
+						else{
+							
+						}
+						
+						$("#taskPin"+item.id).hide();
+						$("#taskPin"+item.id).show("200", "linear");
+					});
+					}	
+				);
+			}
+			else{
+				validateMasterTask();
+			}
+		}
+		else{
+			validateMasterTask();
+		}
+	}
 	
+	$scope.searchTask = function(){
+		
+		jsonData = {
+			taskName : $scope.taskSearchInput
+		};
+		
+		
+		var searchMasterTask =  $http.post("search", jsonData);
+		
+		searchMasterTask.success(function(data, status, headers, config){
+				if (data.errorList.length == 0) {
+					$scope.taskList = data.taskList;
+					
+					for(item in $scope.taskList){
+						item.taskDetailsx = item.taskDetails;
+					}
+				}else{
+					alert('Failed to retreive tasks masterlist!');
+				}
+			}
+		);
+		
+		
+	}
 	
 	$scope.updateTask = function(btn, item){
 		var idVal = item.id;
@@ -93,7 +181,5 @@ function tasksReady() {
 	$(".radical-tasks-btn-remove-confirm").hide();
 	$(".radical-tasks-btn-cancel-2").hide();
 	$(".radical-pin-tasks-remove").hide();
-	
-	
 }
 

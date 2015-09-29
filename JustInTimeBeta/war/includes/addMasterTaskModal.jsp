@@ -23,18 +23,18 @@
 					<dl class="dl-horizontal">
 						<dt>Name:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskName" id="taskMasterName" oninput="validateMasterTask()" onblur="validateMasterTask()"/>
+							<input type="text" class="form-control" name="taskName" id="taskMasterName" ng-model="addTaskName" oninput="validateMasterTask()" onblur="validateMasterTask()"/>
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input type="text" class="form-control" name="taskDetails" id="taskMasterDetails"/>
+							<input type="text" class="form-control" name="taskDetails" id="taskMasterDetails" ng-model="addTaskDetails"/>
 						</dd>
 					</dl>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="btnAddMasterTask" onclick="addMasterTask()" >Add</button>
+					<button type="button" class="btn btn-primary" id="btnAddMasterTask" ng-click="addTask()" >Add</button>
 				</div>
 			<!-- </form> -->
 		</div>

@@ -542,7 +542,7 @@ ul.radical-sidebar-menu li a.active i {
 .radical-task-btn-edit{
 	background-color: #777777;
 	color: #fff;
-	margin-right: 5px;
+	margin-right: 2px;
 }
 
 .radical-task-btn-edit:hover{
@@ -562,7 +562,7 @@ ul.radical-sidebar-menu li a.active i {
 
 .radical-task-btn-save{
 	background-color: #05d091;
-	margin-right: 5px;
+	margin-right: 2px;
 	color: #fff;
 }
 
@@ -677,3 +677,4 @@ ul.radical-sidebar-menu li a.active i {
 	background-color: #5f5f5f;
 	color: #fff;
 }
+
