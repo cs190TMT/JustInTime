@@ -20,14 +20,16 @@ var project = angular.module('project',[]).controller('projectController', funct
 		
 	});
 	
-	$scope.projectUpdateConfirmed = function(project){
+	/*$scope.projectUpdateConfirmed = function(project){
 		
 		$scope.projName = project.projectName;
-		$scope.projDetails = "hansel";
+		$scope.projDetails = project.projectDetails;
+		name = $scope.projName;
+		details = $scope.projDetails;
 		
-		alert($scope.projName + " " + $scope.projDetails);
+		alert($scope.projName + " " + $scope.projDetails + " " + name + " " + details);
 			
-		/*jsonData = {
+		jsonData = {
 			id : $scope.updateId,
 			projectNameJson : $scope.projName,
 			projectDetailsJson : $scope.projDetails
@@ -47,7 +49,13 @@ var project = angular.module('project',[]).controller('projectController', funct
 			.error(function(data, status, headers, config){
 				alert("error " + status);
 			});
-		*/
+		
+	};*/
+	
+	$scope.projectUpdateConfirmed = function(){
+		
+		alert($scope.projName + " " + $scope.projDetails);
+		
 	};
 	
 	$scope.projectEditMode = function(pin,id,name,details){
