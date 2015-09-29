@@ -125,7 +125,7 @@
 											Cancel
 										</button>
 										<!-----------Editing Buttons------------------------>
-										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
+										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed(value)">
 											Save
 										</button>
 										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel" ng-click = "resetInputFlag()">
@@ -139,6 +139,7 @@
 
 					<div id="T1"></div>
 					<%@ include file="../includes/addLogModal.jsp"%>
+					<%@include file="../includes/addProjectModal.jsp"%>
 					<!-- page end-->
 				</div>
 			</section>
