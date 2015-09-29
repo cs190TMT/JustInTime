@@ -61,9 +61,10 @@ public class RetrieveLogsController extends Controller {
     
     protected Navigation run() throws Exception {
         LogsClientDto logList = new LogsClientDto(); 
-        JSONObject json = new JSONObject((String) this.requestScope("data"));
-        
+        JSONObject json = null;
+        //JSONObject json = new JSONObject((String) this.requestScope("data"));
         try {
+            json = new JSONObject((String)this.request.getReader().readLine());
             logList = service.getLogsList(json.getString("projectName"));
             if(logList.getLogsList().isEmpty()) {
                 System.out.println("No records in tasklist");

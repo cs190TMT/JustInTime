@@ -166,7 +166,6 @@ body {
 						<h4>{{item.taskName}}<h4>
 						<h5>{{item.taskPhase}}</h5>
 						<h5>{{item.timeSpent}}</h5>
-						<h5>{{item.error}}</h5>
 					</div>
 				</div>
 				<br />
@@ -226,14 +225,15 @@ body {
 	<script>
 	
 		angular.module('logApp',[]).controller('logController', function($scope, $http){
-		
-
-			$http.get("retrieveLogs").success(function(data, status, header, config){
+			
+			jsonData = {
+					projectName : getUrlParameter("projectName")
+				};
+			$http.post("retrieveLogs",jsonData).success(function(data, status, header, config){
 				if(data.errorList.length == 0){
-					$scope.logsList = data.logList;	
+					$scope.logList = data.logList;	
 				}
 			});
-			console.log(data.logsList)
 		});
 			
 	</script>
