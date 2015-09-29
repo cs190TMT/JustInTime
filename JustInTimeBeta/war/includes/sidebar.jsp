@@ -29,16 +29,6 @@
 							aria-hidden="true"><text>Add</text></span>
 					</button>
 			</a></li>
-
-			<!--  [Project List] -->
-			<li class="sub-menu radical-submenu"><a href="/projectPage"
-				style="padding-left: 35px;"> <span
-					class="badge radical-badge radical-badge-project glyphicon glyphicon-file"
-					style="margin-right: 5px;"> </span> <span class="submenu-text">
-						Project 1</span>
-			</a></li>
-			<!--  [END: Project List] -->
-
 		</ul>
 		<!-- sidebar menu end-->
 	</div>
