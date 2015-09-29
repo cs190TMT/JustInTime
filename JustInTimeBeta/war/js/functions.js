@@ -931,7 +931,7 @@ function setCalendar2() {
 					center : 'title',
 					right : 'month,basicWeek,basicDay'
 				},
-				
+				defaultDate : '2015-0-12',
 				editable : false,
 				displayEventTime : false,
 				eventLimit : true, // allow "more" link when too many events
@@ -943,12 +943,7 @@ function setCalendar2() {
 		}
 	});
 
-	
-	
-
 }
-
-
 function getUrlParameter(sParam) {
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL
 			.split('&'), sParameterName, i;
