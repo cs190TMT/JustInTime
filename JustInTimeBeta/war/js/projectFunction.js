@@ -4,8 +4,8 @@ var project = angular.module('project',[]).controller('projectController', funct
 	$scope.deletId;
 	var canDelete = true;
 	
-	$scope.projectName = "";
-	$scope.projectDetails = "";
+	$scope.projName = "";
+	$scope.projDetails = "";
 	
 	$http.get("retrieveProjectList")
 	.success(function(data, status, header, config){
@@ -20,12 +20,42 @@ var project = angular.module('project',[]).controller('projectController', funct
 		
 	});
 	
-	$scope.projectEditMode = function(pin,id, projName, projDetails){
+	$scope.projectUpdateConfirmed = function(project){
+		
+		$scope.projName = project.projectName;
+		$scope.projDetails = "hansel";
+		
+		alert($scope.projName + " " + $scope.projDetails);
+			
+		/*jsonData = {
+			id : $scope.updateId,
+			projectNameJson : $scope.projName,
+			projectDetailsJson : $scope.projDetails
+		};
+			
+		$http.post("updateProject",jsonData)
+			.success(function(data, status, headers, config){
+				if(data.errorList.length == 0){
+					alert("Entry updated successfully");
+					location.reload(true);
+				}
+				else{
+				
+				}
+			
+			})
+			.error(function(data, status, headers, config){
+				alert("error " + status);
+			});
+		*/
+	};
+	
+	$scope.projectEditMode = function(pin,id,name,details){
 		$scope.id = id;
 		$scope.updateId = id;
-		$scope.projectName = projName;
-		projectDetails = projDetails;
-		alert(id + " " + $scope.updateId + " " + $scope.projectName + " " + projectDetails);
+		$scope.projName = name;
+		$scope.projDetails = details;
+		alert(id + " " + $scope.updateId + " " + $scope.projName + " " + projDetails);
 	};
 	
 	$scope.projectDeleteMode  = function(pin,id){
@@ -86,49 +116,13 @@ var project = angular.module('project',[]).controller('projectController', funct
 	$scope.resetDeleteFlag = function(){
 		$scope.deletId = 0;
 	};
-	
-	$scope.project = {
-		updateName: $scope.projectName,
-		updateDetails: $scope.projectDetails
-	};
-		
-	$scope.projectUpdateConfirmed = function(){
-		
-		alert($scope.projectName + " " + $scope.project.updateName);
-			
-		/*jsonData = {
-			id : $scope.updateId,
-			projectNameJson : $scope.project.updateName,
-			projectDetailsJson : $scope.project.updateDetails
-		};
-			
-		$http.post("updateProject",jsonData)
-			.success(function(data, status, headers, config){
-				if(data.errorList.length == 0){
-					alert("Entry updated successfully");
-					location.reload(true);
-				}
-				else{
-				
-				}
-			
-			})
-			.error(function(data, status, headers, config){
-				alert("error " + status);
-			});
-		*/
-	};
-		
-	$scope.project = {};
-	$scope.project.name = "";
-	$scope.project.details = "";
 		
 	$scope.addNewProject = function(){
-		alert($scope.project.name);
+		alert($scope.projName);
 			
 		jsonData = {
-			projectNameJson : $scope.project.name,
-			projectDetailsJson : $scope.project.details
+			projectNameJson : $scope.projName,
+			projectDetailsJson : $scope.projDetails
 		};
 			
 		$http.post("addProject",jsonData)
