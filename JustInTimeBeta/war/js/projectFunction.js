@@ -1,66 +1,46 @@
-var project = angular.module('project',[]);
-
-var deleteProject = false;
-var deleteCancelProject = false;
-var deleteConfirm = false;
-var editSaveProject = false;
-var editCancelProject = false;
-var editNameButton = false;
-var editDetailsButton = false;
-var editNameProject = true;
-var editDetailsProject = true;
-var InputVal;
-var DeleteVal;
-var canDelete = true;
-var projectName;
-var projectDetails;
-
-var retrieve = project.controller('retrieve', function($scope, $http){
+var project = angular.module('project',[]).controller('projectController', function($scope,$http){
+	$scope.deleteProject = false;
+	$scope.deleteCancelProject = false;
+	$scope.editSaveProject = false;
+	$scope.editCancelProject = false;
+	$scope.editNameButton = false;
+	$scope.editDetailsButton = false;
+	$scope.deleteConfirm = false;
+	$scope.editNameProject = true;
+	$scope.editDetailsProject = true;
+	
+	$scope.updateId;
+	$scope.deletId;
+	var canDelete = true;
+	var projectName;
+	var projectDetails;
+	
+	
 	
 	$http.get("retrieveProjectList")
-		.success(function(data, status, header, config){
-			if(data.errorList.length == 0){
-				$scope.projectList = data.projectList;
-				
-				$scope.deleteProject = deleteProject;
-				$scope.deleteCancelProject = deleteCancelProject;
-				$scope.editSaveProject = editSaveProject;
-				$scope.editCancelProject = editCancelProject;
-				$scope.editNameButton = editNameButton;
-				$scope.editDetailsButton = editDetailsButton;
-				$scope.deleteConfirm = deleteConfirm;
-				$scope.editNameProject = editNameProject;
-				$scope.editDetailsProject = editDetailsProject;
-				
-			}
-			else{
-				
-			}
+	.success(function(data, status, header, config){
+		if(data.errorList.length == 0){
 			
-		});
+			$scope.projectList = data.projectList;
+			
+		}
+		else{
+			
+		}
+		
+	});
 	
 	$scope.projectEditMode = function(pin,id, projName, projDetails){
 		$scope.id = id;
+		$scope.updateId = id;
 		projectName = projName;
 		projectDetails = projDetails;
-		InputVal = $scope.id;
-		alert(id + " " + InputVal + " " + projectName + " " + projectDetails);
+		alert(id + " " + $scope.updateId + " " + projectName + " " + projectDetails);
 	};
-	
-	/*$scope.project = {};
-	$scope.project.name = projectName;
-	$scope.project.details = projectDetails;
-	
-	$scope.projectUpdateConfirmed = function(){
-		$scope.project = {};
-		$scope.project.name = projectName;
-		$scope.project.details = projectDetails;
-		alert($scope.project.name);
-	};*/
 	
 	$scope.projectDeleteMode  = function(pin,id){
 		$scope.id = id;
-		DeleteVal = $scope.id;
+		$scope.deletId = $scope.id;
 		
 		$http.get('retrieveTaskProjectList')
 			.success(function(data, status, header, config){
@@ -74,12 +54,12 @@ var retrieve = project.controller('retrieve', function($scope, $http){
 				
 			});
 				
-		alert(id + " " + DeleteVal);
+		alert(id + " " + $scope.deletId);
 	};
 	
 	$scope.checkIfInput = function(rowId){
 		var flag = false;
-		if (rowId == InputVal){
+		if (rowId == $scope.updateId){
 			flag = true;
 		}
 		return flag;
@@ -87,7 +67,7 @@ var retrieve = project.controller('retrieve', function($scope, $http){
 	
 	$scope.checkIfDeleteOk = function(rowId){
 		var flag = false;
-		if (rowId == DeleteVal && canDelete){
+		if (rowId == $scope.deletId && canDelete){
 			flag = true;
 		}
 		return flag;
@@ -95,7 +75,7 @@ var retrieve = project.controller('retrieve', function($scope, $http){
 	
 	$scope.checkIfDelete = function(rowId){
 		var flag = false;
-		if (rowId == DeleteVal){
+		if (rowId == $scope.deletId){
 			flag = true;
 		}
 		return flag;
@@ -103,70 +83,64 @@ var retrieve = project.controller('retrieve', function($scope, $http){
 	
 	$scope.checkIfUpdate = function(rowId){
 		var flag = true;
-		if (rowId == InputVal || rowId == DeleteVal){
+		if (rowId == $scope.updateId || rowId == $scope.deletId){
 			flag = false;
 		}
 		return flag;
 	};
 	
 	$scope.resetInputFlag = function(){
-		InputVal = 0;
+		$scope.updateId = 0;
 	};
 	
 	$scope.resetDeleteFlag = function(){
-		DeleteVal = 0;
+		$scope.deletId = 0;
 	};
 	
-});
-
-var update = project.controller('update', function($scope, $http){
-
 	$scope.project = {
-		updateName: projectName,
-		updateDetails: projectDetails
-	};
-	
-	$scope.projectUpdateConfirmed = function(){
-	
-		alert(projectName + " " + $scope.project.updateName);
-		
-		/*jsonData = {
-			id : InputVal,
-			projectNameJson : $scope.project.updateName,
-			projectDetailsJson : $scope.project.updateDetails
+			updateName: projectName,
+			updateDetails: projectDetails
 		};
 		
-		$http.post("updateProject",jsonData)
-			.success(function(data, status, headers, config){
-				if(data.errorList.length == 0){
-					alert("Entry updated successfully");
-					location.reload(true);
-				}
-				else{
-				
-				}
+		$scope.projectUpdateConfirmed = function(){
+		
+			alert(projectName + " " + $scope.project.updateName);
 			
-			})
-			.error(function(data, status, headers, config){
-				alert("error " + status);
-			});
-		*/
-	};
-});
-
-var addProject = project.controller('addProject', function($scope, $http){
+			/*jsonData = {
+				id : $scope.updateId,
+				projectNameJson : $scope.project.updateName,
+				projectDetailsJson : $scope.project.updateDetails
+			};
+			
+			$http.post("updateProject",jsonData)
+				.success(function(data, status, headers, config){
+					if(data.errorList.length == 0){
+						alert("Entry updated successfully");
+						location.reload(true);
+					}
+					else{
+					
+					}
+				
+				})
+				.error(function(data, status, headers, config){
+					alert("error " + status);
+				});
+			*/
+		};
+		
 	$scope.project = {};
 	$scope.project.name = "";
 	$scope.project.details = "";
-	
+		
 	$scope.addNewProject = function(){
 		alert($scope.project.name);
-		
+			
 		jsonData = {
 			projectNameJson : $scope.project.name,
 			projectDetailsJson : $scope.project.details
 		};
-		
+			
 		$http.post("addProject",jsonData)
 			.success(function(data, status, headers, config){
 				if(data.errorList.length == 0){
@@ -174,40 +148,37 @@ var addProject = project.controller('addProject', function($scope, $http){
 					location.reload(true);
 				}
 				else{
-					
+						
 				}
 			})
 			.error(function(data, status, headers, config){
 				alert("error " + status);
 		});
-		
+			
 	};
-});
-
-var deleteProject = project.controller('deleteProject', function($scope, $http){
 	
 	$scope.projectDeleteConfirmed = function(pin,idVal){
-		
-		alert("Deleting "+  idVal);
-		
-		jsonData = {
-			id: idVal
-		};
-		
-		$http.post("deleteProject",jsonData)
-			.success(function(data, status, header, config){
-				if(data.errorList.length == 0){
-					alert("Delete successfull.");
-					location.reload(true);
-				}
-				else{
-					
-				}
-			})
-			.error(function(data, status, header, config){
-				alert("error " + status);
-			});
-		
+			
+			alert("Deleting "+  idVal);
+			
+			jsonData = {
+				id: idVal
+			};
+			
+			$http.post("deleteProject",jsonData)
+				.success(function(data, status, header, config){
+					if(data.errorList.length == 0){
+						alert("Delete successfull.");
+						location.reload(true);
+					}
+					else{
+						
+					}
+				})
+				.error(function(data, status, header, config){
+					alert("error " + status);
+				});
+			
 	};
-
+	
 });

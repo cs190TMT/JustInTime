@@ -35,7 +35,7 @@
 </head>
 
 
-<body ng-app="project">
+<body ng-app="project" ng-controller="projectController">
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
@@ -71,7 +71,7 @@
 						</div>
 					</div>
 					<!-- Project List start-->
-					<div ng-controller="retrieve" class="row containerList listRow listRowProperty">
+					<div ng-controller="projectController" class="row containerList listRow listRowProperty">
 						<div class="row listRow listRowHeader">
 							<div class="col-md-4 listProperty listHeader">Name</div>
 							<div class="col-md-4 listProperty listHeader">Details</div>
@@ -88,7 +88,7 @@
 								</a>
 									<div ng-if="checkIfInput(value.id)">
 										
-									<div ng-controller="update">
+									<div ng-controller="projectController">
 									<div class="radical-pin-tasks-name-edit col-md-3">
 										<input ng-model="project.updateName" type="text" data-placement="left" class="form-control"
 											onfocus="taskEditChange(this,value.id)" placeholder="" >{{project.updateName}}
@@ -120,14 +120,14 @@
 											<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
 										</button>
 										<!-----------Deleting Buttons-------------------------->
-										<button ng-controller="deleteProject" ng-if="checkIfDeleteOk(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "projectDeleteConfirmed(this,value.id)">
+										<button ng-controller="projectController" ng-if="checkIfDeleteOk(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "projectDeleteConfirmed(this,value.id)">
 											Delete
 										</button>
 										<button ng-if="checkIfDelete(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel-2" ng-click="resetDeleteFlag()">
 											Cancel
 										</button>
 										<!-----------Editing Buttons------------------------>
-										<button ng-if="checkIfInput(value.id)" ng-controller="update" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
+										<button ng-if="checkIfInput(value.id)" ng-controller="projectController" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
 											Save
 										</button>
 										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel" ng-click = "resetInputFlag()">
