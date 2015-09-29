@@ -13,7 +13,7 @@
 <div class="modal fade" id="addProjectModal" role="dialog"
 	aria-labelledby="myModalLabel">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" ng-controller="addProject">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
@@ -29,13 +29,13 @@
 						<dt>Name:</dt>
 						<dd>
 
-							<input type="text" class="form-control" name="projectName" id="projectName"/>
+							<input ng-model="project.name" type="text" class="form-control" name="projectName" id="projectName"/>{{project.name}}
 
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input type="text" class="form-control" name="projectDetails" id="projectDetails"/>
+							<input ng-model="project.details" type="text" class="form-control" name="projectDetails" id="projectDetails"/>{{project.details}}
 
 						</dd>
 					</dl>
@@ -43,7 +43,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-					<button type="button" class="btn btn-primary" id="btnAddProject" onclick="addProject()">Add</button>
+					<button type="button" class="btn btn-primary" id="btnAddProject" ng-click="addNewProject()">Add</button>
 				</div>
 			<!-- </form> -->
 

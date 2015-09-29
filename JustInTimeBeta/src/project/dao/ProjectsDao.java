@@ -19,7 +19,7 @@ public class ProjectsDao {
         try {
             Transaction tx = Datastore.beginTransaction();
             
-            Key key = Datastore.allocateId(KeyFactory.createKey("Projects", projectsModel.getProjectName()), "ProjectsModel");
+            Key key = Datastore.allocateId(KeyFactory.createKey("Projects", "Master"), "ProjectsModel");
             projectsModel.setKey(key);
             projectsModel.setId(key.getId());
             Datastore.put(projectsModel);
@@ -51,4 +51,53 @@ public class ProjectsDao {
         
         return projectsModels;
     }
+    
+    public boolean updateProject(ProjectsModel project){
+        boolean result = true;
+        
+        ProjectsModelMeta meta = new ProjectsModelMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, project.getId());
+        
+        try {
+            ProjectsModel originalProjectModel = Datastore.query(meta).filter(mainFilter).asSingle();
+            if (originalProjectModel != null) {
+                originalProjectModel.setProjectName(project.getProjectName());
+                originalProjectModel.setProjectDetails(project.getProjectDetails());
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.put(originalProjectModel);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        
+        return result;
+    }
+    
+    public boolean deleteProject(ProjectsModel project){
+        boolean result = true;
+        
+        ProjectsModelMeta meta = new ProjectsModelMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, project.getId());
+        
+        try {
+            ProjectsModel originalProjectModel = Datastore.query(meta).filter(mainFilter).asSingle();
+            if (originalProjectModel != null) {
+                
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.delete(originalProjectModel.getKey());
+                tx.commit();
+                
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        
+        return result;
+    }
+    
 }

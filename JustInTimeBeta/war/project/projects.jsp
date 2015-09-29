@@ -23,6 +23,7 @@
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/angular.js"></script>
 <script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/projectFunction.js"></script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
@@ -34,7 +35,7 @@
 </head>
 
 
-<body>
+<body ng-app="project" ng-controller="projectController">
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
@@ -70,7 +71,71 @@
 						</div>
 					</div>
 					<!-- Project List start-->
-					<div class="containerList" id="projectList">
+					<div class="row containerList listRow listRowProperty">
+						<div class="row listRow listRowHeader">
+							<div class="col-md-4 listProperty listHeader">Name</div>
+							<div class="col-md-4 listProperty listHeader">Details</div>
+						</div>
+						<div ng-repeat="value in projectList">
+							<div class="row listRow listRowProperty projList radical-pin-tasks" id="projectPin{{value.id}}">
+								<a ng-href="/projectPage?projectName={{value.projectName}}&id={{value.id}}" style="color: black">
+									<div ng-if="checkIfUpdate(value.id)" class="col-md-4 listProperty radical-pin-tasks-name">
+										{{value.projectName}}
+									</div>
+									<div ng-if="checkIfUpdate(value.id)" class="col-md-4 listProperty radical-pin-tasks-details">
+										{{value.projectDetails}}
+									</div>
+								</a>
+									<div ng-if="checkIfInput(value.id)">
+										
+									<div>
+									<div class="radical-pin-tasks-name-edit col-md-3">
+										<input ng-model="projectName" type="text" data-placement="left" class="form-control"
+											onfocus="taskEditChange(this,value.id)" placeholder="" >{{projectName}}
+									</div>
+									<div class="radical-pin-tasks-details-edit col-lg-7 input-group">
+										<textarea class="form-control" rows="3" ng-model="projectDetails">
+										</textarea>
+									</div>
+									</div>
+									
+									</div>
+												
+									<div ng-if="checkIfDelete(value.id)" class="radical-pin-tasks-remove col-lg-10">
+										Are you sure you want to delete the project
+										<b><span class="removeTaskLabel">
+											{{value.projectName}}
+										</span></b>?
+										<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">
+											This task will also be removed in projects
+										</div>
+									</div>
+												
+									<div class="radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+										<!-----------First to appear Buttons------------>
+										<button ng-if="checkIfUpdate(value.id)" class="btn btn-sm text-right radical-task-btn-edit" ng-click = "projectEditMode(this,value.id,value.projectName,value.projectDetails)">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										</button>
+										<button ng-if="checkIfUpdate(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove" ng-click = "projectDeleteMode(this,value.id)">
+											<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+										</button>
+										<!-----------Deleting Buttons-------------------------->
+										<button ng-if="checkIfDeleteOk(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "projectDeleteConfirmed(this,value.id)">
+											Delete
+										</button>
+										<button ng-if="checkIfDelete(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel-2" ng-click="resetDeleteFlag()">
+											Cancel
+										</button>
+										<!-----------Editing Buttons------------------------>
+										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
+											Save
+										</button>
+										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel" ng-click = "resetInputFlag()">
+											Cancel
+										</button>
+									</div>
+							</div>
+						</div>
 					</div>
 					<!-- Project List end -->
 
@@ -98,7 +163,7 @@
 		$(".knob").knob();
 		$(document).ready(function() {
 			$("#calendar").hide();
-			retrieveProjectList("ProjectList");
+			//retrieveProjectList("ProjectList");
 		});
 	</script>
 
