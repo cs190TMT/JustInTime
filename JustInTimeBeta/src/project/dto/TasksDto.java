@@ -11,12 +11,16 @@ public class TasksDto {
     private long id;
 
     private String taskName;
+    
+    private String taskNameL;
 
     private String taskDetails;
     
     private String taskPhase;
     
     private String dateCreated;
+    
+    private int projID;
     
     private float timeAlloted;
     
@@ -57,9 +61,17 @@ public class TasksDto {
     public String getTaskName() {
         return this.taskName;
     }
+    
+    public String getTaskNameL(){
+        return this.taskNameL;
+    }
 
     public void setTaskName(String name) {
         this.taskName = name;
+    }
+    
+    public void setTaskNameL(String name){
+        this.taskNameL = name.toLowerCase();
     }
     
     public String getTaskDetails() {
@@ -100,5 +112,13 @@ public class TasksDto {
 
     public void setTimeSpent(float timeSpent) {
         this.timeSpent = timeSpent;
+    }
+    
+    public int getProjId(){
+        return this.projID;
+    }
+    
+    public void setprojId(int ProjId){
+        this.projID = ProjId;
     }
 }

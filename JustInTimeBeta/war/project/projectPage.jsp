@@ -16,23 +16,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="keyword" content="">
-<link rel="shortcut icon" href="img/favicon.png">
 
-<!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-reset.css" rel="stylesheet">
-<!--external css-->
-<link href="../assets/font-awesome/css/font-awesome.css"
-	rel="stylesheet" />
-<!-- Custom styles for this template -->
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/style-responsive.css" rel="stylesheet" />
-<link href="../css/radical.css" rel="stylesheet" />
-<script src="../js/jquery.js"></script>
+<%@ include file="../includes/headImports.jsp"%>
+
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>
+
+<!-- Custom CSS for Calendar -->
+<link href='../css/fullcalendar.css' rel='stylesheet' />
+<link href='../css/fullcalendar.print.css' rel='stylesheet'
+	media='print' />
+
+<style>
+body {
+	padding: 0;
+	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	max-width: 700px;
+	margin: 0 auto;
+}
+</style>
+
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>
+
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
       <script src="../js/html5shiv.js"></script>
@@ -42,11 +56,12 @@
 <title>Just In Time</title>
 </head>
 
-
-<body>
+<body ng-app="logApp"  ng-controller="logController">
 	<%
 		String projectName = request.getParameter("projectName");
+		String id = request.getParameter("id");
 		pageContext.setAttribute("projectName", projectName);
+		pageContext.setAttribute("id", id);
 	%>
 	<section id="container" class="">
 		<!--header start-->
@@ -60,8 +75,11 @@
 				<!-- page start-->
 				<div class="col-lg-9">
 					<div class="row">
-						<h3 style="float: left; padding: 0px; margin: 0px;">Project
-							Name<%= projectName%></h3>
+						<div class="col-lg-6">
+						<h3 style="float: left; padding: 0px; margin: 0px;"><%=projectName%></h3>
+						<input id="projectId" type="hidden" value="<%=id%>">
+						</div>
+						<div class="col-lg-6">
 						<button id="calendarButton" type="button"
 							class="radical-simple-button"
 							style="float: right; margin-right: 5px;">
@@ -73,16 +91,11 @@
 						</button>
 						<button type="button" class="radical-simple-button-task"
 							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#pullTasksModal">
+							data-target="#pullTasksModal" onclick="retrievePullTaskMasterList()">
 							<span class=" glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-							pull tasks
+							
 						</button>
-						<button type="button" class="radical-simple-button-task"
-							style="float: right; margin-right: 5px;" aria-label="Left Align"
-							data-toggle="modal" data-target="#addLogModal">
-							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new log
-						</button>
+						</div>
 					</div>
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
@@ -143,13 +156,21 @@
 							</ul>
 						</div>
 					</div>
+					<div class="containerList" id="taskMList">
+					</div>
 				</div>
-				<div class="row"
-					style="padding-left: 50px; margin-top: 110px; margin-right: 300px; padding-right: 30px;"
-					id="projectList"></div>
-					
-				<br/>
-				<div class="row" style="margin-top: 150px; margin-right: 300px;" id="calendar"><%@include file="projectCalendar.jsp"%></div>
+				<div class="col-lg-3">
+					<h4>LOGS</h4>
+					<!-- id="logList" -->
+					<div ng-repeat="item in logList">
+						<h4>{{item.taskName}}<h4>
+						<h5>{{item.taskPhase}}</h5>
+						<h5>{{item.timeSpent}}</h5>
+					</div>
+				</div>
+				<br />
+				<div class="" style="margin-top: 150px; margin-right: 300px;"
+					id="calendar"></div>
 				<div id="T1"></div>
 				<%@ include file="../includes/addLogModal.jsp"%>
 				<!-- page end-->
@@ -158,32 +179,59 @@
 		<!--main content end-->
 
 		<!--footer start-->
+		<div style="postion: fixed; bottom: 0px">
 		<%@include file="../includes/footer.jsp"%>
+		</div>
+		<!-- footer end -->
 		<%@include file="../includes/pullTasksModal.jsp"%>
-		<!--footer end-->
 	</section>
 
 
 	<!-- js placed at the end of the document so the pages load faster -->
 
-	<script src="../js/bootstrap.min.js"></script>
-	<script class="include" type="text/javascript"
-		src="../js/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="../js/jquery.scrollTo.min.js"></script>
-	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-	<script src="../assets/jquery-knob/js/jquery.knob.js"></script>
-	<script src="../js/respond.min.js"></script>
-	<script type="text/javascript" src="../js/functions.js"></script>
 
-	<!--common script for all pages-->
-	<script src="../js/common-scripts.js"></script>
-
-
+	<script src="../lib/moment.min.js" type="text/javascript"></script>
+	<script src="../js/fullcalendar.min.js" type="text/javascript"></script>
+	
+	<%@include file="../includes/footImports.jsp"%>
+	<%@include file="logsModal.jsp"%>
+	
 	<script>
 		//knob
 		$(".knob").knob();
+
+		$(document).ready(function() {
+			//alert("here");
+			setCalendar2();
+			
+			$("#calendar").hide();
+			retrieveTaskProjectList("TaskProjectList");
+			retrievePullTaskMasterList("TaskMasterList");
+			//retrieveLogs("ProjectLogList");
+		});
+		
+		$("#calendarButton").click(function(){
+			 $("#calendar").show();
+			 $("#taskMList").hide();
+		});
+		
+		$("#listButton").click(function(){
+			 $("#calendar").hide();
+			 $("#taskMList").show();
+		});
+		
 		
 	</script>
-
+	<script>
+	
+		angular.module('logApp',[]).controller('logController', function($scope, $http){
+			$http.get("retrieveLogs").success(function(data, status, header, config){
+				if(data.errorList.length == 0){
+					$scope.logsList = data.logList;	
+				}
+			});
+		});
+			
+	</script>
 </body>
 </html>
