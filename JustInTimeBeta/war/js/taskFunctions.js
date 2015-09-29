@@ -108,9 +108,11 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 	
 	$scope.updateTask = function(btn, item){
 		var idVal = item.id;
-		var name = item.taskName;
-		var details = item.taskDetailsx;
+		var name = $("#input-taskName" + item.id).val();
+		var details = $("#input-taskDetails" + item.id).val();
 		
+		
+	
 		jsonData = {
 			id : idVal,
 			taskName : name,
@@ -125,8 +127,9 @@ angular.module('jitTask',[]).controller('jitController', function($scope, $http)
 		addMasterTask.success(function(data, status, headers, config){
 			if (data.errorList.length == 0) {
 				
+				item.taskName = $("#input-taskName" + item.id).val();
 				
-				item.taskDetails = item.taskDetailsx;
+				item.taskDetails = $("#input-taskDetails" + item.id).val();
 				//$("#tasksPin"+idVal+"updateBtn").parent().parent().find(".radical-pin-tasks-name").html(name);
 				//$("#tasksPin"+idVal+"updateBtn").parent().parent().find(".radical-pin-tasks-details").html(details);
 				taskPinNormalMode($("#tasksPin"+idVal+"updateBtn"));
@@ -182,4 +185,5 @@ function tasksReady() {
 	$(".radical-tasks-btn-cancel-2").hide();
 	$(".radical-pin-tasks-remove").hide();
 }
+
 
