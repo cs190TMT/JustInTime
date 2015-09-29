@@ -58,9 +58,9 @@
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
 							<input type="text" class="form-control radical-search-input"
-								placeholder="Search for tasks" id="searchInputMain"> <span
+								placeholder="Search for tasks in Master list" id="searchInputMain" ng-model = "taskSearchInput"> <span
 								class="input-group-btn">
-								<button class="btn btn-default radical-search-input-btn" type="button">
+								<button class="btn btn-default radical-search-input-btn" type="button" ng-click = "searchTask()">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								</button>
 							</span>
@@ -82,7 +82,7 @@
 					</div>
 					
 					
-					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList" ng-repeat="item in taskList">
+					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList" ng-repeat="item in taskList" ng-animate = " 'wave' ">
 							<div class = "row radical-pin-tasks"  id="taskPin{{item.id}}">
 													<div class = "radical-pin-tasks-name col-lg-3">
 													{{item.taskName}}
@@ -130,10 +130,10 @@
 					<div class="row radical-pin-tasks-header-header radical-float-top col-lg-7" style="padding-left: 15px; margin-top: 10px; padding-right: 9px;" id="header2">
 						<div class = "row radical-pin-tasks-header" id="searchTaskFake" style="border:0px;">
 							<div class="input-group">
-							<input type="text" class="form-control radical-search-input"
+							<input type="text" class="form-control radical-search-input" ng-model = "taskSearchInput"
 								placeholder="Search for tasks" > <span
 								class="input-group-btn">
-								<button class="btn btn-default radical-search-input-btn" type="button">
+								<button class="btn btn-default radical-search-input-btn" type="button" ng-click = "searchTask()">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								</button>
 							</span>
@@ -233,6 +233,7 @@
 			
 			);
 			
+			/*
 			$(".radical-search-input").keydown(function(event) {
 		        if (event.keyCode == 13) {
 		        	var name = $(this).val();
@@ -250,6 +251,7 @@
 				}	
 			
 			);
+			*/
 			
 			
 	

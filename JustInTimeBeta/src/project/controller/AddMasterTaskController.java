@@ -24,7 +24,7 @@ public class AddMasterTaskController extends Controller {
         JSONObject json = null;
         
         try {
-            json = new JSONObject((String) this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
 
             dto.setTaskName(json.getString("taskName")  );
             dto.setTaskDetails(json.getString("taskDetails"));

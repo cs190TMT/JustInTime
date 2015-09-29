@@ -66,11 +66,5 @@
 		border-style: solid;
 		border-width: 1px 0 0 0;
 	}
-	#projectList .listRowProperty:hover {
-		background-color: #dddddd;
-		color: blue;
-	}
-	#taskMList .listRowProperty:hover {
-		background-color: #dddddd;
-	}
+	
 </style>
