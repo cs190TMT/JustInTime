@@ -29,13 +29,13 @@
 						<dt>Name:</dt>
 						<dd>
 
-							<input ng-model="projName" type="text" class="form-control" name="projectName" id="projectName"/>{{projName}}
+							<input ng-model="projName" type="text" class="form-control" name="projectName" id="projectName"/>
 
 						</dd>
 						<br />
 						<dt>Details:</dt>
 						<dd>
-							<input ng-model="projDetails" type="text" class="form-control" name="projectDetails" id="projectDetails"/>{{projDetails}}
+							<input ng-model="projDetails" type="text" class="form-control" name="projectDetails" id="projectDetails"/>
 
 						</dd>
 					</dl>

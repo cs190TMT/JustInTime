@@ -13,11 +13,6 @@
 
 			<li><a href="/tasks" class="radical-active"> <i
 					class="icon-tasks"></i> <span class="radical-font-size">Tasks</span>
-					<button type="button" class="radical-add-button"
-						data-toggle="modal" data-target="#addMasterTaskModal">
-						<span class="glyphicon glyphicon glyphicon-plus-sign"
-							aria-hidden="true"><text>Add</text></span>
-					</button>
 			</a></li>
 
 			<li class="sub-menu"><a href="/projects"
