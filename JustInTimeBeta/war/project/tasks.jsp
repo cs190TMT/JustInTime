@@ -84,17 +84,17 @@
 					
 					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList" ng-repeat="item in taskList" ng-animate = " 'wave' ">
 							<div class = "row radical-pin-tasks"  id="taskPin{{item.id}}">
-													<div class = "radical-pin-tasks-name col-lg-3">
+													<div class = "radical-pin-tasks-name col-lg-3" >
 													{{item.taskName}}
 													</div>
 													<div class = "radical-pin-tasks-details col-lg-7">
 													{{item.taskDetails}}
 													</div>
 													<div class = "radical-pin-tasks-name-edit col-lg-3">
-													
+														<input class= "form-control" type="text" oninput="validateNewTaskName(this)" ng-model = "item.taskNamex" id="input-taskName{{item.id}}">
 													</div>
 													<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">
-													<textarea class="form-control" rows="4" ng-model = "item.taskDetailsx"></textarea>
+													<textarea class="form-control" rows="4" ng-model = "item.taskDetailsx" id="input-taskDetails{{item.id}}"></textarea>
 													</div>
 													<div class = "radical-pin-tasks-remove col-lg-10">
 													Are you sure you want to delete the task 
@@ -193,8 +193,6 @@
 
 	<%@include file="../includes/footImports.jsp"%>
 	<script type="text/javascript" src="../js/taskFunctions.js"></script>
-
-
 	<script type="text/javascript">
 		$(".knob").knob();
 	
