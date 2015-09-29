@@ -11,29 +11,26 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
 
-
-
 import project.dto.ProjectsDto;
 import project.service.ProjectsService;
 
 public class AddProjectController extends Controller {
 
-    private ProjectsService service = new ProjectsService();
-
     @Override
     protected Navigation run() throws Exception {
         ProjectsDto dto = new ProjectsDto();
         JSONObject json = null;
+        ProjectsService service = new ProjectsService();
         
         try {
-            json = new JSONObject((String) this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
 
-            dto.setProjectName(json.getString("projectName")  );
-            dto.setProjectDetails(json.getString("projectDetails"));
+            dto.setProjectName(json.getString("projectNameJson"));
+            dto.setProjectDetails(json.getString("projectDetailsJson"));
             if ((dto.getProjectName() == null) || dto.getProjectName().isEmpty() || (dto.getProjectDetails() == null) || dto.getProjectDetails().isEmpty()) {
                 dto.getErrorList().add("Missing content");
             } else {
-                dto = this.service.addProject(dto);
+                dto = service.addProject(dto);
             }
         } catch (Exception e) {
             dto.getErrorList().add("Server controller error: " + e.getMessage());

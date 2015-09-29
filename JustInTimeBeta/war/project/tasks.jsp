@@ -193,8 +193,6 @@
 
 	<%@include file="../includes/footImports.jsp"%>
 	<script type="text/javascript" src="../js/taskFunctions.js"></script>
-
-
 	<script type="text/javascript">
 		$(".knob").knob();
 	
