@@ -20,12 +20,10 @@ var project = angular.module('project',[]).controller('projectController', funct
 		
 	});
 	
-	/*$scope.projectUpdateConfirmed = function(project){
+	/*$scope.projectUpdate = function(project){
 		
 		$scope.projName = project.projectName;
 		$scope.projDetails = project.projectDetails;
-		name = $scope.projName;
-		details = $scope.projDetails;
 		
 		alert($scope.projName + " " + $scope.projDetails + " " + name + " " + details);
 			
@@ -52,10 +50,30 @@ var project = angular.module('project',[]).controller('projectController', funct
 		
 	};*/
 	
-	$scope.projectUpdateConfirmed = function(){
+	$scope.projectUpdate = function(){
 		
-		alert($scope.projName + " " + $scope.projDetails);
-		
+		alert($scope.projName);
+			
+		jsonData = {
+			id : $scope.updateId,
+			projectNameJson : $scope.projName,
+			projectDetailsJson : $scope.projDetails
+		};
+			
+		/*$http.post("updateProject",jsonData)
+			.success(function(data, status, headers, config){
+				if(data.errorList.length == 0){
+					alert("Entry updated successfully");
+					location.reload(true);
+				}
+				else{
+						
+				}
+			})
+			.error(function(data, status, headers, config){
+				alert("error " + status);
+		});*/
+			
 	};
 	
 	$scope.projectEditMode = function(pin,id,name,details){

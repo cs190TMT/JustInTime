@@ -125,7 +125,7 @@
 											Cancel
 										</button>
 										<!-----------Editing Buttons------------------------>
-										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
+										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdate()">
 											Save
 										</button>
 										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel" ng-click = "resetInputFlag()">
