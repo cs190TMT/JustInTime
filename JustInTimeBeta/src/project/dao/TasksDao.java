@@ -17,10 +17,12 @@ import project.model.TasksModel;
 
 
 
+
 import com.google.appengine.api.datastore.Query.*;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
 public class TasksDao {
@@ -105,6 +107,8 @@ public class TasksDao {
         
         return tasksModels;
     }
+    
+    
     
    
     
