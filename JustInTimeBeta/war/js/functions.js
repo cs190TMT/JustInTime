@@ -718,7 +718,7 @@ function addProject() {
 		}
 	});
 }
-
+/*
 function retrieveProjectList(successMessage) {
 	$("#projectList").empty();
 	$.ajax({
@@ -789,6 +789,7 @@ function retrieveProjectList(successMessage) {
 													+ 'cancel'
 												+ '</button>'
 												//-----------Editing Buttons
+												
 												+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "projectUpdateConfirmed(this, '
 													+ value.id
 												+ ')">'
@@ -817,7 +818,7 @@ function retrieveProjectList(successMessage) {
 					alert("error");
 				}
 			});
-}
+}*/
 
 function projectEditChange(pin, idVal) {
 	pin = $(pin).parent().parent();
@@ -893,6 +894,7 @@ function projectEditChange(pin, idVal) {
 
 }
 
+/*
 function projectUpdateConfirmed(btn, idVal) {
 	var name = $(btn).parent().parent().find(".radical-pin-tasks-name-edit")
 			.find("input").val();
@@ -928,7 +930,7 @@ function projectUpdateConfirmed(btn, idVal) {
 			alert("error");
 		}
 	});
-}
+}*/
 
 // Functios for Projects end
 

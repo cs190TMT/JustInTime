@@ -88,15 +88,13 @@
 								</a>
 									<div ng-if="checkIfInput(value.id)">
 										
-									<div>
 									<div class="radical-pin-tasks-name-edit col-md-3">
-										<input ng-model="projectName" type="text" data-placement="left" class="form-control"
-											onfocus="taskEditChange(this,value.id)" placeholder="" >{{projectName}}
+										<input ng-model="projName" type="text" data-placement="left" class="form-control"
+											onfocus="taskEditChange(this,value.id)" placeholder="" >
 									</div>
-									<div class="radical-pin-tasks-details-edit col-lg-7 input-group">
-										<textarea class="form-control" rows="3" ng-model="projectDetails">
+									<div class="radical-pin-tasks-details-edit col-lg-7">
+										<textarea ng-model="projDetails" type="text" data-placement="left" class="form-control" placeholder="">
 										</textarea>
-									</div>
 									</div>
 									
 									</div>
@@ -113,7 +111,7 @@
 												
 									<div class="radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
 										<!-----------First to appear Buttons------------>
-										<button ng-if="checkIfUpdate(value.id)" class="btn btn-sm text-right radical-task-btn-edit" ng-click = "projectEditMode(this,value.id,value.projectName,value.projectDetails)">
+										<button ng-if="checkIfUpdate(value.id)" class="btn btn-sm text-right radical-task-btn-edit" ng-click = "projectEditMode(this,value.id, value.projectName,value.projectDetails)">
 											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 										</button>
 										<button ng-if="checkIfUpdate(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove" ng-click = "projectDeleteMode(this,value.id)">
