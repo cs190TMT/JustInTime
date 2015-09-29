@@ -103,7 +103,7 @@ body {
 							</span>
 						</div>
 					</div>
-					<div class="btn-group btn-group-sm" role="group" aria-label="..."
+					<div id = "filter" class="btn-group btn-group-sm" role="group" aria-label="..."
 						style="margin-top: 10px;">
 						<div class="btn-group btn-group-sm" role="group">
 							<button type="button"
@@ -150,9 +150,12 @@ body {
 								<li><a href="#">Testing</a></li>
 							</ul>
 						</div>
+						
 					</div>
 					<div class="containerList" id="taskMList">
 					</div>
+					
+					<div class="" style="margin-top: 20px;" id="calendar"></div>
 				</div>
 				<div class="col-lg-3">
 					<h4>LOGS</h4>
@@ -160,8 +163,7 @@ body {
 					</div>
 				</div>
 				<br />
-				<div class="" style="margin-top: 150px; margin-right: 300px;"
-					id="calendar"></div>
+				
 				<div id="T1"></div>
 				<%@ include file="../includes/addLogModal.jsp"%>
 				<!-- page end-->
@@ -194,22 +196,27 @@ body {
 
 		$(document).ready(function() {
 			//alert("here");
-			setCalendar2();
 			
-			$("#calendar").hide();
 			retrieveTaskProjectList("TaskProjectList");
 			retrievePullTaskMasterList("TaskMasterList");
 			retrieveLogs("ProjectLogList");
+			
+			
+			$("#calendar").hide();
 		});
 		
 		$("#calendarButton").click(function(){
-			 $("#calendar").show();
+			$("#calendar").show();
 			 $("#taskMList").hide();
+			 $("#filter").hide();
+			setCalendar2().fullCalendar( 'changeView', viewName ).hide();
+			 
 		});
 		
 		$("#listButton").click(function(){
 			 $("#calendar").hide();
 			 $("#taskMList").show();
+			 $("#filter").show();
 		});
 		
 		

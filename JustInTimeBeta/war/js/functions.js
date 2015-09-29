@@ -493,9 +493,13 @@ function taskEditChange(pin, idVal) {
 function taskPinEditMode(pin) {
 
 	pin = $(pin).parent().parent();
-
+   
+	$(pin).find(".radical-pin-tasks-name-edit").find("input").val(
+			$(pin).find(".radical-pin-tasks-name").html().trim());
+	
+	
 	$(pin).find(".radical-pin-tasks-details-edit").find("textarea").val(
-			$(pin).find(".radical-pin-tasks-details").html());
+			$(pin).find(".radical-pin-tasks-details").html().trim());
 
 	$(pin).find(".radical-task-btn-save").removeAttr("disabled");
 	$(pin).find(".radical-pin-tasks-name-edit").removeClass("has-error");
@@ -503,8 +507,9 @@ function taskPinEditMode(pin) {
 	$(pin).find(".radical-task-btn-edit").fadeOut();
 	$(pin).find(".radical-tasks-btn-remove").fadeOut();
 	
+	$(pin).find(".radical-pin-tasks-name").fadeOut();
 	$(pin).find(".radical-pin-tasks-details").fadeOut(function() {
-
+		$(pin).find(".radical-pin-tasks-name-edit").fadeIn();
 		$(pin).find(".radical-pin-tasks-details-edit").fadeIn();
 		$(pin).find(".radical-task-btn-save").fadeIn();
 		$(pin).find(".radical-tasks-btn-cancel").fadeIn();
@@ -521,10 +526,10 @@ function taskPinNormalMode(pin) {
 	$(pin).find(".radical-pin-tasks-name-edit").popover("hide");
 	$(pin).find(".radical-task-btn-save").fadeOut();
 	$(pin).find(".radical-tasks-btn-cancel").fadeOut();
-    /*
+    
 	$(pin).find(".radical-pin-tasks-name-edit").fadeOut(function() {
 		$(pin).find(".radical-pin-tasks-name").fadeIn();
-	});*/
+	});
 	$(pin).find(".radical-pin-tasks-details-edit").fadeOut(function() {
 		$(pin).find(".radical-pin-tasks-details").fadeIn();
 		$(pin).find(".radical-task-btn-edit").fadeIn();
@@ -644,6 +649,81 @@ function deleteConfirmed(pin, idValue) {
 
 }
 
+function validateNewTaskName(pin){
+	
+	
+	
+	var oldName = $(pin).parent().parent().find(".radical-pin-tasks-name").html();
+	
+	
+	
+	if($(pin).val().trim() != ""){
+		if($(pin).val().trim() != oldName.trim()){
+			
+			jsonData = {
+					data : JSON.stringify({
+						taskName : $(pin).val().trim(),
+					})
+			};
+			
+			$
+			.ajax({
+				url : 'validTaskName',
+				type : 'GET',
+				data : jsonData,
+				success : function(data, status, jqXHR) {
+					if (data.errorList.length == 0 ) {
+						
+						if(data.validate <= 0){
+							$(pin).parent().parent().find(".radical-task-btn-save").removeClass("radical-btn-disabled");
+							$(pin).parent().parent().find(".radical-task-btn-save").removeAttr("disabled");
+							
+							$(pin).removeClass("has-error");
+							$(pin).removeClass("radical-input-has-error");
+							$(pin).attr("data-placement", "right");
+							$(pin).attr("data-content","");
+							$(pin).popover("hide");
+						}
+						else{
+							$(pin).parent().parent().find(".radical-task-btn-save").addClass("radical-btn-disabled");
+							$(pin).parent().parent().find(".radical-task-btn-save").attr("disabled", "disabled");
+							
+							$(pin).addClass("has-error");
+							$(pin).addClass("radical-input-has-error");
+							$(pin).attr("data-placement", "top");
+							$(pin).attr("data-content","name already exists");
+							$(pin).popover("show");
+						}
+						
+					} else {
+						alert('Failed to retreive tasks masterlist!');
+						$("#btnAddMasterTask").addClass("radical-btn-disabled");
+						$("#btnAddMasterTask").attr("disabled", "disabled");
+					}
+
+				
+				},
+				error : function(jqXHR, status, error) {
+				
+					$("#btnAddMasterTask").addClass("radical-btn-disabled");
+					$("#btnAddMasterTask").attr("disabled", "disabled");
+				}
+			});
+		}
+	}
+	else{
+		$(pin).parent().parent().find(".radical-task-btn-save").addClass("radical-btn-disabled");
+		$(pin).parent().parent().find(".radical-task-btn-save").attr("disabled", "disabled");
+		
+		$(pin).addClass("has-error");
+		$(pin).addClass("radical-input-has-error");
+		$(pin).attr("data-placement", "top");
+		$(pin).attr("data-content","name required");
+		$(pin).popover("show");
+	}
+}
+
+
 function updateConfirmed(btn, idVal) {
 	var name = $(btn).parent().parent().find(".radical-pin-tasks-name-edit")
 			.find("input").val();
@@ -718,182 +798,80 @@ function addProject() {
 		}
 	});
 }
-/*
-function retrieveProjectList(successMessage) {
-	$("#projectList").empty();
-	$.ajax({
-			url : 'retrieveProjectList',
-			type : 'GET',
-			data : null,
-			success : function(data, status, jqXHR) {
-				if (data.errorList.length == 0) {
-					var formattedProjectList = ''
-						+ '<div class="row listRow listRowHeader">'
-							+ '<div class="col-md-4 listProperty listHeader">Name</div>'
-							+ '<div class="col-md-4 listProperty listHeader">Details</div>'
-						+ '</div>';
-						$.each(data.projectList,
-							function(index, value) {
-								formattedProjectList += ''
-									+ '<div class="row listRow listRowProperty projList radical-pin-tasks">'
-										+ '<a href="/projectPage?projectName='
-										+ value.projectName
-										+ '&id=' + value.id
-										+ '" style="color: black">'
-											+ '<div class="col-md-4 listProperty radical-pin-tasks-name">'
-												+ value.projectName
-											+ '</div>'
-											+ '<div class="col-md-4 listProperty radical-pin-tasks-details">'
-												+ value.projectDetails
-											+ '</div>'
-										+ '</a>'
-											+ '<div class = "radical-pin-tasks-name-edit col-lg-3">'
-												+ '<input type="text" data-placement="left" class="form-control" oninput = "projectEditChange(this,'
-												+ value.id
-												+ ')" onfocus = "taskEditChange(this,'
-												+ value.id
-												+ ')" placeholder="" value="'
-												+ value.taskName
-												+ '">'
-											+ '</div>'
-											+ '<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">'
-												+ '<textarea class="form-control" oninput = "projectEditChange(this,'
-												+ value.id
-												+ ')" rows="3">'
-												+ value.taskDetails
-												+ '</textarea>'
-											+ '</div>'
-											
-											+ '<div class = "radical-pin-tasks-remove col-lg-10">'
-											+ 'Are you sure you want to delete the project <b><span class="removeTaskLabel">'
-											+ value.projectName
-											+ '</span></b>?'
-											+ '<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;"> This task will also be removed in projects</div>'
-											+ '</div>'
-											
-											+ '<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">'
-												//-----------First to appear Buttons----------
-												+ '<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "projectPinEditMode(this)">'
-													+ '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
-												+ '</button>'
-												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "projectRemoveClicked(this)">'
-													+ '<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>'
-												+ '</button>'
-												//-----------Deleting Buttons--------------------------
-												+ '<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" onclick = "projectDeleteConfirmed(this,'
-													+ value.id
-												+ ')">'
-													+ 'delete'
-												+ '</button>'
-												+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "projectPinNormalMode2(this)">'
-													+ 'cancel'
-												+ '</button>'
-												//-----------Editing Buttons
-												
-												+ '<button class="btn btn-sm text-right radical-task-btn-save" onclick = "projectUpdateConfirmed(this, '
-													+ value.id
-												+ ')">'
-													+ 'save'
-												+ '</button>'
-												+ '<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "projectPinNormalMode(this)">'
-													+ 'cancel'
-												+ '</button>'
-											+ '</div>'
-									+ '</div>';
-										});
-						if (formattedProjectList == "") {
-							formattedProjectList = "<div>No Projects in the Master List!</div>";
-						}
-						// alert(formattedProjectList);
-						$("#projectList").html(formattedProjectList);
-						if (undefined != successMessage && "" != successMessage) {
-							// alert(successMessage);
-						}
-						projectReady();
-					} else {
-						alert('Failed to retreive tasks masterlist!');
-					}
-				},
-				error : function(jqXHR, status, error) {
-					alert("error");
-				}
-			});
-}*/
 
-function projectEditChange(pin, idVal) {
-	pin = $(pin).parent().parent();
-
-	if ($(pin).find(".radical-pin-tasks-name-edit").find("input").val() != "") {
-		var name = $(pin).find(".radical-pin-tasks-name-edit").find("input")
-				.val();
-
+function validateProjectName(pin,id){
+	var projectName = $("#projectName_"id).val();
+	
+	var ret = false;
+	
+	if(projectName != ""){
+		ret = true;
+		var bool = false;
+		
 		jsonData = {
 			data : JSON.stringify({
-				id : idVal,
-				taskName : name
+				taskName : projectName,
 			})
 		};
-
-		$.ajax({
+		
+		$
+		.ajax({
 			url : 'validProjectName',
-			type : 'POST',
+			type : 'GET',
 			data : jsonData,
-			dataType : 'json',
 			success : function(data, status, jqXHR) {
-				if (data.errorList.length == 0) {
-					if (data.validate >= 1) {
-						$(pin).find(".radical-task-btn-save").addClass(
-								"radical-task-btn-save-disabled");
-						$(pin).find(".radical-task-btn-save").attr("disabled",
-								"disabled");
-						$(pin).find(".radical-pin-tasks-name-edit").addClass(
-								"has-error");
-
-						$(pin).find(".radical-pin-tasks-name-edit").attr(
-								"data-placement", "left");
-						$(pin).find(".radical-pin-tasks-name-edit").attr(
-								"data-content", "name already exists");
-						$(pin).find(".radical-pin-tasks-name-edit").popover(
-								"show");
-					} else {
-						$(pin).find(".radical-task-btn-save").removeClass(
-								"radical-task-btn-save-disabled");
-						$(pin).find(".radical-task-btn-save").removeAttr(
-								"disabled");
-						$(pin).find(".radical-pin-tasks-name-edit")
-								.removeClass("has-error");
-
-						$(pin).find(".radical-pin-tasks-name-edit").attr(
-								"data-placement", "left");
-						$(pin).find(".radical-pin-tasks-name-edit").attr(
-								"data-content", "");
-						$(pin).find(".radical-pin-tasks-name-edit").popover(
-								"hide");
+				if (data.errorList.length == 0 ) {
+					
+					if(data.validate <= 0){
+						$("#btnAddMasterTask").removeClass("radical-btn-disabled");
+						$("#btnAddMasterTask").removeAttr("disabled");
+						
+						$("#taskMasterName").removeClass("has-error");
+						$("#taskMasterName").removeClass("radical-input-has-error");
+						$("#taskMasterName").attr("data-placement", "right");
+						$("#taskMasterName").attr("data-content","");
+						$("#taskMasterName").popover("hide");
 					}
-
+					else{
+						$("#btnAddMasterTask").addClass("radical-btn-disabled");
+						$("#btnAddMasterTask").attr("disabled", "disabled");
+						
+						$("#taskMasterName").addClass("has-error");
+						$("#taskMasterName").addClass("radical-input-has-error");
+						$("#taskMasterName").attr("data-placement", "right");
+						$("#taskMasterName").attr("data-content","name already exists");
+						$("#taskMasterName").popover("show");
+					}
+					
 				} else {
 					alert('Failed to retreive tasks masterlist!');
+					$("#btnAddMasterTask").addClass("radical-btn-disabled");
+					$("#btnAddMasterTask").attr("disabled", "disabled");
 				}
+
+				tasksReady();
 			},
 			error : function(jqXHR, status, error) {
-				alert("error " + status + " " + error);
+				alert("error");
+				$("#btnAddMasterTask").addClass("radical-btn-disabled");
+				$("#btnAddMasterTask").attr("disabled", "disabled");
 			}
 		});
-	} else {
-		$(pin).find(".radical-task-btn-save").addClass(
-				"radical-task-btn-save-disabled");
-		$(pin).find(".radical-task-btn-save").attr("disabled", "disabled");
-		$(pin).find(".radical-pin-tasks-name-edit").addClass("has-error");
-
-		$(pin).find(".radical-pin-tasks-name-edit").attr("data-placement",
-				"left");
-		$(pin).find(".radical-pin-tasks-name-edit").attr("data-content",
-				"name is required");
-		$(pin).find(".radical-pin-tasks-name-edit").popover("show");
+		
 	}
-
+	else{
+		$("#btnAddMasterTask").addClass("radical-btn-disabled");
+		$("#btnAddMasterTask").attr("disabled", "disabled");
+		
+		$("#taskMasterName").addClass("has-error");
+		$("#taskMasterName").addClass("radical-input-has-error");
+		$("#taskMasterName").attr("data-placement", "right");
+		$("#taskMasterName").attr("data-content","name is required");
+		$("#taskMasterName").popover("show");
+	}
+	
+	return ret;
 }
-
 /*
 function projectUpdateConfirmed(btn, idVal) {
 	var name = $(btn).parent().parent().find(".radical-pin-tasks-name-edit")
@@ -935,10 +913,16 @@ function projectUpdateConfirmed(btn, idVal) {
 // Functios for Projects end
 
 function setCalendar2() {
+	jsonData = {
+			data : JSON.stringify({
+				projectName : getUrlParameter("projectName")
+			})
+		};
+	
 	$.ajax({
 		url : 'RetrieveTasksForCalendar',
 		type : 'GET',
-		data : null,
+		data : jsonData,
 		success : function(data, status, jqXHR) {
 			console.log("data", data);
 			$('#calendar').fullCalendar({
@@ -947,7 +931,7 @@ function setCalendar2() {
 					center : 'title',
 					right : 'month,basicWeek,basicDay'
 				},
-				defaultDate : '2015-0-12',
+				
 				editable : false,
 				displayEventTime : false,
 				eventLimit : true, // allow "more" link when too many events
@@ -959,7 +943,12 @@ function setCalendar2() {
 		}
 	});
 
+	
+	
+
 }
+
+
 function getUrlParameter(sParam) {
 	var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL
 			.split('&'), sParameterName, i;
