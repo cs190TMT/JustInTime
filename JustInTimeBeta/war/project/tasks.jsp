@@ -15,25 +15,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="keyword" content="">
 
+<%@ include file="../includes/headImports.jsp" %>
 
-<link rel="shortcut icon" href="img/favicon.png">
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>
 
-<!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.css" rel="stylesheet">
-<link href="../css/bootstrap-reset.css" rel="stylesheet">
-<!--external css-->
-<link href="../assets/font-awesome/css/font-awesome.css"
-	rel="stylesheet" />
-<!-- Custom styles for this template -->
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/style-responsive.css" rel="stylesheet" />
-<link href="../css/radical.css" rel="stylesheet" />
-<script src="../js/jquery.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
 <!--[if lt IE 9]>
 	      <script src="../js/html5shiv.js"></script>
@@ -42,7 +31,7 @@
 
 <title>Just In Time</title>
 </head>
-<body>
+<body ng-app="jitTask" ng-controller="jitController">
 	<section id="container" class="">
 		<!--header start-->
 		<%@include file="../includes/header.jsp"%>
@@ -57,85 +46,111 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<h3 style="float: left; padding: 0px; margin: 0px;">Tasks</h3>
-						<button id="calendarButton" type="button"
-							class="radical-simple-button"
-							style="float: right; margin-right: 5px;">
-							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-						</button>
-						<button id="listButton" type="button"
-							class="radical-simple-button-active" style="float: right">
-							<span class=" glyphicon glyphicon-list" aria-hidden="true"></span>
-						</button>
-
+						<div id="updateDisplay"></div>
 						<button type="button" class="radical-simple-button-task"
-							style="float: right" aria-label="Left Align" data-toggle="modal"
-							data-target="#addTaskModal">
+							style="float: right; margin-right:0px" aria-label="Left Align" data-toggle="modal"
+							data-target="#addMasterTaskModal">
 							<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-							new task
+							New Task
 						</button>
 					</div>
+
 					<div class="radical-task-header" style="margin-top: 10px;">
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for tasks" oninput = "searchTask(this.value)"> <span
+							<input type="text" class="form-control radical-search-input"
+								placeholder="Search for tasks in Master list" id="searchInputMain" ng-model = "taskSearchInput"> <span
 								class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<button class="btn btn-default radical-search-input-btn" type="button" ng-click = "searchTask()">
 									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								</button>
 							</span>
 						</div>
-						<div class="btn-group btn-group-sm" role="group" aria-label="..."
-							style="margin-top: 10px;">
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button"
-									class="btn btn-default dropdown-toggle radical-no-round-corners"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Date <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Today</a></li>
-									<li><a href="#">Tomorrow</a></li>
-									<li><a href="#">This week</a></li>
-									<li><a href="#">Next week</a></li>
-									<li><a href="#">This month</a></li>
-								</ul>
+						
+					</div>
+					
+					<div class="row radical-pin-tasks-header-header" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="header1">
+						<div class = "row radical-pin-tasks-header">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								<b>Name</b>
 							</div>
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Status <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Not started</a></li>
-									<li><a href="#">In progress</a></li>
-									<li><a href="#">Overdue</a></li>
-									<li><a href="#">Finished</a></li>
-								</ul>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								<b>Details</b>
 							</div>
-							<div class="btn-group btn-group-sm" role="group">
-								<button type="button"
-									class="btn btn-default dropdown-toggle radical-no-round-corners"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									Phase <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">All</a></li>
-									<li><a href="#">Planning</a></li>
-									<li><a href="#">Design</a></li>
-									<li><a href="#">Coding</a></li>
-									<li><a href="#">Testing</a></li>
-								</ul>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
 							</div>
 						</div>
 					</div>
-					<div class="row" style="padding-left: 15px; margin-top: 10px; padding-right: 15px;" id="TaskMList">
-						
+					
+					
+					<div class="row" style="padding-left: 15px; margin-top: 0px; padding-right: 15px;" id="taskMList" ng-repeat="item in taskList" ng-animate = " 'wave' ">
+							<div class = "row radical-pin-tasks"  id="taskPin{{item.id}}">
+													<div class = "radical-pin-tasks-name col-lg-3">
+													{{item.taskName}}
+													</div>
+													<div class = "radical-pin-tasks-details col-lg-7">
+													{{item.taskDetails}}
+													</div>
+													<div class = "radical-pin-tasks-name-edit col-lg-3">
+													
+													</div>
+													<div class = "radical-pin-tasks-details-edit col-lg-7 input-group">
+													<textarea class="form-control" rows="4" ng-model = "item.taskDetailsx"></textarea>
+													</div>
+													<div class = "radical-pin-tasks-remove col-lg-10">
+													Are you sure you want to delete the task 
+													<b><span class="removeTaskLabel">
+													{{item.taskName}}
+													</span></b>?
+													<div class="alert alert-warning col-lg-6" role="alert" style="margin-top: 10px; padding:10px;">
+													This task will also be removed in projects
+													</div>
+													</div>
+													<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+													<button class="btn btn-sm text-right radical-task-btn-edit" onclick = "taskPinEditMode(this)">
+													<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-remove" onclick = "removeClicked(this)">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "deleteTask(item)" id="tasksPin{{item.id}}deleteBtn">
+													delete
+													</button>
+													<button class="btn btn-sm text-right radical-task-btn-save" ng-click="updateTask(this, item)" id="tasksPin{{item.id}}updateBtn">
+													save
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-cancel" onclick = "taskPinNormalMode(this)">
+													cancel
+													</button>
+													<button class="btn btn-sm text-right radical-tasks-btn-cancel-2" onclick = "taskPinNormalMode2(this)">
+													cancel
+													</button>
+													</div></div>
+				
 					</div>
+					<div class="row radical-pin-tasks-header-header radical-float-top col-lg-7" style="padding-left: 15px; margin-top: 10px; padding-right: 9px;" id="header2">
+						<div class = "row radical-pin-tasks-header" id="searchTaskFake" style="border:0px;">
+							<div class="input-group">
+							<input type="text" class="form-control radical-search-input" ng-model = "taskSearchInput"
+								placeholder="Search for tasks" > <span
+								class="input-group-btn">
+								<button class="btn btn-default radical-search-input-btn" type="button" ng-click = "searchTask()">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</span>
+						</div>
+						</div>
+						<div class = "row radical-pin-tasks-header" id="headerThings2">
+							<div class = "radical-pin-tasks-name col-lg-3">
+								<b>Name</b>
+							</div>
+							<div class = "radical-pin-tasks-details col-lg-7">
+								<b>Details</b>
+							</div>
+							<div class = "radical-pin-tasks-controls col-lg-2 text-right radical-no-padding">
+							</div>
+						</div>
+					</div>
+					<!-- Task List end -->
 				</div>
 				<div id="T1"></div>
 				<!-- page end-->
@@ -145,27 +160,105 @@
 		<br /> <br /> <br />
 		<!--footer start-->
 		<%@include file="../includes/footer.jsp"%>
+		
+		
+		
 		<!--footer end-->
 	</section>
 
+	<!-- Confirm Remove Task Modal -->
+
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="confirmRemoveTask">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+			  	<div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Delete Task</h4>
+			      </div>
+			      <div class="modal-body">
+			         Are you sure you want to delete the task <b><span class="removeTaskLabel">Spartan</span></b> ?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-danger" id = "confirmDeleteTask" data-dismiss="modal"  onclick="deleteConfirmed()">Delete</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			        
+			      </div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<!-- js placed at the end of the document so the pages load faster -->
 
-	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-	<script class="include" type="text/javascript"
-		src="../js/jquery.dcjqaccordion.2.7.js"></script>
-	<script src="../js/jquery.scrollTo.min.js" type="text/javascript"></script>
-	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
-	<script src="../assets/jquery-knob/js/jquery.knob.js"
-		type="text/javascript"></script>
-	<script src="../js/respond.min.js" type="text/javascript"></script>
-	<!--common script for all pages-->
-	<script src="../js/common-scripts.js" type="text/javascript"></script>
+	<%@include file="../includes/footImports.jsp"%>
+	<script type="text/javascript" src="../js/taskFunctions.js"></script>
 
-	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-	<script type="text/javascript" src="../js/functions.js"></script>
 
 	<script type="text/javascript">
 		$(".knob").knob();
+	
+
+		$(document).ready(function() {
+			
+			//retrieveTaskMasterList("TaskMasterList");
+			
+			$("#header2").hide();
+			
+			$("#searchTaskFake").hide();
+			
+			$("#header2").hover(
+				function(){
+					$("#searchTaskFake").show("200", "linear");	
+				}
+			
+			);
+			
+			$("#header2").mouseleave(
+					function(){
+						$("#searchTaskFake").hide("200", "linear");	
+					}
+				
+				);
+			
+			$(window).scroll(
+				function(){
+					if ($(window).scrollTop() + 50 > $('.radical-pin-tasks-header-header').offset().top){
+							$("#header2").show();
+					}
+			        else{
+			        	$("#header2").hide();
+			        }
+				}
+			
+			);
+			
+			/*
+			$(".radical-search-input").keydown(function(event) {
+		        if (event.keyCode == 13) {
+		        	var name = $(this).val();
+		        	searchTask(name);
+		        	$(".radical-search-input").val(name);
+		            return false;
+		         }
+		    });
+			
+			$(".radical-search-input-btn").click(
+				function(){
+					var name = $(this).parent().parent().find(".radical-search-input").val();
+					searchTask(name);
+					$(".radical-search-input").val(name);
+				}	
+			
+			);
+			*/
+			
+			
+	
+		});
+		
+		tasksReady();
+		
 	</script>
 
 </body>

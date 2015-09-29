@@ -9,12 +9,8 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
 
-import java.util.List;
-
 import project.dto.TasksClientDto;
-import project.dto.TasksDto;
 import project.service.TasksService;
-import project.model.TasksModel;
 /**
  * Main Screen Search controller.
  * @author <name here>
@@ -34,7 +30,7 @@ public class SearchController extends Controller {
         
         try{
             
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
             
             String taskName = json.getString("taskName");
             

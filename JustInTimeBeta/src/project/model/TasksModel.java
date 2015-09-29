@@ -14,7 +14,7 @@ import com.google.appengine.api.datastore.Key;
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
-@Model(schemaVersion = 1)
+@Model(schemaVersion = 2)
 public class TasksModel implements Serializable {
     
     private static final long serialVersionUID = 1l;
@@ -29,15 +29,19 @@ public class TasksModel implements Serializable {
     
     private String taskName;
     
+    private String taskNameL;
+    
     private String taskDetails;
     
+    private String taskPhase;
+    
     private String dateCreated;
+    
+    private int projID;
     
     private float timeAlloted;
     
     private float timeSpent;
-    
-    private String taskPhase;
 
     @Override
     public int hashCode() {
@@ -119,8 +123,16 @@ public class TasksModel implements Serializable {
         return this.taskName;
     }
     
+    public String getTaskNameL(){
+        return this.taskNameL;
+    }
+    
     public void setTaskName(String name) {
         this.taskName = name;
+    }
+    
+    public void setTaskNameL(String name){
+        this.taskNameL = name.toLowerCase();
     }
     
     public String getTaskDetails() {
@@ -161,5 +173,13 @@ public class TasksModel implements Serializable {
     
     public void setTimeSpent(float time) {
         this.timeSpent = time;
+    }
+    
+    public int getProjId(){
+        return this.projID;
+    }
+    
+    public void setprojId(int ProjId){
+        this.projID = ProjId;
     }
 }
