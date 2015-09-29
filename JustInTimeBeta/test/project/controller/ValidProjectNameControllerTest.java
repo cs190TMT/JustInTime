@@ -10,8 +10,8 @@ public class ValidProjectNameControllerTest extends ControllerTestCase {
     @Test
     public void run() throws Exception {
         tester.start("/ValidProjectName");
-        ValidProjectNameController controller = tester.getController();
-        assertThat(controller, is(notNullValue()));
+        //ValidProjectNameController controller = tester.getController();
+        //assertThat(controller, is(notNullValue()));
         assertThat(tester.isRedirect(), is(false));
         assertThat(tester.getDestinationPath(), is("/ValidProjectName.jsp"));
     }
