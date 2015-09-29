@@ -1128,7 +1128,8 @@ function addLog(yeah) {
 
 }
 
-
+/*
+ * 
 function retrieveLogs(successMessage) {
 	$("#logList").empty();
 	jsonData = {
@@ -1182,6 +1183,7 @@ function retrieveLogs(successMessage) {
 			});
 }
 
+ */
 
 
 

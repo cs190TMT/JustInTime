@@ -19,6 +19,11 @@
 
 <%@ include file="../includes/headImports.jsp"%>
 
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/angular.js"></script>
+<script type="text/javascript" src="../js/functions.js"></script>
+
 <!-- Custom CSS for Calendar -->
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <link href='../css/fullcalendar.print.css' rel='stylesheet'
@@ -51,7 +56,7 @@ body {
 <title>Just In Time</title>
 </head>
 
-<body>
+<body ng-app="logApp"  ng-controller="logController">
 	<%
 		String projectName = request.getParameter("projectName");
 		String id = request.getParameter("id");
@@ -156,7 +161,12 @@ body {
 				</div>
 				<div class="col-lg-3">
 					<h4>LOGS</h4>
-					<div id="logList">
+					<!-- id="logList" -->
+					<div ng-repeat="item in logList">
+						<h4>{{item.taskName}}<h4>
+						<h5>{{item.taskPhase}}</h5>
+						<h5>{{item.timeSpent}}</h5>
+						<h5>{{item.error}}</h5>
 					</div>
 				</div>
 				<br />
@@ -182,12 +192,11 @@ body {
 
 
 	<script src="../lib/moment.min.js" type="text/javascript"></script>
-	<script src="../lib/jquery.min.js" type="text/javascript"></script>
 	<script src="../js/fullcalendar.min.js" type="text/javascript"></script>
 	
 	<%@include file="../includes/footImports.jsp"%>
 	<%@include file="logsModal.jsp"%>
-
+	
 	<script>
 		//knob
 		$(".knob").knob();
@@ -199,7 +208,7 @@ body {
 			$("#calendar").hide();
 			retrieveTaskProjectList("TaskProjectList");
 			retrievePullTaskMasterList("TaskMasterList");
-			retrieveLogs("ProjectLogList");
+			//retrieveLogs("ProjectLogList");
 		});
 		
 		$("#calendarButton").click(function(){
@@ -214,6 +223,19 @@ body {
 		
 		
 	</script>
+	<script>
+	
+		angular.module('logApp',[]).controller('logController', function($scope, $http){
+		
 
+			$http.get("retrieveLogs").success(function(data, status, header, config){
+				if(data.errorList.length == 0){
+					$scope.logsList = data.logList;	
+				}
+			});
+			console.log(data.logsList)
+		});
+			
+	</script>
 </body>
 </html>
