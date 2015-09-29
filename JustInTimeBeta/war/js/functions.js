@@ -1015,10 +1015,16 @@ function projectUpdateConfirmed(btn, idVal) {
 // Functios for Projects end
 
 function setCalendar2() {
+	jsonData = {
+			data : JSON.stringify({
+				projectName : getUrlParameter("projectName")
+			})
+		};
+	
 	$.ajax({
 		url : 'RetrieveTasksForCalendar',
 		type : 'GET',
-		data : null,
+		data : jsonData,
 		success : function(data, status, jqXHR) {
 			console.log("data", data);
 			$('#calendar').fullCalendar({

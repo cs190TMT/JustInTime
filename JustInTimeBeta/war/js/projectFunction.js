@@ -52,8 +52,9 @@ var project = angular.module('project',[]).controller('projectController', funct
 		
 	};*/
 	
-	$scope.projectUpdateConfirmed = function(){
+	$scope.projectUpdateConfirmed = function(val){
 		
+		$scope.projName = value.projectName;
 		alert($scope.projName + " " + $scope.projDetails);
 		
 	};
