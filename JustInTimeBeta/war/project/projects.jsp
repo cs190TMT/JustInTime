@@ -71,7 +71,7 @@
 						</div>
 					</div>
 					<!-- Project List start-->
-					<div ng-controller="projectController" class="row containerList listRow listRowProperty">
+					<div class="row containerList listRow listRowProperty">
 						<div class="row listRow listRowHeader">
 							<div class="col-md-4 listProperty listHeader">Name</div>
 							<div class="col-md-4 listProperty listHeader">Details</div>
@@ -88,13 +88,13 @@
 								</a>
 									<div ng-if="checkIfInput(value.id)">
 										
-									<div ng-controller="projectController">
+									<div>
 									<div class="radical-pin-tasks-name-edit col-md-3">
-										<input ng-model="project.updateName" type="text" data-placement="left" class="form-control"
-											onfocus="taskEditChange(this,value.id)" placeholder="" >{{project.updateName}}
+										<input ng-model="projectName" type="text" data-placement="left" class="form-control"
+											onfocus="taskEditChange(this,value.id)" placeholder="" >{{projectName}}
 									</div>
 									<div class="radical-pin-tasks-details-edit col-lg-7 input-group">
-										<textarea class="form-control" rows="3" ng-model="project.updateDetails">
+										<textarea class="form-control" rows="3" ng-model="projectDetails">
 										</textarea>
 									</div>
 									</div>
@@ -120,14 +120,14 @@
 											<span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
 										</button>
 										<!-----------Deleting Buttons-------------------------->
-										<button ng-controller="projectController" ng-if="checkIfDeleteOk(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "projectDeleteConfirmed(this,value.id)">
+										<button ng-if="checkIfDeleteOk(value.id)" class="btn btn-sm text-right radical-tasks-btn-remove-confirm" ng-click = "projectDeleteConfirmed(this,value.id)">
 											Delete
 										</button>
 										<button ng-if="checkIfDelete(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel-2" ng-click="resetDeleteFlag()">
 											Cancel
 										</button>
 										<!-----------Editing Buttons------------------------>
-										<button ng-if="checkIfInput(value.id)" ng-controller="projectController" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
+										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-task-btn-save" ng-click = "projectUpdateConfirmed()">
 											Save
 										</button>
 										<button ng-if="checkIfInput(value.id)" class="btn btn-sm text-right radical-tasks-btn-cancel" ng-click = "resetInputFlag()">

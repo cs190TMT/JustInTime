@@ -1,21 +1,11 @@
 var project = angular.module('project',[]).controller('projectController', function($scope,$http){
-	$scope.deleteProject = false;
-	$scope.deleteCancelProject = false;
-	$scope.editSaveProject = false;
-	$scope.editCancelProject = false;
-	$scope.editNameButton = false;
-	$scope.editDetailsButton = false;
-	$scope.deleteConfirm = false;
-	$scope.editNameProject = true;
-	$scope.editDetailsProject = true;
 	
 	$scope.updateId;
 	$scope.deletId;
 	var canDelete = true;
-	var projectName;
-	var projectDetails;
 	
-	
+	$scope.projectName = "";
+	$scope.projectDetails = "";
 	
 	$http.get("retrieveProjectList")
 	.success(function(data, status, header, config){
@@ -33,9 +23,9 @@ var project = angular.module('project',[]).controller('projectController', funct
 	$scope.projectEditMode = function(pin,id, projName, projDetails){
 		$scope.id = id;
 		$scope.updateId = id;
-		projectName = projName;
+		$scope.projectName = projName;
 		projectDetails = projDetails;
-		alert(id + " " + $scope.updateId + " " + projectName + " " + projectDetails);
+		alert(id + " " + $scope.updateId + " " + $scope.projectName + " " + projectDetails);
 	};
 	
 	$scope.projectDeleteMode  = function(pin,id){
@@ -98,36 +88,36 @@ var project = angular.module('project',[]).controller('projectController', funct
 	};
 	
 	$scope.project = {
-			updateName: projectName,
-			updateDetails: projectDetails
+		updateName: $scope.projectName,
+		updateDetails: $scope.projectDetails
+	};
+		
+	$scope.projectUpdateConfirmed = function(){
+		
+		alert($scope.projectName + " " + $scope.project.updateName);
+			
+		/*jsonData = {
+			id : $scope.updateId,
+			projectNameJson : $scope.project.updateName,
+			projectDetailsJson : $scope.project.updateDetails
 		};
-		
-		$scope.projectUpdateConfirmed = function(){
-		
-			alert(projectName + " " + $scope.project.updateName);
 			
-			/*jsonData = {
-				id : $scope.updateId,
-				projectNameJson : $scope.project.updateName,
-				projectDetailsJson : $scope.project.updateDetails
-			};
-			
-			$http.post("updateProject",jsonData)
-				.success(function(data, status, headers, config){
-					if(data.errorList.length == 0){
-						alert("Entry updated successfully");
-						location.reload(true);
-					}
-					else{
-					
-					}
+		$http.post("updateProject",jsonData)
+			.success(function(data, status, headers, config){
+				if(data.errorList.length == 0){
+					alert("Entry updated successfully");
+					location.reload(true);
+				}
+				else{
 				
-				})
-				.error(function(data, status, headers, config){
-					alert("error " + status);
-				});
-			*/
-		};
+				}
+			
+			})
+			.error(function(data, status, headers, config){
+				alert("error " + status);
+			});
+		*/
+	};
 		
 	$scope.project = {};
 	$scope.project.name = "";
