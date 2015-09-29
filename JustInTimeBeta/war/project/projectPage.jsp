@@ -103,7 +103,7 @@ body {
 							</span>
 						</div>
 					</div>
-					<div class="btn-group btn-group-sm" role="group" aria-label="..."
+					<div id = "filter" class="btn-group btn-group-sm" role="group" aria-label="..."
 						style="margin-top: 10px;">
 						<div class="btn-group btn-group-sm" role="group">
 							<button type="button"
@@ -196,22 +196,27 @@ body {
 
 		$(document).ready(function() {
 			//alert("here");
-			setCalendar2();
 			
-			$("#calendar").hide();
 			retrieveTaskProjectList("TaskProjectList");
 			retrievePullTaskMasterList("TaskMasterList");
 			retrieveLogs("ProjectLogList");
+			
+			
+			$("#calendar").hide();
 		});
 		
 		$("#calendarButton").click(function(){
-			 $("#calendar").show();
+			$("#calendar").show();
 			 $("#taskMList").hide();
+			 $("#filter").hide();
+			setCalendar2().fullCalendar( 'changeView', viewName ).hide();
+			 
 		});
 		
 		$("#listButton").click(function(){
 			 $("#calendar").hide();
 			 $("#taskMList").show();
+			 $("#filter").show();
 		});
 		
 		
