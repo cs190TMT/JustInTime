@@ -23,15 +23,9 @@
 			<li class="sub-menu"><a href="/projects"
 				class="radical-active"> <i class="icon-folder-close"></i> <span
 					class="radical-font-size">Projects</span>
-					<button type="button" class="radical-add-button"
-						data-toggle="modal" data-target="#addProjectModal">
-						<span class="glyphicon glyphicon glyphicon-plus-sign"
-							aria-hidden="true"><text>Add</text></span>
-					</button>
 			</a></li>
 		</ul>
 		<!-- sidebar menu end-->
 	</div>
 </aside>
 <%@include file="../includes/addMasterTaskModal.jsp"%>
-<%@include file="../includes/addProjectModal.jsp"%>

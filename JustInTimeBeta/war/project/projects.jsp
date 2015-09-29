@@ -139,6 +139,7 @@
 
 					<div id="T1"></div>
 					<%@ include file="../includes/addLogModal.jsp"%>
+					<%@include file="../includes/addProjectModal.jsp"%>
 					<!-- page end-->
 				</div>
 			</section>
