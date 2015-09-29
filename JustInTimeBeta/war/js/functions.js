@@ -684,6 +684,40 @@ function updateConfirmed(btn, idVal) {
 // Functions for Tasks end
 
 // Functios for Projects start
+function addProject() {
+	jsonData = {
+		data : JSON.stringify({
+			projectName : $('#projectName').val(),
+			projectDetails : $('#projectDetails').val()
+		})
+	};
+	
+	$.ajax({
+		url : 'addProject',
+		type : 'POST',
+		data : jsonData,
+		dataType : 'json',
+		success : function(data, status, jqXHR) {
+			if (data.errorList.length == 0) {
+				$('#projectName').val("");
+				$('#projectDetails').val("");
+				$('#addProjectModal').modal("hide");
+				//alert("no error here");
+				retrieveProjectList('Entry saved successfully!');
+				// alert("dk sandimas");
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				$('#errorDisplay').html(msg);
+			}
+		
+		},
+		error : function(data, status, jqXHR) {
+			
+		}
+	});
+}
 
 function retrieveProjectList(successMessage) {
 	$("#projectList").empty();
