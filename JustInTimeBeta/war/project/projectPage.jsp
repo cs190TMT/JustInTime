@@ -150,9 +150,12 @@ body {
 								<li><a href="#">Testing</a></li>
 							</ul>
 						</div>
+						
 					</div>
 					<div class="containerList" id="taskMList">
 					</div>
+					
+					<div class="" style="margin-top: 20px;" id="calendar"></div>
 				</div>
 				<div class="col-lg-3">
 					<h4>LOGS</h4>
@@ -160,8 +163,7 @@ body {
 					</div>
 				</div>
 				<br />
-				<div class="" style="margin-top: 150px; margin-right: 300px;"
-					id="calendar"></div>
+				
 				<div id="T1"></div>
 				<%@ include file="../includes/addLogModal.jsp"%>
 				<!-- page end-->
