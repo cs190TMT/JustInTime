@@ -7,7 +7,9 @@
 
 package project.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,11 +24,14 @@ public class LogsService {
     
     public LogsDto addLog(LogsDto input, String projectName) {
         LogsModel log = new LogsModel();
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
         log.setTimeStamp(input.getTimeStamp());
         log.setTaskName(input.getTaskName());
         log.setTaskPhase(input.getTaskPhase());
         log.setTimeSpent(input.getTimeSpent());
-        log.setTimeStamp(new Date().toString());
+        Date today = Calendar.getInstance().getTime();        
+        String reportDate = date.format(today);
+        log.setTimeStamp(reportDate);
         
         if (!this.dao.saveLog(log, projectName)) {
             input.setErrorList(new ArrayList<String>());
@@ -48,6 +53,7 @@ public class LogsService {
             logDto.setTaskName(log.getTaskName());
             logDto.setTaskPhase(log.getTaskPhase());
             logDto.setTimeSpent(log.getTimeSpent());
+            logDto.setTimeStamp(log.getTimeStamp());
             logList.getLogsList().add(logDto);
         }
         if(logList.getLogsList().isEmpty()) {
